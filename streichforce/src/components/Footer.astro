@@ -1,0 +1,122 @@
+---
+// src/components/Footer.astro
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="/" class="footer-logo">Streich<span>Force</span></a>
+      <p class="footer-tagline">Built to Work.</p>
+    </div>
+    <div class="footer-nav">
+      <div class="footer-col">
+        <p class="footer-col-title">Divisions</p>
+        <ul>
+          <li><a href="/solutions">Streich Force Solutions</a></li>
+          <li><a href="/containers">Container Sales</a></li>
+          <li><a href="/enterprise">Enterprise Repair & Fab</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Company</p>
+        <ul>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#contact">Contact</a></li>
+          <li><a href="mailto:info@streichforce.com">info@streichforce.com</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; {year} Streich Force Enterprises &mdash; streichforce.com</p>
+    <p>All rights reserved.</p>
+  </div>
+</footer>
+
+<style>
+  footer {
+    border-top: 1px solid var(--iron);
+    padding: 4rem var(--page-pad) 2rem;
+    margin-top: 4rem;
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-logo {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 1.4rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--white);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-logo span { color: var(--rust); }
+
+  .footer-tagline {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--mist);
+  }
+
+  .footer-nav {
+    display: flex;
+    gap: 4rem;
+  }
+
+  .footer-col-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 1rem;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer-col a {
+    font-size: 0.875rem;
+    color: var(--mist);
+    transition: color 0.2s;
+  }
+
+  .footer-col a:hover { color: var(--white); }
+
+  .footer-bottom {
+    border-top: 1px solid var(--iron);
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-bottom p {
+    font-size: 0.75rem;
+    color: var(--iron);
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 640px) {
+    .footer-nav { flex-direction: column; gap: 2rem; }
+    .footer-top { flex-direction: column; }
+  }
+</style>

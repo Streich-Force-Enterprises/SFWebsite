@@ -1,0 +1,476 @@
+---
+// src/pages/index.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="Home" description="Streich Force Enterprises — Operational consulting, container sales, and specialized commercial repair and fabrication.">
+  <Nav />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-diagonal"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Streich Force Enterprises &mdash; Multi-Division Operations</p>
+      <h1 class="hero-title">
+        Built to
+        <span class="force">Work.</span>
+      </h1>
+      <div class="hero-rule"></div>
+      <p class="hero-sub">
+        Operational consulting. Container sales. Specialized commercial repair and fabrication.
+        Three divisions. One standard of excellence.
+      </p>
+    </div>
+    <div class="hero-scroll">Explore</div>
+  </section>
+
+  <!-- DIVISIONS -->
+  <section class="divisions" id="divisions">
+    <div class="section-header reveal">
+      <p class="section-label">Our Divisions</p>
+      <h2 class="section-title">Where Do You Need Us?</h2>
+    </div>
+
+    <div class="division-grid">
+
+      <a href="/solutions" class="division-card reveal">
+        <div class="card-number">01</div>
+        <div class="card-body">
+          <p class="card-tag">Back-Office Operations</p>
+          <h3 class="card-title">Streich Force Solutions</h3>
+          <p class="card-desc">
+            An extension of your back office. We specialize in operational support for shipping container wholesalers and small businesses — handling the administrative, logistical, and process work that keeps your business moving so you don't have to.
+          </p>
+          <div class="card-tags">
+            <span class="tag-pill">Container Wholesalers</span>
+            <span class="tag-pill">Small Business</span>
+            <span class="tag-pill">Operations Consulting</span>
+            <span class="tag-pill">Back-Office Support</span>
+          </div>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+
+      <a href="/containers" class="division-card reveal">
+        <div class="card-number">02</div>
+        <div class="card-body">
+          <p class="card-tag">Shipping Container Sales</p>
+          <h3 class="card-title">Streich Force Containers</h3>
+          <p class="card-desc">
+            New and used shipping containers, sold direct. Whether you need on-site storage, a modification project, or bulk inventory — we source, sell, and deliver. Browse available units or reach out for a quote tailored to your specs.
+          </p>
+          <div class="card-tags">
+            <span class="tag-pill">20ft &amp; 40ft Units</span>
+            <span class="tag-pill">New &amp; Used</span>
+            <span class="tag-pill">Bulk Availability</span>
+            <span class="tag-pill">Direct Pricing</span>
+          </div>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+
+      <a href="/enterprise" class="division-card reveal">
+        <div class="card-number">03</div>
+        <div class="card-body">
+          <p class="card-tag">Specialized Repair &amp; Fabrication</p>
+          <h3 class="card-title">Streich Force Enterprise</h3>
+          <p class="card-desc">
+            When the standard contractors can't solve it, we can. Specialized service and repair for commercial retail chains — pharmacies, jewelry stores, and high-volume retail — plus custom fabrication of cabinetry, countertops, compactor chutes, and wall access gates.
+          </p>
+          <div class="card-tags">
+            <span class="tag-pill">Commercial Retail</span>
+            <span class="tag-pill">Specialized Repair</span>
+            <span class="tag-pill">Custom Fabrication</span>
+            <span class="tag-pill">Compactor Chutes</span>
+          </div>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-strip" id="about">
+    <div class="about-left reveal">
+      <p class="section-label">About the Company</p>
+      <h2 class="about-title">Specialized Work.<br/>Real <em>Results.</em></h2>
+      <p class="about-text">
+        Streich Force Enterprises is a family-operated company built on deep industry expertise. From back-office consulting to container sales to hands-on commercial fabrication — we don't generalize. Every division is staffed by specialists who have spent years in their field.
+      </p>
+      <p class="about-text">
+        When a major pharmacy chain needs a repair that no one else can figure out, they call us. When a container wholesaler needs operational horsepower without adding headcount, they call us. We're the partner businesses reach for when the standard options don't cut it.
+      </p>
+    </div>
+    <div class="about-right reveal">
+      <div class="stat-block">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Specialized Divisions</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-number">B2B</div>
+        <div class="stat-label">Industry Focus</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Family Operated</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-number">US</div>
+        <div class="stat-label">Based &amp; Operated</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-banner reveal" id="contact">
+    <div class="cta-text">
+      <h3 class="cta-title">Not Sure Which Division You Need?</h3>
+      <p class="cta-sub">Tell us what you're working on — we'll point you in the right direction.</p>
+    </div>
+    <a href="mailto:info@streichforce.com" class="btn-primary">Get In Touch</a>
+  </div>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 var(--page-pad) 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: gridShift 20s linear infinite;
+  }
+
+  .hero-diagonal {
+    position: absolute;
+    top: -10%; right: -5%;
+    width: 45%; height: 120%;
+    background: linear-gradient(135deg, transparent 40%, rgba(192,57,43,0.06) 40%);
+    pointer-events: none;
+  }
+
+  @keyframes gridShift {
+    from { transform: translateY(0); }
+    to { transform: translateY(60px); }
+  }
+
+  .hero-content { position: relative; z-index: 1; }
+
+  .hero-eyebrow {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(4rem, 10vw, 9rem);
+    line-height: 0.88;
+    text-transform: uppercase;
+    color: var(--white);
+    max-width: 900px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.4s;
+  }
+
+  .hero-title .force {
+    color: var(--rust);
+    display: block;
+  }
+
+  .hero-rule {
+    width: 80px; height: 3px;
+    background: var(--rust);
+    margin: 2.5rem 0;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.6s;
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--mist);
+    max-width: 520px;
+    line-height: 1.7;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.8s;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem; right: var(--page-pad);
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--mist);
+    writing-mode: vertical-rl;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards 1.5s;
+    z-index: 1;
+  }
+
+  .hero-scroll::before {
+    content: '';
+    width: 1px; height: 60px;
+    background: linear-gradient(to bottom, var(--rust), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* DIVISIONS */
+  .divisions {
+    padding: 8rem var(--page-pad);
+  }
+
+  .section-header { margin-bottom: 4rem; }
+
+  .division-grid {
+    display: grid;
+    gap: 2px;
+    background: var(--iron);
+  }
+
+  .division-card {
+    background: var(--charcoal);
+    padding: 3.5rem 4rem;
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    align-items: start;
+    gap: 3rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .division-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--rust);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.4s ease;
+  }
+
+  .division-card:hover { background: var(--steel); }
+  .division-card:hover::before { transform: scaleY(1); }
+  .division-card:hover .card-arrow { transform: translateX(8px); color: var(--rust); }
+  .division-card:hover .card-number { color: rgba(192,57,43,0.2); }
+
+  .card-number {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 4rem;
+    line-height: 1;
+    color: var(--iron);
+    transition: color 0.3s;
+    user-select: none;
+  }
+
+  .card-tag {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 0.75rem;
+  }
+
+  .card-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 1.2rem;
+  }
+
+  .card-desc {
+    font-size: 0.95rem;
+    color: var(--mist);
+    line-height: 1.75;
+    max-width: 560px;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .tag-pill {
+    font-family: var(--font-display);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid var(--iron);
+    color: var(--mist);
+  }
+
+  .card-arrow {
+    font-size: 2rem;
+    color: var(--iron);
+    transition: transform 0.3s, color 0.3s;
+    align-self: center;
+  }
+
+  /* ABOUT */
+  .about-strip {
+    padding: 6rem var(--page-pad);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    border-top: 1px solid var(--iron);
+  }
+
+  .about-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2rem, 4vw, 3rem);
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 2rem;
+  }
+
+  .about-title em { font-style: normal; color: var(--rust); }
+
+  .about-text {
+    font-size: 1rem;
+    color: var(--mist);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--iron);
+  }
+
+  .stat-block {
+    background: var(--charcoal);
+    padding: 2.5rem;
+  }
+
+  .stat-number {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 3rem;
+    color: var(--rust);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--mist);
+  }
+
+  /* CTA */
+  .cta-banner {
+    margin: 0 var(--page-pad) 6rem;
+    padding: 4rem;
+    background: var(--charcoal);
+    border-left: 4px solid var(--rust);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-banner::before {
+    content: 'SFE';
+    position: absolute;
+    right: 2rem; top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 12rem;
+    color: rgba(255,255,255,0.02);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .cta-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  .cta-sub { font-size: 0.95rem; color: var(--mist); }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .division-card {
+      grid-template-columns: 1fr;
+      padding: 2.5rem 2rem;
+      gap: 1.5rem;
+    }
+    .card-number { font-size: 2.5rem; }
+    .card-arrow { display: none; }
+    .about-strip { grid-template-columns: 1fr; gap: 3rem; padding: 4rem var(--page-pad); }
+    .cta-banner { flex-direction: column; align-items: flex-start; }
+  }
+</style>

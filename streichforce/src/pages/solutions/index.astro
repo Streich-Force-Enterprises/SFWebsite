@@ -1,0 +1,296 @@
+---
+// src/pages/solutions/index.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Solutions — Back-Office Operations"
+  description="Streich Force Solutions: operational support and back-office consulting for shipping container wholesalers and small businesses."
+  division="solutions"
+>
+  <Nav active="solutions" />
+
+  <section class="division-hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Division 01 &mdash; Back-Office Operations</p>
+      <h1 class="hero-title">Streich Force<br/><span class="accent">Solutions</span></h1>
+      <div class="hero-rule"></div>
+      <p class="hero-sub">
+        Your operations, extended. We plug into your business as a seasoned back-office team — so you can focus on growing, not administrating.
+      </p>
+      <div class="hero-actions">
+        <a href="mailto:solutions@streichforce.com" class="btn-primary">Start a Conversation</a>
+        <a href="/#divisions" class="btn-ghost">All Divisions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section class="content-section">
+    <div class="reveal">
+      <p class="section-label">What We Do</p>
+      <h2 class="section-title">An Extension of Your Team</h2>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-block">
+        <div class="service-icon">◈</div>
+        <h3>Operations Management</h3>
+        <p>Day-to-day operational oversight, process documentation, and workflow optimization for container wholesalers who need structure without the overhead of a full-time ops manager.</p>
+      </div>
+      <div class="service-block">
+        <div class="service-icon">◈</div>
+        <h3>Administrative Support</h3>
+        <p>Order processing, vendor coordination, customer communication, and record keeping — handled accurately and consistently, every time.</p>
+      </div>
+      <div class="service-block">
+        <div class="service-icon">◈</div>
+        <h3>Small Business Consulting</h3>
+        <p>Beyond the container industry, we work with small businesses that need an experienced operator in their corner — someone who can see the gaps and fill them.</p>
+      </div>
+      <div class="service-block">
+        <div class="service-icon">◈</div>
+        <h3>Process & Systems</h3>
+        <p>Building the repeatable systems that make growth possible. From CRM setup to fulfillment workflows, we build for scale so you're not reinventing the wheel.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE SERVE -->
+  <section class="who-section reveal">
+    <div class="who-inner">
+      <p class="section-label">Who We Serve</p>
+      <h2 class="section-title">Built for Operators</h2>
+      <p class="who-text">
+        Streich Force Solutions was built from direct experience inside the container wholesale industry. We know the pace, the terminology, the vendor relationships, and the pain points. When you bring us in, there's no learning curve — just capacity.
+      </p>
+      <div class="who-list">
+        <div class="who-item">
+          <span class="who-check">✓</span>
+          <span>Shipping container wholesalers needing back-office capacity</span>
+        </div>
+        <div class="who-item">
+          <span class="who-check">✓</span>
+          <span>Small businesses without a full-time operations team</span>
+        </div>
+        <div class="who-item">
+          <span class="who-check">✓</span>
+          <span>Owners ready to delegate operations so they can focus on sales</span>
+        </div>
+        <div class="who-item">
+          <span class="who-check">✓</span>
+          <span>Companies building process infrastructure for growth</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-banner reveal">
+    <div class="cta-text">
+      <h3 class="cta-title">Ready to Get the Back Office Off Your Plate?</h3>
+      <p class="cta-sub">Let's talk about what's taking up your time and how we can help.</p>
+    </div>
+    <a href="mailto:solutions@streichforce.com" class="btn-primary">Contact Solutions</a>
+  </div>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .division-hero {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 var(--page-pad) 6rem;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--iron);
+  }
+
+  .hero-grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: gridShift 20s linear infinite;
+  }
+
+  @keyframes gridShift {
+    from { transform: translateY(0); }
+    to { transform: translateY(60px); }
+  }
+
+  .hero-content { position: relative; z-index: 1; }
+
+  .hero-eyebrow {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: 0.9;
+    text-transform: uppercase;
+    color: var(--white);
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.4s;
+  }
+
+  .hero-title .accent { color: var(--rust); }
+
+  .hero-rule {
+    width: 80px; height: 3px;
+    background: var(--rust);
+    margin: 2rem 0;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.6s;
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--mist);
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.8s;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1s;
+  }
+
+  /* CONTENT */
+  .content-section {
+    padding: 7rem var(--page-pad);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    background: var(--iron);
+    margin-top: 3rem;
+  }
+
+  .service-block {
+    background: var(--charcoal);
+    padding: 2.5rem;
+    transition: background 0.3s;
+  }
+
+  .service-block:hover { background: var(--steel); }
+
+  .service-icon {
+    font-size: 1.5rem;
+    color: var(--rust);
+    margin-bottom: 1rem;
+  }
+
+  .service-block h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+  }
+
+  .service-block p {
+    font-size: 0.9rem;
+    color: var(--mist);
+    line-height: 1.75;
+  }
+
+  /* WHO */
+  .who-section {
+    padding: 6rem var(--page-pad);
+    background: var(--charcoal);
+    border-top: 1px solid var(--iron);
+    border-bottom: 1px solid var(--iron);
+  }
+
+  .who-inner { max-width: 760px; }
+
+  .who-text {
+    font-size: 1.05rem;
+    color: var(--mist);
+    line-height: 1.8;
+    margin: 2rem 0 2.5rem;
+  }
+
+  .who-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .who-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    font-size: 0.95rem;
+    color: var(--bone);
+    line-height: 1.5;
+  }
+
+  .who-check {
+    color: var(--rust);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  /* CTA */
+  .cta-banner {
+    margin: 6rem var(--page-pad);
+    padding: 4rem;
+    background: var(--charcoal);
+    border-left: 4px solid var(--rust);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .cta-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  .cta-sub { font-size: 0.95rem; color: var(--mist); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 768px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .cta-banner { flex-direction: column; align-items: flex-start; }
+  }
+</style>
