@@ -28,7 +28,16 @@ const {
   <meta property="og:description" content={description} />
   <meta property="og:url"         content={`https://streichforce.com${Astro.url.pathname}`} />
   <meta property="og:type"        content="website" />
-  <meta property="og:image"       content="https://streichforce.com/hero-bg.png" />
+  <meta property="og:image"       content="https://streichforce.com/og-image.png" />
+  <meta property="og:image:width"  content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name"   content="Streich Force Enterprises" />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content={`${title} | Streich Force Enterprises`} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image"       content="https://streichforce.com/og-image.png" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
