@@ -4,7 +4,7 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<BaseLayout title="Streich Force Enterprises — On-Demand Industry Expertise">
+<BaseLayout title="Streich Force Enterprises — Real-World Expertise. Smarter Systems. Reliable Execution.">
   <Nav />
 
   <!-- SITE STATUS BANNER -->
@@ -42,9 +42,9 @@ import Footer from '../components/Footer.astro';
 
   <!-- DIVISION STRIP -->
   <div class="div-strip">
-    <a href="/enterprise" class="div-strip-tab ent">
+    <a href="/services" class="div-strip-tab ent">
       <div class="dst-dot"></div>
-      <span class="dst-label">01 &mdash; Enterprise</span>
+      <span class="dst-label">01 &mdash; Services</span>
     </a>
     <a href="/solutions" class="div-strip-tab sol">
       <div class="dst-dot"></div>
@@ -64,11 +64,11 @@ import Footer from '../components/Footer.astro';
     </div>
     <div class="div-cards">
 
-      <a href="/enterprise" class="div-card ent">
+      <div class="div-card ent" onclick="window.location='/services'">
         <div class="dc-bar"></div>
         <div class="dc-num">01</div>
         <div class="dc-body">
-          <p class="dc-tag">Division 01 &mdash; Specialized Repair &amp; Fabrication</p>
+          <p class="dc-tag">Division 01 &mdash; Commercial Service &amp; Repair</p>
           <h3 class="dc-title">Commercial Service &amp; Repair</h3>
           <p class="dc-desc">High-level diagnostics and precision repair when others can't solve the problem.</p>
           <ul class="dc-checks">
@@ -76,16 +76,19 @@ import Footer from '../components/Footer.astro';
             <li>&#10004; Trusted by national brands</li>
             <li>&#10004; Complex issues handled right the first time</li>
           </ul>
-          <div class="dc-cta ent-cta">Request Expert Service &#8594;</div>
+          <div class="dc-actions">
+            <a href="/contact/enterprise" class="dc-cta ent-cta" onclick="event.stopPropagation()">Request Expert Service</a>
+            <a href="/services" class="dc-mi ent-mi" onclick="event.stopPropagation()">More Info</a>
+          </div>
         </div>
         <div class="dc-arrow">&#8594;</div>
-      </a>
+      </div>
 
-      <a href="/solutions" class="div-card sol">
+      <div class="div-card sol" onclick="window.location='/solutions'">
         <div class="dc-bar"></div>
         <div class="dc-num">02</div>
         <div class="dc-body">
-          <p class="dc-tag">Division 02 &mdash; Back-Office Operations</p>
+          <p class="dc-tag">Division 02 &mdash; Back-Office Support &amp; Systems</p>
           <h3 class="dc-title">Streich Force Solutions</h3>
           <p class="dc-desc">Eliminate manual work, clean up your data, and streamline operations.</p>
           <ul class="dc-checks">
@@ -93,16 +96,19 @@ import Footer from '../components/Footer.astro';
             <li>&#10004; Data cleanup and standardization</li>
             <li>&#10004; Built to scale with smarter systems</li>
           </ul>
-          <div class="dc-cta sol-cta">Fix My Back Office &#8594;</div>
+          <div class="dc-actions">
+            <a href="/contact/solutions" class="dc-cta sol-cta" onclick="event.stopPropagation()">Fix My Back Office</a>
+            <a href="/solutions" class="dc-mi sol-mi" onclick="event.stopPropagation()">More Info</a>
+          </div>
         </div>
         <div class="dc-arrow">&#8594;</div>
-      </a>
+      </div>
 
-      <a href="/containers" class="div-card con">
+      <div class="div-card con" onclick="window.location='/containers'">
         <div class="dc-bar"></div>
         <div class="dc-num">03</div>
         <div class="dc-body">
-          <p class="dc-tag">Division 03 &mdash; Shipping Container Sales</p>
+          <p class="dc-tag">Division 03 &mdash; Container Sales &amp; Sourcing</p>
           <h3 class="dc-title">Streich Force Containers</h3>
           <p class="dc-desc">Access to available containers with straightforward pricing.</p>
           <ul class="dc-checks">
@@ -110,10 +116,13 @@ import Footer from '../components/Footer.astro';
             <li>&#10004; Request quotes quickly</li>
             <li>&#10004; Source exactly what you need</li>
           </ul>
-          <div class="dc-cta con-cta">Browse Containers &#8594;</div>
+          <div class="dc-actions">
+            <a href="/contact/containers" class="dc-cta con-cta" onclick="event.stopPropagation()">Browse Containers</a>
+            <a href="/containers" class="dc-mi con-mi" onclick="event.stopPropagation()">More Info</a>
+          </div>
         </div>
         <div class="dc-arrow">&#8594;</div>
-      </a>
+      </div>
 
     </div>
   </section>
@@ -122,26 +131,33 @@ import Footer from '../components/Footer.astro';
   <section class="about" id="about">
     <div>
       <p class="div-section-eye">About Streich Force</p>
-      <h2 class="div-section-title" style="margin-bottom:2rem;">Deeply Specialized.<br />Built on Real Experience.</h2>
+      <h2 class="div-section-title" style="margin-bottom:2rem;">Three Focus Areas.<br />One Standard: Get It Done Right.</h2>
       <div class="about-text">
-        <p><strong>We're not consultants. We're operators.</strong></p>
-        <p>Our company is run by people who have spent years doing the actual work &mdash; not just studying it. We understand the container industry, retail site maintenance, and back-office realities because we've lived them day in and day out.</p>
-        <p>We serve businesses that want results without overhead. No layers of management, no account reps who don't know your world. You deal directly with the people who actually do the work.</p>
-        <p>When container wholesalers need reliable back-office support, or when major retail chains need repairs and fabrication that no one else can figure out &mdash; they call us. That's not by accident.</p>
+        <p>We operate across three specialized areas:</p>
+        <ul class="about-list">
+          <li><strong>Commercial Service &amp; Repair</strong> — High-level diagnostics and precision work when others can't solve the problem</li>
+          <li><strong>Back-Office Support &amp; Systems</strong> — Streamlining operations, cleaning data, and eliminating manual work</li>
+          <li><strong>Container Sales &amp; Sourcing</strong> — Direct, efficient access to available inventory and pricing</li>
+        </ul>
+        <p>Each one solves a different problem — but they're all built on the same principle: real experience, practical execution, and no wasted motion.</p>
       </div>
     </div>
     <div class="about-stats">
       <div class="stat">
         <div class="stat-val">Real-World<br />Experience</div>
-        <div class="stat-lbl">Years of hands-on work in the industries we serve &mdash; not theory, not consulting.</div>
+        <div class="stat-lbl">Years of hands-on work in the industries we serve — no theory, no consulting.</div>
       </div>
       <div class="stat">
         <div class="stat-val">No<br />Overhead</div>
-        <div class="stat-lbl">You deal directly with the people doing the work. No account reps, no layers.</div>
+        <div class="stat-lbl">You work directly with the people doing the job. No layers. No middlemen.</div>
       </div>
-      <div class="stat full-width">
+      <div class="stat">
+        <div class="stat-val">Direct<br />Execution</div>
+        <div class="stat-lbl">Work is handled by experienced operators — not passed off or outsourced.</div>
+      </div>
+      <div class="stat">
         <div class="stat-val">Built for<br />Results</div>
-        <div class="stat-lbl">We measure success by what gets solved, delivered, and working &mdash; nothing else.</div>
+        <div class="stat-lbl">We measure success by what gets solved, delivered, and working — nothing else.</div>
       </div>
     </div>
   </section>
@@ -205,13 +221,10 @@ import Footer from '../components/Footer.astro';
   margin-bottom: 1.75rem;
 }
 .hero-logo {
-  height: clamp(60px, 10vw, 110px);
-  width: auto;
-  display: block;
+  height: clamp(90px, 14vw, 160px);
+  width: auto; display: block;
 }
-.hero-tagline {
-  opacity: 0; animation: sf-rise-up 0.7s ease forwards 0.7s;
-}
+.hero-tagline { opacity: 0; animation: sf-rise-up 0.7s ease forwards 0.7s; }
 .hero-tag-main {
   font-family: var(--sf-font-display); font-weight: 700;
   font-size: clamp(1.1rem, 2vw, 1.4rem);
@@ -224,19 +237,21 @@ import Footer from '../components/Footer.astro';
 }
 .hero-list {
   list-style: none; margin: 0 0 1rem 0; padding: 0;
-  display: flex; flex-direction: column; gap: 0.3rem;
+  display: flex; flex-direction: column; gap: 0.4rem;
 }
 .hero-list li {
   font-size: 1rem; font-weight: 300;
   color: var(--sf-text-secondary); line-height: 1.6;
-  padding-left: 1rem;
+  padding-left: 1.25rem; position: relative;
 }
-.hero-list li::before { content: ''; }
+.hero-list li::before {
+  content: '▸'; position: absolute; left: 0;
+  color: var(--sf-rust); font-size: 0.8rem; top: 0.15em;
+}
 .hero-tag-cta {
-  font-size: 0.95rem; font-weight: 400;
-  color: var(--sf-rust); font-family: var(--sf-font-display);
-  letter-spacing: 0.05em; text-transform: uppercase;
-  font-size: 0.78rem; font-weight: 600;
+  font-family: var(--sf-font-display); font-weight: 600;
+  font-size: 0.78rem; letter-spacing: 0.05em;
+  text-transform: uppercase; color: var(--sf-rust);
 }
 .hero-scroll {
   position: absolute; bottom: 2rem; right: var(--sf-pad); z-index: 3;
@@ -295,10 +310,10 @@ import Footer from '../components/Footer.astro';
 .div-card {
   display: grid; grid-template-columns: 6px 110px 1fr 60px;
   align-items: center; background: var(--sf-surface);
-  transition: background 0.25s; min-height: 180px;
+  transition: background 0.25s; min-height: 200px; cursor: pointer;
 }
 .div-card:hover { background: var(--sf-card-hover); }
-.dc-bar { height: 100%; min-height: 180px; }
+.dc-bar { height: 100%; min-height: 200px; }
 .div-card.ent .dc-bar { background: var(--sf-ent); }
 .div-card.sol .dc-bar { background: var(--sf-sol); }
 .div-card.con .dc-bar { background: var(--sf-con); }
@@ -333,22 +348,18 @@ import Footer from '../components/Footer.astro';
   max-width: 580px; margin-bottom: 1rem;
 }
 .dc-checks {
-  list-style: none; padding: 0; margin: 0 0 1.25rem 0;
+  list-style: none; padding: 0; margin: 0 0 1.5rem 0;
   display: flex; flex-direction: column; gap: 0.3rem;
 }
-.dc-checks li {
-  font-size: 0.95rem; font-weight: 400;
-  color: var(--sf-text-secondary); line-height: 1.5;
-}
-.div-card.ent .dc-checks li { color: rgba(224,80,64,0.85); }
-.div-card.sol .dc-checks li { color: rgba(90,159,212,0.85); }
-.div-card.con .dc-checks li { color: rgba(232,160,48,0.85); }
+.dc-checks li { font-size: 0.95rem; font-weight: 400; color: var(--sf-text-secondary); line-height: 1.5; }
+.div-card.ent .dc-checks li { color: rgba(224,80,64,0.9); }
+.div-card.sol .dc-checks li { color: rgba(90,159,212,0.9); }
+.div-card.con .dc-checks li { color: rgba(232,160,48,0.9); }
+.dc-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; }
 .dc-cta {
-  display: inline-block;
-  font-family: var(--sf-font-display); font-weight: 700;
-  font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase;
-  padding: 0.6rem 1.4rem; border: 1px solid;
-  transition: all 0.2s;
+  display: inline-block; font-family: var(--sf-font-display); font-weight: 700;
+  font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 0.65rem 1.4rem; border: 1px solid; transition: all 0.2s;
 }
 .ent-cta { border-color: var(--sf-ent); color: var(--sf-ent); }
 .sol-cta { border-color: var(--sf-sol); color: var(--sf-sol); }
@@ -356,6 +367,13 @@ import Footer from '../components/Footer.astro';
 .div-card.ent:hover .ent-cta { background: var(--sf-ent); color: #fff; }
 .div-card.sol:hover .sol-cta { background: var(--sf-sol); color: #fff; }
 .div-card.con:hover .con-cta { background: var(--sf-con); color: #fff; }
+.dc-mi {
+  display: inline-block; font-family: var(--sf-font-display); font-weight: 600;
+  font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 0.65rem 1.4rem; border: 1px solid var(--sf-border-md);
+  color: var(--sf-text-secondary); transition: all 0.2s;
+}
+.dc-mi:hover { border-color: var(--sf-text-secondary); color: var(--sf-text-primary); }
 .dc-arrow {
   display: flex; align-items: center; justify-content: center;
   font-size: 1.8rem; color: rgba(255,255,255,0.15);
@@ -370,14 +388,22 @@ import Footer from '../components/Footer.astro';
   padding: 6rem var(--sf-pad); border-top: 1px solid var(--sf-border);
   display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
 }
-.about-text p {
-  font-size: 1.05rem; font-weight: 300;
-  color: var(--sf-text-secondary); line-height: 1.8; margin-bottom: 1.25rem;
-}
+.about-text p { font-size: 1.05rem; font-weight: 300; color: var(--sf-text-secondary); line-height: 1.8; margin-bottom: 1.25rem; }
 .about-text strong { color: var(--sf-text-primary); font-weight: 500; }
+.about-list {
+  list-style: none; padding: 0; margin: 0 0 1.5rem 0;
+  display: flex; flex-direction: column; gap: 0.75rem;
+}
+.about-list li {
+  font-size: 1rem; font-weight: 300; color: var(--sf-text-secondary);
+  line-height: 1.7; padding-left: 1.25rem; position: relative;
+}
+.about-list li::before {
+  content: '▸'; position: absolute; left: 0;
+  color: var(--sf-rust); font-size: 0.8rem; top: 0.2em;
+}
 .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--sf-border); align-content: start; }
 .stat { background: var(--sf-surface); padding: 2rem 1.75rem; }
-.stat.full-width { grid-column: 1 / -1; }
 .stat-val {
   font-family: var(--sf-font-display); font-weight: 900; font-size: 1.6rem;
   color: var(--sf-rust); line-height: 1.1; margin-bottom: 0.75rem;
@@ -397,11 +423,7 @@ import Footer from '../components/Footer.astro';
   font-family: var(--sf-font-display); font-weight: 900; font-size: 9rem;
   color: rgba(255,255,255,0.025); pointer-events: none; user-select: none;
 }
-.cta-title {
-  font-family: var(--sf-font-display); font-weight: 900;
-  font-size: clamp(1.4rem, 2.5vw, 2rem); text-transform: uppercase;
-  color: var(--sf-text-primary); margin-bottom: 0.4rem;
-}
+.cta-title { font-family: var(--sf-font-display); font-weight: 900; font-size: clamp(1.4rem, 2.5vw, 2rem); text-transform: uppercase; color: var(--sf-text-primary); margin-bottom: 0.4rem; }
 .cta-sub { font-size: 1rem; font-weight: 300; color: var(--sf-text-secondary); line-height: 1.6; }
 
 /* ── RESPONSIVE ── */
@@ -412,6 +434,7 @@ import Footer from '../components/Footer.astro';
   .dc-num { display: none; }
   .dc-body { padding: 2rem 1.5rem; }
   .about { grid-template-columns: 1fr; gap: 3rem; }
+  .about-stats { grid-template-columns: 1fr 1fr; }
   .cta-band { flex-direction: column; align-items: flex-start; padding: 2.5rem 2rem; }
 }
 </style>

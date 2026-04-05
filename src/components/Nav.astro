@@ -9,7 +9,7 @@ const { active = '' } = Astro.props;
     <img src="/logo-dark.png" alt="Streich Force Enterprises" class="nav-logo-img" />
   </a>
   <ul class="nav-links">
-    <li><a href="/enterprise" class:list={['nent', { active: active === 'enterprise' }]}>Enterprise</a></li>
+    <li><a href="/services" class:list={['nent', { active: active === 'services' }]}>Services</a></li>
     <li><a href="/solutions"  class:list={['nsol', { active: active === 'solutions'  }]}>Solutions</a></li>
     <li><a href="/containers" class:list={['ncon', { active: active === 'containers' }]}>Containers</a></li>
     <li><a href="/#contact" class="ncta">Contact</a></li>
@@ -21,7 +21,7 @@ const { active = '' } = Astro.props;
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="/enterprise">Enterprise</a>
+  <a href="/services">Services</a>
   <a href="/solutions">Solutions</a>
   <a href="/containers">Containers</a>
   <a href="/#contact">Contact</a>
