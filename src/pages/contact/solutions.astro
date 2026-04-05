@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+---
+<BaseLayout title="Fix My Back Office — Streich Force Solutions"
+  description="Tell us about your current back-office setup. We'll help you figure out if we're the right fit.">
+  <Nav active="solutions" />
+  <section class="form-hero">
+    <div class="form-hero-bar sol-bar"></div>
+    <div class="form-inner">
+      <p class="sf-eyebrow sol-eye">Division 02 — Solutions</p>
+      <h1 class="form-title">Fix My Back Office</h1>
+      <p class="form-sub">Tell us what your current setup looks like. No pitch — just a straight conversation about whether we can help. Sonja responds same day.</p>
+    </div>
+  </section>
+  <section class="form-section">
+    <div class="form-inner">
+      <form class="sf-form" name="solutions-contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="solutions-contact" />
+        <p class="hidden"><label>Don't fill this out: <input name="bot-field" /></label></p>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your Name *</label>
+            <input type="text" id="name" name="name" required placeholder="First and last name" />
+          </div>
+          <div class="form-group">
+            <label for="company">Business Name</label>
+            <input type="text" id="company" name="company" placeholder="Your company name" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required placeholder="your@email.com" />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Best number to reach you" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="business-type">What Kind of Business?</label>
+          <select id="business-type" name="business-type">
+            <option value="">Select your business type</option>
+            <option>Container wholesaler / dealer</option>
+            <option>Freight forwarder</option>
+            <option>Logistics operator</option>
+            <option>Small business — other industry</option>
+            <option>Not sure — let's talk</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="current-setup">What Does Your Current Back Office Look Like? *</label>
+          <textarea id="current-setup" name="current-setup" required rows="5"
+            placeholder="Spreadsheets? A part-time person? Manual processes? Tell us what's working and what isn't."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="pain-points">What's Causing the Most Pain?</label>
+          <textarea id="pain-points" name="pain-points" rows="4"
+            placeholder="Inventory visibility, invoicing delays, gate tracking, data errors, something else?"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="volume">Approximate Monthly Gate Volume (if applicable)</label>
+          <select id="volume" name="volume">
+            <option value="">Select a range</option>
+            <option>Under 50 units/month</option>
+            <option>50–150 units/month</option>
+            <option>150–500 units/month</option>
+            <option>500+ units/month</option>
+            <option>Not applicable</option>
+          </select>
+        </div>
+        <div class="form-footer">
+          <button type="submit" class="btn-submit sol-submit">Send Message &#8594;</button>
+          <p class="form-note">Or reach Sonja directly: <a href="tel:6024050031" class="sol-link">602-405-0031</a> &mdash; <a href="mailto:solutions&#x40;streichforce.com" class="sol-link">solutions&#x40;streichforce.com</a></p>
+        </div>
+      </form>
+    </div>
+  </section>
+  <Footer />
+</BaseLayout>
+<style>
+.hidden { display: none; }
+.form-hero { padding: 8rem var(--sf-pad) 3rem; background: var(--sf-black); position: relative; }
+.form-hero-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; }
+.sol-bar { background: var(--sf-sol); }
+.form-inner { max-width: 760px; margin: 0 auto; }
+.sol-eye { color: var(--sf-sol-b); }
+.form-title { font-family: var(--sf-font-display); font-weight: 900; font-size: clamp(2.5rem, 5vw, 4rem); text-transform: uppercase; color: var(--sf-text-primary); line-height: 1; margin: 0.75rem 0 1.25rem; }
+.form-sub { font-size: 1.05rem; color: var(--sf-text-secondary); line-height: 1.7; max-width: 600px; }
+.form-section { padding: 4rem var(--sf-pad) 6rem; background: var(--sf-surface); }
+.sf-form { display: flex; flex-direction: column; gap: 1.5rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+@media(max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+.form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+.form-group label { font-family: var(--sf-font-display); font-weight: 600; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sf-text-secondary); }
+.form-group input, .form-group select, .form-group textarea { background: var(--sf-black); border: 1px solid var(--sf-border-md); color: var(--sf-text-primary); font-family: var(--sf-font-body); font-size: 1rem; padding: 0.85rem 1rem; outline: none; transition: border-color 0.2s; width: 100%; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--sf-sol); }
+.form-group select { appearance: none; cursor: pointer; }
+.form-group textarea { resize: vertical; line-height: 1.65; }
+.form-footer { display: flex; flex-direction: column; gap: 1rem; padding-top: 0.5rem; }
+.btn-submit { display: inline-block; font-family: var(--sf-font-display); font-weight: 700; font-size: 0.88rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 1rem 2.5rem; border: none; cursor: pointer; transition: all 0.2s; align-self: flex-start; }
+.sol-submit { background: var(--sf-sol); color: #fff; }
+.sol-submit:hover { background: var(--sf-sol-b); }
+.form-note { font-size: 0.9rem; color: var(--sf-text-muted); line-height: 1.6; }
+.sol-link { color: var(--sf-sol-b); text-decoration: none; }
+.sol-link:hover { text-decoration: underline; }
+</style>

@@ -6,14 +6,12 @@ const { active = '' } = Astro.props;
 
 <nav>
   <a href="/" class="nav-logo">
-    <span class="nav-logo-top">STREICH <span class="f">FORCE</span></span>
-    <div class="nav-logo-rule"></div>
-    <span class="nav-logo-sub">ENTERPRISES</span>
+    <img src="/logo-dark.png" alt="Streich Force Enterprises" class="nav-logo-img" />
   </a>
   <ul class="nav-links">
+    <li><a href="/enterprise" class:list={['nent', { active: active === 'enterprise' }]}>Enterprise</a></li>
     <li><a href="/solutions"  class:list={['nsol', { active: active === 'solutions'  }]}>Solutions</a></li>
     <li><a href="/containers" class:list={['ncon', { active: active === 'containers' }]}>Containers</a></li>
-    <li><a href="/enterprise" class:list={['nent', { active: active === 'enterprise' }]}>Enterprise</a></li>
     <li><a href="/#contact" class="ncta">Contact</a></li>
     <li><a href="/login"    class="nlogin">Login</a></li>
   </ul>
@@ -23,9 +21,9 @@ const { active = '' } = Astro.props;
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
+  <a href="/enterprise">Enterprise</a>
   <a href="/solutions">Solutions</a>
   <a href="/containers">Containers</a>
-  <a href="/enterprise">Enterprise</a>
   <a href="/#contact">Contact</a>
   <a href="/login">Login</a>
 </div>
@@ -34,39 +32,34 @@ const { active = '' } = Astro.props;
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 200;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 1rem var(--sf-pad);
+    padding: 0.85rem var(--sf-pad);
     background: rgba(17,17,17,0.97);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--sf-border);
   }
-  .nav-logo { display: flex; flex-direction: column; line-height: 1; gap: 0; }
-  .nav-logo-top {
-    font-family: var(--sf-font-display); font-weight: 900; font-size: 1.1rem;
-    letter-spacing: 0.07em; text-transform: uppercase; color: var(--sf-text-primary); white-space: nowrap;
-  }
-  .nav-logo-top .f { color: var(--sf-rust); }
-  .nav-logo-rule { height: 1.5px; background: var(--sf-rust); margin: 2.5px 0 2px; }
-  .nav-logo-sub {
-    font-family: var(--sf-font-display); font-weight: 600; font-size: 0.45rem;
-    letter-spacing: 0.3em; text-transform: uppercase; color: var(--sf-text-muted);
+  .nav-logo { display: flex; align-items: center; }
+  .nav-logo-img {
+    height: 52px;
+    width: auto;
+    display: block;
   }
   .nav-links { display: flex; gap: 1.25rem; list-style: none; align-items: center; }
   .nav-links a {
-    font-family: var(--sf-font-display); font-weight: 600; font-size: 0.76rem;
+    font-family: var(--sf-font-display); font-weight: 600; font-size: 0.82rem;
     letter-spacing: 0.16em; text-transform: uppercase; color: var(--sf-text-secondary);
     transition: color 0.2s; padding-bottom: 2px; border-bottom: 1px solid transparent;
   }
   .nav-links a:hover, .nav-links a.active { color: var(--sf-text-primary); }
-  .nav-links .nsol:hover { color: var(--sf-sol-b); border-color: var(--sf-sol); }
-  .nav-links .ncon:hover { color: var(--sf-con-b); border-color: var(--sf-con); }
-  .nav-links .nent:hover { color: var(--sf-ent-b); border-color: var(--sf-ent); }
+  .nav-links .nent:hover, .nav-links .nent.active { color: var(--sf-ent-b); border-color: var(--sf-ent); }
+  .nav-links .nsol:hover, .nav-links .nsol.active { color: var(--sf-sol-b); border-color: var(--sf-sol); }
+  .nav-links .ncon:hover, .nav-links .ncon.active { color: var(--sf-con-b); border-color: var(--sf-con); }
   .nav-links .ncta {
-    padding: 0.4rem 1rem; border: 1px solid var(--sf-rust);
-    color: var(--sf-rust) !important;
+    padding: 0.45rem 1.1rem; border: 1px solid var(--sf-rust);
+    color: var(--sf-rust) !important; border-bottom: 1px solid var(--sf-rust) !important;
   }
   .nav-links .ncta:hover { background: var(--sf-rust); color: #fff !important; }
   .nav-links .nlogin {
-    padding: 0.4rem 1rem; border: 1px solid var(--sf-border-md);
+    padding: 0.45rem 1.1rem; border: 1px solid var(--sf-border-md);
     color: var(--sf-text-secondary) !important;
   }
   .nav-links .nlogin:hover { background: var(--sf-surface); color: var(--sf-text-primary) !important; }
@@ -92,6 +85,7 @@ const { active = '' } = Astro.props;
   @media (max-width: 640px) {
     .nav-links { display: none; }
     .nav-mobile-btn { display: flex; }
+    .nav-logo-img { height: 42px; }
   }
 </style>
 

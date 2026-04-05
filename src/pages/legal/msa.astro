@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+---
+<BaseLayout title="Terms of Service — Streich Force Enterprises"
+  description="Streich Force Enterprises terms of service and master services agreement.">
+  <Nav />
+  <section class="legal-hero">
+    <div class="legal-inner">
+      <p class="sf-eyebrow">Legal</p>
+      <h1 class="legal-title">Terms of Service</h1>
+      <p class="legal-meta">Effective: June 6, 2023 &mdash; Last updated: June 6, 2023</p>
+    </div>
+  </section>
+  <section class="legal-body">
+    <div class="legal-inner">
+
+      <p>These Terms of Service govern your use of the Streich Force Enterprises website located at https://streichforce.com and any related services provided by Streich Force Enterprises.</p>
+      <p>By accessing our website, you agree to abide by these Terms of Service and to comply with all applicable laws and regulations. If you do not agree with these Terms of Service, you are prohibited from using or accessing this website.</p>
+
+      <h2>Use of the Website</h2>
+      <p>By using this website, you warrant that you are at least 18 years of age, you have legal capacity to enter into a binding agreement, and you will use the website only in accordance with these Terms of Service.</p>
+
+      <h2>Services</h2>
+      <p>Streich Force Enterprises operates three service divisions:</p>
+      <ul>
+        <li><strong>Streich Force Enterprise</strong> — Specialized commercial repair, fabrication, and site maintenance services.</li>
+        <li><strong>Streich Force Solutions</strong> — Back-office operations, inventory management, and order processing services for container wholesalers and small businesses.</li>
+        <li><strong>Streich Force Containers</strong> — Direct sales of new and used shipping containers.</li>
+      </ul>
+      <p>Specific terms governing individual service engagements will be set forth in separate written agreements between Streich Force Enterprises and the client.</p>
+
+      <h2>Intellectual Property</h2>
+      <p>The intellectual property in the materials contained on this website are owned by or licensed to Streich Force Enterprises. You may not reproduce, redistribute, or create derivative works from our website content without our express written permission.</p>
+
+      <h2>Limitation of Liability</h2>
+      <p>Streich Force Enterprises and its suppliers will not be held liable for any losses you incur in connection with your use of our website or services. This includes direct, indirect, incidental, consequential, or punitive damages arising from your access to or use of this website.</p>
+      <p>In no event shall our aggregate liability arising out of or related to these Terms exceed the amounts paid by you to Streich Force Enterprises in the twelve months prior to the event giving rise to liability.</p>
+
+      <h2>Accuracy of Information</h2>
+      <p>The content on this website is provided for general information purposes. Streich Force Enterprises makes no warranty regarding the completeness, accuracy, or suitability of information on this website for any particular purpose. Pricing, availability, and service terms are subject to change without notice.</p>
+
+      <h2>Third-Party Links</h2>
+      <p>Our website may contain links to third-party websites. These links are provided for your convenience only. Streich Force Enterprises has no control over the content of those sites and accepts no responsibility for them.</p>
+
+      <h2>Privacy</h2>
+      <p>Your use of this website is also governed by our <a href="/legal/privacy">Privacy Policy</a>, which is incorporated into these Terms of Service by reference.</p>
+
+      <h2>Governing Law</h2>
+      <p>These Terms of Service are governed by and construed in accordance with the laws of the State of Tennessee. You irrevocably submit to the exclusive jurisdiction of the courts in that State.</p>
+
+      <h2>Changes to These Terms</h2>
+      <p>We reserve the right to modify these Terms of Service at any time. Changes take effect immediately upon posting to the website. Your continued use of the website after any changes constitutes your acceptance of the new Terms of Service.</p>
+
+      <h2>Contact Us</h2>
+      <p>For any questions regarding these Terms of Service, contact us at:</p>
+      <p>
+        Streich Force Enterprises<br />
+        <a href="mailto:info&#x40;streichforce.com">info&#x40;streichforce.com</a><br />
+        <a href="tel:6024050031">602-405-0031</a>
+      </p>
+
+    </div>
+  </section>
+  <Footer />
+</BaseLayout>
+<style>
+.legal-hero { padding: 8rem var(--sf-pad) 3rem; background: var(--sf-black); border-bottom: 1px solid var(--sf-border); }
+.legal-inner { max-width: 780px; margin: 0 auto; }
+.legal-title { font-family: var(--sf-font-display); font-weight: 900; font-size: clamp(2.5rem,5vw,4rem); text-transform: uppercase; color: var(--sf-text-primary); line-height: 1; margin: 0.75rem 0 0.75rem; }
+.legal-meta { font-size: 0.9rem; color: var(--sf-text-muted); }
+.legal-body { padding: 4rem var(--sf-pad) 7rem; background: var(--sf-surface); }
+.legal-body p { font-size: 1rem; color: var(--sf-text-secondary); line-height: 1.8; margin-bottom: 1.25rem; }
+.legal-body h2 { font-family: var(--sf-font-display); font-weight: 700; font-size: 1.2rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sf-text-primary); margin: 2.5rem 0 0.75rem; }
+.legal-body ul { padding-left: 1.5rem; margin-bottom: 1.25rem; display: flex; flex-direction: column; gap: 0.4rem; }
+.legal-body ul li { font-size: 1rem; color: var(--sf-text-secondary); line-height: 1.7; }
+.legal-body strong { color: var(--sf-text-primary); }
+.legal-body a { color: var(--sf-rust); text-decoration: none; }
+.legal-body a:hover { text-decoration: underline; }
+</style>

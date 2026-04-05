@@ -18,7 +18,7 @@ import Footer from '../../components/Footer.astro';
       <h1 class="div-hero-title">Your Direct Source for<br /><span class="con-accent">Shipping Containers</span></h1>
       <p class="div-hero-sub">New and used 20ft and 40ft units sold direct. Straightforward pricing, no middlemen, and someone on the other end who actually knows what they're talking about.</p>
       <div class="div-hero-cta">
-        <a href="mailto:containers&#x40;streichforce.com" class="btn-primary con-btn">Get a Quote</a>
+        <a href="/contact/containers" class="btn-primary con-btn">Get a Quote</a>
         <a href="#inventory" class="btn-ghost con-ghost">See What We Carry</a>
       </div>
     </div>
@@ -146,7 +146,7 @@ import Footer from '../../components/Footer.astro';
       <div class="cta-rule con-bar"></div>
       <h2 class="cta-title">Looking for containers?<br />Let's talk.</h2>
       <p class="cta-sub">Tell us what you need — size, condition, quantity, and delivery location. We'll get back to you with availability and straightforward pricing.</p>
-      <a href="mailto:containers&#x40;streichforce.com" class="btn-primary con-btn">containers&#x40;streichforce.com</a>
+      <a href="/contact/containers" class="btn-primary con-btn">Get a Quote</a>
       <p class="cta-phone">Or call directly: <a href="tel:6024050031" class="con-link">602-405-0031</a></p>
     </div>
   </section>
@@ -161,24 +161,24 @@ import Footer from '../../components/Footer.astro';
 .con-bar { background:var(--sf-con); }
 .div-hero-inner { position:relative;z-index:1;max-width:900px; }
 .con-eye { color:var(--sf-con-b); }
-.div-hero-title { font-family:var(--sf-font-display);font-weight:900;font-size:clamp(2.8rem,7vw,6rem);text-transform:uppercase;color:var(--sf-text-primary);line-height:1;margin:1rem 0 1.5rem; }
+.div-hero-title { font-family:var(--sf-font-display);font-weight:900;font-size:clamp(3rem,7vw,6.2rem);text-transform:uppercase;color:var(--sf-text-primary);line-height:1;margin:1rem 0 1.5rem; }
 .con-accent { color:var(--sf-con); }
-.div-hero-sub { font-size:1.05rem;color:var(--sf-text-secondary);max-width:640px;line-height:1.8;margin-bottom:2.5rem; }
+.div-hero-sub { font-size:1.15rem;color:var(--sf-text-secondary);max-width:640px;line-height:1.8;margin-bottom:2.5rem; }
 .div-hero-cta { display:flex;gap:1rem;flex-wrap:wrap; }
-.btn-primary { display:inline-block;font-family:var(--sf-font-display);font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;padding:.9rem 2rem;text-decoration:none;transition:background .2s; }
+.btn-primary { display:inline-block;font-family:var(--sf-font-display);font-weight:700;font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;padding:.9rem 2rem;text-decoration:none;transition:background .2s; }
 .con-btn { background:var(--sf-con);color:#fff; }
 .con-btn:hover { background:var(--sf-con-b); }
-.btn-ghost { display:inline-block;font-family:var(--sf-font-display);font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;padding:.9rem 2rem;text-decoration:none;border:1px solid rgba(255,255,255,.2);color:var(--sf-text-secondary);transition:all .2s; }
+.btn-ghost { display:inline-block;font-family:var(--sf-font-display);font-weight:700;font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;padding:.9rem 2rem;text-decoration:none;border:1px solid rgba(255,255,255,.2);color:var(--sf-text-secondary);transition:all .2s; }
 .con-ghost:hover { border-color:var(--sf-con);color:var(--sf-con); }
 .div-inner { max-width:1200px;margin:0 auto; }
 .div-inner-center { text-align:center; }
-.div-section-title { font-family:var(--sf-font-display);font-weight:900;font-size:clamp(2rem,5vw,3.5rem);text-transform:uppercase;color:var(--sf-text-primary);margin:.75rem 0 3rem; }
+.div-section-title { font-family:var(--sf-font-display);font-weight:900;font-size:clamp(2.2rem,5vw,3.7rem);text-transform:uppercase;color:var(--sf-text-primary);margin:.75rem 0 3rem; }
 .div-why { padding:6rem var(--sf-pad);background:var(--sf-surface); }
 .why-cards { display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px; }
 .why-card { background:var(--sf-black);padding:2.5rem; }
 .why-num { font-family:var(--sf-font-display);font-weight:900;font-size:3.5rem;line-height:1;margin-bottom:1rem; }
 .con-num { color:var(--sf-con);opacity:.3; }
-.why-title { font-family:var(--sf-font-display);font-weight:700;font-size:1rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sf-text-primary);margin-bottom:.75rem; }
+.why-title { font-family:var(--sf-font-display);font-weight:700;font-size:1.2rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sf-text-primary);margin-bottom:.75rem; }
 .why-body { font-size:.92rem;color:var(--sf-text-secondary);line-height:1.8; }
 .div-inventory { padding:6rem var(--sf-pad);background:var(--sf-black); }
 .inv-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2px; }
@@ -186,27 +186,27 @@ import Footer from '../../components/Footer.astro';
 .inv-header { padding:1.5rem 2rem;display:flex;align-items:baseline;gap:1rem; }
 .con-header { background:var(--sf-con); }
 .inv-size { font-family:var(--sf-font-display);font-weight:900;font-size:2rem;color:#fff; }
-.inv-type { font-family:var(--sf-font-display);font-weight:600;font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.75); }
+.inv-type { font-family:var(--sf-font-display);font-weight:600;font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.75); }
 .inv-body { padding:1.75rem 2rem 2rem; }
 .inv-spec { display:flex;justify-content:space-between;padding:.4rem 0;border-bottom:1px solid rgba(255,255,255,.05); }
 .spec-label { font-size:.82rem;color:var(--sf-text-muted); }
 .spec-val { font-family:var(--sf-font-display);font-weight:700;font-size:.82rem;color:var(--sf-text-primary); }
-.inv-desc { font-size:.88rem;color:var(--sf-text-secondary);line-height:1.75;margin:1.25rem 0 1rem; }
+.inv-desc { font-size:.98rem;color:var(--sf-text-secondary);line-height:1.75;margin:1.25rem 0 1rem; }
 .inv-conditions { display:flex;flex-wrap:wrap;gap:.5rem; }
 .condition-tag { font-family:var(--sf-font-display);font-weight:600;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;padding:.3rem .75rem;border:1px solid; }
 .con-tag { border-color:var(--sf-con);color:var(--sf-con); }
 .div-grades { padding:6rem var(--sf-pad);background:var(--sf-surface); }
-.grades-intro { font-size:1rem;color:var(--sf-text-secondary);line-height:1.8;margin-bottom:2.5rem;max-width:700px; }
+.grades-intro { font-size:1.2rem;color:var(--sf-text-secondary);line-height:1.8;margin-bottom:2.5rem;max-width:700px; }
 .grades-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px; }
 .grade-item { background:var(--sf-black);padding:2rem; }
 .grade-label { display:block;font-family:var(--sf-font-display);font-weight:700;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem; }
 .con-label { color:var(--sf-con-b); }
-.grade-desc { font-size:.9rem;color:var(--sf-text-secondary);line-height:1.8; }
+.grade-desc { font-size:1rem;color:var(--sf-text-secondary);line-height:1.8; }
 .div-cta { padding:7rem var(--sf-pad);background:var(--sf-black); }
 .cta-rule { width:48px;height:4px;margin:0 auto 2.5rem; }
-.cta-title { font-family:var(--sf-font-display);font-weight:900;font-size:clamp(1.8rem,4vw,3rem);text-transform:uppercase;color:var(--sf-text-primary);line-height:1.1;margin-bottom:1.25rem; }
-.cta-sub { font-size:1rem;color:var(--sf-text-secondary);line-height:1.75;margin-bottom:2.5rem;max-width:600px;margin-left:auto;margin-right:auto; }
-.cta-phone { margin-top:1.5rem;font-size:.9rem;color:var(--sf-text-muted); }
+.cta-title { font-family:var(--sf-font-display);font-weight:900;font-size:clamp(2rem,4vw,3.2rem);text-transform:uppercase;color:var(--sf-text-primary);line-height:1.1;margin-bottom:1.25rem; }
+.cta-sub { font-size:1.2rem;color:var(--sf-text-secondary);line-height:1.75;margin-bottom:2.5rem;max-width:600px;margin-left:auto;margin-right:auto; }
+.cta-phone { margin-top:1.5rem;font-size:1rem;color:var(--sf-text-muted); }
 .con-link { color:var(--sf-con-b);text-decoration:none; }
 .con-link:hover { text-decoration:underline; }
 </style>

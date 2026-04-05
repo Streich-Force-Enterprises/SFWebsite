@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+---
+<BaseLayout title="Browse Containers — Streich Force Containers"
+  description="Tell us what you're looking for. We'll get back to you with availability and straight pricing.">
+  <Nav active="containers" />
+  <section class="form-hero">
+    <div class="form-hero-bar con-bar"></div>
+    <div class="form-inner">
+      <p class="sf-eyebrow con-eye">Division 03 — Containers</p>
+      <h1 class="form-title">Request a Quote</h1>
+      <p class="form-sub">Tell us what you need — size, condition, quantity, and where it's going. We'll get back to you with availability and straightforward pricing. No runaround.</p>
+    </div>
+  </section>
+  <section class="form-section">
+    <div class="form-inner">
+      <form class="sf-form" name="containers-contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="containers-contact" />
+        <p class="hidden"><label>Don't fill this out: <input name="bot-field" /></label></p>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your Name *</label>
+            <input type="text" id="name" name="name" required placeholder="First and last name" />
+          </div>
+          <div class="form-group">
+            <label for="company">Company Name</label>
+            <input type="text" id="company" name="company" placeholder="Your company name" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required placeholder="your@email.com" />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Best number to reach you" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="size">Container Size *</label>
+            <select id="size" name="size" required>
+              <option value="">Select size</option>
+              <option>20ft Standard</option>
+              <option>40ft Standard</option>
+              <option>40ft High-Cube</option>
+              <option>Mix — need multiple sizes</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="condition">Condition Needed</label>
+            <select id="condition" name="condition">
+              <option value="">Select condition</option>
+              <option>New / One-Trip</option>
+              <option>WWT — Wind & Watertight</option>
+              <option>CWO — Cargo Worthy</option>
+              <option>Open to options</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="quantity">Quantity</label>
+            <select id="quantity" name="quantity">
+              <option value="">How many?</option>
+              <option>1 unit</option>
+              <option>2–5 units</option>
+              <option>6–20 units</option>
+              <option>20+ units (bulk)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="delivery">Delivery Location *</label>
+            <input type="text" id="delivery" name="delivery" required placeholder="City, State or ZIP" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="use-case">What Are You Using Them For?</label>
+          <textarea id="use-case" name="use-case" rows="4"
+            placeholder="Storage, job site, modification project, resale, something else? The more context the better — helps us find the right units for you."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="timeline">When Do You Need Them?</label>
+          <select id="timeline" name="timeline">
+            <option value="">Select timeline</option>
+            <option>ASAP</option>
+            <option>Within 2 weeks</option>
+            <option>Within the month</option>
+            <option>1–3 months out</option>
+            <option>Just pricing for now</option>
+          </select>
+        </div>
+        <div class="form-footer">
+          <button type="submit" class="btn-submit con-submit">Get My Quote &#8594;</button>
+          <p class="form-note">Or reach us directly: <a href="tel:6024050031" class="con-link">602-405-0031</a> &mdash; <a href="mailto:containers&#x40;streichforce.com" class="con-link">containers&#x40;streichforce.com</a></p>
+        </div>
+      </form>
+    </div>
+  </section>
+  <Footer />
+</BaseLayout>
+<style>
+.hidden { display: none; }
+.form-hero { padding: 8rem var(--sf-pad) 3rem; background: var(--sf-black); position: relative; }
+.form-hero-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; }
+.con-bar { background: var(--sf-con); }
+.form-inner { max-width: 760px; margin: 0 auto; }
+.con-eye { color: var(--sf-con-b); }
+.form-title { font-family: var(--sf-font-display); font-weight: 900; font-size: clamp(2.5rem, 5vw, 4rem); text-transform: uppercase; color: var(--sf-text-primary); line-height: 1; margin: 0.75rem 0 1.25rem; }
+.form-sub { font-size: 1.05rem; color: var(--sf-text-secondary); line-height: 1.7; max-width: 600px; }
+.form-section { padding: 4rem var(--sf-pad) 6rem; background: var(--sf-surface); }
+.sf-form { display: flex; flex-direction: column; gap: 1.5rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+@media(max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+.form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+.form-group label { font-family: var(--sf-font-display); font-weight: 600; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sf-text-secondary); }
+.form-group input, .form-group select, .form-group textarea { background: var(--sf-black); border: 1px solid var(--sf-border-md); color: var(--sf-text-primary); font-family: var(--sf-font-body); font-size: 1rem; padding: 0.85rem 1rem; outline: none; transition: border-color 0.2s; width: 100%; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--sf-con); }
+.form-group select { appearance: none; cursor: pointer; }
+.form-group textarea { resize: vertical; line-height: 1.65; }
+.form-footer { display: flex; flex-direction: column; gap: 1rem; padding-top: 0.5rem; }
+.btn-submit { display: inline-block; font-family: var(--sf-font-display); font-weight: 700; font-size: 0.88rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 1rem 2.5rem; border: none; cursor: pointer; transition: all 0.2s; align-self: flex-start; }
+.con-submit { background: var(--sf-con); color: #fff; }
+.con-submit:hover { background: var(--sf-con-b); }
+.form-note { font-size: 0.9rem; color: var(--sf-text-muted); line-height: 1.6; }
+.con-link { color: var(--sf-con-b); text-decoration: none; }
+.con-link:hover { text-decoration: underline; }
+</style>

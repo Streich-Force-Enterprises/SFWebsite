@@ -1,70 +1,102 @@
 ---
 // src/components/Footer.astro
-const year = new Date().getFullYear();
 ---
 
 <footer>
-  <div class="footer-top">
-    <div class="footer-logo">
-      <span class="footer-logo-top">STREICH <span class="f">FORCE</span></span>
-      <div class="footer-logo-rule"></div>
-      <span class="footer-logo-sub">Enterprises &mdash; streichforce.com</span>
+  <div class="footer-inner">
+
+    <div class="footer-brand">
+      <img src="/logo-dark.png" alt="Streich Force Enterprises" class="footer-logo" />
+      <p class="footer-tagline">On-demand industry expertise<br />for your operations.</p>
     </div>
-    <div class="footer-nav">
-      <div class="fcol">
-        <p class="fcol-title">Divisions</p>
-        <ul>
-          <li><a href="/enterprise">Streich Force Enterprise</a></li>
-          <li><a href="/solutions">Streich Force Solutions</a></li>
-          <li><a href="/containers">Streich Force Containers</a></li>
-        </ul>
+
+    <div class="footer-links">
+      <div class="footer-col">
+        <p class="footer-col-label">Divisions</p>
+        <a href="/enterprise">Enterprise</a>
+        <a href="/solutions">Solutions</a>
+        <a href="/containers">Containers</a>
       </div>
-      <div class="fcol">
-        <p class="fcol-title">Contact</p>
-        <ul>
-          <li><a href="mailto:info@streichforce.com">info@streichforce.com</a></li>
-          <li><a href="mailto:enterprise@streichforce.com">enterprise@streichforce.com</a></li>
-          <li><a href="mailto:solutions@streichforce.com">solutions@streichforce.com</a></li>
-          <li><a href="mailto:containers@streichforce.com">containers@streichforce.com</a></li>
-        </ul>
+      <div class="footer-col">
+        <p class="footer-col-label">Contact</p>
+        <a href="/contact/enterprise">Request Expert Service</a>
+        <a href="/contact/solutions">Fix My Back Office</a>
+        <a href="/contact/containers">Get a Container Quote</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-label">Get In Touch</p>
+        <a href="mailto:enterprise&#x40;streichforce.com">enterprise&#x40;streichforce.com</a>
+        <a href="mailto:solutions&#x40;streichforce.com">solutions&#x40;streichforce.com</a>
+        <a href="mailto:containers&#x40;streichforce.com">containers&#x40;streichforce.com</a>
       </div>
     </div>
+
   </div>
-  <div class="footer-bot">
-    <p>&copy; {year} Streich Force Enterprises &mdash; streichforce.com</p>
-    <p>All rights reserved.</p>
+
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; {new Date().getFullYear()} Streich Force Enterprises. All rights reserved. &mdash; Website designed by <a href="/solutions" class="footer-credit">Streich Force Solutions</a></p>
+    <div class="footer-legal">
+      <a href="/legal/privacy">Privacy Policy</a>
+      <a href="/legal/msa">Terms of Service</a>
+    </div>
   </div>
 </footer>
 
 <style>
-  footer { padding: 3rem var(--sf-pad) 2rem; border-top: 1px solid var(--sf-border); }
-  .footer-top {
-    display: flex; justify-content: space-between; align-items: flex-start;
-    gap: 3rem; margin-bottom: 2.5rem; flex-wrap: wrap;
-  }
-  .footer-logo { display: flex; flex-direction: column; line-height: 1; gap: 0; }
-  .footer-logo-top {
-    font-family: var(--sf-font-display); font-weight: 900; font-size: 1rem;
-    letter-spacing: 0.07em; text-transform: uppercase; color: var(--sf-text-primary);
-  }
-  .footer-logo-top .f { color: var(--sf-rust); }
-  .footer-logo-rule { height: 1.5px; background: var(--sf-rust); margin: 2px 0; }
-  .footer-logo-sub {
-    font-family: var(--sf-font-display); font-weight: 600; font-size: 0.42rem;
-    letter-spacing: 0.28em; text-transform: uppercase; color: var(--sf-text-muted);
-  }
-  .footer-nav { display: flex; gap: 4rem; flex-wrap: wrap; }
-  .fcol-title {
-    font-family: var(--sf-font-display); font-weight: 700; font-size: 0.62rem;
-    letter-spacing: 0.3em; text-transform: uppercase; color: var(--sf-rust); margin-bottom: 0.9rem;
-  }
-  .fcol ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-  .fcol a { font-size: 0.875rem; font-weight: 300; color: var(--sf-text-secondary); transition: color 0.2s; }
-  .fcol a:hover { color: var(--sf-text-primary); }
-  .footer-bot {
-    border-top: 1px solid var(--sf-border); padding-top: 1.25rem;
-    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;
-  }
-  .footer-bot p { font-size: 0.72rem; color: var(--sf-text-muted); }
-  @media (max-width: 640px) { .footer-nav { gap: 2rem; } }
+footer {
+  background: var(--sf-black);
+  border-top: 1px solid var(--sf-border);
+  padding: 5rem var(--sf-pad) 2rem;
+}
+.footer-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 2fr;
+  gap: 5rem; margin-bottom: 4rem;
+}
+@media(max-width: 768px) {
+  .footer-inner { grid-template-columns: 1fr; gap: 3rem; }
+}
+.footer-logo {
+  height: 48px; width: auto; display: block; margin-bottom: 1.25rem;
+}
+.footer-tagline {
+  font-size: 0.9rem; font-weight: 300;
+  color: var(--sf-text-muted); line-height: 1.7;
+}
+.footer-links {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+}
+@media(max-width: 600px) {
+  .footer-links { grid-template-columns: 1fr 1fr; }
+}
+.footer-col { display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-col-label {
+  font-family: var(--sf-font-display); font-weight: 700; font-size: 0.7rem;
+  letter-spacing: 0.3em; text-transform: uppercase; color: var(--sf-rust);
+  margin-bottom: 0.25rem;
+}
+.footer-col a {
+  font-size: 0.88rem; font-weight: 300;
+  color: var(--sf-text-muted); transition: color 0.2s; line-height: 1.5;
+}
+.footer-col a:hover { color: var(--sf-text-primary); }
+.footer-bottom {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+  border-top: 1px solid var(--sf-border); padding-top: 2rem;
+}
+.footer-copy {
+  font-size: 0.82rem; color: var(--sf-text-muted); font-weight: 300;
+}
+.footer-legal {
+  display: flex; gap: 1.5rem;
+}
+.footer-legal a {
+  font-size: 0.82rem; color: var(--sf-text-muted);
+  transition: color 0.2s;
+}
+.footer-legal a:hover { color: var(--sf-text-primary); }
+.footer-credit { color: var(--sf-sol-b); text-decoration: none; }
+.footer-credit:hover { text-decoration: underline; }
 </style>

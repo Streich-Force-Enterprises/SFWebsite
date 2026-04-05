@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+---
+<BaseLayout title="Request Expert Service — Streich Force Enterprise"
+  description="Tell us about your repair or fabrication challenge. We'll respond same day.">
+  <Nav active="enterprise" />
+  <section class="form-hero">
+    <div class="form-hero-bar ent-bar"></div>
+    <div class="form-inner">
+      <p class="sf-eyebrow ent-eye">Division 01 — Enterprise</p>
+      <h1 class="form-title">Request Expert Service</h1>
+      <p class="form-sub">Tell us what you're dealing with. No obligation — just a straight conversation about whether we're the right fit. Scott responds same day.</p>
+    </div>
+  </section>
+  <section class="form-section">
+    <div class="form-inner">
+      <form class="sf-form" name="enterprise-contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="enterprise-contact" />
+        <p class="hidden"><label>Don't fill this out: <input name="bot-field" /></label></p>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your Name *</label>
+            <input type="text" id="name" name="name" required placeholder="First and last name" />
+          </div>
+          <div class="form-group">
+            <label for="company">Company / Property</label>
+            <input type="text" id="company" name="company" placeholder="Company or property name" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required placeholder="your@email.com" />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Best number to reach you" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="location">Property Location</label>
+          <input type="text" id="location" name="location" placeholder="City, State or full address" />
+        </div>
+        <div class="form-group">
+          <label for="service-type">Type of Work Needed</label>
+          <select id="service-type" name="service-type">
+            <option value="">Select a category</option>
+            <option>Custom Fabrication</option>
+            <option>Structural Repair</option>
+            <option>Compactor / Chute System</option>
+            <option>Wall Access / Security Gate</option>
+            <option>Pharmacy / Retail Fit-Out</option>
+            <option>Site Maintenance</option>
+            <option>Not sure — need assessment</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="description">Describe the Problem *</label>
+          <textarea id="description" name="description" required rows="6"
+            placeholder="Tell us what's going on. The more detail the better — what's failed, what's been tried, what the environment looks like."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="urgency">How Urgent Is This?</label>
+          <select id="urgency" name="urgency">
+            <option value="">Select urgency level</option>
+            <option>Emergency — needs attention immediately</option>
+            <option>Urgent — within the week</option>
+            <option>Standard — within the month</option>
+            <option>Planning ahead — no rush</option>
+          </select>
+        </div>
+        <div class="form-footer">
+          <button type="submit" class="btn-submit ent-submit">Send Request &#8594;</button>
+          <p class="form-note">Or reach Scott directly: <a href="tel:6028828723" class="ent-link">602-882-8723</a> &mdash; <a href="mailto:enterprise&#x40;streichforce.com" class="ent-link">enterprise&#x40;streichforce.com</a></p>
+        </div>
+      </form>
+    </div>
+  </section>
+  <Footer />
+</BaseLayout>
+<style>
+.hidden { display: none; }
+.form-hero { padding: 8rem var(--sf-pad) 3rem; background: var(--sf-black); position: relative; }
+.form-hero-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; }
+.ent-bar { background: var(--sf-ent); }
+.form-inner { max-width: 760px; margin: 0 auto; }
+.ent-eye { color: var(--sf-ent-b); }
+.form-title { font-family: var(--sf-font-display); font-weight: 900; font-size: clamp(2.5rem, 5vw, 4rem); text-transform: uppercase; color: var(--sf-text-primary); line-height: 1; margin: 0.75rem 0 1.25rem; }
+.form-sub { font-size: 1.05rem; color: var(--sf-text-secondary); line-height: 1.7; max-width: 600px; }
+.form-section { padding: 4rem var(--sf-pad) 6rem; background: var(--sf-surface); }
+.sf-form { display: flex; flex-direction: column; gap: 1.5rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+@media(max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+.form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+.form-group label { font-family: var(--sf-font-display); font-weight: 600; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sf-text-secondary); }
+.form-group input, .form-group select, .form-group textarea {
+  background: var(--sf-black); border: 1px solid var(--sf-border-md);
+  color: var(--sf-text-primary); font-family: var(--sf-font-body); font-size: 1rem;
+  padding: 0.85rem 1rem; outline: none; transition: border-color 0.2s; width: 100%;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--sf-ent); }
+.form-group select { appearance: none; cursor: pointer; }
+.form-group textarea { resize: vertical; line-height: 1.65; }
+.form-footer { display: flex; flex-direction: column; gap: 1rem; padding-top: 0.5rem; }
+.btn-submit { display: inline-block; font-family: var(--sf-font-display); font-weight: 700; font-size: 0.88rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 1rem 2.5rem; border: none; cursor: pointer; transition: all 0.2s; align-self: flex-start; }
+.ent-submit { background: var(--sf-ent); color: #fff; }
+.ent-submit:hover { background: var(--sf-ent-b); }
+.form-note { font-size: 0.9rem; color: var(--sf-text-muted); line-height: 1.6; }
+.ent-link { color: var(--sf-ent-b); text-decoration: none; }
+.ent-link:hover { text-decoration: underline; }
+</style>

@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+---
+<BaseLayout title="Privacy Policy — Streich Force Enterprises"
+  description="Streich Force Enterprises privacy policy — how we collect, use, and protect your personal information.">
+  <Nav />
+  <section class="legal-hero">
+    <div class="legal-inner">
+      <p class="sf-eyebrow">Legal</p>
+      <h1 class="legal-title">Privacy Policy</h1>
+      <p class="legal-meta">Effective: June 6, 2023 &mdash; Last updated: June 6, 2023</p>
+    </div>
+  </section>
+  <section class="legal-body">
+    <div class="legal-inner">
+
+      <p>Your privacy is important to us. It is Streich Force Enterprises' policy to respect your privacy and comply with any applicable law and regulation regarding any personal information we may collect about you, including across our website, https://streichforce.com/, and other sites we own and operate.</p>
+
+      <p>Personal information is any information about you which can be used to identify you. This includes information about you as a person (such as name, address, and date of birth), your devices, payment details, and even information about how you use a website or online service.</p>
+
+      <h2>Information We Collect</h2>
+      <p>Information we collect falls into one of two categories: "voluntarily provided" information and "automatically collected" information.</p>
+      <p>"Voluntarily provided" information refers to any information you knowingly and actively provide us when using or participating in any of our services and promotions.</p>
+      <p>"Automatically collected" information refers to any information automatically sent by your devices in the course of accessing our products and services.</p>
+
+      <h2>Log Data</h2>
+      <p>When you visit our website, our servers may automatically log the standard data provided by your web browser. It may include your device's Internet Protocol (IP) address, your browser type and version, the pages you visit, the time and date of your visit, the time spent on each page, and other details about your visit.</p>
+
+      <h2>Personal Information</h2>
+      <p>We may ask for personal information — for example, when you contact us through our forms — which may include one or more of the following:</p>
+      <ul>
+        <li>Name</li>
+        <li>Email address</li>
+        <li>Phone number</li>
+        <li>Company name and location</li>
+      </ul>
+
+      <h2>Collection and Use of Information</h2>
+      <p>We may collect personal information from you when you do any of the following on our website:</p>
+      <ul>
+        <li>Submit a contact or quote request form</li>
+        <li>Contact us via email or phone</li>
+        <li>Use a mobile device or web browser to access our content</li>
+      </ul>
+      <p>We may collect, hold, use, and disclose information for the following purposes:</p>
+      <ul>
+        <li>To respond to your inquiry or service request</li>
+        <li>To contact and communicate with you</li>
+        <li>To provide you with information about our services</li>
+      </ul>
+
+      <h2>Security of Your Personal Information</h2>
+      <p>When we collect and process personal information, we will protect it within commercially acceptable means to prevent loss and theft, as well as unauthorized access, disclosure, copying, use, or modification. No method of electronic transmission or storage is 100% secure, and no one can guarantee absolute data security.</p>
+
+      <h2>How Long We Keep Your Personal Information</h2>
+      <p>We keep your personal information only for as long as we need to. If your personal information is no longer required, we will delete it or make it anonymous by removing all details that identify you.</p>
+
+      <h2>Children's Privacy</h2>
+      <p>We do not aim any of our products or services directly at children under the age of 13, and we do not knowingly collect personal information about children under 13.</p>
+
+      <h2>Disclosure of Personal Information to Third Parties</h2>
+      <p>We may disclose personal information to third-party service providers for the purpose of enabling them to provide their services, including IT service providers, data storage, hosting and server providers, and professional advisors. We do not sell your personal information to third parties.</p>
+
+      <h2>Your Rights</h2>
+      <p>You have the right to access, correct, or request deletion of personal information we hold about you. To make such a request, contact us at <a href="mailto:info&#x40;streichforce.com">info&#x40;streichforce.com</a>.</p>
+
+      <h2>Changes to This Policy</h2>
+      <p>At our discretion, we may change our privacy policy to reflect updates to our business processes or legislative changes. If we decide to change this privacy policy, we will post the changes here.</p>
+
+      <h2>Contact Us</h2>
+      <p>For any questions or concerns regarding your privacy, contact us at:</p>
+      <p>
+        Streich Force Enterprises<br />
+        <a href="mailto:info&#x40;streichforce.com">info&#x40;streichforce.com</a><br />
+        <a href="tel:6024050031">602-405-0031</a>
+      </p>
+
+    </div>
+  </section>
+  <Footer />
+</BaseLayout>
+<style>
+.legal-hero { padding: 8rem var(--sf-pad) 3rem; background: var(--sf-black); border-bottom: 1px solid var(--sf-border); }
+.legal-inner { max-width: 780px; margin: 0 auto; }
+.legal-title { font-family: var(--sf-font-display); font-weight: 900; font-size: clamp(2.5rem,5vw,4rem); text-transform: uppercase; color: var(--sf-text-primary); line-height: 1; margin: 0.75rem 0 0.75rem; }
+.legal-meta { font-size: 0.9rem; color: var(--sf-text-muted); }
+.legal-body { padding: 4rem var(--sf-pad) 7rem; background: var(--sf-surface); }
+.legal-body p { font-size: 1rem; color: var(--sf-text-secondary); line-height: 1.8; margin-bottom: 1.25rem; }
+.legal-body h2 { font-family: var(--sf-font-display); font-weight: 700; font-size: 1.2rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sf-text-primary); margin: 2.5rem 0 0.75rem; }
+.legal-body ul { padding-left: 1.5rem; margin-bottom: 1.25rem; display: flex; flex-direction: column; gap: 0.4rem; }
+.legal-body ul li { font-size: 1rem; color: var(--sf-text-secondary); line-height: 1.7; }
+.legal-body a { color: var(--sf-rust); text-decoration: none; }
+.legal-body a:hover { text-decoration: underline; }
+</style>

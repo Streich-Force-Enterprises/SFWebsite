@@ -1,11 +1,10 @@
 ---
-// src/pages/index.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<BaseLayout title="Home">
+<BaseLayout title="Streich Force Enterprises — On-Demand Industry Expertise">
   <Nav />
 
   <!-- SITE STATUS BANNER -->
@@ -24,15 +23,19 @@ import Footer from '../components/Footer.astro';
     <div class="hero-glow"></div>
     <div class="hero-content">
       <p class="hero-eyebrow">Streich Force Enterprises &mdash; streichforce.com</p>
-      <div class="hero-wm" id="heroWm">
-        <span class="hero-wm-text" id="heroText">STREICH <span class="f">FORCE</span></span>
-        <span class="hero-wm-rule" id="heroRule"></span>
-        <span class="hero-wm-ent" id="heroEnt">ENTERPRISES</span>
+      <div class="hero-wm">
+        <img src="/logo-dark.png" alt="Streich Force Enterprises" class="hero-logo" />
       </div>
-      <p class="hero-sub">
-        On-demand industry expertise for your operations.<br />
-        <span class="hero-sub-dim">Specialized work. Delivered by years of experience.</span>
-      </p>
+      <div class="hero-tagline">
+        <p class="hero-tag-main">Real-World Expertise. Smarter Systems. Reliable Execution.</p>
+        <p class="hero-tag-sub">We support businesses through:</p>
+        <ul class="hero-list">
+          <li>Specialized commercial service &amp; repair</li>
+          <li>Back-office operations &amp; automation</li>
+          <li>Equipment &amp; container sourcing</li>
+        </ul>
+        <p class="hero-tag-cta">Choose what you need below and get exactly the right solution.</p>
+      </div>
     </div>
     <div class="hero-scroll"><span>Scroll</span></div>
   </section>
@@ -57,7 +60,7 @@ import Footer from '../components/Footer.astro';
   <section class="divisions" id="divisions">
     <div class="div-section-head">
       <p class="div-section-eye">Our Divisions</p>
-      <h2 class="div-section-title">Where Do We Fit<br />In Your Business?</h2>
+      <h2 class="div-section-title">Choose the Path to<br />Solving Your Problem</h2>
     </div>
     <div class="div-cards">
 
@@ -66,14 +69,14 @@ import Footer from '../components/Footer.astro';
         <div class="dc-num">01</div>
         <div class="dc-body">
           <p class="dc-tag">Division 01 &mdash; Specialized Repair &amp; Fabrication</p>
-          <h3 class="dc-title">Streich Force Enterprise</h3>
-          <p class="dc-summary">When standard contractors fall short, we step in.</p>
-          <p class="dc-desc">Specialized repair, custom fabrication, and site maintenance for pharmacies, retail chains, and commercial properties. Structural, technical, or one-of-a-kind &mdash; we build it, fix it, or improve it.</p>
-          <div class="dc-pills">
-            <span class="pill">Pharmacies &amp; Retail</span>
-            <span class="pill">Specialized Repair</span>
-            <span class="pill">Custom Fabrication</span>
-          </div>
+          <h3 class="dc-title">Commercial Service &amp; Repair</h3>
+          <p class="dc-desc">High-level diagnostics and precision repair when others can't solve the problem.</p>
+          <ul class="dc-checks">
+            <li>&#10004; 40+ years experience</li>
+            <li>&#10004; Trusted by national brands</li>
+            <li>&#10004; Complex issues handled right the first time</li>
+          </ul>
+          <div class="dc-cta ent-cta">Request Expert Service &#8594;</div>
         </div>
         <div class="dc-arrow">&#8594;</div>
       </a>
@@ -84,13 +87,13 @@ import Footer from '../components/Footer.astro';
         <div class="dc-body">
           <p class="dc-tag">Division 02 &mdash; Back-Office Operations</p>
           <h3 class="dc-title">Streich Force Solutions</h3>
-          <p class="dc-summary">An extension of your back office.</p>
-          <p class="dc-desc">We become your dedicated operational team for container wholesalers and similar small businesses &mdash; managing inventory, purchasing, sales orders, invoicing, gate activity, and daily coordination. Powered by Triplemeter for real-time inventory and gate intelligence, plus our own simplified, industry-specific order management system that replaces spreadsheets, email chains, and disconnected tools.</p>
-          <div class="dc-pills">
-            <span class="pill">Inventory &amp; Gate Management</span>
-            <span class="pill">Order &amp; Sales Processing</span>
-            <span class="pill">Operations Support</span>
-          </div>
+          <p class="dc-desc">Eliminate manual work, clean up your data, and streamline operations.</p>
+          <ul class="dc-checks">
+            <li>&#10004; Billing, reporting, and workflow support</li>
+            <li>&#10004; Data cleanup and standardization</li>
+            <li>&#10004; Built to scale with smarter systems</li>
+          </ul>
+          <div class="dc-cta sol-cta">Fix My Back Office &#8594;</div>
         </div>
         <div class="dc-arrow">&#8594;</div>
       </a>
@@ -101,13 +104,13 @@ import Footer from '../components/Footer.astro';
         <div class="dc-body">
           <p class="dc-tag">Division 03 &mdash; Shipping Container Sales</p>
           <h3 class="dc-title">Streich Force Containers</h3>
-          <p class="dc-summary">Your direct source for shipping containers.</p>
-          <p class="dc-desc">New and used 20ft and 40ft units &mdash; standard and high-cube &mdash; for storage, job sites, or bulk wholesale. Straightforward pricing with delivery available.</p>
-          <div class="dc-pills">
-            <span class="pill">20ft &amp; 40ft</span>
-            <span class="pill">New &amp; Used</span>
-            <span class="pill">Bulk Pricing</span>
-          </div>
+          <p class="dc-desc">Access to available containers with straightforward pricing.</p>
+          <ul class="dc-checks">
+            <li>&#10004; View available inventory</li>
+            <li>&#10004; Request quotes quickly</li>
+            <li>&#10004; Source exactly what you need</li>
+          </ul>
+          <div class="dc-cta con-cta">Browse Containers &#8594;</div>
         </div>
         <div class="dc-arrow">&#8594;</div>
       </a>
@@ -149,16 +152,16 @@ import Footer from '../components/Footer.astro';
       <h3 class="cta-title">Got Something Specific in Mind?</h3>
       <p class="cta-sub">Tell us what you need, and we'll help you find the right solution.</p>
     </div>
-    <a href="mailto:info@streichforce.com" class="sf-btn-primary">Get In Touch</a>
+    <a href="mailto:info&#x40;streichforce.com" class="sf-btn-primary">Get In Touch</a>
   </div>
 
   <Footer />
 </BaseLayout>
 
 <style>
-/* HERO */
+/* ── HERO ── */
 .hero {
-  height: 100vh; min-height: 600px;
+  height: 100vh; min-height: 620px;
   display: flex; align-items: flex-end;
   padding: 0 var(--sf-pad) 4.5rem;
   position: relative; overflow: hidden;
@@ -190,40 +193,51 @@ import Footer from '../components/Footer.astro';
   background: radial-gradient(ellipse at top right, rgba(192,57,43,0.06), transparent 65%);
   pointer-events: none;
 }
-.hero-content { position: relative; z-index: 3; }
-
+.hero-content { position: relative; z-index: 3; max-width: 800px; }
 .hero-eyebrow {
-  font-family: var(--sf-font-display); font-weight: 600; font-size: 0.7rem;
+  font-family: var(--sf-font-display); font-weight: 600; font-size: 0.78rem;
   letter-spacing: 0.38em; text-transform: uppercase; color: var(--sf-rust);
   margin-bottom: 1.25rem;
   opacity: 0; animation: sf-rise-up 0.7s ease forwards 0.2s;
 }
-.hero-wm { display: inline-block; }
-.hero-wm-text {
-  font-family: var(--sf-font-display); font-weight: 900;
-  font-size: clamp(3.5rem, 9vw, 9rem);
-  line-height: 0.88; letter-spacing: 0.01em; text-transform: uppercase;
-  color: var(--sf-text-primary); white-space: nowrap; display: block;
+.hero-wm {
   opacity: 0; animation: sf-rise-up 0.7s ease forwards 0.4s;
+  margin-bottom: 1.75rem;
 }
-.hero-wm-text .f { color: var(--sf-rust); }
-.hero-wm-rule {
-  height: 4px; background: var(--sf-rust);
-  margin: 1rem 0 0.65rem; display: block;
-  opacity: 0; animation: sf-rise-up 0.7s ease forwards 0.6s;
+.hero-logo {
+  height: clamp(60px, 10vw, 110px);
+  width: auto;
+  display: block;
 }
-.hero-wm-ent {
-  font-family: var(--sf-font-display); font-weight: 700;
-  font-size: clamp(0.55rem, 1.1vw, 0.9rem);
-  text-transform: uppercase; color: var(--sf-text-muted); display: block;
+.hero-tagline {
   opacity: 0; animation: sf-rise-up 0.7s ease forwards 0.7s;
 }
-.hero-sub {
-  font-size: clamp(1rem, 1.5vw, 1.15rem); font-weight: 300;
-  color: var(--sf-text-secondary); line-height: 1.75; max-width: 520px; margin-top: 2rem;
-  opacity: 0; animation: sf-rise-up 0.7s ease forwards 0.85s;
+.hero-tag-main {
+  font-family: var(--sf-font-display); font-weight: 700;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: var(--sf-text-primary); letter-spacing: 0.03em;
+  margin-bottom: 0.75rem; line-height: 1.3;
 }
-.hero-sub-dim { font-size: 0.9em; color: var(--sf-text-muted); }
+.hero-tag-sub {
+  font-size: 1rem; font-weight: 300;
+  color: var(--sf-text-secondary); margin-bottom: 0.5rem;
+}
+.hero-list {
+  list-style: none; margin: 0 0 1rem 0; padding: 0;
+  display: flex; flex-direction: column; gap: 0.3rem;
+}
+.hero-list li {
+  font-size: 1rem; font-weight: 300;
+  color: var(--sf-text-secondary); line-height: 1.6;
+  padding-left: 1rem;
+}
+.hero-list li::before { content: ''; }
+.hero-tag-cta {
+  font-size: 0.95rem; font-weight: 400;
+  color: var(--sf-rust); font-family: var(--sf-font-display);
+  letter-spacing: 0.05em; text-transform: uppercase;
+  font-size: 0.78rem; font-weight: 600;
+}
 .hero-scroll {
   position: absolute; bottom: 2rem; right: var(--sf-pad); z-index: 3;
   display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
@@ -240,7 +254,7 @@ import Footer from '../components/Footer.astro';
 }
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
-/* DIVISION STRIP */
+/* ── DIVISION STRIP ── */
 .div-strip {
   display: grid; grid-template-columns: repeat(3, 1fr);
   background: var(--sf-surface);
@@ -258,33 +272,33 @@ import Footer from '../components/Footer.astro';
 .div-strip-tab.sol .dst-dot { background: var(--sf-sol); }
 .div-strip-tab.con .dst-dot { background: var(--sf-con); }
 .dst-label {
-  font-family: var(--sf-font-display); font-weight: 700; font-size: 0.72rem;
+  font-family: var(--sf-font-display); font-weight: 700; font-size: 0.78rem;
   letter-spacing: 0.18em; text-transform: uppercase; color: var(--sf-text-secondary); transition: color 0.2s;
 }
 .div-strip-tab.ent:hover .dst-label { color: var(--sf-ent-b); }
 .div-strip-tab.sol:hover .dst-label { color: var(--sf-sol-b); }
 .div-strip-tab.con:hover .dst-label { color: var(--sf-con-b); }
 
-/* DIVISION CARDS */
+/* ── DIVISION CARDS ── */
 .divisions { padding: 5rem var(--sf-pad); }
 .div-section-head { margin-bottom: 3rem; }
 .div-section-eye {
-  font-family: var(--sf-font-display); font-weight: 600; font-size: 0.68rem;
+  font-family: var(--sf-font-display); font-weight: 600; font-size: 0.78rem;
   letter-spacing: 0.4em; text-transform: uppercase; color: var(--sf-rust); margin-bottom: 0.6rem;
 }
 .div-section-title {
   font-family: var(--sf-font-display); font-weight: 900;
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
   text-transform: uppercase; letter-spacing: 0.02em; color: var(--sf-text-primary); line-height: 1;
 }
 .div-cards { display: flex; flex-direction: column; gap: 3px; }
 .div-card {
   display: grid; grid-template-columns: 6px 110px 1fr 60px;
   align-items: center; background: var(--sf-surface);
-  transition: background 0.25s; min-height: 160px;
+  transition: background 0.25s; min-height: 180px;
 }
 .div-card:hover { background: var(--sf-card-hover); }
-.dc-bar { height: 100%; min-height: 160px; }
+.dc-bar { height: 100%; min-height: 180px; }
 .div-card.ent .dc-bar { background: var(--sf-ent); }
 .div-card.sol .dc-bar { background: var(--sf-sol); }
 .div-card.con .dc-bar { background: var(--sf-con); }
@@ -301,7 +315,7 @@ import Footer from '../components/Footer.astro';
 .div-card.con:hover .dc-num { color: rgba(196,122,13,0.22); }
 .dc-body { padding: 2.5rem 2rem 2.5rem 1.5rem; }
 .dc-tag {
-  font-family: var(--sf-font-display); font-weight: 600; font-size: 0.65rem;
+  font-family: var(--sf-font-display); font-weight: 600; font-size: 0.72rem;
   letter-spacing: 0.35em; text-transform: uppercase; margin-bottom: 0.4rem;
 }
 .div-card.ent .dc-tag { color: var(--sf-ent); }
@@ -313,16 +327,35 @@ import Footer from '../components/Footer.astro';
   text-transform: uppercase; letter-spacing: 0.02em;
   color: var(--sf-text-primary); line-height: 1; margin-bottom: 0.6rem;
 }
-.dc-summary { font-size: 1rem; font-weight: 500; color: var(--sf-text-primary); line-height: 1.5; margin-bottom: 0.75rem; }
-.dc-desc { font-size: 0.93rem; font-weight: 300; color: var(--sf-text-secondary); line-height: 1.75; max-width: 620px; margin-bottom: 1.25rem; }
-.dc-pills { display: flex; flex-wrap: wrap; gap: 6px; }
-.pill {
-  font-family: var(--sf-font-display); font-weight: 600; font-size: 0.6rem;
-  letter-spacing: 0.14em; text-transform: uppercase; padding: 0.28rem 0.8rem; border-radius: 2px;
+.dc-desc {
+  font-size: 1rem; font-weight: 300;
+  color: var(--sf-text-secondary); line-height: 1.7;
+  max-width: 580px; margin-bottom: 1rem;
 }
-.div-card.ent .pill { background: var(--sf-ent-bg); color: var(--sf-ent-b); border: 1px solid rgba(192,57,43,0.2); }
-.div-card.sol .pill { background: var(--sf-sol-bg); color: var(--sf-sol-b); border: 1px solid rgba(46,109,164,0.2); }
-.div-card.con .pill { background: var(--sf-con-bg); color: var(--sf-con-b); border: 1px solid rgba(196,122,13,0.2); }
+.dc-checks {
+  list-style: none; padding: 0; margin: 0 0 1.25rem 0;
+  display: flex; flex-direction: column; gap: 0.3rem;
+}
+.dc-checks li {
+  font-size: 0.95rem; font-weight: 400;
+  color: var(--sf-text-secondary); line-height: 1.5;
+}
+.div-card.ent .dc-checks li { color: rgba(224,80,64,0.85); }
+.div-card.sol .dc-checks li { color: rgba(90,159,212,0.85); }
+.div-card.con .dc-checks li { color: rgba(232,160,48,0.85); }
+.dc-cta {
+  display: inline-block;
+  font-family: var(--sf-font-display); font-weight: 700;
+  font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 0.6rem 1.4rem; border: 1px solid;
+  transition: all 0.2s;
+}
+.ent-cta { border-color: var(--sf-ent); color: var(--sf-ent); }
+.sol-cta { border-color: var(--sf-sol); color: var(--sf-sol); }
+.con-cta { border-color: var(--sf-con); color: var(--sf-con); }
+.div-card.ent:hover .ent-cta { background: var(--sf-ent); color: #fff; }
+.div-card.sol:hover .sol-cta { background: var(--sf-sol); color: #fff; }
+.div-card.con:hover .con-cta { background: var(--sf-con); color: #fff; }
 .dc-arrow {
   display: flex; align-items: center; justify-content: center;
   font-size: 1.8rem; color: rgba(255,255,255,0.15);
@@ -332,12 +365,15 @@ import Footer from '../components/Footer.astro';
 .div-card.sol:hover .dc-arrow { transform: translateX(6px); color: var(--sf-sol-b); }
 .div-card.con:hover .dc-arrow { transform: translateX(6px); color: var(--sf-con-b); }
 
-/* ABOUT */
+/* ── ABOUT ── */
 .about {
   padding: 6rem var(--sf-pad); border-top: 1px solid var(--sf-border);
   display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
 }
-.about-text p { font-size: 1rem; font-weight: 300; color: var(--sf-text-secondary); line-height: 1.85; margin-bottom: 1.25rem; }
+.about-text p {
+  font-size: 1.05rem; font-weight: 300;
+  color: var(--sf-text-secondary); line-height: 1.8; margin-bottom: 1.25rem;
+}
 .about-text strong { color: var(--sf-text-primary); font-weight: 500; }
 .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--sf-border); align-content: start; }
 .stat { background: var(--sf-surface); padding: 2rem 1.75rem; }
@@ -347,9 +383,9 @@ import Footer from '../components/Footer.astro';
   color: var(--sf-rust); line-height: 1.1; margin-bottom: 0.75rem;
   text-transform: uppercase; letter-spacing: 0.02em;
 }
-.stat-lbl { font-size: 0.875rem; font-weight: 300; color: var(--sf-text-secondary); line-height: 1.65; }
+.stat-lbl { font-size: 0.95rem; font-weight: 300; color: var(--sf-text-secondary); line-height: 1.7; }
 
-/* CTA */
+/* ── CTA ── */
 .cta-band {
   margin: 0 var(--sf-pad) 6rem; padding: 3.5rem 4rem;
   background: var(--sf-surface); border-left: 5px solid var(--sf-rust);
@@ -361,10 +397,14 @@ import Footer from '../components/Footer.astro';
   font-family: var(--sf-font-display); font-weight: 900; font-size: 9rem;
   color: rgba(255,255,255,0.025); pointer-events: none; user-select: none;
 }
-.cta-title { font-family: var(--sf-font-display); font-weight: 900; font-size: clamp(1.4rem, 2.5vw, 2rem); text-transform: uppercase; color: var(--sf-text-primary); margin-bottom: 0.4rem; }
-.cta-sub { font-size: 0.95rem; font-weight: 300; color: var(--sf-text-secondary); }
+.cta-title {
+  font-family: var(--sf-font-display); font-weight: 900;
+  font-size: clamp(1.4rem, 2.5vw, 2rem); text-transform: uppercase;
+  color: var(--sf-text-primary); margin-bottom: 0.4rem;
+}
+.cta-sub { font-size: 1rem; font-weight: 300; color: var(--sf-text-secondary); line-height: 1.6; }
 
-/* RESPONSIVE */
+/* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .div-strip { grid-template-columns: 1fr; }
   .div-strip-tab { border-right: none; border-bottom: 1px solid var(--sf-border); }
@@ -375,31 +415,3 @@ import Footer from '../components/Footer.astro';
   .cta-band { flex-direction: column; align-items: flex-start; padding: 2.5rem 2rem; }
 }
 </style>
-
-<script>
-function fitWm() {
-  const txt  = document.getElementById('heroText');
-  const rule = document.getElementById('heroRule');
-  const ent  = document.getElementById('heroEnt');
-  if (!txt || !rule || !ent) return;
-  const w = txt.getBoundingClientRect().width;
-  if (w < 10) return;
-  rule.style.width = w + 'px';
-  rule.style.display = 'block';
-  ent.style.letterSpacing = '0.05em';
-  ent.style.width = 'auto';
-  ent.style.display = 'block';
-  requestAnimationFrame(() => {
-    const nw = ent.getBoundingClientRect().width;
-    const spacing = (w - nw) / 11;
-    ent.style.letterSpacing = spacing + 'px';
-    ent.style.width = w + 'px';
-  });
-}
-document.addEventListener('DOMContentLoaded', fitWm);
-window.addEventListener('load', fitWm);
-window.addEventListener('resize', fitWm);
-if (document.fonts?.ready) document.fonts.ready.then(() => { fitWm(); setTimeout(fitWm, 300); });
-setTimeout(fitWm, 600);
-setTimeout(fitWm, 1200);
-</script>
