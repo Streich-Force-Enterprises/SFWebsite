@@ -5,118 +5,66 @@ const year = new Date().getFullYear();
 
 <footer>
   <div class="footer-top">
-    <div class="footer-brand">
-      <a href="/" class="footer-logo">Streich<span>Force</span></a>
-      <p class="footer-tagline">Built to Work.</p>
+    <div class="footer-logo">
+      <span class="footer-logo-top">STREICH <span class="f">FORCE</span></span>
+      <div class="footer-logo-rule"></div>
+      <span class="footer-logo-sub">Enterprises &mdash; streichforce.com</span>
     </div>
     <div class="footer-nav">
-      <div class="footer-col">
-        <p class="footer-col-title">Divisions</p>
+      <div class="fcol">
+        <p class="fcol-title">Divisions</p>
         <ul>
+          <li><a href="/enterprise">Streich Force Enterprise</a></li>
           <li><a href="/solutions">Streich Force Solutions</a></li>
-          <li><a href="/containers">Container Sales</a></li>
-          <li><a href="/enterprise">Enterprise Repair & Fab</a></li>
+          <li><a href="/containers">Streich Force Containers</a></li>
         </ul>
       </div>
-      <div class="footer-col">
-        <p class="footer-col-title">Company</p>
+      <div class="fcol">
+        <p class="fcol-title">Contact</p>
         <ul>
-          <li><a href="/#about">About</a></li>
-          <li><a href="/#contact">Contact</a></li>
           <li><a href="mailto:info@streichforce.com">info@streichforce.com</a></li>
+          <li><a href="mailto:enterprise@streichforce.com">enterprise@streichforce.com</a></li>
+          <li><a href="mailto:solutions@streichforce.com">solutions@streichforce.com</a></li>
+          <li><a href="mailto:containers@streichforce.com">containers@streichforce.com</a></li>
         </ul>
       </div>
     </div>
   </div>
-  <div class="footer-bottom">
+  <div class="footer-bot">
     <p>&copy; {year} Streich Force Enterprises &mdash; streichforce.com</p>
     <p>All rights reserved.</p>
   </div>
 </footer>
 
 <style>
-  footer {
-    border-top: 1px solid var(--iron);
-    padding: 4rem var(--page-pad) 2rem;
-    margin-top: 4rem;
-  }
-
+  footer { padding: 3rem var(--sf-pad) 2rem; border-top: 1px solid var(--sf-border); }
   .footer-top {
-    display: flex;
-    justify-content: space-between;
-    gap: 4rem;
-    margin-bottom: 3rem;
-    flex-wrap: wrap;
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 3rem; margin-bottom: 2.5rem; flex-wrap: wrap;
   }
-
-  .footer-logo {
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: 1.4rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--white);
-    display: block;
-    margin-bottom: 0.5rem;
+  .footer-logo { display: flex; flex-direction: column; line-height: 1; gap: 0; }
+  .footer-logo-top {
+    font-family: var(--sf-font-display); font-weight: 900; font-size: 1rem;
+    letter-spacing: 0.07em; text-transform: uppercase; color: var(--sf-text-primary);
   }
-
-  .footer-logo span { color: var(--rust); }
-
-  .footer-tagline {
-    font-family: var(--font-display);
-    font-size: 0.75rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--mist);
+  .footer-logo-top .f { color: var(--sf-rust); }
+  .footer-logo-rule { height: 1.5px; background: var(--sf-rust); margin: 2px 0; }
+  .footer-logo-sub {
+    font-family: var(--sf-font-display); font-weight: 600; font-size: 0.42rem;
+    letter-spacing: 0.28em; text-transform: uppercase; color: var(--sf-text-muted);
   }
-
-  .footer-nav {
-    display: flex;
-    gap: 4rem;
+  .footer-nav { display: flex; gap: 4rem; flex-wrap: wrap; }
+  .fcol-title {
+    font-family: var(--sf-font-display); font-weight: 700; font-size: 0.62rem;
+    letter-spacing: 0.3em; text-transform: uppercase; color: var(--sf-rust); margin-bottom: 0.9rem;
   }
-
-  .footer-col-title {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 0.65rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--rust);
-    margin-bottom: 1rem;
+  .fcol ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .fcol a { font-size: 0.875rem; font-weight: 300; color: var(--sf-text-secondary); transition: color 0.2s; }
+  .fcol a:hover { color: var(--sf-text-primary); }
+  .footer-bot {
+    border-top: 1px solid var(--sf-border); padding-top: 1.25rem;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;
   }
-
-  .footer-col ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-  }
-
-  .footer-col a {
-    font-size: 0.875rem;
-    color: var(--mist);
-    transition: color 0.2s;
-  }
-
-  .footer-col a:hover { color: var(--white); }
-
-  .footer-bottom {
-    border-top: 1px solid var(--iron);
-    padding-top: 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .footer-bottom p {
-    font-size: 0.75rem;
-    color: var(--iron);
-    letter-spacing: 0.05em;
-  }
-
-  @media (max-width: 640px) {
-    .footer-nav { flex-direction: column; gap: 2rem; }
-    .footer-top { flex-direction: column; }
-  }
+  .footer-bot p { font-size: 0.72rem; color: var(--sf-text-muted); }
+  @media (max-width: 640px) { .footer-nav { gap: 2rem; } }
 </style>

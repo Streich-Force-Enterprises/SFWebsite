@@ -5,472 +5,401 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<BaseLayout title="Home" description="Streich Force Enterprises — Operational consulting, container sales, and specialized commercial repair and fabrication.">
+<BaseLayout title="Home">
   <Nav />
+
+  <!-- SITE STATUS BANNER -->
+  <div class="site-banner">
+    <div class="site-banner-inner">
+      <span class="site-banner-dot"></span>
+      <span class="site-banner-text">Site in progress &mdash; Full launch coming soon. Questions? <a href="mailto:info&#x40;streichforce.com">info&#x40;streichforce.com</a></span>
+    </div>
+  </div>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-grid-bg"></div>
-    <div class="hero-diagonal"></div>
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
     <div class="hero-content">
-      <p class="hero-eyebrow">Streich Force Enterprises &mdash; Multi-Division Operations</p>
-      <h1 class="hero-title">
-        Built to
-        <span class="force">Work.</span>
-      </h1>
-      <div class="hero-rule"></div>
+      <p class="hero-eyebrow">Streich Force Enterprises &mdash; streichforce.com</p>
+      <div class="hero-wm" id="heroWm">
+        <span class="hero-wm-text" id="heroText">STREICH <span class="f">FORCE</span></span>
+        <span class="hero-wm-rule" id="heroRule"></span>
+        <span class="hero-wm-ent" id="heroEnt">ENTERPRISES</span>
+      </div>
       <p class="hero-sub">
-        Operational consulting. Container sales. Specialized commercial repair and fabrication.
-        Three divisions. One standard of excellence.
+        On-demand industry expertise for your operations.<br />
+        <span class="hero-sub-dim">Specialized work. Delivered by years of experience.</span>
       </p>
     </div>
-    <div class="hero-scroll">Explore</div>
+    <div class="hero-scroll"><span>Scroll</span></div>
   </section>
+
+  <!-- DIVISION STRIP -->
+  <div class="div-strip">
+    <a href="/enterprise" class="div-strip-tab ent">
+      <div class="dst-dot"></div>
+      <span class="dst-label">01 &mdash; Enterprise</span>
+    </a>
+    <a href="/solutions" class="div-strip-tab sol">
+      <div class="dst-dot"></div>
+      <span class="dst-label">02 &mdash; Solutions</span>
+    </a>
+    <a href="/containers" class="div-strip-tab con">
+      <div class="dst-dot"></div>
+      <span class="dst-label">03 &mdash; Containers</span>
+    </a>
+  </div>
 
   <!-- DIVISIONS -->
   <section class="divisions" id="divisions">
-    <div class="section-header reveal">
-      <p class="section-label">Our Divisions</p>
-      <h2 class="section-title">Where Do You Need Us?</h2>
+    <div class="div-section-head">
+      <p class="div-section-eye">Our Divisions</p>
+      <h2 class="div-section-title">Where Do We Fit<br />In Your Business?</h2>
     </div>
+    <div class="div-cards">
 
-    <div class="division-grid">
-
-      <a href="/solutions" class="division-card reveal">
-        <div class="card-number">01</div>
-        <div class="card-body">
-          <p class="card-tag">Back-Office Operations</p>
-          <h3 class="card-title">Streich Force Solutions</h3>
-          <p class="card-desc">
-            An extension of your back office. We specialize in operational support for shipping container wholesalers and small businesses — handling the administrative, logistical, and process work that keeps your business moving so you don't have to.
-          </p>
-          <div class="card-tags">
-            <span class="tag-pill">Container Wholesalers</span>
-            <span class="tag-pill">Small Business</span>
-            <span class="tag-pill">Operations Consulting</span>
-            <span class="tag-pill">Back-Office Support</span>
+      <a href="/enterprise" class="div-card ent">
+        <div class="dc-bar"></div>
+        <div class="dc-num">01</div>
+        <div class="dc-body">
+          <p class="dc-tag">Division 01 &mdash; Specialized Repair &amp; Fabrication</p>
+          <h3 class="dc-title">Streich Force Enterprise</h3>
+          <p class="dc-summary">When standard contractors fall short, we step in.</p>
+          <p class="dc-desc">Specialized repair, custom fabrication, and site maintenance for pharmacies, retail chains, and commercial properties. Structural, technical, or one-of-a-kind &mdash; we build it, fix it, or improve it.</p>
+          <div class="dc-pills">
+            <span class="pill">Pharmacies &amp; Retail</span>
+            <span class="pill">Specialized Repair</span>
+            <span class="pill">Custom Fabrication</span>
           </div>
         </div>
-        <div class="card-arrow">→</div>
+        <div class="dc-arrow">&#8594;</div>
       </a>
 
-      <a href="/containers" class="division-card reveal">
-        <div class="card-number">02</div>
-        <div class="card-body">
-          <p class="card-tag">Shipping Container Sales</p>
-          <h3 class="card-title">Streich Force Containers</h3>
-          <p class="card-desc">
-            New and used shipping containers, sold direct. Whether you need on-site storage, a modification project, or bulk inventory — we source, sell, and deliver. Browse available units or reach out for a quote tailored to your specs.
-          </p>
-          <div class="card-tags">
-            <span class="tag-pill">20ft &amp; 40ft Units</span>
-            <span class="tag-pill">New &amp; Used</span>
-            <span class="tag-pill">Bulk Availability</span>
-            <span class="tag-pill">Direct Pricing</span>
+      <a href="/solutions" class="div-card sol">
+        <div class="dc-bar"></div>
+        <div class="dc-num">02</div>
+        <div class="dc-body">
+          <p class="dc-tag">Division 02 &mdash; Back-Office Operations</p>
+          <h3 class="dc-title">Streich Force Solutions</h3>
+          <p class="dc-summary">An extension of your back office.</p>
+          <p class="dc-desc">We become your dedicated operational team for container wholesalers and similar small businesses &mdash; managing inventory, purchasing, sales orders, invoicing, gate activity, and daily coordination. Powered by Triplemeter for real-time inventory and gate intelligence, plus our own simplified, industry-specific order management system that replaces spreadsheets, email chains, and disconnected tools.</p>
+          <div class="dc-pills">
+            <span class="pill">Inventory &amp; Gate Management</span>
+            <span class="pill">Order &amp; Sales Processing</span>
+            <span class="pill">Operations Support</span>
           </div>
         </div>
-        <div class="card-arrow">→</div>
+        <div class="dc-arrow">&#8594;</div>
       </a>
 
-      <a href="/enterprise" class="division-card reveal">
-        <div class="card-number">03</div>
-        <div class="card-body">
-          <p class="card-tag">Specialized Repair &amp; Fabrication</p>
-          <h3 class="card-title">Streich Force Enterprise</h3>
-          <p class="card-desc">
-            When the standard contractors can't solve it, we can. Specialized service and repair for commercial retail chains — pharmacies, jewelry stores, and high-volume retail — plus custom fabrication of cabinetry, countertops, compactor chutes, and wall access gates.
-          </p>
-          <div class="card-tags">
-            <span class="tag-pill">Commercial Retail</span>
-            <span class="tag-pill">Specialized Repair</span>
-            <span class="tag-pill">Custom Fabrication</span>
-            <span class="tag-pill">Compactor Chutes</span>
+      <a href="/containers" class="div-card con">
+        <div class="dc-bar"></div>
+        <div class="dc-num">03</div>
+        <div class="dc-body">
+          <p class="dc-tag">Division 03 &mdash; Shipping Container Sales</p>
+          <h3 class="dc-title">Streich Force Containers</h3>
+          <p class="dc-summary">Your direct source for shipping containers.</p>
+          <p class="dc-desc">New and used 20ft and 40ft units &mdash; standard and high-cube &mdash; for storage, job sites, or bulk wholesale. Straightforward pricing with delivery available.</p>
+          <div class="dc-pills">
+            <span class="pill">20ft &amp; 40ft</span>
+            <span class="pill">New &amp; Used</span>
+            <span class="pill">Bulk Pricing</span>
           </div>
         </div>
-        <div class="card-arrow">→</div>
+        <div class="dc-arrow">&#8594;</div>
       </a>
 
     </div>
   </section>
 
   <!-- ABOUT -->
-  <section class="about-strip" id="about">
-    <div class="about-left reveal">
-      <p class="section-label">About the Company</p>
-      <h2 class="about-title">Specialized Work.<br/>Real <em>Results.</em></h2>
-      <p class="about-text">
-        Streich Force Enterprises is a family-operated company built on deep industry expertise. From back-office consulting to container sales to hands-on commercial fabrication — we don't generalize. Every division is staffed by specialists who have spent years in their field.
-      </p>
-      <p class="about-text">
-        When a major pharmacy chain needs a repair that no one else can figure out, they call us. When a container wholesaler needs operational horsepower without adding headcount, they call us. We're the partner businesses reach for when the standard options don't cut it.
-      </p>
+  <section class="about" id="about">
+    <div>
+      <p class="div-section-eye">About Streich Force</p>
+      <h2 class="div-section-title" style="margin-bottom:2rem;">Deeply Specialized.<br />Built on Real Experience.</h2>
+      <div class="about-text">
+        <p><strong>We're not consultants. We're operators.</strong></p>
+        <p>Our company is run by people who have spent years doing the actual work &mdash; not just studying it. We understand the container industry, retail site maintenance, and back-office realities because we've lived them day in and day out.</p>
+        <p>We serve businesses that want results without overhead. No layers of management, no account reps who don't know your world. You deal directly with the people who actually do the work.</p>
+        <p>When container wholesalers need reliable back-office support, or when major retail chains need repairs and fabrication that no one else can figure out &mdash; they call us. That's not by accident.</p>
+      </div>
     </div>
-    <div class="about-right reveal">
-      <div class="stat-block">
-        <div class="stat-number">3</div>
-        <div class="stat-label">Specialized Divisions</div>
+    <div class="about-stats">
+      <div class="stat">
+        <div class="stat-val">Real-World<br />Experience</div>
+        <div class="stat-lbl">Years of hands-on work in the industries we serve &mdash; not theory, not consulting.</div>
       </div>
-      <div class="stat-block">
-        <div class="stat-number">B2B</div>
-        <div class="stat-label">Industry Focus</div>
+      <div class="stat">
+        <div class="stat-val">No<br />Overhead</div>
+        <div class="stat-lbl">You deal directly with the people doing the work. No account reps, no layers.</div>
       </div>
-      <div class="stat-block">
-        <div class="stat-number">100%</div>
-        <div class="stat-label">Family Operated</div>
-      </div>
-      <div class="stat-block">
-        <div class="stat-number">US</div>
-        <div class="stat-label">Based &amp; Operated</div>
+      <div class="stat full-width">
+        <div class="stat-val">Built for<br />Results</div>
+        <div class="stat-lbl">We measure success by what gets solved, delivered, and working &mdash; nothing else.</div>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <div class="cta-banner reveal" id="contact">
-    <div class="cta-text">
-      <h3 class="cta-title">Not Sure Which Division You Need?</h3>
-      <p class="cta-sub">Tell us what you're working on — we'll point you in the right direction.</p>
+  <div class="cta-band" id="contact">
+    <div>
+      <h3 class="cta-title">Got Something Specific in Mind?</h3>
+      <p class="cta-sub">Tell us what you need, and we'll help you find the right solution.</p>
     </div>
-    <a href="mailto:info@streichforce.com" class="btn-primary">Get In Touch</a>
+    <a href="mailto:info@streichforce.com" class="sf-btn-primary">Get In Touch</a>
   </div>
 
   <Footer />
 </BaseLayout>
 
 <style>
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 0 var(--page-pad) 6rem;
-    position: relative;
-    overflow: hidden;
-  }
+/* HERO */
+.hero {
+  height: 100vh; min-height: 600px;
+  display: flex; align-items: flex-end;
+  padding: 0 var(--sf-pad) 4.5rem;
+  position: relative; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background-image: url('/hero-bg.png');
+  background-size: cover; background-position: center right;
+  opacity: 0.28; filter: grayscale(20%) sepia(10%);
+}
+.hero-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    linear-gradient(to top, rgba(17,17,17,1) 0%, rgba(17,17,17,0.75) 30%, rgba(17,17,17,0.2) 60%, rgba(17,17,17,0.4) 100%),
+    linear-gradient(to right, rgba(17,17,17,0.5) 0%, transparent 55%);
+}
+.hero-grid {
+  position: absolute; inset: 0; z-index: 2;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+  background-size: 56px 56px;
+  animation: gridDrift 24s linear infinite;
+}
+@keyframes gridDrift { from{transform:translateY(0)} to{transform:translateY(56px)} }
+.hero-glow {
+  position: absolute; top: -20%; right: -10%; z-index: 2;
+  width: 50%; height: 80%;
+  background: radial-gradient(ellipse at top right, rgba(192,57,43,0.06), transparent 65%);
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 3; }
 
-  .hero-grid-bg {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(var(--grid-line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-    background-size: 60px 60px;
-    animation: gridShift 20s linear infinite;
-  }
+.hero-eyebrow {
+  font-family: var(--sf-font-display); font-weight: 600; font-size: 0.7rem;
+  letter-spacing: 0.38em; text-transform: uppercase; color: var(--sf-rust);
+  margin-bottom: 1.25rem;
+  opacity: 0; animation: sf-rise-up 0.7s ease forwards 0.2s;
+}
+.hero-wm { display: inline-block; }
+.hero-wm-text {
+  font-family: var(--sf-font-display); font-weight: 900;
+  font-size: clamp(3.5rem, 9vw, 9rem);
+  line-height: 0.88; letter-spacing: 0.01em; text-transform: uppercase;
+  color: var(--sf-text-primary); white-space: nowrap; display: block;
+  opacity: 0; animation: sf-rise-up 0.7s ease forwards 0.4s;
+}
+.hero-wm-text .f { color: var(--sf-rust); }
+.hero-wm-rule {
+  height: 4px; background: var(--sf-rust);
+  margin: 1rem 0 0.65rem; display: block;
+  opacity: 0; animation: sf-rise-up 0.7s ease forwards 0.6s;
+}
+.hero-wm-ent {
+  font-family: var(--sf-font-display); font-weight: 700;
+  font-size: clamp(0.55rem, 1.1vw, 0.9rem);
+  text-transform: uppercase; color: var(--sf-text-muted); display: block;
+  opacity: 0; animation: sf-rise-up 0.7s ease forwards 0.7s;
+}
+.hero-sub {
+  font-size: clamp(1rem, 1.5vw, 1.15rem); font-weight: 300;
+  color: var(--sf-text-secondary); line-height: 1.75; max-width: 520px; margin-top: 2rem;
+  opacity: 0; animation: sf-rise-up 0.7s ease forwards 0.85s;
+}
+.hero-sub-dim { font-size: 0.9em; color: var(--sf-text-muted); }
+.hero-scroll {
+  position: absolute; bottom: 2rem; right: var(--sf-pad); z-index: 3;
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  opacity: 0; animation: sf-fade-in 1s ease forwards 1.5s;
+}
+.hero-scroll span {
+  font-family: var(--sf-font-display); font-weight: 600; font-size: 0.62rem;
+  letter-spacing: 0.3em; text-transform: uppercase; color: var(--sf-text-muted); writing-mode: vertical-rl;
+}
+.hero-scroll::after {
+  content: ''; width: 1px; height: 44px;
+  background: linear-gradient(to bottom, var(--sf-rust), transparent);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
-  .hero-diagonal {
-    position: absolute;
-    top: -10%; right: -5%;
-    width: 45%; height: 120%;
-    background: linear-gradient(135deg, transparent 40%, rgba(192,57,43,0.06) 40%);
-    pointer-events: none;
-  }
+/* DIVISION STRIP */
+.div-strip {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  background: var(--sf-surface);
+  border-top: 1px solid var(--sf-border); border-bottom: 1px solid var(--sf-border);
+}
+.div-strip-tab {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 1.1rem var(--sf-pad); border-right: 1px solid var(--sf-border);
+  transition: background 0.2s; cursor: pointer;
+}
+.div-strip-tab:last-child { border-right: none; }
+.div-strip-tab:hover { background: var(--sf-card-hover); }
+.dst-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.div-strip-tab.ent .dst-dot { background: var(--sf-ent); }
+.div-strip-tab.sol .dst-dot { background: var(--sf-sol); }
+.div-strip-tab.con .dst-dot { background: var(--sf-con); }
+.dst-label {
+  font-family: var(--sf-font-display); font-weight: 700; font-size: 0.72rem;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--sf-text-secondary); transition: color 0.2s;
+}
+.div-strip-tab.ent:hover .dst-label { color: var(--sf-ent-b); }
+.div-strip-tab.sol:hover .dst-label { color: var(--sf-sol-b); }
+.div-strip-tab.con:hover .dst-label { color: var(--sf-con-b); }
 
-  @keyframes gridShift {
-    from { transform: translateY(0); }
-    to { transform: translateY(60px); }
-  }
+/* DIVISION CARDS */
+.divisions { padding: 5rem var(--sf-pad); }
+.div-section-head { margin-bottom: 3rem; }
+.div-section-eye {
+  font-family: var(--sf-font-display); font-weight: 600; font-size: 0.68rem;
+  letter-spacing: 0.4em; text-transform: uppercase; color: var(--sf-rust); margin-bottom: 0.6rem;
+}
+.div-section-title {
+  font-family: var(--sf-font-display); font-weight: 900;
+  font-size: clamp(2rem, 4vw, 3rem);
+  text-transform: uppercase; letter-spacing: 0.02em; color: var(--sf-text-primary); line-height: 1;
+}
+.div-cards { display: flex; flex-direction: column; gap: 3px; }
+.div-card {
+  display: grid; grid-template-columns: 6px 110px 1fr 60px;
+  align-items: center; background: var(--sf-surface);
+  transition: background 0.25s; min-height: 160px;
+}
+.div-card:hover { background: var(--sf-card-hover); }
+.dc-bar { height: 100%; min-height: 160px; }
+.div-card.ent .dc-bar { background: var(--sf-ent); }
+.div-card.sol .dc-bar { background: var(--sf-sol); }
+.div-card.con .dc-bar { background: var(--sf-con); }
+.dc-num {
+  font-family: var(--sf-font-display); font-weight: 900; font-size: 5.5rem;
+  line-height: 1; text-align: center; user-select: none;
+  transition: color 0.3s; padding: 2rem 0 2rem 1.5rem;
+}
+.div-card.ent .dc-num { color: rgba(192,57,43,0.12); }
+.div-card.sol .dc-num { color: rgba(46,109,164,0.12); }
+.div-card.con .dc-num { color: rgba(196,122,13,0.12); }
+.div-card.ent:hover .dc-num { color: rgba(192,57,43,0.22); }
+.div-card.sol:hover .dc-num { color: rgba(46,109,164,0.22); }
+.div-card.con:hover .dc-num { color: rgba(196,122,13,0.22); }
+.dc-body { padding: 2.5rem 2rem 2.5rem 1.5rem; }
+.dc-tag {
+  font-family: var(--sf-font-display); font-weight: 600; font-size: 0.65rem;
+  letter-spacing: 0.35em; text-transform: uppercase; margin-bottom: 0.4rem;
+}
+.div-card.ent .dc-tag { color: var(--sf-ent); }
+.div-card.sol .dc-tag { color: var(--sf-sol); }
+.div-card.con .dc-tag { color: var(--sf-con); }
+.dc-title {
+  font-family: var(--sf-font-display); font-weight: 900;
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+  text-transform: uppercase; letter-spacing: 0.02em;
+  color: var(--sf-text-primary); line-height: 1; margin-bottom: 0.6rem;
+}
+.dc-summary { font-size: 1rem; font-weight: 500; color: var(--sf-text-primary); line-height: 1.5; margin-bottom: 0.75rem; }
+.dc-desc { font-size: 0.93rem; font-weight: 300; color: var(--sf-text-secondary); line-height: 1.75; max-width: 620px; margin-bottom: 1.25rem; }
+.dc-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+.pill {
+  font-family: var(--sf-font-display); font-weight: 600; font-size: 0.6rem;
+  letter-spacing: 0.14em; text-transform: uppercase; padding: 0.28rem 0.8rem; border-radius: 2px;
+}
+.div-card.ent .pill { background: var(--sf-ent-bg); color: var(--sf-ent-b); border: 1px solid rgba(192,57,43,0.2); }
+.div-card.sol .pill { background: var(--sf-sol-bg); color: var(--sf-sol-b); border: 1px solid rgba(46,109,164,0.2); }
+.div-card.con .pill { background: var(--sf-con-bg); color: var(--sf-con-b); border: 1px solid rgba(196,122,13,0.2); }
+.dc-arrow {
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem; color: rgba(255,255,255,0.15);
+  transition: transform 0.3s, color 0.3s; padding-right: 1.5rem;
+}
+.div-card.ent:hover .dc-arrow { transform: translateX(6px); color: var(--sf-ent-b); }
+.div-card.sol:hover .dc-arrow { transform: translateX(6px); color: var(--sf-sol-b); }
+.div-card.con:hover .dc-arrow { transform: translateX(6px); color: var(--sf-con-b); }
 
-  .hero-content { position: relative; z-index: 1; }
+/* ABOUT */
+.about {
+  padding: 6rem var(--sf-pad); border-top: 1px solid var(--sf-border);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+}
+.about-text p { font-size: 1rem; font-weight: 300; color: var(--sf-text-secondary); line-height: 1.85; margin-bottom: 1.25rem; }
+.about-text strong { color: var(--sf-text-primary); font-weight: 500; }
+.about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--sf-border); align-content: start; }
+.stat { background: var(--sf-surface); padding: 2rem 1.75rem; }
+.stat.full-width { grid-column: 1 / -1; }
+.stat-val {
+  font-family: var(--sf-font-display); font-weight: 900; font-size: 1.6rem;
+  color: var(--sf-rust); line-height: 1.1; margin-bottom: 0.75rem;
+  text-transform: uppercase; letter-spacing: 0.02em;
+}
+.stat-lbl { font-size: 0.875rem; font-weight: 300; color: var(--sf-text-secondary); line-height: 1.65; }
 
-  .hero-eyebrow {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 0.75rem;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--rust);
-    margin-bottom: 1.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.2s;
-  }
+/* CTA */
+.cta-band {
+  margin: 0 var(--sf-pad) 6rem; padding: 3.5rem 4rem;
+  background: var(--sf-surface); border-left: 5px solid var(--sf-rust);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 2.5rem; flex-wrap: wrap; position: relative; overflow: hidden;
+}
+.cta-band::after {
+  content: 'SF'; position: absolute; right: 2rem; top: 50%; transform: translateY(-50%);
+  font-family: var(--sf-font-display); font-weight: 900; font-size: 9rem;
+  color: rgba(255,255,255,0.025); pointer-events: none; user-select: none;
+}
+.cta-title { font-family: var(--sf-font-display); font-weight: 900; font-size: clamp(1.4rem, 2.5vw, 2rem); text-transform: uppercase; color: var(--sf-text-primary); margin-bottom: 0.4rem; }
+.cta-sub { font-size: 0.95rem; font-weight: 300; color: var(--sf-text-secondary); }
 
-  .hero-title {
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: clamp(4rem, 10vw, 9rem);
-    line-height: 0.88;
-    text-transform: uppercase;
-    color: var(--white);
-    max-width: 900px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.4s;
-  }
-
-  .hero-title .force {
-    color: var(--rust);
-    display: block;
-  }
-
-  .hero-rule {
-    width: 80px; height: 3px;
-    background: var(--rust);
-    margin: 2.5rem 0;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.6s;
-  }
-
-  .hero-sub {
-    font-size: 1.1rem;
-    color: var(--mist);
-    max-width: 520px;
-    line-height: 1.7;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.8s;
-  }
-
-  .hero-scroll {
-    position: absolute;
-    bottom: 2.5rem; right: var(--page-pad);
-    font-family: var(--font-display);
-    font-size: 0.7rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--mist);
-    writing-mode: vertical-rl;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    opacity: 0;
-    animation: fadeIn 1s ease forwards 1.5s;
-    z-index: 1;
-  }
-
-  .hero-scroll::before {
-    content: '';
-    width: 1px; height: 60px;
-    background: linear-gradient(to bottom, var(--rust), transparent);
-    animation: scrollPulse 2s ease-in-out infinite;
-  }
-
-  @keyframes scrollPulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-  }
-
-  /* DIVISIONS */
-  .divisions {
-    padding: 8rem var(--page-pad);
-  }
-
-  .section-header { margin-bottom: 4rem; }
-
-  .division-grid {
-    display: grid;
-    gap: 2px;
-    background: var(--iron);
-  }
-
-  .division-card {
-    background: var(--charcoal);
-    padding: 3.5rem 4rem;
-    display: grid;
-    grid-template-columns: 80px 1fr auto;
-    align-items: start;
-    gap: 3rem;
-    position: relative;
-    overflow: hidden;
-    transition: background 0.3s;
-  }
-
-  .division-card::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 4px;
-    background: var(--rust);
-    transform: scaleY(0);
-    transform-origin: bottom;
-    transition: transform 0.4s ease;
-  }
-
-  .division-card:hover { background: var(--steel); }
-  .division-card:hover::before { transform: scaleY(1); }
-  .division-card:hover .card-arrow { transform: translateX(8px); color: var(--rust); }
-  .division-card:hover .card-number { color: rgba(192,57,43,0.2); }
-
-  .card-number {
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: 4rem;
-    line-height: 1;
-    color: var(--iron);
-    transition: color 0.3s;
-    user-select: none;
-  }
-
-  .card-tag {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 0.65rem;
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-    color: var(--rust);
-    margin-bottom: 0.75rem;
-  }
-
-  .card-title {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: clamp(1.6rem, 3vw, 2.4rem);
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    color: var(--white);
-    line-height: 1.05;
-    margin-bottom: 1.2rem;
-  }
-
-  .card-desc {
-    font-size: 0.95rem;
-    color: var(--mist);
-    line-height: 1.75;
-    max-width: 560px;
-  }
-
-  .card-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1.5rem;
-  }
-
-  .tag-pill {
-    font-family: var(--font-display);
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 0.3rem 0.8rem;
-    border: 1px solid var(--iron);
-    color: var(--mist);
-  }
-
-  .card-arrow {
-    font-size: 2rem;
-    color: var(--iron);
-    transition: transform 0.3s, color 0.3s;
-    align-self: center;
-  }
-
-  /* ABOUT */
-  .about-strip {
-    padding: 6rem var(--page-pad);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: center;
-    border-top: 1px solid var(--iron);
-  }
-
-  .about-title {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: clamp(2rem, 4vw, 3rem);
-    text-transform: uppercase;
-    color: var(--white);
-    line-height: 1.05;
-    margin-bottom: 2rem;
-  }
-
-  .about-title em { font-style: normal; color: var(--rust); }
-
-  .about-text {
-    font-size: 1rem;
-    color: var(--mist);
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
-  }
-
-  .about-right {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--iron);
-  }
-
-  .stat-block {
-    background: var(--charcoal);
-    padding: 2.5rem;
-  }
-
-  .stat-number {
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: 3rem;
-    color: var(--rust);
-    line-height: 1;
-    margin-bottom: 0.5rem;
-  }
-
-  .stat-label {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 0.7rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--mist);
-  }
-
-  /* CTA */
-  .cta-banner {
-    margin: 0 var(--page-pad) 6rem;
-    padding: 4rem;
-    background: var(--charcoal);
-    border-left: 4px solid var(--rust);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 3rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .cta-banner::before {
-    content: 'SFE';
-    position: absolute;
-    right: 2rem; top: 50%;
-    transform: translateY(-50%);
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: 12rem;
-    color: rgba(255,255,255,0.02);
-    pointer-events: none;
-    user-select: none;
-  }
-
-  .cta-title {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: clamp(1.5rem, 3vw, 2.2rem);
-    text-transform: uppercase;
-    color: var(--white);
-    margin-bottom: 0.5rem;
-  }
-
-  .cta-sub { font-size: 0.95rem; color: var(--mist); }
-
-  /* Animations */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  /* Responsive */
-  @media (max-width: 900px) {
-    .division-card {
-      grid-template-columns: 1fr;
-      padding: 2.5rem 2rem;
-      gap: 1.5rem;
-    }
-    .card-number { font-size: 2.5rem; }
-    .card-arrow { display: none; }
-    .about-strip { grid-template-columns: 1fr; gap: 3rem; padding: 4rem var(--page-pad); }
-    .cta-banner { flex-direction: column; align-items: flex-start; }
-  }
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .div-strip { grid-template-columns: 1fr; }
+  .div-strip-tab { border-right: none; border-bottom: 1px solid var(--sf-border); }
+  .div-card { grid-template-columns: 6px 1fr 40px; }
+  .dc-num { display: none; }
+  .dc-body { padding: 2rem 1.5rem; }
+  .about { grid-template-columns: 1fr; gap: 3rem; }
+  .cta-band { flex-direction: column; align-items: flex-start; padding: 2.5rem 2rem; }
+}
 </style>
+
+<script>
+function fitWm() {
+  const txt  = document.getElementById('heroText');
+  const rule = document.getElementById('heroRule');
+  const ent  = document.getElementById('heroEnt');
+  if (!txt || !rule || !ent) return;
+  const w = txt.getBoundingClientRect().width;
+  if (w < 10) return;
+  rule.style.width = w + 'px';
+  rule.style.display = 'block';
+  ent.style.letterSpacing = '0.05em';
+  ent.style.width = 'auto';
+  ent.style.display = 'block';
+  requestAnimationFrame(() => {
+    const nw = ent.getBoundingClientRect().width;
+    const spacing = (w - nw) / 11;
+    ent.style.letterSpacing = spacing + 'px';
+    ent.style.width = w + 'px';
+  });
+}
+document.addEventListener('DOMContentLoaded', fitWm);
+window.addEventListener('load', fitWm);
+window.addEventListener('resize', fitWm);
+if (document.fonts?.ready) document.fonts.ready.then(() => { fitWm(); setTimeout(fitWm, 300); });
+setTimeout(fitWm, 600);
+setTimeout(fitWm, 1200);
+</script>

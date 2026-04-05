@@ -1,31 +1,90 @@
-/* ============================================
-   STREICH FORCE — Global Design System
+/* ============================================================
+   STREICH FORCE ENTERPRISES — Global Design System
    streichforce.com
-   ============================================ */
+   Brand Version 1.0 — March 2026
+   ============================================================
 
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap');
+   TABLE OF CONTENTS
+   1. Brand Color Tokens
+   2. Division Accent Colors
+   3. Typography Tokens
+   4. Layout Tokens
+   5. Base Reset
+   6. Utility Classes
+   7. Animations
+   ============================================================ */
 
+/* ---- 1. BRAND COLOR TOKENS ---- */
 :root {
-  /* Colors */
-  --black:     #0a0a0a;
-  --charcoal:  #141414;
-  --steel:     #1e1e1e;
-  --iron:      #2a2a2a;
-  --rust:      #c0392b;
-  --rust-light:#e74c3c;
-  --amber:     #e67e22;
-  --bone:      #d4cfc7;
-  --mist:      #8a8480;
-  --white:     #f0ece6;
-  --grid-line: rgba(255,255,255,0.04);
+  /* Core Backgrounds */
+  --sf-black:       #111111;   /* Page background */
+  --sf-surface:     #181818;   /* Card / section background */
+  --sf-card-hover:  #222222;   /* Card hover state */
 
-  /* Typography */
-  --font-display: 'Barlow Condensed', sans-serif;
-  --font-body:    'Barlow', sans-serif;
+  /* Borders */
+  --sf-border:      rgba(255,255,255,0.07);   /* Subtle border */
+  --sf-border-md:   rgba(255,255,255,0.13);   /* Medium border */
 
-  /* Spacing */
-  --page-pad: clamp(1.5rem, 4vw, 3rem);
+  /* Text */
+  --sf-text-primary:   #F2EDE6;   /* Primary body text */
+  --sf-text-secondary: #A09890;   /* Secondary / muted text */
+  --sf-text-muted:     #5C5550;   /* Very muted — labels, eyebrows */
+
+  /* Brand Red — parent brand accent */
+  --sf-rust:     #C0392B;   /* Primary brand red */
+  --sf-rust-hot: #E04535;   /* Hover state red */
 }
+
+/* ---- 2. DIVISION ACCENT COLORS ---- */
+:root {
+  /* Enterprise — Specialized Repair & Fabrication */
+  --sf-ent:    #C0392B;               /* Same as brand rust — most prestigious division */
+  --sf-ent-b:  #E05040;               /* Bright hover */
+  --sf-ent-bg: rgba(192,57,43,0.09);  /* Tinted background */
+
+  /* Solutions — Back-Office Operations */
+  --sf-sol:    #2E6DA4;               /* Steel blue — professional, operational */
+  --sf-sol-b:  #5A9FD4;               /* Bright hover */
+  --sf-sol-bg: rgba(46,109,164,0.09); /* Tinted background */
+
+  /* Containers — Shipping Container Sales */
+  --sf-con:    #C47A0D;               /* Amber/iron — industrial, transactional */
+  --sf-con-b:  #E8A030;               /* Bright hover */
+  --sf-con-bg: rgba(196,122,13,0.09); /* Tinted background */
+}
+
+/* ---- 3. TYPOGRAPHY TOKENS ---- */
+:root {
+  /* Font Families */
+  --sf-font-display: 'Barlow Condensed', sans-serif;   /* All headings, labels, UI */
+  --sf-font-body:    'Barlow', sans-serif;              /* Body text, descriptions */
+
+  /*
+   * FONT WEIGHTS IN USE:
+   * Display: 600 (labels/eyebrows), 700 (subheadings), 800 (section titles), 900 (hero/major headings)
+   * Body:    300 (descriptions), 400 (base), 500 (summary/emphasis)
+   *
+   * GOOGLE FONTS IMPORT:
+   * @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap');
+   *
+   * TYPE SCALE:
+   * Hero title:       clamp(3.5rem, 9vw, 9rem)   — Barlow Condensed 900
+   * Section title:    clamp(2rem, 4vw, 3rem)      — Barlow Condensed 900
+   * Division title:   clamp(1.5rem, 2.5vw, 2.2rem)— Barlow Condensed 900
+   * Division summary: 1rem                         — Barlow 500
+   * Body text:        0.93–1rem                    — Barlow 300
+   * Eyebrow/label:    0.65–0.72rem                 — Barlow Condensed 600, letter-spacing: 0.35em
+   * Pills/tags:       0.6–0.65rem                  — Barlow Condensed 600/700
+   */
+}
+
+/* ---- 4. LAYOUT TOKENS ---- */
+:root {
+  --sf-pad: clamp(1.5rem, 5vw, 4rem);   /* Horizontal page padding — responsive */
+}
+
+/* ---- 5. BASE RESET ---- */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap');
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -36,97 +95,140 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--black);
-  color: var(--bone);
-  font-family: var(--font-body);
-  font-weight: 300;
+  background: var(--sf-black);
+  color: var(--sf-text-primary);
+  font-family: var(--sf-font-body);
+  font-weight: 400;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Noise texture overlay */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 1000;
-  opacity: 0.4;
-}
-
-img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; object-fit: cover; }
 
-/* Utility classes */
-.section-label {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 0.7rem;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  color: var(--rust);
-  margin-bottom: 1rem;
-}
+/* ---- 6. UTILITY CLASSES ---- */
 
-.section-title {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  color: var(--white);
-  line-height: 1;
-}
-
-.btn-primary {
-  font-family: var(--font-display);
+/* Buttons */
+.sf-btn-primary {
+  font-family: var(--sf-font-display);
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  padding: 1rem 2.5rem;
-  background: var(--rust);
-  color: var(--white);
+  padding: 1rem 2.25rem;
+  background: var(--sf-rust);
+  color: #fff;
   border: none;
   cursor: pointer;
-  display: inline-block;
-  transition: background 0.2s, transform 0.2s;
   white-space: nowrap;
+  display: inline-block;
+  transition: background 0.2s, transform 0.15s;
 }
-
-.btn-primary:hover {
-  background: var(--rust-light);
+.sf-btn-primary:hover {
+  background: var(--sf-rust-hot);
   transform: translateY(-2px);
 }
 
-.btn-ghost {
-  font-family: var(--font-display);
+.sf-btn-ghost {
+  font-family: var(--sf-font-display);
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  padding: 0.9rem 2.5rem;
+  padding: 0.9rem 2.25rem;
   background: transparent;
-  color: var(--bone);
-  border: 1px solid var(--iron);
+  color: var(--sf-text-primary);
+  border: 1px solid var(--sf-border-md);
   cursor: pointer;
+  white-space: nowrap;
   display: inline-block;
   transition: border-color 0.2s, color 0.2s;
-  white-space: nowrap;
+}
+.sf-btn-ghost:hover {
+  border-color: var(--sf-rust);
+  color: var(--sf-rust);
 }
 
-.btn-ghost:hover {
-  border-color: var(--rust);
-  color: var(--rust);
+/* Section eyebrow label */
+.sf-eyebrow {
+  font-family: var(--sf-font-display);
+  font-weight: 600;
+  font-size: 0.68rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--sf-rust);
+  margin-bottom: 0.75rem;
 }
 
-/* Reveal animation */
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+/* Section title */
+.sf-section-title {
+  font-family: var(--sf-font-display);
+  font-weight: 900;
+  font-size: clamp(2rem, 4vw, 3rem);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--sf-text-primary);
+  line-height: 1;
 }
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+
+/* Division pill/tag */
+.sf-pill {
+  font-family: var(--sf-font-display);
+  font-weight: 600;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.28rem 0.8rem;
+  border-radius: 2px;
+}
+
+/* ---- 7. ANIMATIONS ---- */
+@keyframes sf-rise-up {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes sf-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── SITE STATUS BANNER ── */
+.site-banner {
+  width: 100%;
+  background: #c0392b;
+  padding: .6rem var(--sf-pad);
+  z-index: 99;
+}
+.site-banner-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+.site-banner-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #fff;
+  flex-shrink: 0;
+  animation: pulse-dot 2s infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .4; }
+}
+.site-banner-text {
+  font-family: var(--sf-font-display);
+  font-weight: 600;
+  font-size: .72rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.92);
+}
+.site-banner-text a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }

@@ -1,338 +1,212 @@
 ---
-// src/pages/containers/index.astro
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 ---
 
 <BaseLayout
-  title="Container Sales"
-  description="Streich Force Containers: new and used shipping containers sold direct. 20ft, 40ft, bulk and single units."
-  division="containers"
+  title="Containers — Shipping Container Sales"
+  description="Your direct source for shipping containers. New and used 20ft and 40ft units with straightforward pricing — no middlemen, no markup games."
 >
   <Nav active="containers" />
 
-  <section class="division-hero">
-    <div class="hero-grid-bg"></div>
-    <div class="hero-content">
-      <p class="hero-eyebrow">Division 02 &mdash; Shipping Container Sales</p>
-      <h1 class="hero-title">Streich Force<br/><span class="accent">Containers</span></h1>
-      <div class="hero-rule"></div>
-      <p class="hero-sub">
-        Direct container sales — no middlemen, no markup games. New and used units, 20ft and 40ft, available for delivery or pickup.
-      </p>
-      <div class="hero-actions">
-        <a href="mailto:containers@streichforce.com" class="btn-primary">Request a Quote</a>
-        <a href="/#divisions" class="btn-ghost">All Divisions</a>
+  <!-- HERO -->
+  <section class="div-hero">
+    <div class="div-hero-bg"></div>
+    <div class="div-hero-inner">
+      <p class="sf-eyebrow con-eye">Division 03 &mdash; Shipping Container Sales</p>
+      <h1 class="div-hero-title">Your Direct Source for<br /><span class="con-accent">Shipping Containers</span></h1>
+      <p class="div-hero-sub">New and used 20ft and 40ft units sold direct. Straightforward pricing, no middlemen, and someone on the other end who actually knows what they're talking about.</p>
+      <div class="div-hero-cta">
+        <a href="mailto:containers&#x40;streichforce.com" class="btn-primary con-btn">Get a Quote</a>
+        <a href="#inventory" class="btn-ghost con-ghost">See What We Carry</a>
+      </div>
+    </div>
+    <div class="hero-accent-bar con-bar"></div>
+  </section>
+
+  <!-- WHY DIRECT -->
+  <section class="div-why">
+    <div class="div-inner">
+      <p class="sf-eyebrow con-eye">Why Buy Direct</p>
+      <h2 class="div-section-title">No Middlemen. No Markup Games.<br />Just Containers.</h2>
+      <div class="why-cards">
+        <div class="why-card">
+          <div class="why-num con-num">01</div>
+          <h3 class="why-title">Industry Knowledge</h3>
+          <p class="why-body">We come from the container wholesale industry. We know the grades, the depots, the logistics, and the right questions to ask before you commit to a purchase.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-num con-num">02</div>
+          <h3 class="why-title">Straight Answers</h3>
+          <p class="why-body">You'll get a direct conversation about what you're buying and what it costs. No runaround, no upsell, no waiting three days for a quote.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-num con-num">03</div>
+          <h3 class="why-title">Bulk Pricing Available</h3>
+          <p class="why-body">Whether you need one container or a full yard of inventory, we can work with you on pricing. Single units and bulk wholesale both welcome.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- UNITS -->
-  <section class="content-section">
-    <div class="reveal">
-      <p class="section-label">Available Units</p>
-      <h2 class="section-title">What We Sell</h2>
-    </div>
-    <div class="units-grid reveal">
-      <div class="unit-card">
-        <p class="unit-size">20ft</p>
-        <h3>Standard</h3>
-        <ul>
-          <li>160 sq ft of storage</li>
-          <li>New &amp; CWO used available</li>
-          <li>Wind &amp; watertight certified</li>
-          <li>Ideal for storage &amp; small projects</li>
-        </ul>
-        <a href="mailto:containers@streichforce.com?subject=20ft Container Quote" class="btn-ghost">Get Quote</a>
-      </div>
-      <div class="unit-card featured">
-        <p class="unit-tag">Most Popular</p>
-        <p class="unit-size">40ft</p>
-        <h3>Standard &amp; High Cube</h3>
-        <ul>
-          <li>320 sq ft of storage</li>
-          <li>High cube option: extra 1ft height</li>
-          <li>New &amp; used grades available</li>
-          <li>Ideal for large storage &amp; modification</li>
-        </ul>
-        <a href="mailto:containers@streichforce.com?subject=40ft Container Quote" class="btn-primary">Get Quote</a>
-      </div>
-      <div class="unit-card">
-        <p class="unit-size">Bulk</p>
-        <h3>Wholesale / Fleet</h3>
-        <ul>
-          <li>Multiple unit orders</li>
-          <li>Mixed size availability</li>
-          <li>Wholesale pricing tiers</li>
-          <li>Ideal for dealers &amp; yards</li>
-        </ul>
-        <a href="mailto:containers@streichforce.com?subject=Bulk Container Inquiry" class="btn-ghost">Inquire</a>
+  <!-- INVENTORY -->
+  <section class="div-inventory" id="inventory">
+    <div class="div-inner">
+      <p class="sf-eyebrow con-eye">What We Carry</p>
+      <h2 class="div-section-title">Container Inventory</h2>
+      <div class="inv-grid">
+
+        <div class="inv-item">
+          <div class="inv-header con-header">
+            <span class="inv-size">20ft</span>
+            <span class="inv-type">Standard</span>
+          </div>
+          <div class="inv-body">
+            <div class="inv-spec"><span class="spec-label">Interior Length</span><span class="spec-val">19'4"</span></div>
+            <div class="inv-spec"><span class="spec-label">Interior Width</span><span class="spec-val">7'8"</span></div>
+            <div class="inv-spec"><span class="spec-label">Interior Height</span><span class="spec-val">7'10"</span></div>
+            <div class="inv-spec"><span class="spec-label">Capacity</span><span class="spec-val">~1,172 cu ft</span></div>
+            <p class="inv-desc">The most common size. Ideal for storage, job sites, residential use, and single-location businesses.</p>
+            <div class="inv-conditions">
+              <span class="condition-tag con-tag">New / One-Trip</span>
+              <span class="condition-tag con-tag">WWT</span>
+              <span class="condition-tag con-tag">CWO</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="inv-item">
+          <div class="inv-header con-header">
+            <span class="inv-size">40ft</span>
+            <span class="inv-type">Standard</span>
+          </div>
+          <div class="inv-body">
+            <div class="inv-spec"><span class="spec-label">Interior Length</span><span class="spec-val">39'5"</span></div>
+            <div class="inv-spec"><span class="spec-label">Interior Width</span><span class="spec-val">7'8"</span></div>
+            <div class="inv-spec"><span class="spec-label">Interior Height</span><span class="spec-val">7'10"</span></div>
+            <div class="inv-spec"><span class="spec-label">Capacity</span><span class="spec-val">~2,390 cu ft</span></div>
+            <p class="inv-desc">Double the space of a 20ft. Best for larger storage needs, commercial operations, and multi-use applications.</p>
+            <div class="inv-conditions">
+              <span class="condition-tag con-tag">New / One-Trip</span>
+              <span class="condition-tag con-tag">WWT</span>
+              <span class="condition-tag con-tag">CWO</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="inv-item">
+          <div class="inv-header con-header">
+            <span class="inv-size">40ft</span>
+            <span class="inv-type">High-Cube</span>
+          </div>
+          <div class="inv-body">
+            <div class="inv-spec"><span class="spec-label">Interior Length</span><span class="spec-val">39'5"</span></div>
+            <div class="inv-spec"><span class="spec-label">Interior Width</span><span class="spec-val">7'8"</span></div>
+            <div class="inv-spec"><span class="spec-label">Interior Height</span><span class="spec-val">8'10"</span></div>
+            <div class="inv-spec"><span class="spec-label">Capacity</span><span class="spec-val">~2,694 cu ft</span></div>
+            <p class="inv-desc">One foot taller than standard. Preferred for modification projects, pop-ups, and applications where ceiling height matters.</p>
+            <div class="inv-conditions">
+              <span class="condition-tag con-tag">New / One-Trip</span>
+              <span class="condition-tag con-tag">WWT</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- WHY US -->
-  <section class="why-section">
-    <div class="why-inner reveal">
-      <p class="section-label">Why Streich Force</p>
-      <h2 class="section-title">Direct. Simple. Delivered.</h2>
-    </div>
-    <div class="why-grid reveal">
-      <div class="why-block">
-        <span class="why-num">01</span>
-        <h3>Industry Insiders</h3>
-        <p>We come from the container wholesale industry. We know the grades, the depots, the logistics — and we'll give you straight talk on what you're buying.</p>
-      </div>
-      <div class="why-block">
-        <span class="why-num">02</span>
-        <h3>Transparent Pricing</h3>
-        <p>No bait-and-switch, no mystery fees. You'll know what you're paying and why before any commitment is made.</p>
-      </div>
-      <div class="why-block">
-        <span class="why-num">03</span>
-        <h3>Delivery Coordination</h3>
-        <p>We handle logistics from our end. Whether you need drop-off at a residence, a job site, or a commercial yard — we get it there.</p>
+  <!-- CONDITION GUIDE -->
+  <section class="div-grades">
+    <div class="div-inner">
+      <p class="sf-eyebrow con-eye">Know What You're Buying</p>
+      <h2 class="div-section-title">Container Condition Guide</h2>
+      <p class="grades-intro">Not every container is the same. Here's what the grades mean — so you can make the right call for your use case.</p>
+      <div class="grades-grid">
+        <div class="grade-item">
+          <span class="grade-label con-label">New / One-Trip</span>
+          <p class="grade-desc">Made one trip from the manufacturer, typically loaded with goods from Asia. Essentially new condition — minimal wear, no rust, tight doors. Best for modification projects and premium applications.</p>
+        </div>
+        <div class="grade-item">
+          <span class="grade-label con-label">WWT — Wind &amp; Watertight</span>
+          <p class="grade-desc">Used containers that have been inspected and certified to keep out wind and water. Some cosmetic wear, dents, and surface rust are normal. Solid for storage and most commercial applications.</p>
+        </div>
+        <div class="grade-item">
+          <span class="grade-label con-label">CWO — Cargo Worthy</span>
+          <p class="grade-desc">Certified to carry cargo internationally. Must pass a structural and watertight inspection. Ideal for buyers who need to move product or re-enter the shipping trade.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <div class="cta-banner reveal">
-    <div class="cta-text">
-      <h3 class="cta-title">Ready to Buy or Just Exploring?</h3>
-      <p class="cta-sub">Drop us a line with your specs and we'll get back to you with availability and pricing.</p>
+  <section class="div-cta">
+    <div class="div-inner div-inner-center">
+      <div class="cta-rule con-bar"></div>
+      <h2 class="cta-title">Looking for containers?<br />Let's talk.</h2>
+      <p class="cta-sub">Tell us what you need — size, condition, quantity, and delivery location. We'll get back to you with availability and straightforward pricing.</p>
+      <a href="mailto:containers&#x40;streichforce.com" class="btn-primary con-btn">containers&#x40;streichforce.com</a>
+      <p class="cta-phone">Or call directly: <a href="tel:6024050031" class="con-link">602-405-0031</a></p>
     </div>
-    <a href="mailto:containers@streichforce.com" class="btn-primary">Request a Quote</a>
-  </div>
+  </section>
 
   <Footer />
 </BaseLayout>
 
 <style>
-  .division-hero {
-    min-height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 0 var(--page-pad) 6rem;
-    position: relative;
-    overflow: hidden;
-    border-bottom: 1px solid var(--iron);
-  }
-
-  .hero-grid-bg {
-    position: absolute; inset: 0;
-    background-image:
-      linear-gradient(var(--grid-line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-    background-size: 60px 60px;
-    animation: gridShift 20s linear infinite;
-  }
-
-  @keyframes gridShift {
-    from { transform: translateY(0); }
-    to { transform: translateY(60px); }
-  }
-
-  .hero-content { position: relative; z-index: 1; }
-
-  .hero-eyebrow {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 0.75rem;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--rust);
-    margin-bottom: 1.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.2s;
-  }
-
-  .hero-title {
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: clamp(3rem, 8vw, 7rem);
-    line-height: 0.9;
-    text-transform: uppercase;
-    color: var(--white);
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.4s;
-  }
-
-  .hero-title .accent { color: var(--rust); }
-
-  .hero-rule {
-    width: 80px; height: 3px;
-    background: var(--rust);
-    margin: 2rem 0;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.6s;
-  }
-
-  .hero-sub {
-    font-size: 1.1rem;
-    color: var(--mist);
-    max-width: 520px;
-    line-height: 1.7;
-    margin-bottom: 2.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.8s;
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 1s;
-  }
-
-  /* UNITS */
-  .content-section { padding: 7rem var(--page-pad); }
-
-  .units-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    background: var(--iron);
-    margin-top: 3rem;
-  }
-
-  .unit-card {
-    background: var(--charcoal);
-    padding: 3rem 2.5rem;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .unit-card.featured {
-    background: var(--steel);
-    border-top: 3px solid var(--rust);
-  }
-
-  .unit-tag {
-    font-family: var(--font-display);
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--rust);
-  }
-
-  .unit-size {
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: 3.5rem;
-    line-height: 1;
-    color: var(--white);
-  }
-
-  .unit-card h3 {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--mist);
-  }
-
-  .unit-card ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    flex: 1;
-    margin: 0.5rem 0;
-  }
-
-  .unit-card li {
-    font-size: 0.875rem;
-    color: var(--mist);
-    padding-left: 1rem;
-    position: relative;
-  }
-
-  .unit-card li::before {
-    content: '—';
-    position: absolute;
-    left: 0;
-    color: var(--rust);
-    font-size: 0.7rem;
-  }
-
-  /* WHY */
-  .why-section {
-    padding: 6rem var(--page-pad);
-    border-top: 1px solid var(--iron);
-  }
-
-  .why-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 4rem;
-    margin-top: 3rem;
-  }
-
-  .why-num {
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: 2.5rem;
-    color: var(--iron);
-    display: block;
-    margin-bottom: 1rem;
-  }
-
-  .why-block h3 {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--white);
-    margin-bottom: 0.75rem;
-  }
-
-  .why-block p {
-    font-size: 0.9rem;
-    color: var(--mist);
-    line-height: 1.75;
-  }
-
-  /* CTA */
-  .cta-banner {
-    margin: 0 var(--page-pad) 6rem;
-    padding: 4rem;
-    background: var(--charcoal);
-    border-left: 4px solid var(--rust);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 3rem;
-    flex-wrap: wrap;
-  }
-
-  .cta-title {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: clamp(1.4rem, 3vw, 2rem);
-    text-transform: uppercase;
-    color: var(--white);
-    margin-bottom: 0.5rem;
-  }
-
-  .cta-sub { font-size: 0.95rem; color: var(--mist); }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @media (max-width: 900px) {
-    .units-grid { grid-template-columns: 1fr; }
-    .why-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .cta-banner { flex-direction: column; align-items: flex-start; }
-  }
+.div-hero { position:relative;padding:9rem var(--sf-pad) 7rem;background:var(--sf-black);overflow:hidden; }
+.div-hero-bg { position:absolute;inset:0;background:url('/hero-bg.png') center/cover no-repeat;opacity:.08;pointer-events:none; }
+.hero-accent-bar { position:absolute;bottom:0;left:0;right:0;height:4px; }
+.con-bar { background:var(--sf-con); }
+.div-hero-inner { position:relative;z-index:1;max-width:900px; }
+.con-eye { color:var(--sf-con-b); }
+.div-hero-title { font-family:var(--sf-font-display);font-weight:900;font-size:clamp(2.8rem,7vw,6rem);text-transform:uppercase;color:var(--sf-text-primary);line-height:1;margin:1rem 0 1.5rem; }
+.con-accent { color:var(--sf-con); }
+.div-hero-sub { font-size:1.05rem;color:var(--sf-text-secondary);max-width:640px;line-height:1.8;margin-bottom:2.5rem; }
+.div-hero-cta { display:flex;gap:1rem;flex-wrap:wrap; }
+.btn-primary { display:inline-block;font-family:var(--sf-font-display);font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;padding:.9rem 2rem;text-decoration:none;transition:background .2s; }
+.con-btn { background:var(--sf-con);color:#fff; }
+.con-btn:hover { background:var(--sf-con-b); }
+.btn-ghost { display:inline-block;font-family:var(--sf-font-display);font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;padding:.9rem 2rem;text-decoration:none;border:1px solid rgba(255,255,255,.2);color:var(--sf-text-secondary);transition:all .2s; }
+.con-ghost:hover { border-color:var(--sf-con);color:var(--sf-con); }
+.div-inner { max-width:1200px;margin:0 auto; }
+.div-inner-center { text-align:center; }
+.div-section-title { font-family:var(--sf-font-display);font-weight:900;font-size:clamp(2rem,5vw,3.5rem);text-transform:uppercase;color:var(--sf-text-primary);margin:.75rem 0 3rem; }
+.div-why { padding:6rem var(--sf-pad);background:var(--sf-surface); }
+.why-cards { display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px; }
+.why-card { background:var(--sf-black);padding:2.5rem; }
+.why-num { font-family:var(--sf-font-display);font-weight:900;font-size:3.5rem;line-height:1;margin-bottom:1rem; }
+.con-num { color:var(--sf-con);opacity:.3; }
+.why-title { font-family:var(--sf-font-display);font-weight:700;font-size:1rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sf-text-primary);margin-bottom:.75rem; }
+.why-body { font-size:.92rem;color:var(--sf-text-secondary);line-height:1.8; }
+.div-inventory { padding:6rem var(--sf-pad);background:var(--sf-black); }
+.inv-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2px; }
+.inv-item { background:var(--sf-surface);overflow:hidden; }
+.inv-header { padding:1.5rem 2rem;display:flex;align-items:baseline;gap:1rem; }
+.con-header { background:var(--sf-con); }
+.inv-size { font-family:var(--sf-font-display);font-weight:900;font-size:2rem;color:#fff; }
+.inv-type { font-family:var(--sf-font-display);font-weight:600;font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.75); }
+.inv-body { padding:1.75rem 2rem 2rem; }
+.inv-spec { display:flex;justify-content:space-between;padding:.4rem 0;border-bottom:1px solid rgba(255,255,255,.05); }
+.spec-label { font-size:.82rem;color:var(--sf-text-muted); }
+.spec-val { font-family:var(--sf-font-display);font-weight:700;font-size:.82rem;color:var(--sf-text-primary); }
+.inv-desc { font-size:.88rem;color:var(--sf-text-secondary);line-height:1.75;margin:1.25rem 0 1rem; }
+.inv-conditions { display:flex;flex-wrap:wrap;gap:.5rem; }
+.condition-tag { font-family:var(--sf-font-display);font-weight:600;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;padding:.3rem .75rem;border:1px solid; }
+.con-tag { border-color:var(--sf-con);color:var(--sf-con); }
+.div-grades { padding:6rem var(--sf-pad);background:var(--sf-surface); }
+.grades-intro { font-size:1rem;color:var(--sf-text-secondary);line-height:1.8;margin-bottom:2.5rem;max-width:700px; }
+.grades-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px; }
+.grade-item { background:var(--sf-black);padding:2rem; }
+.grade-label { display:block;font-family:var(--sf-font-display);font-weight:700;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem; }
+.con-label { color:var(--sf-con-b); }
+.grade-desc { font-size:.9rem;color:var(--sf-text-secondary);line-height:1.8; }
+.div-cta { padding:7rem var(--sf-pad);background:var(--sf-black); }
+.cta-rule { width:48px;height:4px;margin:0 auto 2.5rem; }
+.cta-title { font-family:var(--sf-font-display);font-weight:900;font-size:clamp(1.8rem,4vw,3rem);text-transform:uppercase;color:var(--sf-text-primary);line-height:1.1;margin-bottom:1.25rem; }
+.cta-sub { font-size:1rem;color:var(--sf-text-secondary);line-height:1.75;margin-bottom:2.5rem;max-width:600px;margin-left:auto;margin-right:auto; }
+.cta-phone { margin-top:1.5rem;font-size:.9rem;color:var(--sf-text-muted); }
+.con-link { color:var(--sf-con-b);text-decoration:none; }
+.con-link:hover { text-decoration:underline; }
 </style>

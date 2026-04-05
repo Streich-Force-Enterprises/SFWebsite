@@ -1,106 +1,91 @@
-# StreichForce — streichforce.com
+# Streich Force Enterprises — streichforce.com
 ## Astro + Netlify Website
+
+### Quick Start
+
+```bash
+npm install
+npm run dev        # http://localhost:4321
+npm run build      # production build → dist/
+npm run preview    # preview production build
+```
+
+---
+
+### Push to GitHub
+
+```bash
+cd streichforce
+git init
+git add .
+git commit -m "Initial Streich Force site — homepage complete"
+git branch -M main
+git remote add origin https://github.com/YOUR_USERNAME/streichforce.git
+git push -u origin main
+```
+
+---
+
+### Deploy to Netlify
+
+1. Go to [netlify.com](https://netlify.com) → **Add new site** → **Import from Git**
+2. Select your `streichforce` GitHub repo
+3. Netlify auto-detects `netlify.toml` — no config needed
+4. Click **Deploy site**
+
+**Connect streichforce.com:**
+- Netlify → Site settings → Domain management → Add custom domain
+- Enter `streichforce.com`
+- Update DNS at your registrar: point A record to Netlify's IP (shown in dashboard)
+- SSL auto-provisions via Let's Encrypt
+
+---
 
 ### Project Structure
 
 ```
 src/
 ├── pages/
-│   ├── index.astro              ← Homepage (hub)
-│   ├── solutions/index.astro    ← Streich Force Solutions
-│   ├── containers/index.astro   ← Container Sales
-│   └── enterprise/index.astro  ← Repair & Fabrication
+│   ├── index.astro              ← Homepage (hub) — COMPLETE
+│   ├── enterprise/index.astro  ← Enterprise division — stub, ready to build
+│   ├── solutions/index.astro   ← Solutions division — stub, ready to build
+│   └── containers/index.astro  ← Containers division — stub, ready to build
 ├── components/
-│   ├── Nav.astro                ← Site navigation
-│   └── Footer.astro             ← Site footer
+│   ├── Nav.astro               ← Site navigation with mobile menu
+│   └── Footer.astro            ← Site footer
 ├── layouts/
-│   └── BaseLayout.astro         ← HTML shell, SEO meta tags
+│   └── BaseLayout.astro        ← HTML shell, favicon, SEO meta, Open Graph
 └── styles/
-    └── global.css               ← Design tokens & utilities
+    └── global.css              ← All brand tokens as CSS variables
+
+public/
+├── favicon.svg                 ← SF monogram favicon
+└── hero-bg.png                 ← Homepage hero background image
 ```
 
 ---
 
-### Getting Started (Local Dev)
+### Brand Color Quick Reference
 
-**Prerequisites:** Node.js 18 or 20
+| Token | Value | Use |
+|---|---|---|
+| `--sf-rust` | `#C0392B` | Brand red — logo, CTAs, accents |
+| `--sf-ent` | `#C0392B` | Enterprise division |
+| `--sf-sol` | `#2E6DA4` | Solutions division |
+| `--sf-con` | `#C47A0D` | Containers division |
+| `--sf-text-primary` | `#F2EDE6` | Main text |
+| `--sf-black` | `#111111` | Page background |
 
-```bash
-# Install dependencies
-npm install
-
-# Start dev server (http://localhost:4321)
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build locally
-npm run preview
-```
+Full brand documentation: `StreichForce_Brand_Guidelines.docx`
 
 ---
 
-### Deploying to Netlify
-
-#### Option A — Connect GitHub (Recommended)
-1. Push this project to a GitHub repo
-2. Go to [netlify.com](https://netlify.com) → **Add new site** → **Import from Git**
-3. Select your repo
-4. Netlify auto-detects the `netlify.toml` — no config needed
-5. Click **Deploy**
-
-#### Option B — Netlify CLI
-```bash
-npm install -g netlify-cli
-netlify deploy --prod --dir=dist
-```
-
----
-
-### Connecting Your Domain (streichforce.com)
-1. In Netlify: **Site settings** → **Domain management** → **Add custom domain**
-2. Enter `streichforce.com`
-3. In your domain registrar's DNS settings, point:
-   - **A record** → Netlify's load balancer IP (shown in Netlify dashboard)
-   - Or set nameservers to Netlify's nameservers for full DNS management
-4. Netlify provisions SSL automatically via Let's Encrypt
-
----
-
-### Email Addresses Used
-Update these throughout if your actual email addresses differ:
-- `info@streichforce.com` — General contact (homepage)
-- `solutions@streichforce.com` — Solutions division
-- `containers@streichforce.com` — Container sales
-- `enterprise@streichforce.com` — Repair & fabrication
-
-Consider setting up email forwarding through your domain registrar to route these to your actual inbox.
-
----
-
-### Customization Checklist
-- [ ] Replace placeholder copy with real services/details
-- [ ] Add real photos (drop in `public/` folder, reference as `/your-image.jpg`)
-- [ ] Update stats on homepage (years in business, projects completed, etc.)
-- [ ] Add a real contact form (consider Netlify Forms — free, zero config)
-- [ ] Set up Google Analytics or Fathom in `BaseLayout.astro`
-- [ ] Add favicon (`public/favicon.svg`)
-
----
-
-### Adding a Contact Form (Netlify Forms — Free)
-Add this to any page to get form submissions in your Netlify dashboard:
-
-```html
-<form name="contact" method="POST" data-netlify="true">
-  <input type="hidden" name="form-name" value="contact" />
-  <input type="text" name="name" placeholder="Your Name" required />
-  <input type="email" name="email" placeholder="Email" required />
-  <textarea name="message" placeholder="What do you need?" required></textarea>
-  <button type="submit">Send</button>
-</form>
-```
+### Next Steps (Division Pages)
+- [ ] Build out `/enterprise` page with photo gallery
+- [ ] Build out `/solutions` page with Triplemeter integration details
+- [ ] Build out `/containers` page with inventory/quote request
+- [ ] Add Netlify Forms to contact CTA
+- [ ] Connect `streichforce.com` domain in Netlify
 
 ---
 

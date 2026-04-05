@@ -3,48 +3,40 @@
 export interface Props {
   title: string;
   description?: string;
-  division?: 'solutions' | 'containers' | 'enterprise' | 'home';
 }
-
 const {
   title,
-  description = 'Streich Force Enterprises — Operational consulting, container sales, and specialized commercial repair and fabrication.',
-  division = 'home'
+  description = 'Streich Force Enterprises — On-demand industry expertise for your operations. Specialized repair, container sales, and back-office support.',
 } = Astro.props;
 ---
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
-  <title>{title} | StreichForce</title>
+  <title>{title} | Streich Force Enterprises</title>
+
+  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Canonical -->
   <link rel="canonical" href={`https://streichforce.com${Astro.url.pathname}`} />
 
   <!-- Open Graph -->
-  <meta property="og:title" content={`${title} | StreichForce`} />
+  <meta property="og:title"       content={`${title} | Streich Force Enterprises`} />
   <meta property="og:description" content={description} />
-  <meta property="og:url" content={`https://streichforce.com${Astro.url.pathname}`} />
-  <meta property="og:type" content="website" />
+  <meta property="og:url"         content={`https://streichforce.com${Astro.url.pathname}`} />
+  <meta property="og:type"        content="website" />
+  <meta property="og:image"       content="https://streichforce.com/hero-bg.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
 </head>
 <body>
   <slot />
-
-  <script>
-    // Scroll reveal for all pages
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    reveals.forEach(el => observer.observe(el));
-  </script>
 </body>
 </html>
 

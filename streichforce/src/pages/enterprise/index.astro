@@ -1,5 +1,4 @@
 ---
-// src/pages/enterprise/index.astro
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
@@ -7,382 +6,167 @@ import Footer from '../../components/Footer.astro';
 
 <BaseLayout
   title="Enterprise — Specialized Repair & Fabrication"
-  description="Streich Force Enterprise: specialized commercial repair and custom fabrication for retail chains, pharmacies, and commercial properties. The call you make when no one else can solve it."
-  division="enterprise"
+  description="When standard contractors fall short, we step in. Specialized repair, custom fabrication, and site maintenance for pharmacies, retail chains, and commercial properties."
 >
   <Nav active="enterprise" />
 
-  <section class="division-hero">
-    <div class="hero-grid-bg"></div>
-    <div class="hero-content">
-      <p class="hero-eyebrow">Division 03 &mdash; Specialized Repair &amp; Fabrication</p>
-      <h1 class="hero-title">Streich Force<br/><span class="accent">Enterprise</span></h1>
-      <div class="hero-rule"></div>
-      <p class="hero-sub">
-        When no one else can figure it out — this is the call you make. Specialized repair and custom fabrication for commercial and retail properties that demand precision.
-      </p>
-      <div class="hero-actions">
-        <a href="mailto:enterprise@streichforce.com" class="btn-primary">Get In Touch</a>
-        <a href="/#divisions" class="btn-ghost">All Divisions</a>
+  <!-- HERO -->
+  <section class="div-hero">
+    <div class="div-hero-bg"></div>
+    <div class="div-hero-inner">
+      <p class="sf-eyebrow ent-eye">Division 01 &mdash; Specialized Repair &amp; Fabrication</p>
+      <h1 class="div-hero-title">When Standard<br /><span class="ent-accent">Contractors Fall Short</span></h1>
+      <p class="div-hero-sub">We step in. Specialized commercial repair and custom fabrication for pharmacies, retail chains, and commercial properties — delivered by people who've actually done the work.</p>
+      <div class="div-hero-cta">
+        <a href="mailto:enterprise&#x40;streichforce.com" class="btn-primary ent-btn">Get In Touch</a>
+        <a href="#services" class="btn-ghost">See What We Do</a>
       </div>
     </div>
+    <div class="hero-accent-bar ent-bar"></div>
   </section>
 
-  <!-- INTRO STATEMENT -->
-  <section class="statement-section">
-    <div class="statement-inner reveal">
-      <blockquote>
-        "If your standard contractors have tried and failed — or if you need something built that doesn't exist yet — that's exactly where we start."
-      </blockquote>
+  <!-- POSITIONING -->
+  <section class="div-position">
+    <div class="div-inner">
+      <div class="div-pos-statement">
+        <p class="sf-eyebrow ent-eye">Our Lane</p>
+        <h2 class="div-pos-title">We're not in the regular rotation.<br />We're who you call when the rotation fails.</h2>
+      </div>
+      <div class="pos-cards">
+        <div class="pos-card">
+          <div class="pos-num ent-num">01</div>
+          <h3 class="pos-title">Real-World Experience</h3>
+          <p class="pos-body">Years of hands-on work in commercial environments. We've seen the problems, solved the edge cases, and know how to get it done right the first time.</p>
+        </div>
+        <div class="pos-card">
+          <div class="pos-num ent-num">02</div>
+          <h3 class="pos-title">No Subcontracting</h3>
+          <p class="pos-body">We do the work. Not a general contractor who farms it out. When we show up, the person who picked up the phone is the person doing the job.</p>
+        </div>
+        <div class="pos-card">
+          <div class="pos-num ent-num">03</div>
+          <h3 class="pos-title">Cross-Trade Capability</h3>
+          <p class="pos-body">Most repairs that fall through the cracks cross trade lines. We work across disciplines — that's exactly where we live.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- SERVICES -->
-  <section class="content-section">
-    <div class="reveal">
-      <p class="section-label">What We Do</p>
-      <h2 class="section-title">Repair. Restore. Fabricate.</h2>
-    </div>
-
-    <div class="services-grid reveal">
-      <div class="service-card">
-        <div class="service-num">01</div>
-        <h3>Specialized Commercial Repair</h3>
-        <p>Service and repair work for commercial retail chains that requires a higher level of technical expertise than standard maintenance contractors can provide. Called in when others have been unable to complete the job.</p>
-        <div class="service-clients">
-          <p class="clients-label">Clients include</p>
-          <div class="client-list">
-            <span>Walgreens Pharmacy</span>
-            <span>CVS Pharmacy</span>
-            <span>Case Jewelers</span>
-            <span>Commercial Retail Chains</span>
-          </div>
+  <section class="div-services" id="services">
+    <div class="div-inner">
+      <p class="sf-eyebrow ent-eye">What We Do</p>
+      <h2 class="div-section-title">Services</h2>
+      <div class="services-grid">
+        <div class="service-item">
+          <div class="service-rule ent-rule"></div>
+          <h3 class="service-name">Custom Fabrication</h3>
+          <p class="service-desc">Custom-built components for commercial environments. If it doesn't exist off the shelf, we build it to spec — cabinetry, countertops, enclosures, access panels, and structural components.</p>
         </div>
-      </div>
-
-      <div class="service-card">
-        <div class="service-num">02</div>
-        <h3>Custom Cabinet & Fixture Fabrication</h3>
-        <p>When off-the-shelf doesn't fit — literally or functionally — we fabricate new cabinetry, drawers, and countertops built to exact specification. Commercial-grade, built to last, matched to your existing environment.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-num">03</div>
-        <h3>Compactor Chute Systems</h3>
-        <p>Design, fabrication, and installation of trash compactor chutes that pass through walls — including the gates and access points. Built to code, built to commercial standards, built to last.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-num">04</div>
-        <h3>Structural & Technical Fabrication</h3>
-        <p>Custom one-of-a-kind fabrication for structural and technical challenges in commercial environments. If it needs to be designed from scratch and built right, we do it.</p>
+        <div class="service-item">
+          <div class="service-rule ent-rule"></div>
+          <h3 class="service-name">Compactor Chute Systems</h3>
+          <p class="service-desc">Installation, repair, and custom fabrication of compactor chutes and waste management infrastructure for multi-tenant retail and pharmacy properties.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-rule ent-rule"></div>
+          <h3 class="service-name">Structural Repairs</h3>
+          <p class="service-desc">Commercial structural repair work that crosses trade lines — the jobs that fall outside standard scope and require someone who can problem-solve across disciplines.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-rule ent-rule"></div>
+          <h3 class="service-name">Wall Access &amp; Security Gates</h3>
+          <p class="service-desc">Custom wall access gates, security enclosures, and controlled-access fabrications built to commercial specifications for retail and pharmacy environments.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-rule ent-rule"></div>
+          <h3 class="service-name">Pharmacy &amp; Retail Fit-Outs</h3>
+          <p class="service-desc">Specialized interior work for pharmacy and retail chain locations — custom cabinetry, millwork, fixture fabrication, and installation.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-rule ent-rule"></div>
+          <h3 class="service-name">Site Maintenance</h3>
+          <p class="service-desc">Ongoing maintenance support for commercial properties. Consistent, reliable, and done by people who know your site and how it's built.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- DIFFERENTIATOR -->
-  <section class="diff-section">
-    <div class="diff-inner reveal">
-      <p class="section-label">Why Us</p>
-      <h2 class="section-title">The Last Call<br/>That Solves It</h2>
-      <div class="diff-cols">
-        <div class="diff-col">
-          <p>Most facilities managers have a rotation of maintenance vendors they call for standard work. Streich Force Enterprise is not a replacement for that. We're the call you make when:</p>
-        </div>
-        <div class="diff-col">
-          <div class="diff-list">
-            <div class="diff-item">
-              <span class="diff-icon">→</span>
-              <span>Standard repair attempts have failed or been refused</span>
-            </div>
-            <div class="diff-item">
-              <span class="diff-icon">→</span>
-              <span>The repair requires fabricating a part that no longer exists</span>
-            </div>
-            <div class="diff-item">
-              <span class="diff-icon">→</span>
-              <span>The scope crosses multiple trades or doesn't fit a single category</span>
-            </div>
-            <div class="diff-item">
-              <span class="diff-icon">→</span>
-              <span>You need something custom-built to exact commercial specifications</span>
-            </div>
-            <div class="diff-item">
-              <span class="diff-icon">→</span>
-              <span>The work needs to be done right the first time, no second guessing</span>
-            </div>
-          </div>
-        </div>
+  <!-- WHO WE SERVE -->
+  <section class="div-clients">
+    <div class="div-inner div-inner-center">
+      <p class="sf-eyebrow ent-eye">Who We Serve</p>
+      <h2 class="div-section-title">Built for Commercial Operations</h2>
+      <p class="clients-sub">We work with facilities managers, property maintenance teams, and operations directors at commercial chains who need specialized work done right — without the back-and-forth of vendors who've never seen their kind of problem before.</p>
+      <div class="pills">
+        <span class="pill ent-pill">National Pharmacy Chains</span>
+        <span class="pill ent-pill">Retail Property Groups</span>
+        <span class="pill ent-pill">Commercial Landlords</span>
+        <span class="pill ent-pill">Facilities Managers</span>
+        <span class="pill ent-pill">Multi-Site Operators</span>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <div class="cta-banner reveal">
-    <div class="cta-text">
-      <h3 class="cta-title">Have a Job No One Else Has Been Able to Fix?</h3>
-      <p class="cta-sub">Describe what you're dealing with and we'll tell you honestly whether we can solve it.</p>
+  <section class="div-cta">
+    <div class="div-inner div-inner-center">
+      <div class="cta-rule ent-bar"></div>
+      <h2 class="cta-title">Have a repair or fabrication project<br />that hasn't been solved yet?</h2>
+      <p class="cta-sub">Tell us what you're dealing with. No obligation — just a straight conversation about whether we're the right fit.</p>
+      <a href="mailto:enterprise&#x40;streichforce.com" class="btn-primary ent-btn">enterprise&#x40;streichforce.com</a>
+      <p class="cta-phone">Or call Scott directly: <a href="tel:6028828723" class="ent-link">602-882-8723</a></p>
     </div>
-    <a href="mailto:enterprise@streichforce.com" class="btn-primary">Contact Enterprise</a>
-  </div>
+  </section>
 
   <Footer />
 </BaseLayout>
 
 <style>
-  .division-hero {
-    min-height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 0 var(--page-pad) 6rem;
-    position: relative;
-    overflow: hidden;
-    border-bottom: 1px solid var(--iron);
-  }
-
-  .hero-grid-bg {
-    position: absolute; inset: 0;
-    background-image:
-      linear-gradient(var(--grid-line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-    background-size: 60px 60px;
-    animation: gridShift 20s linear infinite;
-  }
-
-  @keyframes gridShift {
-    from { transform: translateY(0); }
-    to { transform: translateY(60px); }
-  }
-
-  .hero-content { position: relative; z-index: 1; }
-
-  .hero-eyebrow {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 0.75rem;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--rust);
-    margin-bottom: 1.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.2s;
-  }
-
-  .hero-title {
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: clamp(3rem, 8vw, 7rem);
-    line-height: 0.9;
-    text-transform: uppercase;
-    color: var(--white);
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.4s;
-  }
-
-  .hero-title .accent { color: var(--rust); }
-
-  .hero-rule {
-    width: 80px; height: 3px;
-    background: var(--rust);
-    margin: 2rem 0;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.6s;
-  }
-
-  .hero-sub {
-    font-size: 1.1rem;
-    color: var(--mist);
-    max-width: 540px;
-    line-height: 1.7;
-    margin-bottom: 2.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.8s;
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 1s;
-  }
-
-  /* STATEMENT */
-  .statement-section {
-    padding: 5rem var(--page-pad);
-    border-bottom: 1px solid var(--iron);
-  }
-
-  .statement-inner {
-    max-width: 860px;
-  }
-
-  blockquote {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: clamp(1.3rem, 3vw, 1.9rem);
-    line-height: 1.3;
-    color: var(--bone);
-    border-left: 4px solid var(--rust);
-    padding-left: 2rem;
-    font-style: normal;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-  }
-
-  /* SERVICES */
-  .content-section { padding: 7rem var(--page-pad); }
-
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2px;
-    background: var(--iron);
-    margin-top: 3rem;
-  }
-
-  .service-card {
-    background: var(--charcoal);
-    padding: 3rem;
-    transition: background 0.3s;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .service-card:hover { background: var(--steel); }
-
-  .service-num {
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: 2.5rem;
-    color: var(--iron);
-    line-height: 1;
-  }
-
-  .service-card h3 {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--white);
-  }
-
-  .service-card p {
-    font-size: 0.9rem;
-    color: var(--mist);
-    line-height: 1.75;
-  }
-
-  .clients-label {
-    font-family: var(--font-display);
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--rust);
-    margin-bottom: 0.5rem;
-  }
-
-  .client-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .client-list span {
-    font-family: var(--font-display);
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 0.3rem 0.8rem;
-    border: 1px solid var(--iron);
-    color: var(--mist);
-  }
-
-  /* DIFFERENTIATOR */
-  .diff-section {
-    padding: 6rem var(--page-pad);
-    background: var(--charcoal);
-    border-top: 1px solid var(--iron);
-    border-bottom: 1px solid var(--iron);
-  }
-
-  .diff-inner { }
-
-  .diff-cols {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    margin-top: 3rem;
-  }
-
-  .diff-col p {
-    font-size: 1rem;
-    color: var(--mist);
-    line-height: 1.8;
-  }
-
-  .diff-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .diff-item {
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-  }
-
-  .diff-icon {
-    color: var(--rust);
-    font-weight: 700;
-    flex-shrink: 0;
-    margin-top: 0.1rem;
-  }
-
-  .diff-item span:last-child {
-    font-size: 0.9rem;
-    color: var(--bone);
-    line-height: 1.6;
-  }
-
-  /* CTA */
-  .cta-banner {
-    margin: 6rem var(--page-pad);
-    padding: 4rem;
-    background: var(--charcoal);
-    border-left: 4px solid var(--rust);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 3rem;
-    flex-wrap: wrap;
-  }
-
-  .cta-title {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: clamp(1.4rem, 3vw, 2rem);
-    text-transform: uppercase;
-    color: var(--white);
-    margin-bottom: 0.5rem;
-  }
-
-  .cta-sub { font-size: 0.95rem; color: var(--mist); }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @media (max-width: 900px) {
-    .services-grid { grid-template-columns: 1fr; }
-    .diff-cols { grid-template-columns: 1fr; gap: 2.5rem; }
-    .cta-banner { flex-direction: column; align-items: flex-start; }
-  }
+.div-hero { position:relative;padding:9rem var(--sf-pad) 7rem;background:var(--sf-black);overflow:hidden; }
+.div-hero-bg { position:absolute;inset:0;background:url('/hero-bg.png') center/cover no-repeat;opacity:.1;pointer-events:none; }
+.hero-accent-bar { position:absolute;bottom:0;left:0;right:0;height:4px; }
+.ent-bar { background:var(--sf-ent); }
+.div-hero-inner { position:relative;z-index:1;max-width:900px; }
+.ent-eye { color:var(--sf-ent-b); }
+.div-hero-title { font-family:var(--sf-font-display);font-weight:900;font-size:clamp(2.8rem,7vw,6rem);text-transform:uppercase;color:var(--sf-text-primary);line-height:1;margin:1rem 0 1.5rem; }
+.ent-accent { color:var(--sf-ent); }
+.div-hero-sub { font-size:1.05rem;color:var(--sf-text-secondary);max-width:640px;line-height:1.8;margin-bottom:2.5rem; }
+.div-hero-cta { display:flex;gap:1rem;flex-wrap:wrap; }
+.btn-primary { display:inline-block;font-family:var(--sf-font-display);font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;padding:.9rem 2rem;text-decoration:none;transition:background .2s; }
+.ent-btn { background:var(--sf-ent);color:#fff; }
+.ent-btn:hover { background:var(--sf-ent-b); }
+.btn-ghost { display:inline-block;font-family:var(--sf-font-display);font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;padding:.9rem 2rem;text-decoration:none;border:1px solid rgba(255,255,255,.2);color:var(--sf-text-secondary);transition:all .2s; }
+.btn-ghost:hover { border-color:var(--sf-ent);color:var(--sf-ent); }
+.div-inner { max-width:1200px;margin:0 auto; }
+.div-inner-center { text-align:center; }
+.div-position { padding:6rem var(--sf-pad);background:var(--sf-surface); }
+.div-pos-statement { margin-bottom:3.5rem; }
+.div-pos-title { font-family:var(--sf-font-display);font-weight:900;font-size:clamp(1.6rem,3.5vw,2.6rem);text-transform:uppercase;color:var(--sf-text-primary);line-height:1.1;margin-top:.75rem; }
+.pos-cards { display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px; }
+.pos-card { background:var(--sf-black);padding:2.5rem; }
+.pos-num { font-family:var(--sf-font-display);font-weight:900;font-size:3.5rem;line-height:1;margin-bottom:1rem; }
+.ent-num { color:var(--sf-ent);opacity:.25; }
+.pos-title { font-family:var(--sf-font-display);font-weight:700;font-size:1rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sf-text-primary);margin-bottom:.75rem; }
+.pos-body { font-size:.92rem;color:var(--sf-text-secondary);line-height:1.8; }
+.div-services { padding:6rem var(--sf-pad);background:var(--sf-black); }
+.div-section-title { font-family:var(--sf-font-display);font-weight:900;font-size:clamp(2rem,5vw,3.5rem);text-transform:uppercase;color:var(--sf-text-primary);margin:.75rem 0 3rem; }
+.services-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2px; }
+.service-item { background:var(--sf-surface);padding:2rem 2rem 2.5rem; }
+.service-rule { height:3px;width:40px;margin-bottom:1.5rem; }
+.ent-rule { background:var(--sf-ent); }
+.service-name { font-family:var(--sf-font-display);font-weight:700;font-size:.95rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sf-text-primary);margin-bottom:.75rem; }
+.service-desc { font-size:.9rem;color:var(--sf-text-secondary);line-height:1.8; }
+.div-clients { padding:6rem var(--sf-pad);background:var(--sf-surface); }
+.clients-sub { font-size:1rem;color:var(--sf-text-secondary);line-height:1.8;max-width:700px;margin:0 auto 2.5rem; }
+.pills { display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center; }
+.pill { font-family:var(--sf-font-display);font-weight:600;font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;padding:.5rem 1.25rem;border:1px solid; }
+.ent-pill { border-color:var(--sf-ent);color:var(--sf-ent); }
+.div-cta { padding:7rem var(--sf-pad);background:var(--sf-black); }
+.cta-rule { width:48px;height:4px;margin:0 auto 2.5rem; }
+.cta-title { font-family:var(--sf-font-display);font-weight:900;font-size:clamp(1.8rem,4vw,3rem);text-transform:uppercase;color:var(--sf-text-primary);line-height:1.1;margin-bottom:1.25rem; }
+.cta-sub { font-size:1rem;color:var(--sf-text-secondary);line-height:1.75;margin-bottom:2.5rem; }
+.cta-phone { margin-top:1.5rem;font-size:.9rem;color:var(--sf-text-muted); }
+.ent-link { color:var(--sf-ent-b);text-decoration:none; }
+.ent-link:hover { text-decoration:underline; }
 </style>

@@ -1,5 +1,4 @@
 ---
-// src/pages/solutions/index.astro
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
@@ -7,290 +6,215 @@ import Footer from '../../components/Footer.astro';
 
 <BaseLayout
   title="Solutions — Back-Office Operations"
-  description="Streich Force Solutions: operational support and back-office consulting for shipping container wholesalers and small businesses."
-  division="solutions"
+  description="An extension of your back office. Dedicated operational support for container wholesalers and small businesses — inventory, orders, invoicing, and coordination."
 >
   <Nav active="solutions" />
 
-  <section class="division-hero">
-    <div class="hero-grid-bg"></div>
-    <div class="hero-content">
-      <p class="hero-eyebrow">Division 01 &mdash; Back-Office Operations</p>
-      <h1 class="hero-title">Streich Force<br/><span class="accent">Solutions</span></h1>
-      <div class="hero-rule"></div>
-      <p class="hero-sub">
-        Your operations, extended. We plug into your business as a seasoned back-office team — so you can focus on growing, not administrating.
-      </p>
-      <div class="hero-actions">
-        <a href="mailto:solutions@streichforce.com" class="btn-primary">Start a Conversation</a>
-        <a href="/#divisions" class="btn-ghost">All Divisions</a>
+  <!-- HERO -->
+  <section class="div-hero">
+    <div class="div-hero-bg"></div>
+    <div class="div-hero-inner">
+      <p class="sf-eyebrow sol-eye">Division 02 &mdash; Back-Office Operations</p>
+      <h1 class="div-hero-title">An Extension of<br /><span class="sol-accent">Your Back Office</span></h1>
+      <p class="div-hero-sub">We become your dedicated operational team — managing inventory, orders, invoicing, gate activity, and daily coordination so you can focus on growing the business.</p>
+      <div class="div-hero-cta">
+        <a href="mailto:solutions&#x40;streichforce.com" class="btn-primary sol-btn">Get In Touch</a>
+        <a href="#how-it-works" class="btn-ghost sol-ghost">How It Works</a>
+      </div>
+    </div>
+    <div class="hero-accent-bar sol-bar"></div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="div-problem">
+    <div class="div-inner">
+      <p class="sf-eyebrow sol-eye">The Problem</p>
+      <h2 class="div-section-title">Running without a dedicated ops team<br />costs more than you think.</h2>
+      <div class="problem-grid">
+        <div class="problem-item">
+          <span class="problem-label">Orders tracked in spreadsheets</span>
+          <p class="problem-desc">Manual tracking creates errors, delays, and gaps in visibility that turn into real operational costs.</p>
+        </div>
+        <div class="problem-item">
+          <span class="problem-label">Gate activity logged by hand</span>
+          <p class="problem-desc">Without real-time gate tracking, discrepancies pile up and disputes become difficult to resolve.</p>
+        </div>
+        <div class="problem-item">
+          <span class="problem-label">Invoices delayed or missed</span>
+          <p class="problem-desc">When nobody has time to process invoicing, cash flow suffers and clients get frustrated.</p>
+        </div>
+        <div class="problem-item">
+          <span class="problem-label">Storage fees climbing</span>
+          <p class="problem-desc">Without real-time inventory visibility, containers sit too long and storage fees eat into margin silently.</p>
+        </div>
+      </div>
+      <p class="problem-closer">That's not a staffing problem. That's a systems problem. And it's exactly what we fix.</p>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="div-how" id="how-it-works">
+    <div class="div-inner">
+      <p class="sf-eyebrow sol-eye">How It Works</p>
+      <h2 class="div-section-title">We Plug In. You Run the Business.</h2>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="step-num sol-num">01</div>
+          <h3 class="step-title">Onboarding</h3>
+          <p class="step-body">We get inside your operation — how you buy, sell, move, and invoice containers. We set up Triplemeter as your system of record and establish your workflows.</p>
+        </div>
+        <div class="how-arrow sol-arrow">&#8594;</div>
+        <div class="how-step">
+          <div class="step-num sol-num">02</div>
+          <h3 class="step-title">We Handle the Day-to-Day</h3>
+          <p class="step-body">Inventory management, gate activity tracking, order and sales processing, invoicing, AR coordination, and exceptions management — all handled by us.</p>
+        </div>
+        <div class="how-arrow sol-arrow">&#8594;</div>
+        <div class="how-step">
+          <div class="step-num sol-num">03</div>
+          <h3 class="step-title">You Get Visibility</h3>
+          <p class="step-body">Your data builds in real time inside Triplemeter. Monthly reporting, exception flags, and a clean operational picture — without you having to manage the platform.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- WHAT WE DO -->
-  <section class="content-section">
-    <div class="reveal">
-      <p class="section-label">What We Do</p>
-      <h2 class="section-title">An Extension of Your Team</h2>
-    </div>
-    <div class="services-grid reveal">
-      <div class="service-block">
-        <div class="service-icon">◈</div>
-        <h3>Operations Management</h3>
-        <p>Day-to-day operational oversight, process documentation, and workflow optimization for container wholesalers who need structure without the overhead of a full-time ops manager.</p>
-      </div>
-      <div class="service-block">
-        <div class="service-icon">◈</div>
-        <h3>Administrative Support</h3>
-        <p>Order processing, vendor coordination, customer communication, and record keeping — handled accurately and consistently, every time.</p>
-      </div>
-      <div class="service-block">
-        <div class="service-icon">◈</div>
-        <h3>Small Business Consulting</h3>
-        <p>Beyond the container industry, we work with small businesses that need an experienced operator in their corner — someone who can see the gaps and fill them.</p>
-      </div>
-      <div class="service-block">
-        <div class="service-icon">◈</div>
-        <h3>Process & Systems</h3>
-        <p>Building the repeatable systems that make growth possible. From CRM setup to fulfillment workflows, we build for scale so you're not reinventing the wheel.</p>
+  <!-- SERVICES -->
+  <section class="div-services">
+    <div class="div-inner">
+      <p class="sf-eyebrow sol-eye">What We Manage</p>
+      <h2 class="div-section-title">Services</h2>
+      <div class="services-grid">
+        <div class="service-item">
+          <div class="service-rule sol-rule"></div>
+          <h3 class="service-name">Inventory Management</h3>
+          <p class="service-desc">Real-time container inventory tracking powered by Triplemeter. Know exactly what you have, where it is, and what its status is at any moment.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-rule sol-rule"></div>
+          <h3 class="service-name">Gate Activity Tracking</h3>
+          <p class="service-desc">Every gate-in and gate-out logged and reconciled. Discrepancies caught and flagged before they become disputes.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-rule sol-rule"></div>
+          <h3 class="service-name">Order &amp; Sales Processing</h3>
+          <p class="service-desc">Purchase orders, sales orders, and release management handled end-to-end. Nothing falls through the cracks.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-rule sol-rule"></div>
+          <h3 class="service-name">Invoicing &amp; AR Coordination</h3>
+          <p class="service-desc">Invoices issued on time, payments tracked, and outstanding balances flagged. Your cash flow stays visible and managed.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-rule sol-rule"></div>
+          <h3 class="service-name">Exceptions Management</h3>
+          <p class="service-desc">Discrepancies, mismatches, and operational flags identified, tracked, and resolved — with full documentation.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-rule sol-rule"></div>
+          <h3 class="service-name">Monthly Reporting</h3>
+          <p class="service-desc">Clean monthly operational reports covering inventory, gate activity, invoicing, and exceptions. The full picture in one place.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- WHO WE SERVE -->
-  <section class="who-section reveal">
-    <div class="who-inner">
-      <p class="section-label">Who We Serve</p>
-      <h2 class="section-title">Built for Operators</h2>
-      <p class="who-text">
-        Streich Force Solutions was built from direct experience inside the container wholesale industry. We know the pace, the terminology, the vendor relationships, and the pain points. When you bring us in, there's no learning curve — just capacity.
-      </p>
-      <div class="who-list">
-        <div class="who-item">
-          <span class="who-check">✓</span>
-          <span>Shipping container wholesalers needing back-office capacity</span>
+  <!-- TRIPLEMETER -->
+  <section class="div-tm">
+    <div class="div-inner div-inner-split">
+      <div class="tm-text">
+        <p class="sf-eyebrow sol-eye">Powered By</p>
+        <h2 class="tm-title">Triplemeter</h2>
+        <p class="tm-body">Streich Force Solutions runs on Triplemeter — a real-time operations and trade platform built specifically for container logistics. Every client's data is recorded, maintained, and fully intact inside their own Triplemeter organization.</p>
+        <p class="tm-body">When your business grows and you're ready to take direct control, everything is already there. Your history, your connections, your data. You don't rebuild — you just take over.</p>
+        <span class="tm-badge">Triplemeter Managed Services Partner</span>
+      </div>
+      <div class="tm-aside">
+        <div class="tm-stat">
+          <span class="tm-stat-num sol-accent">Real-Time</span>
+          <span class="tm-stat-label">Inventory Visibility</span>
         </div>
-        <div class="who-item">
-          <span class="who-check">✓</span>
-          <span>Small businesses without a full-time operations team</span>
+        <div class="tm-stat">
+          <span class="tm-stat-num sol-accent">Zero</span>
+          <span class="tm-stat-label">Migration Cost When You Graduate</span>
         </div>
-        <div class="who-item">
-          <span class="who-check">✓</span>
-          <span>Owners ready to delegate operations so they can focus on sales</span>
-        </div>
-        <div class="who-item">
-          <span class="who-check">✓</span>
-          <span>Companies building process infrastructure for growth</span>
+        <div class="tm-stat">
+          <span class="tm-stat-num sol-accent">Full</span>
+          <span class="tm-stat-label">Operational History Intact</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <div class="cta-banner reveal">
-    <div class="cta-text">
-      <h3 class="cta-title">Ready to Get the Back Office Off Your Plate?</h3>
-      <p class="cta-sub">Let's talk about what's taking up your time and how we can help.</p>
+  <section class="div-cta">
+    <div class="div-inner div-inner-center">
+      <div class="cta-rule sol-bar"></div>
+      <h2 class="cta-title">What does your back-office<br />setup look like right now?</h2>
+      <p class="cta-sub">Spreadsheets, a part-time person, a mix of both? Hit reply and tell us where things stand. No pitch — just a straight conversation about whether we can help.</p>
+      <a href="mailto:solutions&#x40;streichforce.com" class="btn-primary sol-btn">solutions&#x40;streichforce.com</a>
+      <p class="cta-phone">Or call Sonja directly: <a href="tel:6024050031" class="sol-link">602-405-0031</a></p>
     </div>
-    <a href="mailto:solutions@streichforce.com" class="btn-primary">Contact Solutions</a>
-  </div>
+  </section>
 
   <Footer />
 </BaseLayout>
 
 <style>
-  .division-hero {
-    min-height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 0 var(--page-pad) 6rem;
-    position: relative;
-    overflow: hidden;
-    border-bottom: 1px solid var(--iron);
-  }
-
-  .hero-grid-bg {
-    position: absolute; inset: 0;
-    background-image:
-      linear-gradient(var(--grid-line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-    background-size: 60px 60px;
-    animation: gridShift 20s linear infinite;
-  }
-
-  @keyframes gridShift {
-    from { transform: translateY(0); }
-    to { transform: translateY(60px); }
-  }
-
-  .hero-content { position: relative; z-index: 1; }
-
-  .hero-eyebrow {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 0.75rem;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--rust);
-    margin-bottom: 1.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.2s;
-  }
-
-  .hero-title {
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: clamp(3rem, 8vw, 7rem);
-    line-height: 0.9;
-    text-transform: uppercase;
-    color: var(--white);
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.4s;
-  }
-
-  .hero-title .accent { color: var(--rust); }
-
-  .hero-rule {
-    width: 80px; height: 3px;
-    background: var(--rust);
-    margin: 2rem 0;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.6s;
-  }
-
-  .hero-sub {
-    font-size: 1.1rem;
-    color: var(--mist);
-    max-width: 520px;
-    line-height: 1.7;
-    margin-bottom: 2.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.8s;
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 1s;
-  }
-
-  /* CONTENT */
-  .content-section {
-    padding: 7rem var(--page-pad);
-  }
-
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2px;
-    background: var(--iron);
-    margin-top: 3rem;
-  }
-
-  .service-block {
-    background: var(--charcoal);
-    padding: 2.5rem;
-    transition: background 0.3s;
-  }
-
-  .service-block:hover { background: var(--steel); }
-
-  .service-icon {
-    font-size: 1.5rem;
-    color: var(--rust);
-    margin-bottom: 1rem;
-  }
-
-  .service-block h3 {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--white);
-    margin-bottom: 0.75rem;
-  }
-
-  .service-block p {
-    font-size: 0.9rem;
-    color: var(--mist);
-    line-height: 1.75;
-  }
-
-  /* WHO */
-  .who-section {
-    padding: 6rem var(--page-pad);
-    background: var(--charcoal);
-    border-top: 1px solid var(--iron);
-    border-bottom: 1px solid var(--iron);
-  }
-
-  .who-inner { max-width: 760px; }
-
-  .who-text {
-    font-size: 1.05rem;
-    color: var(--mist);
-    line-height: 1.8;
-    margin: 2rem 0 2.5rem;
-  }
-
-  .who-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .who-item {
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-    font-size: 0.95rem;
-    color: var(--bone);
-    line-height: 1.5;
-  }
-
-  .who-check {
-    color: var(--rust);
-    font-weight: 700;
-    flex-shrink: 0;
-    margin-top: 0.1rem;
-  }
-
-  /* CTA */
-  .cta-banner {
-    margin: 6rem var(--page-pad);
-    padding: 4rem;
-    background: var(--charcoal);
-    border-left: 4px solid var(--rust);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 3rem;
-    flex-wrap: wrap;
-  }
-
-  .cta-title {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: clamp(1.4rem, 3vw, 2rem);
-    text-transform: uppercase;
-    color: var(--white);
-    margin-bottom: 0.5rem;
-  }
-
-  .cta-sub { font-size: 0.95rem; color: var(--mist); }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @media (max-width: 768px) {
-    .services-grid { grid-template-columns: 1fr; }
-    .cta-banner { flex-direction: column; align-items: flex-start; }
-  }
+.div-hero { position:relative;padding:9rem var(--sf-pad) 7rem;background:var(--sf-black);overflow:hidden; }
+.div-hero-bg { position:absolute;inset:0;background:url('/hero-bg.png') center/cover no-repeat;opacity:.08;pointer-events:none; }
+.hero-accent-bar { position:absolute;bottom:0;left:0;right:0;height:4px; }
+.sol-bar { background:var(--sf-sol); }
+.div-hero-inner { position:relative;z-index:1;max-width:900px; }
+.sol-eye { color:var(--sf-sol-b); }
+.div-hero-title { font-family:var(--sf-font-display);font-weight:900;font-size:clamp(2.8rem,7vw,6rem);text-transform:uppercase;color:var(--sf-text-primary);line-height:1;margin:1rem 0 1.5rem; }
+.sol-accent { color:var(--sf-sol); }
+.div-hero-sub { font-size:1.05rem;color:var(--sf-text-secondary);max-width:640px;line-height:1.8;margin-bottom:2.5rem; }
+.div-hero-cta { display:flex;gap:1rem;flex-wrap:wrap; }
+.btn-primary { display:inline-block;font-family:var(--sf-font-display);font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;padding:.9rem 2rem;text-decoration:none;transition:background .2s; }
+.sol-btn { background:var(--sf-sol);color:#fff; }
+.sol-btn:hover { background:var(--sf-sol-b); }
+.btn-ghost { display:inline-block;font-family:var(--sf-font-display);font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;padding:.9rem 2rem;text-decoration:none;border:1px solid rgba(255,255,255,.2);color:var(--sf-text-secondary);transition:all .2s; }
+.sol-ghost:hover { border-color:var(--sf-sol);color:var(--sf-sol); }
+.div-inner { max-width:1200px;margin:0 auto; }
+.div-inner-center { text-align:center; }
+.div-inner-split { display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center; }
+@media(max-width:768px) { .div-inner-split { grid-template-columns:1fr; } }
+.div-section-title { font-family:var(--sf-font-display);font-weight:900;font-size:clamp(2rem,5vw,3.5rem);text-transform:uppercase;color:var(--sf-text-primary);margin:.75rem 0 3rem; }
+.div-problem { padding:6rem var(--sf-pad);background:var(--sf-surface); }
+.problem-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2px;margin-bottom:3rem; }
+.problem-item { background:var(--sf-black);padding:2rem; }
+.problem-label { display:block;font-family:var(--sf-font-display);font-weight:700;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sf-text-primary);margin-bottom:.75rem; }
+.problem-desc { font-size:.9rem;color:var(--sf-text-secondary);line-height:1.75; }
+.problem-closer { font-family:var(--sf-font-display);font-weight:700;font-size:1.1rem;letter-spacing:.05em;color:var(--sf-sol-b);text-transform:uppercase; }
+.div-how { padding:6rem var(--sf-pad);background:var(--sf-black); }
+.how-steps { display:flex;align-items:flex-start;gap:1.5rem;flex-wrap:wrap; }
+.how-step { flex:1;min-width:220px;background:var(--sf-surface);padding:2.5rem; }
+.how-arrow { font-size:2rem;color:var(--sf-sol);opacity:.4;padding-top:3rem;flex-shrink:0; }
+.step-num { font-family:var(--sf-font-display);font-weight:900;font-size:3.5rem;line-height:1;margin-bottom:1rem; }
+.sol-num { color:var(--sf-sol);opacity:.3; }
+.step-title { font-family:var(--sf-font-display);font-weight:700;font-size:.95rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sf-text-primary);margin-bottom:.75rem; }
+.step-body { font-size:.9rem;color:var(--sf-text-secondary);line-height:1.8; }
+.div-services { padding:6rem var(--sf-pad);background:var(--sf-surface); }
+.services-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2px; }
+.service-item { background:var(--sf-black);padding:2rem 2rem 2.5rem; }
+.service-rule { height:3px;width:40px;margin-bottom:1.5rem; }
+.sol-rule { background:var(--sf-sol); }
+.service-name { font-family:var(--sf-font-display);font-weight:700;font-size:.95rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sf-text-primary);margin-bottom:.75rem; }
+.service-desc { font-size:.9rem;color:var(--sf-text-secondary);line-height:1.8; }
+.div-tm { padding:6rem var(--sf-pad);background:var(--sf-black); }
+.tm-title { font-family:var(--sf-font-display);font-weight:900;font-size:clamp(2rem,5vw,4rem);text-transform:uppercase;color:var(--sf-text-primary);margin:.75rem 0 1.5rem; }
+.tm-body { font-size:.95rem;color:var(--sf-text-secondary);line-height:1.8;margin-bottom:1.25rem; }
+.tm-badge { display:inline-block;font-family:var(--sf-font-display);font-weight:600;font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;padding:.5rem 1.25rem;border:1px solid var(--sf-sol);color:var(--sf-sol);margin-top:1rem; }
+.tm-aside { display:flex;flex-direction:column;gap:2.5rem; }
+.tm-stat { display:flex;flex-direction:column;gap:.25rem;padding-left:1.5rem;border-left:3px solid var(--sf-sol); }
+.tm-stat-num { font-family:var(--sf-font-display);font-weight:900;font-size:2rem;color:var(--sf-sol); }
+.tm-stat-label { font-family:var(--sf-font-display);font-weight:600;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sf-text-secondary); }
+.div-cta { padding:7rem var(--sf-pad);background:var(--sf-surface); }
+.cta-rule { width:48px;height:4px;margin:0 auto 2.5rem; }
+.cta-title { font-family:var(--sf-font-display);font-weight:900;font-size:clamp(1.8rem,4vw,3rem);text-transform:uppercase;color:var(--sf-text-primary);line-height:1.1;margin-bottom:1.25rem; }
+.cta-sub { font-size:1rem;color:var(--sf-text-secondary);line-height:1.75;margin-bottom:2.5rem;max-width:600px;margin-left:auto;margin-right:auto; }
+.cta-phone { margin-top:1.5rem;font-size:.9rem;color:var(--sf-text-muted); }
+.sol-link { color:var(--sf-sol-b);text-decoration:none; }
+.sol-link:hover { text-decoration:underline; }
 </style>

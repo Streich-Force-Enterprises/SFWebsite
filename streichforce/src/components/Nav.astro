@@ -1,142 +1,103 @@
 ---
 // src/components/Nav.astro
-export interface Props {
-  active?: string;
-}
+export interface Props { active?: string; }
 const { active = '' } = Astro.props;
 ---
 
 <nav>
-  <a href="/" class="nav-logo">Streich<span>Force</span></a>
+  <a href="/" class="nav-logo">
+    <span class="nav-logo-top">STREICH <span class="f">FORCE</span></span>
+    <div class="nav-logo-rule"></div>
+    <span class="nav-logo-sub">ENTERPRISES</span>
+  </a>
   <ul class="nav-links">
-    <li><a href="/solutions" class:list={[{ 'nav-active': active === 'solutions' }]}>Solutions</a></li>
-    <li><a href="/containers" class:list={[{ 'nav-active': active === 'containers' }]}>Containers</a></li>
-    <li><a href="/enterprise" class:list={[{ 'nav-active': active === 'enterprise' }]}>Enterprise</a></li>
-    <li><a href="/#contact" class="nav-cta">Contact</a></li>
+    <li><a href="/solutions"  class:list={['nsol', { active: active === 'solutions'  }]}>Solutions</a></li>
+    <li><a href="/containers" class:list={['ncon', { active: active === 'containers' }]}>Containers</a></li>
+    <li><a href="/enterprise" class:list={['nent', { active: active === 'enterprise' }]}>Enterprise</a></li>
+    <li><a href="/#contact" class="ncta">Contact</a></li>
+    <li><a href="/login"    class="nlogin">Login</a></li>
   </ul>
-  <button class="nav-mobile-toggle" aria-label="Toggle menu" id="mobileToggle">
+  <button class="nav-mobile-btn" id="mobileToggle" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <ul>
-    <li><a href="/solutions">Solutions</a></li>
-    <li><a href="/containers">Containers</a></li>
-    <li><a href="/enterprise">Enterprise</a></li>
-    <li><a href="/#contact">Contact</a></li>
-  </ul>
+  <a href="/solutions">Solutions</a>
+  <a href="/containers">Containers</a>
+  <a href="/enterprise">Enterprise</a>
+  <a href="/#contact">Contact</a>
+  <a href="/login">Login</a>
 </div>
 
 <style>
   nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.2rem var(--page-pad);
-    background: linear-gradient(to bottom, rgba(10,10,10,0.98), transparent);
-    backdrop-filter: blur(2px);
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem var(--sf-pad);
+    background: rgba(17,17,17,0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--sf-border);
   }
-
-  .nav-logo {
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: 1.3rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--white);
+  .nav-logo { display: flex; flex-direction: column; line-height: 1; gap: 0; }
+  .nav-logo-top {
+    font-family: var(--sf-font-display); font-weight: 900; font-size: 1.1rem;
+    letter-spacing: 0.07em; text-transform: uppercase; color: var(--sf-text-primary); white-space: nowrap;
   }
-
-  .nav-logo span { color: var(--rust); }
-
-  .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-    align-items: center;
+  .nav-logo-top .f { color: var(--sf-rust); }
+  .nav-logo-rule { height: 1.5px; background: var(--sf-rust); margin: 2.5px 0 2px; }
+  .nav-logo-sub {
+    font-family: var(--sf-font-display); font-weight: 600; font-size: 0.45rem;
+    letter-spacing: 0.3em; text-transform: uppercase; color: var(--sf-text-muted);
   }
-
+  .nav-links { display: flex; gap: 1.25rem; list-style: none; align-items: center; }
   .nav-links a {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 0.8rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--mist);
-    transition: color 0.2s;
+    font-family: var(--sf-font-display); font-weight: 600; font-size: 0.76rem;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--sf-text-secondary);
+    transition: color 0.2s; padding-bottom: 2px; border-bottom: 1px solid transparent;
   }
-
-  .nav-links a:hover,
-  .nav-links a.nav-active { color: var(--white); }
-
-  .nav-links .nav-cta {
-    color: var(--rust);
-    border: 1px solid rgba(192, 57, 43, 0.4);
-    padding: 0.4rem 1rem;
-    transition: background 0.2s, color 0.2s;
+  .nav-links a:hover, .nav-links a.active { color: var(--sf-text-primary); }
+  .nav-links .nsol:hover { color: var(--sf-sol-b); border-color: var(--sf-sol); }
+  .nav-links .ncon:hover { color: var(--sf-con-b); border-color: var(--sf-con); }
+  .nav-links .nent:hover { color: var(--sf-ent-b); border-color: var(--sf-ent); }
+  .nav-links .ncta {
+    padding: 0.4rem 1rem; border: 1px solid var(--sf-rust);
+    color: var(--sf-rust) !important;
   }
-
-  .nav-links .nav-cta:hover {
-    background: var(--rust);
-    color: var(--white);
+  .nav-links .ncta:hover { background: var(--sf-rust); color: #fff !important; }
+  .nav-links .nlogin {
+    padding: 0.4rem 1rem; border: 1px solid var(--sf-border-md);
+    color: var(--sf-text-secondary) !important;
   }
+  .nav-links .nlogin:hover { background: var(--sf-surface); color: var(--sf-text-primary) !important; }
 
-  .nav-mobile-toggle {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 4px;
+  .nav-mobile-btn {
+    display: none; background: none; border: none; cursor: pointer;
+    padding: 4px; flex-direction: column; gap: 5px;
   }
-
-  .nav-mobile-toggle span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: var(--bone);
-    transition: transform 0.3s;
-  }
+  .nav-mobile-btn span { display: block; width: 22px; height: 2px; background: var(--sf-text-secondary); }
 
   .mobile-menu {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: var(--black);
-    z-index: 99;
-    padding: 6rem var(--page-pad) 3rem;
+    display: none; position: fixed; inset: 0; background: var(--sf-black);
+    z-index: 190; padding: 6rem var(--sf-pad) 3rem; flex-direction: column; gap: 0;
   }
-
-  .mobile-menu.open { display: block; }
-
-  .mobile-menu ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
+  .mobile-menu.open { display: flex; }
   .mobile-menu a {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 2.5rem;
-    text-transform: uppercase;
-    color: var(--white);
-    letter-spacing: 0.05em;
+    font-family: var(--sf-font-display); font-weight: 900; font-size: 2.2rem;
+    text-transform: uppercase; color: var(--sf-text-primary); letter-spacing: 0.04em;
+    padding: 1rem 0; border-bottom: 1px solid var(--sf-border);
   }
+  .mobile-menu a:first-child { border-top: 1px solid var(--sf-border); }
 
-  @media (max-width: 768px) {
+  @media (max-width: 640px) {
     .nav-links { display: none; }
-    .nav-mobile-toggle { display: flex; }
+    .nav-mobile-btn { display: flex; }
   }
 </style>
 
 <script>
   const toggle = document.getElementById('mobileToggle');
-  const menu = document.getElementById('mobileMenu');
+  const menu   = document.getElementById('mobileMenu');
   toggle?.addEventListener('click', () => menu?.classList.toggle('open'));
+  menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu?.classList.remove('open')));
 </script>
