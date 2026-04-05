@@ -8,79 +8,81 @@ import Footer from '../../components/Footer.astro';
   description="High-level diagnostics and precision repair for commercial environments where others fall short.">
   <Nav active="services" />
 
+  <!-- HERO -->
   <section class="div-hero">
     <div class="div-hero-bg"></div>
     <div class="div-hero-inner">
       <p class="sf-eyebrow ent-eye">Division 01 — Commercial Service &amp; Repair</p>
       <h1 class="div-hero-title">When It Has to<br /><span class="ent-accent">Be Done Right</span></h1>
-      <p class="div-hero-sub">Not every job requires a specialist. But when it does, you need someone who knows exactly what they're doing.<br /><br />Streich Force provides high-level diagnostics and precision repair for commercial environments where others fall short.</p>
+      <p class="div-hero-sub">Not every job requires a specialist. But when it does, you need someone who knows exactly what they're doing.</p>
+      <p class="div-hero-sub">Streich Force provides high-level diagnostics and precision repair for commercial environments where others fall short.</p>
       <div class="div-hero-cta">
         <a href="/contact/enterprise" class="btn-primary ent-btn">Request Expert Service</a>
-        <a href="#what-we-handle" class="btn-ghost">See What We Handle</a>
+        <a href="#" class="btn-ghost">View Our Work</a>
       </div>
     </div>
     <div class="hero-accent-bar ent-bar"></div>
   </section>
 
-  <!-- CONTENT GRID -->
-  <section class="div-content" id="what-we-handle">
-    <div class="div-inner">
-      <div class="content-grid">
-
-        <div class="content-block">
-          <h2 class="block-title ent-title">What We Handle</h2>
-          <ul class="block-list ent-list">
-            <li>Complex system failures</li>
-            <li>Ongoing issues others couldn't resolve</li>
-            <li>Custom fabrication and problem-solving</li>
-            <li>Commercial site maintenance and repair</li>
-          </ul>
-        </div>
-
-        <div class="content-block">
-          <h2 class="block-title ent-title">Why Clients Call Us</h2>
-          <ul class="block-list ent-list">
-            <li>40+ years of hands-on experience</li>
-            <li>Trusted by national brands and commercial sites</li>
-            <li>Problems solved correctly the first time</li>
-            <li>No trial-and-error approach</li>
-          </ul>
-        </div>
-
-        <div class="content-block">
-          <h2 class="block-title ent-title">How We Work</h2>
-          <ol class="block-steps">
-            <li><span class="step-num ent-num">1</span><span>Assess the real issue (not just the symptoms)</span></li>
-            <li><span class="step-num ent-num">2</span><span>Identify the correct fix</span></li>
-            <li><span class="step-num ent-num">3</span><span>Execute with precision</span></li>
-            <li><span class="step-num ent-num">4</span><span>Ensure it's done right before we leave</span></li>
-          </ol>
-        </div>
-
-        <div class="content-block">
-          <h2 class="block-title ent-title">Who This Is For</h2>
-          <ul class="block-list ent-list">
-            <li>Commercial facilities</li>
-            <li>Retail chains</li>
-            <li>Businesses dealing with recurring or unresolved issues</li>
-            <li>Anyone tired of paying for the same problem twice</li>
-          </ul>
-        </div>
-
+  <!-- WHAT WE HANDLE -->
+  <section class="content-section">
+    <div class="section-inner">
+      <h2 class="section-title ent-title">What We Handle</h2>
+      <div class="boxes-4">
+        <div class="box"><span class="box-bullet ent-bullet">▸</span><p>Complex system failures</p></div>
+        <div class="box"><span class="box-bullet ent-bullet">▸</span><p>Ongoing issues others couldn't resolve</p></div>
+        <div class="box"><span class="box-bullet ent-bullet">▸</span><p>Custom fabrication and problem-solving</p></div>
+        <div class="box"><span class="box-bullet ent-bullet">▸</span><p>Commercial site maintenance and repair</p></div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
+  <!-- WHY CLIENTS CALL US -->
+  <section class="content-section alt">
+    <div class="section-inner">
+      <h2 class="section-title ent-title">Why Clients Call Us</h2>
+      <div class="boxes-4">
+        <div class="box"><span class="box-bullet ent-bullet">▸</span><p>40+ years of hands-on experience</p></div>
+        <div class="box"><span class="box-bullet ent-bullet">▸</span><p>Trusted by national brands and commercial sites</p></div>
+        <div class="box"><span class="box-bullet ent-bullet">▸</span><p>Problems solved correctly the first time</p></div>
+        <div class="box"><span class="box-bullet ent-bullet">▸</span><p>No trial-and-error approach</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE WORK -->
+  <section class="content-section">
+    <div class="section-inner">
+      <h2 class="section-title ent-title">How We Work</h2>
+      <div class="boxes-4 centered">
+        <div class="box step-box"><span class="step-num ent-step">1</span><p>Assess the real issue (not just the symptoms)</p></div>
+        <div class="box step-box"><span class="step-num ent-step">2</span><p>Identify the correct fix</p></div>
+        <div class="box step-box"><span class="step-num ent-step">3</span><p>Execute with precision</p></div>
+        <div class="box step-box"><span class="step-num ent-step">4</span><p>Ensure it's done right before we leave</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO THIS IS FOR -->
+  <section class="content-section alt">
+    <div class="section-inner">
+      <h2 class="section-title ent-title">Who This Is For</h2>
+      <div class="boxes-4">
+        <div class="box"><span class="box-bullet ent-bullet">▸</span><p>Commercial facilities</p></div>
+        <div class="box"><span class="box-bullet ent-bullet">▸</span><p>Retail chains</p></div>
+        <div class="box"><span class="box-bullet ent-bullet">▸</span><p>Businesses dealing with recurring or unresolved issues</p></div>
+        <div class="box"><span class="box-bullet ent-bullet">▸</span><p>Anyone tired of paying for the same problem twice</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM CTA -->
   <section class="div-cta">
-    <div class="div-inner div-inner-center">
+    <div class="cta-inner">
       <div class="cta-rule ent-bar"></div>
       <h2 class="cta-title">Get It Fixed Right</h2>
       <p class="cta-sub">Tell us what you're dealing with. No obligation — just a straight conversation about whether we're the right fit.</p>
-      <div class="cta-actions">
-        <a href="/contact/enterprise" class="btn-primary ent-btn">Request Expert Service</a>
-        <a href="#" class="btn-ghost">View Our Work</a>
-      </div>
+      <a href="/contact/enterprise" class="btn-primary ent-btn">Request Expert Service</a>
       <p class="cta-email"><a href="mailto:services&#x40;streichforce.com" class="ent-link">services&#x40;streichforce.com</a></p>
     </div>
   </section>
@@ -89,41 +91,52 @@ import Footer from '../../components/Footer.astro';
 </BaseLayout>
 
 <style>
-.div-hero { position:relative;padding:9rem var(--sf-pad) 7rem;background:var(--sf-black);overflow:hidden; }
-.div-hero-bg { position:absolute;inset:0;background:url('/hero-bg.png') center/cover no-repeat;opacity:.1;pointer-events:none; }
-.hero-accent-bar { position:absolute;bottom:0;left:0;right:0;height:4px; }
-.ent-bar { background:var(--sf-ent); }
-.div-hero-inner { position:relative;z-index:1;max-width:900px; }
-.ent-eye { color:var(--sf-ent-b); }
-.div-hero-title { font-family:var(--sf-font-display);font-weight:900;font-size:clamp(2.8rem,7vw,6rem);text-transform:uppercase;color:var(--sf-text-primary);line-height:1;margin:1rem 0 1.5rem; }
-.ent-accent { color:var(--sf-ent); }
-.div-hero-sub { font-size:1.05rem;color:var(--sf-text-secondary);max-width:640px;line-height:1.8;margin-bottom:2.5rem; }
-.div-hero-cta { display:flex;gap:1rem;flex-wrap:wrap; }
-.btn-primary { display:inline-block;font-family:var(--sf-font-display);font-weight:700;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;padding:.9rem 2rem;text-decoration:none;transition:background .2s; }
-.ent-btn { background:var(--sf-ent);color:#fff; }
-.ent-btn:hover { background:var(--sf-ent-b); }
-.btn-ghost { display:inline-block;font-family:var(--sf-font-display);font-weight:700;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;padding:.9rem 2rem;text-decoration:none;border:1px solid rgba(255,255,255,.2);color:var(--sf-text-secondary);transition:all .2s; }
-.btn-ghost:hover { border-color:var(--sf-ent);color:var(--sf-ent); }
-.div-inner { max-width:1200px;margin:0 auto; }
-.div-inner-center { text-align:center; }
-.div-content { padding:6rem var(--sf-pad);background:var(--sf-surface); }
-.content-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px; }
-.content-block { background:var(--sf-black);padding:2.5rem; }
-.block-title { font-family:var(--sf-font-display);font-weight:700;font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.5rem; }
-.ent-title { color:var(--sf-ent-b); }
-.block-list { list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.75rem; }
-.block-list li { font-size:1rem;color:var(--sf-text-secondary);line-height:1.7;padding-left:1.25rem;position:relative; }
-.ent-list li::before { content:'▸';position:absolute;left:0;color:var(--sf-ent);font-size:.8rem;top:.2em; }
-.block-steps { list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:1rem; }
-.block-steps li { display:flex;align-items:flex-start;gap:.75rem;font-size:1rem;color:var(--sf-text-secondary);line-height:1.6; }
-.step-num { font-family:var(--sf-font-display);font-weight:900;font-size:1.2rem;flex-shrink:0;line-height:1.4; }
-.ent-num { color:var(--sf-ent); }
-.div-cta { padding:7rem var(--sf-pad);background:var(--sf-black); }
-.cta-rule { width:48px;height:4px;margin:0 auto 2.5rem; }
-.cta-title { font-family:var(--sf-font-display);font-weight:900;font-size:clamp(1.8rem,4vw,3rem);text-transform:uppercase;color:var(--sf-text-primary);line-height:1.1;margin-bottom:1.25rem; }
-.cta-sub { font-size:1rem;color:var(--sf-text-secondary);line-height:1.75;margin-bottom:2rem;max-width:600px;margin-left:auto;margin-right:auto; }
-.cta-actions { display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem; }
-.cta-email { font-size:.9rem;color:var(--sf-text-muted); }
-.ent-link { color:var(--sf-ent-b);text-decoration:none; }
-.ent-link:hover { text-decoration:underline; }
+.div-hero{position:relative;padding:9rem var(--sf-pad) 7rem;background:var(--sf-black);overflow:hidden}
+.div-hero-bg{position:absolute;inset:0;background:url('/hero-bg.png') center/cover no-repeat;opacity:.1;pointer-events:none}
+.hero-accent-bar{position:absolute;bottom:0;left:0;right:0;height:4px}
+.ent-bar{background:var(--sf-ent)}
+.div-hero-inner{position:relative;z-index:1;max-width:900px}
+.ent-eye{color:var(--sf-ent-b)}
+.div-hero-title{font-family:var(--sf-font-display);font-weight:900;font-size:clamp(2.8rem,7vw,6rem);text-transform:uppercase;color:var(--sf-text-primary);line-height:1;margin:1rem 0 1.5rem}
+.ent-accent{color:var(--sf-ent)}
+.div-hero-sub{font-size:1.05rem;color:var(--sf-text-secondary);max-width:640px;line-height:1.8;margin-bottom:1rem}
+.div-hero-cta{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem}
+.btn-primary{display:inline-block;font-family:var(--sf-font-display);font-weight:700;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;padding:.9rem 2rem;text-decoration:none;transition:background .2s}
+.ent-btn{background:var(--sf-ent);color:#fff}
+.ent-btn:hover{background:var(--sf-ent-b)}
+.btn-ghost{display:inline-block;font-family:var(--sf-font-display);font-weight:700;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;padding:.9rem 2rem;text-decoration:none;border:1px solid rgba(255,255,255,.2);color:var(--sf-text-secondary);transition:all .2s}
+.btn-ghost:hover{border-color:var(--sf-ent);color:var(--sf-ent)}
+
+/* SECTIONS */
+.content-section{padding:5rem var(--sf-pad);background:var(--sf-black)}
+.content-section.alt{background:var(--sf-surface)}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-title{font-family:var(--sf-font-display);font-weight:900;font-size:clamp(1.6rem,3vw,2.4rem);text-transform:uppercase;letter-spacing:.04em;margin-bottom:2.5rem}
+.ent-title{color:var(--sf-ent-b)}
+
+/* 4-BOX GRID */
+.boxes-4{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+@media(max-width:900px){.boxes-4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.boxes-4{grid-template-columns:1fr}}
+.box{background:var(--sf-surface);padding:2rem 1.75rem;display:flex;flex-direction:column;align-items:flex-start;gap:1rem}
+.content-section.alt .box{background:var(--sf-black)}
+.box-bullet{font-size:1.4rem;line-height:1;flex-shrink:0}
+.ent-bullet{color:var(--sf-ent)}
+.box p{font-size:1rem;color:var(--sf-text-secondary);line-height:1.7;margin:0}
+
+/* STEP BOXES */
+.boxes-4.centered{justify-items:center}
+.step-box{align-items:center;text-align:center}
+.step-num{font-family:var(--sf-font-display);font-weight:900;font-size:2.8rem;line-height:1;flex-shrink:0}
+.ent-step{color:var(--sf-ent)}
+
+/* CTA */
+.div-cta{padding:7rem var(--sf-pad);background:var(--sf-black);text-align:center}
+.cta-inner{max-width:680px;margin:0 auto}
+.cta-rule{width:48px;height:4px;margin:0 auto 2.5rem}
+.cta-title{font-family:var(--sf-font-display);font-weight:900;font-size:clamp(1.8rem,4vw,3rem);text-transform:uppercase;color:var(--sf-text-primary);line-height:1.1;margin-bottom:1.25rem}
+.cta-sub{font-size:1rem;color:var(--sf-text-secondary);line-height:1.75;margin-bottom:2rem}
+.cta-email{margin-top:1.5rem;font-size:.9rem;color:var(--sf-text-muted)}
+.ent-link{color:var(--sf-ent-b);text-decoration:none}
+.ent-link:hover{text-decoration:underline}
 </style>
