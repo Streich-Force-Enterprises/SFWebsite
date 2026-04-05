@@ -55,10 +55,10 @@ import Footer from '../../components/Footer.astro';
     <div class="section-inner">
       <h2 class="section-title ent-title">How We Work</h2>
       <div class="boxes-4 centered">
-        <div class="box step-box"><span class="step-num ent-step">1</span><p>Assess the real issue (not just the symptoms)</p></div>
-        <div class="box step-box"><span class="step-num ent-step">2</span><p>Identify the correct fix</p></div>
-        <div class="box step-box"><span class="step-num ent-step">3</span><p>Execute with precision</p></div>
-        <div class="box step-box"><span class="step-num ent-step">4</span><p>Ensure it's done right before we leave</p></div>
+        <div class="box step-box"><div class="step-ghost" style="color:var(--sf-ent)">1</div><p>Assess the real issue (not just the symptoms)</p></div>
+        <div class="box step-box"><div class="step-ghost" style="color:var(--sf-ent)">2</div><p>Identify the correct fix</p></div>
+        <div class="box step-box"><div class="step-ghost" style="color:var(--sf-ent)">3</div><p>Execute with precision</p></div>
+        <div class="box step-box"><div class="step-ghost" style="color:var(--sf-ent)">4</div><p>Ensure it's done right before we leave</p></div>
       </div>
     </div>
   </section>
@@ -118,17 +118,15 @@ import Footer from '../../components/Footer.astro';
 .boxes-4{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
 @media(max-width:900px){.boxes-4{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:500px){.boxes-4{grid-template-columns:1fr}}
-.box{background:var(--sf-surface);padding:2rem 1.75rem;display:flex;flex-direction:column;align-items:flex-start;gap:1rem}
+.box{background:var(--sf-surface);padding:2rem 1.75rem;display:flex;flex-direction:row;align-items:flex-start;gap:.85rem}
 .content-section.alt .box{background:var(--sf-black)}
 .box-bullet{font-size:1.4rem;line-height:1;flex-shrink:0}
-.ent-bullet{color:var(--sf-ent)}
-.box p{font-size:1rem;color:var(--sf-text-secondary);line-height:1.7;margin:0}
+.ent-bullet{color:var(--sf-ent);font-size:.95rem;flex-shrink:0;margin-top:.28em;line-height:1}
+.box p{font-size:1.1rem;color:var(--sf-text-secondary);line-height:1.65;margin:0}
 
 /* STEP BOXES */
-.boxes-4.centered{justify-items:center}
+.boxes-4.centered{justify-items:stretch}
 .step-box{align-items:center;text-align:center}
-.step-num{font-family:var(--sf-font-display);font-weight:900;font-size:2.8rem;line-height:1;flex-shrink:0}
-.ent-step{color:var(--sf-ent)}
 
 /* CTA */
 .div-cta{padding:7rem var(--sf-pad);background:var(--sf-black);text-align:center}
@@ -139,4 +137,8 @@ import Footer from '../../components/Footer.astro';
 .cta-email{margin-top:1.5rem;font-size:.9rem;color:var(--sf-text-muted)}
 .ent-link{color:var(--sf-ent-b);text-decoration:none}
 .ent-link:hover{text-decoration:underline}
+
+.step-box{position:relative;align-items:center;text-align:center;flex-direction:column;justify-content:center;min-height:170px;overflow:hidden;gap:0;padding:1.5rem}
+.step-ghost{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--sf-font-display);font-weight:900;font-size:8rem;line-height:1;pointer-events:none;user-select:none;z-index:0;opacity:.13;letter-spacing:-.02em}
+.step-box p{position:relative;z-index:1;font-size:1.1rem;color:var(--sf-text-primary);line-height:1.65;margin:0;font-weight:500;padding:0 .5rem}
 </style>
