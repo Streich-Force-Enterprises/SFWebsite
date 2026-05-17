@@ -28,7 +28,7 @@
   /* Text */
   --sf-text-primary:   #F2EDE6;   /* Primary body text */
   --sf-text-secondary: #A09890;   /* Secondary / muted text */
-  --sf-text-muted:     #5C5550;   /* Very muted — labels, eyebrows */
+  --sf-text-muted:     #8A847E;   /* Very muted — labels, eyebrows. Lifted from #5C5550 for AA contrast on dark BG (5.0:1) */
 
   /* Brand Red — parent brand accent */
   --sf-rust:     #C0392B;   /* Primary brand red */
@@ -62,17 +62,17 @@
   /*
    * FONT WEIGHTS IN USE:
    * Display: 600 (labels/eyebrows), 700 (subheadings), 800 (section titles), 900 (hero/major headings)
-   * Body:    300 (descriptions), 400 (base), 500 (summary/emphasis)
+   * Body:    400 (base/descriptions), 500 (summary/emphasis)
    *
    * GOOGLE FONTS IMPORT:
-   * @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap');
+   * @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500&display=swap');
    *
-   * TYPE SCALE (v1.1 — increased +1.5px across the board):
+   * TYPE SCALE (v1.2 — body 300 → 400 for dark-mode legibility):
    * Hero title:       clamp(3.5rem, 9vw, 9rem)   — Barlow Condensed 900
    * Section title:    clamp(2.2rem, 4vw, 3.2rem)  — Barlow Condensed 900
    * Division title:   clamp(1.6rem, 2.5vw, 2.4rem)— Barlow Condensed 900
    * Division summary: 1.1rem                       — Barlow 500
-   * Body text:        1.0–1.1rem                   — Barlow 300
+   * Body text:        1.0–1.1rem                   — Barlow 400
    * Eyebrow/label:    0.75–0.8rem                  — Barlow Condensed 600, letter-spacing: 0.35em
    * Pills/tags:       0.68–0.72rem                 — Barlow Condensed 600/700
    */
@@ -84,7 +84,7 @@
 }
 
 /* ---- 5. BASE RESET ---- */
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500&display=swap');
 
 *, *::before, *::after {
   box-sizing: border-box;
