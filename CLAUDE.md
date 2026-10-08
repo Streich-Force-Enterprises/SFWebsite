@@ -139,3 +139,9 @@ when it lands.
   therefore needs both: the Astro entry (so `npm run preview` still lands) and
   a `[[redirects]]` block in `netlify.toml` with `status = 301` and
   `force = true`. (#10)
+- **The build does not catch dead links.** The nav pointed at `/login` (a page
+  this site never had) for months with `verify` green. Any PR that touches
+  Nav, Footer or a route checks every internal `href` in `dist/` resolves
+  (#11): `cd dist && for h in $(grep -rhoE 'href="/[^"#]*' --include=*.html . | sed 's/href="//' | sort -u); do p=".${h%/}"; [ -f "$p" ] || [ -f "$p/index.html" ] || [ "$h" = / ] || echo "DEAD: $h"; done`
+- **Login goes to SF Ops** (`https://ops.streichforce.com/login`, D3). This
+  site has no login of its own and never gets one.
