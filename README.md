@@ -84,7 +84,7 @@ Full brand documentation: `StreichForce_Brand_Guidelines.docx`
 - [ ] Build out `/enterprise` page with photo gallery
 - [ ] Build out `/solutions` page with Triplemeter integration details
 - [ ] Build out `/containers` page with inventory/quote request
-- [ ] Add Netlify Forms to contact CTA
+- [x] Add Netlify Forms to contact CTA (markup done; delivery tracked in #12)
 - [ ] Connect `streichforce.com` domain in Netlify
 
 ---

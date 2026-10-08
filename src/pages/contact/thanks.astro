@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+---
+<BaseLayout title="Request Received"
+  description="Thanks for reaching out to Streich Force. We'll respond within 24 hours.">
+  <Nav />
+  <section class="thanks">
+    <div class="thanks-inner">
+      <p class="sf-eyebrow thanks-eye">Request received</p>
+      <h1 class="thanks-title">Thanks. We've got it.</h1>
+      <p class="thanks-sub">Your message is on its way to the right team. Please allow up to 24 hours for a response.</p>
+      <div class="thanks-actions">
+        <a href="/" class="sf-btn-primary">Back to Home</a>
+      </div>
+    </div>
+  </section>
+  <Footer />
+</BaseLayout>
+<style>
+.thanks { padding: 10rem var(--sf-pad) 8rem; background: var(--sf-black); min-height: 60vh; }
+.thanks-inner { max-width: 760px; margin: 0 auto; }
+.thanks-eye { color: var(--sf-ent-b); }
+.thanks-title { font-family: var(--sf-font-display); font-weight: 900; font-size: clamp(2.5rem, 5vw, 4rem); text-transform: uppercase; color: var(--sf-text-primary); line-height: 1; margin: 0.75rem 0 1.25rem; }
+.thanks-sub { font-size: 1.05rem; color: var(--sf-text-secondary); line-height: 1.7; max-width: 600px; }
+.thanks-actions { margin-top: 2.5rem; }
+</style>

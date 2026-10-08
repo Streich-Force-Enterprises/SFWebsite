@@ -128,6 +128,28 @@ when it lands.
 - **SF Solutions is read-only to Triplemeter.** No copy may promise a
   write-back, sync-to-TM, or "we update your TM data".
 
+## Contact forms
+
+Three Netlify Forms, one per division page. All three post to the shared
+thank-you page `/contact/thanks/` (the form's `action`), not Netlify's default.
+
+| Form (`form-name`)    | Page                  | Address the page shows       | Notifies (verified) |
+|-----------------------|-----------------------|------------------------------|---------------------|
+| `enterprise-contact`  | `/contact/enterprise` | `services@streichforce.com`  | _pending #12_       |
+| `solutions-contact`   | `/contact/solutions`  | `solutions@streichforce.com` | _pending #12_       |
+| `containers-contact`  | `/contact/containers` | `containers@streichforce.com`| _pending #12_       |
+
+- Submissions are read in Netlify → project `sfwebite` → Forms (and by email
+  once notifications are set). Netlify site id `3effd78e-9ecb-4655-bb3f-d1e5549d8607`.
+- A new form must keep `data-netlify="true"`, the hidden `form-name` input,
+  and the honeypot, and must be plain HTML in the built page (no JS-rendered
+  forms), or Netlify never registers it.
+
 ## Things that have bitten us
 
-- _(none yet for this repo; add the first one here, the way sf-ops does)_
+- **Netlify form detection was off (found 2026-10-08, #12).** The three forms
+  had correct markup since launch, but the `sfwebite` project had Forms "not
+  enabled" and zero forms registered, so every submission went nowhere while
+  the page looked fine. Markup alone proves nothing: check the Netlify project
+  lists the form (connector `get-forms-for-project`) and that a test
+  submission lands, before calling a form done.
