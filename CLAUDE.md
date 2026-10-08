@@ -102,7 +102,10 @@ when it lands.
 - **One entry per photo in `src/content/gallery/`** (an Astro content
   collection): file, caption, division, service line, month, featured.
   The schema fails the build on a missing caption or an unknown service
-  line. The six service lines are the ones on the Services page.
+  line. The service lines are the ones on the Services page (Sonja,
+  2026-10-08: alphabetical, Doors replaced Compactor Chutes, Other /
+  Miscellaneous last); the contact form's "Type of Work Needed" list
+  matches them in the same order.
 - **Captions say what was built or fixed, never who for.** No customer
   name, store number, address, signage with a chain's name, visible
   paperwork or recognisable face, unless Sonja says yes for that photo in
@@ -112,8 +115,8 @@ when it lands.
   `src/assets/gallery/services/`, add `src/content/gallery/<slug>.yaml` (copy
   a placeholder entry; `image:` is relative to the YAML file), set
   `featured: true` for the "See our work" strip on `/services` (first four,
-  newest month first). The schema lives in `src/content/config.ts`; the six
-  service lines in `src/lib/service-lines.ts`. Delete the `placeholder-*`
+  newest month first). The schema lives in `src/content/config.ts`; the
+  service lines in `src/lib/service-lines.ts` (same order as the Services page). Delete the `placeholder-*`
   entries and images once real photos land (G2, #16).
 - **One component, `GalleryGrid.astro`, no JavaScript:** the service-line
   filter is radio buttons + CSS, the lightbox is the native Popover API.
@@ -132,13 +135,25 @@ when it lands.
   that names a thing from SF Ops (Work order, Site, Field tech, Work
   summary, Client Due). Never "job ticket", "location", "technician".
 - **One page per division, one route per page.** `/services` is the
-  Division 01 page; `/enterprise` redirects to it once #10 ships. A new
+  Division 01 page; `/enterprise` 301-redirects to it (#10). A new
   entry point is a new route to the existing page, never a second page.
 - **SF Solutions is read-only to Triplemeter.** No copy may promise a
   write-back, sync-to-TM, or "we update your TM data".
 
 ## Things that have bitten us
 
+- **Astro `redirects` alone is not a 301 on Netlify.** With no adapter, Astro
+  writes a meta-refresh page (`dist/enterprise/index.html`) and Netlify serves
+  that file, since a file on disk shadows a redirect rule. A retired route
+  therefore needs both: the Astro entry (so `npm run preview` still lands) and
+  a `[[redirects]]` block in `netlify.toml` with `status = 301` and
+  `force = true`. (#10)
+- **The build does not catch dead links.** The nav pointed at `/login` (a page
+  this site never had) for months with `verify` green. Any PR that touches
+  Nav, Footer or a route checks every internal `href` in `dist/` resolves
+  (#11): `cd dist && for h in $(grep -rhoE 'href="/[^"#]*' --include=*.html . | sed 's/href="//' | sort -u); do p=".${h%/}"; [ -f "$p" ] || [ -f "$p/index.html" ] || [ "$h" = / ] || echo "DEAD: $h"; done`
+- **Login goes to SF Ops** (`https://ops.streichforce.com/login`, D3). This
+  site has no login of its own and never gets one.
 - **`<Image widths={…}>` without `width` ships the full-size original too.**
   Astro uses the source's own width for the `src` fallback, so every 4032 px
   phone photo emitted a ~3 MB webp nobody loads but every deploy carries.
