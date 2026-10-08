@@ -88,9 +88,11 @@ accent on neutral grays, with the sections Problem · Proposed flow ·
 Open Decisions (recommended option highlighted) · What Changed in This
 Revision. A refinement is a new versioned file; all versions are kept.
 
-Active plan: **`docs/specs/sf-website_build-plan_v1.html`** (2026-10-08),
-Open Decisions D1–D5 waiting on Sonja. The positioning spec from her
-brainstorm (ticket #18) will be `sf-website_positioning_v1.html`.
+Active plan: **`docs/specs/sf-website_build-plan_v2.html`** (locked
+2026-10-08, Sonja: "Go with all recommended", D1–D5 all A). Active draft
+awaiting her decisions: **none.** The positioning spec from her brainstorm
+(ticket #18) will be `sf-website_positioning_v1.html` and takes this line
+when it lands.
 
 ## Gallery
 
