@@ -1,0 +1,170 @@
+---
+// src/components/GalleryGrid.astro
+// The one gallery component. /services/gallery renders it with the filter;
+// the "See our work" strip on /services renders it with featured photos only.
+//
+// No JavaScript: the service-line filter is radio buttons + CSS, and the
+// lightbox is the native Popover API (Esc and click-outside close it).
+import { Image } from 'astro:assets';
+import { SERVICE_LINES, SERVICE_LINE_LABELS, type GalleryEntry } from '../lib/gallery';
+
+export interface Props {
+  items: GalleryEntry[];
+  /** Show the service-line filter above the grid. */
+  filter?: boolean;
+  /** Unique per page if a page ever renders two grids. */
+  name?: string;
+  /** Load the first N thumbnails eagerly (set when the grid is above the fold). */
+  eager?: number;
+}
+const { items, filter = false, name = 'gallery', eager = 0 } = Astro.props;
+
+// Only offer filters for service lines that have at least one photo.
+const lines = SERVICE_LINES.filter((l) => items.some((i) => i.data.serviceLine === l));
+const showFilter = filter && lines.length > 1;
+
+// Per service line: hide the other photos, highlight and focus-ring the active pill.
+const filterCss = showFilter
+  ? lines
+      .map(
+        (l) =>
+          `.gg-${name} .gg-f[value="${l}"]:checked~.gg-grid .gg-item:not([data-line="${l}"]){display:none}` +
+          `.gg-${name} .gg-f[value="${l}"]:checked~.gg-pills label[data-line="${l}"]{background:var(--sf-ent);border-color:var(--sf-ent);color:#fff}` +
+          `.gg-${name} .gg-f[value="${l}"]:focus-visible~.gg-pills label[data-line="${l}"]{outline:2px solid var(--sf-ent-b);outline-offset:2px}`,
+      )
+      .join('') +
+    `.gg-${name} .gg-f[value="all"]:checked~.gg-pills label[data-line="all"]{background:var(--sf-ent);border-color:var(--sf-ent);color:#fff}` +
+    `.gg-${name} .gg-f[value="all"]:focus-visible~.gg-pills label[data-line="all"]{outline:2px solid var(--sf-ent-b);outline-offset:2px}`
+  : '';
+---
+<div class={`gg gg-${name}`}>
+  {showFilter && (
+    <>
+      <style is:inline set:html={filterCss}></style>
+      <input class="gg-f" type="radio" name={`${name}-line`} id={`${name}-all`} value="all" checked />
+      {lines.map((l) => (
+        <input class="gg-f" type="radio" name={`${name}-line`} id={`${name}-${l}`} value={l} />
+      ))}
+      <div class="gg-pills" role="group" aria-label="Filter by service line">
+        <label for={`${name}-all`} data-line="all">All</label>
+        {lines.map((l) => (
+          <label for={`${name}-${l}`} data-line={l}>{SERVICE_LINE_LABELS[l]}</label>
+        ))}
+      </div>
+    </>
+  )}
+
+  <ul class="gg-grid">
+    {items.map((item, i) => {
+      const { image, caption, alt, serviceLine } = item.data;
+      const pid = `${name}-lb-${item.id}`;
+      return (
+        <li class="gg-item" data-line={serviceLine}>
+          <figure class="gg-card">
+            <button class="gg-thumb" type="button" popovertarget={pid} aria-label={`Enlarge: ${caption}`}>
+              <Image
+                src={image}
+                alt={alt ?? caption}
+                width={800}
+                widths={[400, 800]}
+                sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 400px"
+                format="webp"
+                quality={70}
+                loading={i < eager ? 'eager' : 'lazy'}
+                fetchpriority={i === 0 && eager > 0 ? 'high' : undefined}
+              />
+            </button>
+            <figcaption class="gg-cap">
+              {serviceLine && <span class="gg-line">{SERVICE_LINE_LABELS[serviceLine]}</span>}
+              {caption}
+            </figcaption>
+          </figure>
+
+          <div class="gg-lb" id={pid} popover>
+            <figure>
+              <Image
+                src={image}
+                alt={alt ?? caption}
+                width={2000}
+                widths={[1200, 2000]}
+                sizes="92vw"
+                format="webp"
+                quality={75}
+                loading="lazy"
+              />
+              <figcaption class="gg-lb-cap">{caption}</figcaption>
+            </figure>
+            <button class="gg-close" type="button" popovertarget={pid} popovertargetaction="hide" aria-label="Close">×</button>
+          </div>
+        </li>
+      );
+    })}
+  </ul>
+</div>
+
+<style>
+  /* Radios stay focusable for keyboard users; the pills are their labels. */
+  .gg-f { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+
+  .gg-pills { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 2rem; }
+  .gg-pills label {
+    font-family: var(--sf-font-display); font-weight: 600; font-size: .78rem;
+    letter-spacing: .14em; text-transform: uppercase;
+    padding: .45rem 1rem; border: 1px solid var(--sf-border-md);
+    color: var(--sf-text-secondary); cursor: pointer; transition: border-color .2s, color .2s;
+  }
+  .gg-pills label:hover { border-color: var(--sf-ent); color: var(--sf-text-primary); }
+
+  .gg-grid {
+    list-style: none; display: grid; gap: 2px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+  .gg-card { position: relative; margin: 0; background: var(--sf-surface); height: 100%; }
+
+  .gg-thumb { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+  .gg-thumb :global(img) { width: 100%; aspect-ratio: 4 / 3; height: auto; object-fit: cover; }
+  .gg-thumb:focus-visible { outline: 2px solid var(--sf-ent-b); outline-offset: -2px; }
+
+  /* Phones and touch: caption sits below the photo. */
+  .gg-cap {
+    padding: .85rem 1rem 1.1rem; font-size: .95rem; line-height: 1.5;
+    color: var(--sf-text-secondary);
+  }
+  .gg-line {
+    display: block; margin-bottom: .2rem;
+    font-family: var(--sf-font-display); font-weight: 600; font-size: .72rem;
+    letter-spacing: .2em; text-transform: uppercase; color: var(--sf-ent-b);
+  }
+
+  /* Mouse: caption slides up over the photo on hover or keyboard focus. */
+  @media (hover: hover) and (pointer: fine) {
+    .gg-cap {
+      position: absolute; left: 0; right: 0; bottom: 0; pointer-events: none;
+      background: linear-gradient(to top, rgba(17,17,17,.95) 30%, rgba(17,17,17,0));
+      color: var(--sf-text-primary); padding-top: 2.5rem;
+      opacity: 0; transform: translateY(8px); transition: opacity .2s, transform .2s;
+    }
+    .gg-card:hover .gg-cap,
+    .gg-card:focus-within .gg-cap { opacity: 1; transform: none; }
+  }
+
+  /* Lightbox (native popover, top layer). */
+  .gg-lb {
+    margin: auto; padding: 0; border: 0; background: transparent;
+    max-width: 92vw; max-height: 92vh; overflow: visible; color: var(--sf-text-primary);
+  }
+  .gg-lb::backdrop { background: rgba(0,0,0,.88); }
+  .gg-lb figure { margin: 0; }
+  .gg-lb :global(img) { width: auto; height: auto; max-width: 92vw; max-height: calc(92vh - 4rem); object-fit: contain; margin: 0 auto; }
+  .gg-lb-cap { padding: .75rem 0 0; text-align: center; font-size: 1rem; color: var(--sf-text-secondary); }
+  .gg-close {
+    position: absolute; top: .5rem; right: .5rem;
+    width: 2.5rem; height: 2.5rem; border: 1px solid var(--sf-border-md); background: var(--sf-black);
+    color: var(--sf-text-primary); font-size: 1.6rem; line-height: 1; cursor: pointer;
+  }
+  .gg-close:hover, .gg-close:focus-visible { border-color: var(--sf-ent); color: var(--sf-ent-b); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gg-cap, .gg-pills label { transition: none; }
+  }
+</style>

@@ -108,6 +108,15 @@ when it lands.
   paperwork or recognisable face, unless Sonja says yes for that photo in
   the PR. Every gallery PR shows every new photo in its deploy preview so
   she approves them in one look.
+- **Adding a photo is one file plus one entry, no code:** put the original in
+  `src/assets/gallery/services/`, add `src/content/gallery/<slug>.yaml` (copy
+  a placeholder entry; `image:` is relative to the YAML file), set
+  `featured: true` for the "See our work" strip on `/services` (first four,
+  newest month first). The schema lives in `src/content/config.ts`; the six
+  service lines in `src/lib/service-lines.ts`. Delete the `placeholder-*`
+  entries and images once real photos land (G2, #16).
+- **One component, `GalleryGrid.astro`, no JavaScript:** the service-line
+  filter is radio buttons + CSS, the lightbox is the native Popover API.
 - **Solutions shows product screenshots, not photos**, always against demo
   data: never Loadstar's or any customer's numbers, names or ids.
 
@@ -130,4 +139,14 @@ when it lands.
 
 ## Things that have bitten us
 
-- _(none yet for this repo; add the first one here, the way sf-ops does)_
+- **`<Image widths={…}>` without `width` ships the full-size original too.**
+  Astro uses the source's own width for the `src` fallback, so every 4032 px
+  phone photo emitted a ~3 MB webp nobody loads but every deploy carries.
+  Always pass `width` as the largest size you want (#9).
+- **`<img>` width/height attributes beat CSS `aspect-ratio`** unless the CSS
+  also sets `height: auto`. Astro's `<Image>` always writes both attributes,
+  so a 4:3 crop silently became a tall original-ratio image (#9).
+- **Measure Lighthouse with a full gallery, not the placeholders.** With 23
+  photos `/services/gallery` scored 93; the first thumbnails must load eagerly
+  (`eager` prop), or the lazy LCP image costs the score. What holds every
+  page near 90 is the render-blocking Google Fonts stylesheet, not images.
