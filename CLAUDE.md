@@ -46,3 +46,88 @@ npm run preview    # serve the production build locally
 The apps (sf-ops, sf-solutions, sf-sonja-hq) live in the same GitHub org and
 follow the same PR-gated flow. This repo is intentionally the simplest of the
 set — resist importing app-repo tooling it doesn't need.
+
+## Working sessions: one ticket, one session, one icon
+
+The website is built the same way as SF Ops (sf-ops `CLAUDE.md` → "Working
+sessions", Sonja 2026-10-01 and 2026-10-04). Those rules apply here word for
+word; the short form:
+
+- **Tickets are GitHub issues in this repo**, each a sub-issue of a
+  `Project: …` parent. The parents and their icons live in
+  `scripts/status-page/projects.json` (🧱 Site foundation · 🖼️ Gallery ·
+  ✍️ Content & positioning · 🪲 Bugs). An icon is never one SF Ops already
+  uses, because Sonja sees every session side by side.
+- **Session titles:** a ticket session is `<project icon>🛠️ #<n> · <title>`,
+  e.g. `🖼️🛠️ #15 · Photo intake: first batch`. A session started without
+  such a title renames itself first (`set_session_title`).
+- **Only the 🧭 lead session starts or closes sessions.** A ticket session
+  never starts another session and never asks Sonja to start one. Follow-up
+  work becomes a GitHub issue under the right `Project:` parent, or a line
+  in the PR description.
+- **A ticket session never merges its own PR** and never turns on
+  auto-merge. It finishes at a green draft PR (the `verify` build). Merging
+  happens only on Sonja's "merge it", carried out by the lead. A merge to
+  `main` is a production deploy, so this matters more here than in the app
+  repos.
+- **A ticket session finishes its own memory.** Before its PR is ready, it
+  adds any lesson worth keeping to this file in the same PR.
+- **One board.** The daily 📊 status steward (SF Ops issue #387, 7am
+  Central) carries a "🌐 SF Website" section for this repo: open PRs,
+  tickets waiting on Sonja, what shipped. Tickets waiting on her carry the
+  `waiting-on-sonja` label; the steward keeps that label true.
+- **The lead closes the loop.** Once a PR merges, the lead closes the
+  ticket if GitHub did not, then archives the session.
+
+## Spec deliverables
+
+Any plan or scoping doc that needs Sonja's decisions is **HTML**, not
+markdown (she gets lost in markdown prose): `docs/specs/sf-website_<topic>_v<N>.html`,
+one self-contained file (inline CSS, no external deps), SF Red `#C0392B`
+accent on neutral grays, with the sections Problem · Proposed flow ·
+Open Decisions (recommended option highlighted) · What Changed in This
+Revision. A refinement is a new versioned file; all versions are kept.
+
+Active plan: **`docs/specs/sf-website_build-plan_v2.html`** (locked
+2026-10-08, Sonja: "Go with all recommended", D1–D5 all A). Active draft
+awaiting her decisions: **none.** The positioning spec from her brainstorm
+(ticket #18) will be `sf-website_positioning_v1.html` and takes this line
+when it lands.
+
+## Gallery
+
+- **Originals live in `src/assets/gallery/<division>/`**, never in
+  `public/`. Astro's image service resizes and converts them at build time.
+  A hand-resized file in `public/` is the smell to question in review.
+- **One entry per photo in `src/content/gallery/`** (an Astro content
+  collection): file, caption, division, service line, month, featured.
+  The schema fails the build on a missing caption or an unknown service
+  line. The six service lines are the ones on the Services page.
+- **Captions say what was built or fixed, never who for.** No customer
+  name, store number, address, signage with a chain's name, visible
+  paperwork or recognisable face, unless Sonja says yes for that photo in
+  the PR. Every gallery PR shows every new photo in its deploy preview so
+  she approves them in one look.
+- **Solutions shows product screenshots, not photos**, always against demo
+  data: never Loadstar's or any customer's numbers, names or ids.
+
+## Content rules
+
+- **The site says what the repos say.** Services content comes from what
+  SF Ops does for a customer (sf-ops: Work order, Quote approved online,
+  photos, Work summary, invoice, payment). Solutions content comes from
+  what SF Solutions has built (sf-solutions: cash-exposure cockpit,
+  Triplemeter relay, QuickBooks and Pipedrive connectors, dashboards,
+  query builder). Nothing on the site promises what neither repo can do.
+- **Use the official names** from sf-ops `docs/ontology.md` on every page
+  that names a thing from SF Ops (Work order, Site, Field tech, Work
+  summary, Client Due). Never "job ticket", "location", "technician".
+- **One page per division, one route per page.** `/services` is the
+  Division 01 page; `/enterprise` redirects to it once #10 ships. A new
+  entry point is a new route to the existing page, never a second page.
+- **SF Solutions is read-only to Triplemeter.** No copy may promise a
+  write-back, sync-to-TM, or "we update your TM data".
+
+## Things that have bitten us
+
+- _(none yet for this repo; add the first one here, the way sf-ops does)_
