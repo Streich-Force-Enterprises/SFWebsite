@@ -66,6 +66,7 @@ import Footer from '../../components/Footer.astro';
   <section class="content-section" id="service-lines">
     <div class="section-inner">
       <h2 class="section-title ent-title">Service Lines</h2>
+      <!-- Alphabetical; "Other / Miscellaneous" stays last. Keep the contact form's "Type of Work Needed" list in the same order. -->
       <div class="services-grid">
         <div class="service-item">
           <div class="service-rule"></div>
@@ -74,8 +75,18 @@ import Footer from '../../components/Footer.astro';
         </div>
         <div class="service-item">
           <div class="service-rule"></div>
-          <h3 class="service-name">Compactor Chute Systems</h3>
-          <p class="service-desc">Installation, repair, and custom fabrication of compactor chutes and waste management infrastructure for multi-tenant retail and pharmacy properties.</p>
+          <h3 class="service-name">Doors</h3>
+          <p class="service-desc">Installation, repair, and replacement of commercial doors, frames, and hardware — storefront, back-of-house, and security doors for retail and pharmacy properties.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-rule"></div>
+          <h3 class="service-name">Pharmacy &amp; Retail Fit-Outs</h3>
+          <p class="service-desc">Specialized interior work for pharmacy and retail chain locations — custom cabinetry, millwork, fixture fabrication, and installation.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-rule"></div>
+          <h3 class="service-name">Site Maintenance</h3>
+          <p class="service-desc">Ongoing maintenance support for commercial properties. Consistent, reliable, and done by people who know your site and how it's built.</p>
         </div>
         <div class="service-item">
           <div class="service-rule"></div>
@@ -87,15 +98,10 @@ import Footer from '../../components/Footer.astro';
           <h3 class="service-name">Wall Access &amp; Security Gates</h3>
           <p class="service-desc">Custom wall access gates, security enclosures, and controlled-access fabrications built to commercial specifications for retail and pharmacy environments.</p>
         </div>
-        <div class="service-item">
+        <div class="service-item service-other">
           <div class="service-rule"></div>
-          <h3 class="service-name">Pharmacy &amp; Retail Fit-Outs</h3>
-          <p class="service-desc">Specialized interior work for pharmacy and retail chain locations — custom cabinetry, millwork, fixture fabrication, and installation.</p>
-        </div>
-        <div class="service-item">
-          <div class="service-rule"></div>
-          <h3 class="service-name">Site Maintenance</h3>
-          <p class="service-desc">Ongoing maintenance support for commercial properties. Consistent, reliable, and done by people who know your site and how it's built.</p>
+          <h3 class="service-name">Other / Miscellaneous</h3>
+          <p class="service-desc">Don't see your problem listed? If it's broken, custom, or has stumped someone else, tell us about it. That's usually exactly the kind of work we take on.</p>
         </div>
       </div>
     </div>
@@ -223,6 +229,7 @@ import Footer from '../../components/Footer.astro';
 .service-rule{height:3px;width:40px;margin-bottom:1.5rem;background:var(--sf-ent)}
 .service-name{font-family:var(--sf-font-display);font-weight:700;font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sf-text-primary);margin-bottom:.75rem}
 .service-desc{font-size:1rem;color:var(--sf-text-secondary);line-height:1.8}
+.service-other{grid-column:1/-1}
 
 /* WHO WE SERVE */
 .centered-inner{text-align:center}

@@ -102,7 +102,10 @@ when it lands.
 - **One entry per photo in `src/content/gallery/`** (an Astro content
   collection): file, caption, division, service line, month, featured.
   The schema fails the build on a missing caption or an unknown service
-  line. The six service lines are the ones on the Services page.
+  line. The service lines are the ones on the Services page (Sonja,
+  2026-10-08: alphabetical, Doors replaced Compactor Chutes, Other /
+  Miscellaneous last); the contact form's "Type of Work Needed" list
+  matches them in the same order.
 - **Captions say what was built or fixed, never who for.** No customer
   name, store number, address, signage with a chain's name, visible
   paperwork or recognisable face, unless Sonja says yes for that photo in
