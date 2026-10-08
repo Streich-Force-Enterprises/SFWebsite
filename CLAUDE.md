@@ -123,11 +123,16 @@ when it lands.
   that names a thing from SF Ops (Work order, Site, Field tech, Work
   summary, Client Due). Never "job ticket", "location", "technician".
 - **One page per division, one route per page.** `/services` is the
-  Division 01 page; `/enterprise` redirects to it once #10 ships. A new
+  Division 01 page; `/enterprise` 301-redirects to it (#10). A new
   entry point is a new route to the existing page, never a second page.
 - **SF Solutions is read-only to Triplemeter.** No copy may promise a
   write-back, sync-to-TM, or "we update your TM data".
 
 ## Things that have bitten us
 
-- _(none yet for this repo; add the first one here, the way sf-ops does)_
+- **Astro `redirects` alone is not a 301 on Netlify.** With no adapter, Astro
+  writes a meta-refresh page (`dist/enterprise/index.html`) and Netlify serves
+  that file, since a file on disk shadows a redirect rule. A retired route
+  therefore needs both: the Astro entry (so `npm run preview` still lands) and
+  a `[[redirects]]` block in `netlify.toml` with `status = 301` and
+  `force = true`. (#10)
