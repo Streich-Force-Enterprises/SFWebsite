@@ -1,0 +1,15 @@
+{
+  "_comment": "One icon per project (the GitHub 'Project: …' parent issue in THIS repo, keyed by its number). Same shape and same rules as sf-ops/scripts/status-page/projects.json: a project-level session is '<icon> <name>', a ticket session is '<icon><ticketMark> #<n> · <title>'. Icons must not reuse any icon in the sf-ops file (🐞 🤖 📥 🧰 💵 📐 🔩 🗂️ 🗺️, plus 📊 🧭 🛠️ 📁), because Sonja sees every session side by side. The website build is a project of its own, '🌐 SF Website', on the one status board (sf-ops #387). A new Project issue adds its line here in the same PR that creates it.",
+  "repo": "Streich-Force-Enterprises/SFWebsite",
+  "repoIcon": "🌐",
+  "steward": "📊",
+  "lead": "🧭",
+  "ticketMark": "🛠️",
+  "fallback": "📁",
+  "projects": {
+    "8": { "icon": "🪲", "name": "Bugs" },
+    "5": { "icon": "🧱", "name": "Site foundation" },
+    "6": { "icon": "🖼️", "name": "Gallery" },
+    "7": { "icon": "✍️", "name": "Content & positioning" }
+  }
+}

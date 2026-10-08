@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SF Website — Build plan v1 (gallery, content rework, working sessions)</title>
+<style>
+  :root{
+    --sf-red:#C0392B; --ink:#1c1c1c; --muted:#6b6b6b; --line:#e3ded6;
+    --paper:#faf8f4; --card:#ffffff; --ok:#1e7e4e; --warn:#b7791f; --info:#2b6cb0;
+    --mono:"SF Mono",ui-monospace,Menlo,Consolas,monospace;
+    --sans:Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.5;font-size:15px}
+  .wrap{max-width:1080px;margin:0 auto;padding:32px 20px 80px}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--sf-red);margin:0 0 6px}
+  h1{font-size:26px;margin:0 0 4px}
+  h2{font-size:19px;margin:40px 0 10px;border-bottom:2px solid var(--sf-red);padding-bottom:6px}
+  h3{font-size:15px;margin:22px 0 8px}
+  .sub{color:var(--muted);margin:0 0 18px}
+  .tag{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;padding:2px 8px;border-radius:3px;margin-right:6px;vertical-align:middle}
+  .tag.draft{background:#fdeeec;color:var(--sf-red);border:1px solid #f2cdc7}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:18px 20px;margin:14px 0}
+  .tablewrap{overflow-x:auto}
+  table{border-collapse:collapse;width:100%;margin:10px 0;background:var(--card)}
+  th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top;font-size:13.5px}
+  th{background:#f4f0e9;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#555}
+  td.k{font-family:var(--mono);font-size:11.5px;background:#faf8f4;font-weight:600;white-space:nowrap}
+  code,.mono{font-family:var(--mono);font-size:12.5px;background:#f4f1ea;padding:1px 5px;border-radius:3px}
+  pre{background:#25211c;color:#f0ece4;border-radius:6px;padding:14px 16px;overflow-x:auto;font-family:var(--mono);font-size:12px;line-height:1.55;white-space:pre-wrap}
+  .callout{border-left:4px solid var(--warn);background:#fdf8ee;padding:12px 16px;margin:14px 0;border-radius:0 6px 6px 0;font-size:14px}
+  .callout.bad{border-left-color:var(--sf-red);background:#fdeeec}
+  .callout.good{border-left-color:var(--ok);background:#f1f9f4}
+  .callout.info{border-left-color:var(--info);background:#eef4fb}
+  .chip{display:inline-block;font-family:var(--mono);font-size:10.5px;padding:2px 7px;border-radius:10px;border:1px solid;white-space:nowrap}
+  .chip.rec{background:#eaf6ee;color:var(--ok);border-color:#bfe3cc}
+  .chip.st{background:#eef4fb;color:var(--info);border-color:#c9daf0}
+  .chip.wait{background:#fdf3e3;color:var(--warn);border-color:#f0dcb8}
+  .chip.now{background:#eaf6ee;color:var(--ok);border-color:#bfe3cc}
+  ul{margin:8px 0 8px 18px;padding:0}
+  li{margin:4px 0;font-size:14px}
+  .foot{margin-top:50px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px}
+  tr.recommended td{background:#f4fbf6}
+  tr.recommended td.k{background:#eaf6ee}
+  .dec{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--sf-red);border-radius:0 8px 8px 0;padding:16px 20px;margin:18px 0}
+  .dec h3{margin-top:0}
+  .decid{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--sf-red)}
+  .toc{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 20px;margin:16px 0;font-size:13.5px}
+  .toc a{color:var(--info);text-decoration:none}
+  .small{font-size:12.5px;color:var(--muted)}
+  .cliff{background:var(--card);border:2px solid var(--sf-red);border-radius:8px;padding:16px 20px;margin:18px 0}
+  .cliff h3{margin:0 0 8px;color:var(--sf-red)}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  @media(max-width:760px){.grid3{grid-template-columns:1fr}}
+  .pcard{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+  .pcard .ic{font-size:26px;line-height:1}
+  .pcard h4{margin:6px 0 4px;font-size:14px}
+  .pcard p{margin:0;font-size:12.5px;color:var(--muted)}
+  a{color:var(--info)}
+  svg{max-width:100%;height:auto}
+  svg text{font-family:Helvetica,Arial,sans-serif}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="eyebrow">Streich Force Enterprises · streichforce.com · SFWebsite repo</p>
+<h1>SF Website — Build plan v1</h1>
+<p class="sub"><span class="tag draft">DRAFT · 2026-10-08</span> Gallery, content rework from what SF Ops and SF Solutions actually do, and the same working setup as SF Ops (projects, tickets, lead, daily board) so the build can run on Opus in parallel sessions.</p>
+
+<div class="cliff">
+  <h3>Cliff notes</h3>
+  <ul>
+    <li><b>The site is live and static</b> (Astro on Netlify, a merge is a deploy). Its words predate SF Ops and SF Solutions, it has no photos of real work, and three things on it are broken: a "site in progress" banner, a Login link to a page that does not exist, and two pages for Division 01.</li>
+    <li><b>Three projects, fourteen tickets, filed and ready.</b> 🧱 Site foundation (6) can start today on Opus. 🖼️ Gallery (3) needs your photos. ✍️ Content (5) waits on the positioning spec from your brainstorm, which is its first ticket (#18).</li>
+    <li><b>Same setup as SF Ops, one board.</b> Tickets are issues in the SFWebsite repo with their own icons. The existing 🧭 lead sweeps this repo too, and the 📊 steward adds a "🌐 SF Website" section to the daily board (#387). No second lead, no second board.</li>
+    <li><b>Five decisions are yours (D1–D5 below).</b> Two tickets can start without any of them; the rest unblock as you answer. Recommended answers are marked.</li>
+    <li><b>To start:</b> tell the lead session <i>"start #9, #12 and #14 on Opus"</i>, and feed your brainstorm into a session for #18.</li>
+  </ul>
+</div>
+
+<div class="toc">
+  <b>Contents</b> ·
+  <a href="#s1">1 Where the site stands</a> ·
+  <a href="#s2">2 Working setup</a> ·
+  <a href="#s3">3 Projects and tickets</a> ·
+  <a href="#s4">4 Gallery design</a> ·
+  <a href="#s5">5 Content rework</a> ·
+  <a href="#s6">6 Open decisions</a> ·
+  <a href="#s7">7 Build order and how to start</a> ·
+  <a href="#s8">8 What changed</a>
+</div>
+
+<h2 id="s1">1 · Where the site stands today</h2>
+<div class="tablewrap"><table>
+  <tr><th>Page</th><th>What it says</th><th>What is wrong with it</th></tr>
+  <tr><td class="k">/</td><td>Three divisions: Service &amp; Repair, Solutions ("fix my back office"), Containers. "Site in progress" banner on top.</td><td>Banner undercuts every page. Division cards link to <code>/services</code>; nothing links to <code>/enterprise</code>.</td></tr>
+  <tr><td class="k">/services</td><td>Division 01 pitch: when it has to be done right, 40+ years, trusted by national brands.</td><td>No service lines, no pictures, nothing about how a job runs (quote link, photos, work summary, online payment).</td></tr>
+  <tr><td class="k">/enterprise</td><td>The fuller Division 01 page: six service lines, "no subcontracting", who we serve.</td><td><b>A second page for the same division.</b> Orphaned (no link to it). The two will drift apart.</td></tr>
+  <tr><td class="k">/solutions</td><td>Generic back-office help: billing, data cleanup, workflows. Triplemeter named as a "future integration".</td><td>SF Solutions is a Triplemeter data arm for container companies with a built cash-exposure cockpit. The page describes a different business.</td></tr>
+  <tr><td class="k">/containers</td><td>"View available inventory", "request quotes quickly".</td><td>No inventory and no quote flow behind it; a plain contact form.</td></tr>
+  <tr><td class="k">/contact/*</td><td>Three Netlify forms, one per division.</td><td>Nobody has confirmed a submission reaches an inbox.</td></tr>
+  <tr><td class="k">nav</td><td>Services · Solutions · Containers · Login</td><td><code>/login</code> does not exist on this site.</td></tr>
+  <tr><td class="k">/legal/*</td><td>Privacy (with the SMS program) and MSA.</td><td>Fine. Do not touch while the Twilio review is open.</td></tr>
+</table></div>
+<p class="small">Stack: Astro 4.16, no framework islands, one dependency. CI is one check, the production build. <code>sharp</code> is already in the lockfile, so Astro's image pipeline needs no new dependency.</p>
+
+<h2 id="s2">2 · Working setup (same as SF Ops)</h2>
+<svg viewBox="0 0 1040 300" role="img" aria-label="Sessions and the board">
+  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#6b6b6b"/></marker></defs>
+  <rect x="20" y="20" width="300" height="70" rx="8" fill="#fff" stroke="#C0392B" stroke-width="2"/>
+  <text x="170" y="48" text-anchor="middle" font-size="15" font-weight="bold">🧭 Lead session (existing)</text>
+  <text x="170" y="70" text-anchor="middle" font-size="12" fill="#6b6b6b">starts/archives sessions · drives PRs · merges on your "merge it"</text>
+
+  <rect x="370" y="20" width="300" height="70" rx="8" fill="#fff" stroke="#C0392B" stroke-width="2"/>
+  <text x="520" y="48" text-anchor="middle" font-size="15" font-weight="bold">📊 Status steward (existing)</text>
+  <text x="520" y="70" text-anchor="middle" font-size="12" fill="#6b6b6b">7am Central · rewrites board #387 · + "🌐 SF Website" section</text>
+
+  <rect x="720" y="20" width="300" height="70" rx="8" fill="#fff" stroke="#e3ded6" stroke-width="2"/>
+  <text x="870" y="48" text-anchor="middle" font-size="15" font-weight="bold">You</text>
+  <text x="870" y="70" text-anchor="middle" font-size="12" fill="#6b6b6b">read the board · answer D1–D5 · say "merge it"</text>
+
+  <line x1="170" y1="90" x2="170" y2="140" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#a)"/>
+  <line x1="520" y1="90" x2="520" y2="140" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#a)"/>
+  <line x1="870" y1="90" x2="870" y2="140" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <rect x="20" y="140" width="1000" height="60" rx="8" fill="#f4f0e9" stroke="#e3ded6"/>
+  <text x="520" y="165" text-anchor="middle" font-size="14" font-weight="bold">GitHub · SFWebsite repo · Project: issues → tickets (sub-issues) → one PR each</text>
+  <text x="520" y="186" text-anchor="middle" font-size="12" fill="#6b6b6b">icons in scripts/status-page/projects.json · tickets waiting on you carry the waiting-on-sonja label</text>
+
+  <line x1="520" y1="200" x2="520" y2="230" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <rect x="20" y="230" width="235" height="55" rx="8" fill="#fff" stroke="#e3ded6"/>
+  <text x="137" y="252" text-anchor="middle" font-size="13" font-weight="bold">🧱🛠️ #9 · Gallery component</text>
+  <text x="137" y="272" text-anchor="middle" font-size="11.5" fill="#6b6b6b">Opus · own branch · draft PR</text>
+  <rect x="275" y="230" width="235" height="55" rx="8" fill="#fff" stroke="#e3ded6"/>
+  <text x="392" y="252" text-anchor="middle" font-size="13" font-weight="bold">🧱🛠️ #12 · Forms deliver?</text>
+  <text x="392" y="272" text-anchor="middle" font-size="11.5" fill="#6b6b6b">Opus · own branch · draft PR</text>
+  <rect x="530" y="230" width="235" height="55" rx="8" fill="#fff" stroke="#e3ded6"/>
+  <text x="647" y="252" text-anchor="middle" font-size="13" font-weight="bold">✍️🛠️ #18 · Positioning spec</text>
+  <text x="647" y="272" text-anchor="middle" font-size="11.5" fill="#6b6b6b">your brainstorm goes here</text>
+  <rect x="785" y="230" width="235" height="55" rx="8" fill="#fff" stroke="#e3ded6"/>
+  <text x="902" y="252" text-anchor="middle" font-size="13" font-weight="bold">🖼️🛠️ #15 · Photo intake</text>
+  <text x="902" y="272" text-anchor="middle" font-size="11.5" fill="#6b6b6b">after D2 and #9</text>
+</svg>
+
+<div class="card">
+  <b>What is new vs SF Ops, and what is deliberately not.</b>
+  <ul>
+    <li><b>Not a second lead, not a second board.</b> The lead already lists every session of yours and drives every open PR; its sweep now names this repo too. The steward already rewrites #387 daily; it gets one more section. One place to look, as before.</li>
+    <li><b>Tickets live in the SFWebsite repo</b>, so a website PR closes its own ticket and the repo is its own record. The website's icons (🧱 🖼️ ✍️ 🪲) are chosen not to collide with SF Ops's, because session titles sit side by side in your list.</li>
+    <li><b>The visual HQ page</b> (the one built from GitHub and uploaded to Sonja HQ) reads one repo today. Reading both is a small ticket in sf-ops (#435). Until it ships, the written board #387 covers the website and the HQ page covers SF Ops only.</li>
+    <li><b>Model:</b> sessions are started by the lead with <code>model: opus</code> (Opus 5.5). The ticket bodies are written so an Opus session needs nothing but the ticket and the repo's CLAUDE.md.</li>
+  </ul>
+</div>
+
+<h2 id="s3">3 · Projects and tickets</h2>
+<div class="grid3">
+  <div class="pcard"><div class="ic">🧱</div><h4>Site foundation · #5</h4><p>The plumbing: one page per division, gallery component and image pipeline, forms that deliver, search basics, dead ends removed. <b>Can start today.</b></p></div>
+  <div class="pcard"><div class="ic">🖼️</div><h4>Gallery · #6</h4><p>Real photos of real work by service line on Services; product screenshots on Solutions. <b>Needs your photos (D2).</b></p></div>
+  <div class="pcard"><div class="ic">✍️</div><h4>Content &amp; positioning · #7</h4><p>The words match what SF Ops and SF Solutions actually do. <b>Positioning spec from your brainstorm first.</b></p></div>
+</div>
+<p class="small">Plus 🪲 Bugs (#8), empty, same rules as SF Ops #386.</p>
+
+<div class="tablewrap"><table>
+  <tr><th>#</th><th>Ticket</th><th>Project</th><th>Needs</th><th>Can start</th></tr>
+  <tr><td class="k"><a href="https://github.com/Streich-Force-Enterprises/SFWebsite/issues/14">#14</a></td><td>F0 · Working conventions (this PR)</td><td>🧱</td><td>—</td><td><span class="chip now">in this PR</span></td></tr>
+  <tr><td class="k"><a href="https://github.com/Streich-Force-Enterprises/SFWebsite/issues/9">#9</a></td><td>F1 · Gallery component, image pipeline, photo collection</td><td>🧱</td><td>—</td><td><span class="chip now">now</span></td></tr>
+  <tr><td class="k"><a href="https://github.com/Streich-Force-Enterprises/SFWebsite/issues/12">#12</a></td><td>F4 · Verify the three contact forms deliver, and to whom</td><td>🧱</td><td>Netlify access</td><td><span class="chip now">now</span></td></tr>
+  <tr><td class="k"><a href="https://github.com/Streich-Force-Enterprises/SFWebsite/issues/11">#11</a></td><td>F3 · Remove the banner; point Login at SF Ops</td><td>🧱</td><td>D3</td><td><span class="chip wait">D3</span></td></tr>
+  <tr><td class="k"><a href="https://github.com/Streich-Force-Enterprises/SFWebsite/issues/10">#10</a></td><td>F2 · One page per division: fold /enterprise into /services</td><td>🧱</td><td>D1</td><td><span class="chip wait">D1</span></td></tr>
+  <tr><td class="k"><a href="https://github.com/Streich-Force-Enterprises/SFWebsite/issues/13">#13</a></td><td>F5 · Sitemap, robots, per-page meta, fresh OG image</td><td>🧱</td><td>#10</td><td><span class="chip st">after #10</span></td></tr>
+  <tr><td class="k"><a href="https://github.com/Streich-Force-Enterprises/SFWebsite/issues/15">#15</a></td><td>G1 · Photo intake: your drop folder → curated first batch</td><td>🖼️</td><td>D2, #9</td><td><span class="chip wait">D2</span></td></tr>
+  <tr><td class="k"><a href="https://github.com/Streich-Force-Enterprises/SFWebsite/issues/16">#16</a></td><td>G2 · Services gallery live, by service line</td><td>🖼️</td><td>#9, #15</td><td><span class="chip st">after #15</span></td></tr>
+  <tr><td class="k"><a href="https://github.com/Streich-Force-Enterprises/SFWebsite/issues/17">#17</a></td><td>G3 · Solutions gallery: product screenshots on demo data</td><td>🖼️</td><td>D5, #9, #19</td><td><span class="chip wait">D5</span></td></tr>
+  <tr><td class="k"><a href="https://github.com/Streich-Force-Enterprises/SFWebsite/issues/18">#18</a></td><td>C1 · Positioning spec from your brainstorm</td><td>✍️</td><td>your brainstorm</td><td><span class="chip wait">you</span></td></tr>
+  <tr><td class="k"><a href="https://github.com/Streich-Force-Enterprises/SFWebsite/issues/19">#19</a></td><td>C2 · Rewrite Solutions from what SF Solutions built</td><td>✍️</td><td>#18 locked</td><td><span class="chip st">after #18</span></td></tr>
+  <tr><td class="k"><a href="https://github.com/Streich-Force-Enterprises/SFWebsite/issues/20">#20</a></td><td>C3 · Rewrite Services: service lines + how a job runs on SF Ops</td><td>✍️</td><td>#18 locked, #10</td><td><span class="chip st">after #18</span></td></tr>
+  <tr><td class="k"><a href="https://github.com/Streich-Force-Enterprises/SFWebsite/issues/22">#22</a></td><td>C5 · Containers: keep, fold, or connect to inventory</td><td>✍️</td><td>D4</td><td><span class="chip wait">D4</span></td></tr>
+  <tr><td class="k"><a href="https://github.com/Streich-Force-Enterprises/SFWebsite/issues/21">#21</a></td><td>C4 · Rework homepage and About</td><td>✍️</td><td>#19, #20, #22</td><td><span class="chip st">last</span></td></tr>
+</table></div>
+
+<h2 id="s4">4 · Gallery design (how photos get on the site)</h2>
+<svg viewBox="0 0 1040 150" role="img" aria-label="Photo flow">
+  <defs><marker id="b" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#6b6b6b"/></marker></defs>
+  <rect x="10" y="30" width="190" height="80" rx="8" fill="#fff" stroke="#C0392B" stroke-width="2"/>
+  <text x="105" y="58" text-anchor="middle" font-size="14" font-weight="bold">You drop photos</text>
+  <text x="105" y="78" text-anchor="middle" font-size="11.5" fill="#6b6b6b">phone photos, as-is</text>
+  <text x="105" y="94" text-anchor="middle" font-size="11.5" fill="#6b6b6b">(D2 says where)</text>
+  <line x1="200" y1="70" x2="235" y2="70" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#b)"/>
+  <rect x="240" y="30" width="210" height="80" rx="8" fill="#fff" stroke="#e3ded6" stroke-width="2"/>
+  <text x="345" y="58" text-anchor="middle" font-size="14" font-weight="bold">A session curates</text>
+  <text x="345" y="78" text-anchor="middle" font-size="11.5" fill="#6b6b6b">picks, crops, captions</text>
+  <text x="345" y="94" text-anchor="middle" font-size="11.5" fill="#6b6b6b">privacy pass · one entry per photo</text>
+  <line x1="450" y1="70" x2="485" y2="70" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#b)"/>
+  <rect x="490" y="30" width="210" height="80" rx="8" fill="#fff" stroke="#e3ded6" stroke-width="2"/>
+  <text x="595" y="58" text-anchor="middle" font-size="14" font-weight="bold">Build resizes them</text>
+  <text x="595" y="78" text-anchor="middle" font-size="11.5" fill="#6b6b6b">4 MB phone photo → ~150 KB webp</text>
+  <text x="595" y="94" text-anchor="middle" font-size="11.5" fill="#6b6b6b">plus thumbnail, automatically</text>
+  <line x1="700" y1="70" x2="735" y2="70" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#b)"/>
+  <rect x="740" y="30" width="290" height="80" rx="8" fill="#fff" stroke="#e3ded6" stroke-width="2"/>
+  <text x="885" y="58" text-anchor="middle" font-size="14" font-weight="bold">You approve in the preview</text>
+  <text x="885" y="78" text-anchor="middle" font-size="11.5" fill="#6b6b6b">every new photo in the PR's deploy preview</text>
+  <text x="885" y="94" text-anchor="middle" font-size="11.5" fill="#6b6b6b">"merge it" → live on /services/gallery</text>
+</svg>
+<ul>
+  <li><b>One place, one entry per photo:</b> file · caption · division · service line (fabrication, compactor chutes, structural, gates, fit-outs, maintenance) · month · featured. The build fails on a missing caption or an unknown service line, so a half-filed photo cannot ship.</li>
+  <li><b>Nobody hand-resizes.</b> Originals go in <code>src/assets/gallery/</code>; Astro's built-in image service does the rest. A resized file in <code>public/</code> is the thing to question in review.</li>
+  <li><b>Privacy by default:</b> captions say what was built or fixed, never who for. No customer names, store numbers, addresses, chain signage, paperwork or faces unless you say yes for that photo.</li>
+  <li><b>Solutions is screenshots, not photos</b>, always on demo data (never Loadstar's numbers).</li>
+  <li><b>Scale:</b> the first batch is 12–20 photos. Adding the next batch is one file plus one entry each, no code.</li>
+</ul>
+
+<h2 id="s5">5 · Content rework (what the site will say, and where it comes from)</h2>
+<div class="tablewrap"><table>
+  <tr><th>Page</th><th>Source of truth</th><th>What changes</th></tr>
+  <tr><td class="k">Services</td><td>sf-ops: the six service lines, the Work order lifecycle, the ontology</td><td>Service lines with a gallery link each. A "How a job runs" section in the customer's order: request → Quote approved from a link on their phone → scheduled with Target and Client Due → on-site photos → Work summary → invoice and online payment. Named brands only where #18 says we may.</td></tr>
+  <tr><td class="k">Solutions</td><td>sf-solutions: cash-exposure cockpit, Triplemeter relay, QuickBooks + Pipedrive connectors, dashboards, query builder</td><td>Names the audience (dealers, brokers, leasing companies, modifiers on Triplemeter) and the real modules. "How it starts" matches the real engagement: discovery → a validated snapshot of your numbers → the cockpit. Never promises a write-back to Triplemeter.</td></tr>
+  <tr><td class="k">Containers</td><td>D4</td><td>Rewritten to what it is (a sourcing lead form), folded into Solutions, or connected to inventory later.</td></tr>
+  <tr><td class="k">Home + About</td><td>#18 (positioning)</td><td>Hero and division cards say what you lock: lead offer or three equal divisions. About tells the real story, including that SF builds and runs its own operations software if you keep that as a proof point.</td></tr>
+</table></div>
+<div class="callout info"><b>Your brainstorm feeds #18.</b> That session reads it next to what is actually built, asks you structured follow-ups, and delivers <code>sf-website_positioning_v1.html</code> with its own Open Decisions (who each page is for, three divisions or one lead offer, whether SF Ops is a product the site sells, which proof points are true and safe, voice, one call to action per page). The page rewrites wait for that lock so nothing is written twice.</div>
+
+<h2 id="s6">6 · Open decisions</h2>
+
+<div class="dec">
+  <span class="decid">D1 · TWO PAGES FOR DIVISION 01</span>
+  <h3>Which URL survives: /services or /enterprise?</h3>
+  <div class="tablewrap"><table>
+    <tr><th></th><th>Option</th><th>Trade-off</th></tr>
+    <tr class="recommended"><td class="k">A <span class="chip rec">recommended</span></td><td>Keep <code>/services</code>, move the fuller /enterprise content into it, redirect /enterprise.</td><td>Nav, footer, homepage and services@ already point at /services. Nothing external links to /enterprise. Least change.</td></tr>
+    <tr><td class="k">B</td><td>Keep <code>/enterprise</code>, redirect /services.</td><td>Matches the "Enterprise" division name, but every existing link and the services@ mailbox change.</td></tr>
+  </table></div>
+  <p class="small">Unblocks #10, then #13 and #20.</p>
+</div>
+
+<div class="dec">
+  <span class="decid">D2 · WHERE YOU DROP PHOTOS</span>
+  <h3>How do photos get from your phone to a session?</h3>
+  <div class="tablewrap"><table>
+    <tr><th></th><th>Option</th><th>Trade-off</th></tr>
+    <tr class="recommended"><td class="k">A <span class="chip rec">recommended</span></td><td>A SharePoint/OneDrive folder, e.g. <i>SF Website / Gallery inbox</i>, read through the Microsoft 365 connector.</td><td>You drop from your phone; the session pulls, curates, commits. Works for every later batch. Needs the folder to exist and the connector to see it.</td></tr>
+    <tr><td class="k">B</td><td>Attach photos to the ticket (#15) on GitHub.</td><td>No setup, but GitHub strips location data unpredictably and large batches are clumsy.</td></tr>
+    <tr><td class="k">C</td><td>Pull from SF Ops work-order photos.</td><td>They exist and are tied to jobs, but they are customer photos by definition (sites, store numbers). Every one needs your explicit yes. Best as a supplement, not the source.</td></tr>
+  </table></div>
+  <p class="small">Unblocks #15, then #16.</p>
+</div>
+
+<div class="dec">
+  <span class="decid">D3 · THE LOGIN LINK</span>
+  <h3>What does "Login" in the nav do?</h3>
+  <div class="tablewrap"><table>
+    <tr><th></th><th>Option</th><th>Trade-off</th></tr>
+    <tr class="recommended"><td class="k">A <span class="chip rec">recommended</span></td><td>Link to <code>ops.streichforce.com/login</code>.</td><td>Staff and techs get a real door from the public site. Customers never need it (they act through links), so it does no harm.</td></tr>
+    <tr><td class="k">B</td><td>Remove it.</td><td>Cleaner nav; staff bookmark the app instead.</td></tr>
+  </table></div>
+  <p class="small">Unblocks #11 (the banner removal in the same ticket needs no decision).</p>
+</div>
+
+<div class="dec">
+  <span class="decid">D4 · CONTAINERS DIVISION</span>
+  <h3>Keep, fold, or connect?</h3>
+  <div class="tablewrap"><table>
+    <tr><th></th><th>Option</th><th>Trade-off</th></tr>
+    <tr class="recommended"><td class="k">A <span class="chip rec">recommended</span></td><td>Keep as a sourcing lead form; rewrite to drop the "view inventory" promise.</td><td>Honest today, cheap, and option C stays open as a later ticket.</td></tr>
+    <tr><td class="k">B</td><td>Fold into Solutions; /containers redirects.</td><td>Fewer pages, but hides a line of business that has its own buyers and its own mailbox.</td></tr>
+    <tr><td class="k">C</td><td>Show available units from Triplemeter via the SF Solutions relay.</td><td>Real work and a dependency on the TM relay, which is not provisioned yet. Not a website ticket today.</td></tr>
+  </table></div>
+  <p class="small">Unblocks #22, then #21.</p>
+</div>
+
+<div class="dec">
+  <span class="decid">D5 · WHAT MAY BE SHOWN</span>
+  <h3>Which SF Ops / SF Solutions screens can appear publicly as screenshots?</h3>
+  <div class="tablewrap"><table>
+    <tr><th></th><th>Option</th><th>Trade-off</th></tr>
+    <tr class="recommended"><td class="k">A <span class="chip rec">recommended</span></td><td>Solutions screens (cockpit, dashboard, query builder) on demo data, plus the SF Ops customer-facing quote page (/decide) on demo data.</td><td>Shows the thing a buyer actually gets. Demo data means nothing confidential, and the capture recipe is written down so it is repeatable.</td></tr>
+    <tr><td class="k">B</td><td>Solutions screens only.</td><td>Keeps SF Ops private; the Services page then has photos but no "what you receive" picture.</td></tr>
+    <tr><td class="k">C</td><td>No screenshots; words only.</td><td>Safest, weakest.</td></tr>
+  </table></div>
+  <p class="small">Unblocks #17.</p>
+</div>
+
+<h2 id="s7">7 · Build order and how to start</h2>
+<div class="tablewrap"><table>
+  <tr><th>Wave</th><th>Sessions (each on Opus, own branch, draft PR)</th><th>What you do</th></tr>
+  <tr><td class="k">0 · now</td><td>#14 this PR (conventions, icons, plan)</td><td>"merge it"</td></tr>
+  <tr><td class="k">1 · today</td><td>#9 gallery component · #12 forms · #18 positioning spec (your brainstorm)</td><td>Tell the lead: <i>"start #9, #12 and #18 on Opus"</i>. Paste the brainstorm into #18's session when it asks. Answer D1–D5 (a one-line reply is enough).</td></tr>
+  <tr><td class="k">2 · after D1–D3</td><td>#10 one Services page · #11 banner + Login · #15 photo intake (after you drop photos)</td><td>Drop the first photos (D2). Approve them in the preview.</td></tr>
+  <tr><td class="k">3 · after #18 locks</td><td>#19 Solutions rewrite · #20 Services rewrite · #22 Containers · #13 search basics</td><td>Lock #18 (its own decisions). "merge it" as each goes green.</td></tr>
+  <tr><td class="k">4 · last</td><td>#16 gallery live · #17 Solutions screenshots · #21 homepage + About</td><td>Final look at the whole site in one preview.</td></tr>
+</table></div>
+<div class="callout good"><b>Parallel safety.</b> Waves run several sessions at once. The files they touch do not overlap except for <code>CLAUDE.md</code> and <code>Nav.astro</code>, and the lead resolves those merges in the order PRs go green, as it does for SF Ops.</div>
+<div class="callout"><b>One thing to watch.</b> A merge to <code>main</code> deploys to streichforce.com within minutes. There is no staging. The deploy preview on each PR is the place to look before you say "merge it", and the lead will not merge without that.</div>
+
+<h2 id="s8">8 · What changed in this revision</h2>
+<p>v1, 2026-10-08. First draft, from Sonja's ask: "get back to work on SF website · fill in pics for a gallery · rework content based on what we have built in SF Ops and SF Solutions · feed in a brainstorm session · set up the build as with SF Ops with projects, tickets, a lead and the daily board · plan it so I can switch to Opus to build."</p>
+
+<div class="foot">
+  Storage: <code>docs/specs/sf-website_build-plan_v1.html</code> in the SFWebsite repo. Tickets: SFWebsite #5–#22; sf-ops #435 (HQ status page reads both repos). Next step: Sonja answers D1–D5 and tells the 🧭 lead which tickets to start on Opus. When the decisions are locked, v2 records them and this line in <code>CLAUDE.md</code> moves to the positioning spec.
+</div>
+
+</div>
+</body>
+</html>
