@@ -81,7 +81,7 @@ Full brand documentation: `StreichForce_Brand_Guidelines.docx`
 ---
 
 ### Next Steps (Division Pages)
-- [ ] Build out `/enterprise` page with photo gallery
+- [ ] Services gallery by service line (`/services`; `/enterprise` now redirects there)
 - [ ] Build out `/solutions` page with Triplemeter integration details
 - [ ] Build out `/containers` page with inventory/quote request
 - [ ] Add Netlify Forms to contact CTA
