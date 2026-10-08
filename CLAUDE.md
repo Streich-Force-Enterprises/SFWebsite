@@ -133,12 +133,14 @@ when it lands.
 Three Netlify Forms, one per division page. All three post to the shared
 thank-you page `/contact/thanks/` (the form's `action`), not Netlify's default.
 
-| Form (`form-name`)    | Page                  | Address the page shows       | Notifies (verified) |
-|-----------------------|-----------------------|------------------------------|---------------------|
-| `enterprise-contact`  | `/contact/enterprise` | `services@streichforce.com`  | _pending #12_       |
-| `solutions-contact`   | `/contact/solutions`  | `solutions@streichforce.com` | _pending #12_       |
-| `containers-contact`  | `/contact/containers` | `containers@streichforce.com`| _pending #12_       |
+| Form (`form-name`)    | Page                  | Address the page shows       | Notifies             |
+|-----------------------|-----------------------|------------------------------|----------------------|
+| `enterprise-contact`  | `/contact/enterprise` | `services@streichforce.com`  | `services@` (test pending) |
+| `solutions-contact`   | `/contact/solutions`  | `solutions@streichforce.com` | `solutions@` (test pending) |
+| `containers-contact`  | `/contact/containers` | `containers@streichforce.com`| `containers@` (test pending) |
 
+- Sonja confirmed 2026-10-08 that all three addresses are real mailboxes
+  and each form notifies its own address. Form detection turned on the same day.
 - Submissions are read in Netlify → project `sfwebite` → Forms (and by email
   once notifications are set). Netlify site id `3effd78e-9ecb-4655-bb3f-d1e5549d8607`.
 - A new form must keep `data-netlify="true"`, the hidden `form-name` input,
@@ -153,3 +155,9 @@ thank-you page `/contact/thanks/` (the form's `action`), not Netlify's default.
   the page looked fine. Markup alone proves nothing: check the Netlify project
   lists the form (connector `get-forms-for-project`) and that a test
   submission lands, before calling a form done.
+- **The build does not catch dead links.** The nav pointed at `/login` (a page
+  this site never had) for months with `verify` green. Any PR that touches
+  Nav, Footer or a route checks every internal `href` in `dist/` resolves
+  (#11): `cd dist && for h in $(grep -rhoE 'href="/[^"#]*' --include=*.html . | sed 's/href="//' | sort -u); do p=".${h%/}"; [ -f "$p" ] || [ -f "$p/index.html" ] || [ "$h" = / ] || echo "DEAD: $h"; done`
+- **Login goes to SF Ops** (`https://ops.streichforce.com/login`, D3). This
+  site has no login of its own and never gets one.
