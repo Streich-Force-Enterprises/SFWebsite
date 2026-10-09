@@ -16,7 +16,7 @@ export const SF_OPS_NUMBERS: {
   numbers: SfOpsNumber[];
 } = {
   asOf: '2026-10-09',
-  approvedBy: null,
+  approvedBy: 'Sonja, 2026-10-09 (#20, PR #35)',
   numbers: [
     { value: '70+', label: 'Work orders closed on SF Ops since June 2026' },
     { value: '77', label: 'Work summaries sent to customers' },
