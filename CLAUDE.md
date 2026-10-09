@@ -151,6 +151,12 @@ awaiting her decisions: **none.**
   screenshot, form option or alt text (Sonja, 2026-10-09, positioning P5).
   Solutions says we set up the automation and applications an operator
   needs, around the tools they already use.
+- **Check sf-solutions' locked specs, not its CLAUDE.md "Current state".**
+  That section still says "scoping" (2026-05-26) while `src/` has the
+  cockpit, dashboards, query builder and connectors. Read the `_v2` LOCKED
+  specs in sf-solutions `docs/specs/` for what each module does. The
+  QuickBooks *reconciliation* is still gated, so the site claims QuickBooks
+  and Pipedrive connectors, never "we reconcile your books" (#19).
 - **No prices on the site.** Strategy pricing (discovery fee, outgate rates,
   minimums) is provisional; the button is "Book a discovery call".
 
