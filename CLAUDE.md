@@ -169,6 +169,12 @@ awaiting her decisions: **none.**
   specs in sf-solutions `docs/specs/` for what each module does. The
   QuickBooks *reconciliation* is still gated, so the site claims QuickBooks
   and Pipedrive connectors, never "we reconcile your books" (#19).
+- **Containers is a sourcing lead form, not a storefront** (#22, P6). No
+  inventory list, no "view containers", no speed promises: tell us size,
+  condition and delivery location, we source it. It is out of the main nav;
+  links live only in the Footer (`/containers`, `/contact/containers`) and
+  the one line under the homepage doors. Retiring it = Astro `redirects` +
+  a `netlify.toml` 301 for both routes, and drop those three links.
 - **No prices on the site.** Strategy pricing (discovery fee, outgate rates,
   minimums) is provisional; the button is "Book a discovery call".
 
