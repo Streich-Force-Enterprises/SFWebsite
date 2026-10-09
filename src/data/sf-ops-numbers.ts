@@ -20,6 +20,6 @@ export const SF_OPS_NUMBERS: {
   numbers: [
     { value: '70+', label: 'Work orders closed on SF Ops since June 2026' },
     { value: '77', label: 'Work summaries sent to customers' },
-    { value: '3 in 4', label: 'invoice payments made online' },
+    { value: '39 of 40', label: 'invoice payments made electronically, by pay link or bank transfer' },
   ],
 };
