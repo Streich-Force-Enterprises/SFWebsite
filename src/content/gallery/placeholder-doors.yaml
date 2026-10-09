@@ -1,0 +1,8 @@
+# Placeholder so the gallery renders before real photos arrive. G2 (#16) replaces it.
+image: ../../assets/gallery/services/placeholder-doors.jpg
+before: ../../assets/gallery/services/placeholder-doors-before.jpg
+caption: "Doors: before and after photos coming soon"
+division: services
+serviceLine: doors
+takenOn: "2026-10"
+featured: false

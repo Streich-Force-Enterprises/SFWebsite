@@ -101,8 +101,16 @@ awaiting her decisions: **none.**
 - **Originals live in `src/assets/gallery/<division>/`**, never in
   `public/`. Astro's image service resizes and converts them at build time.
   A hand-resized file in `public/` is the smell to question in review.
-- **One entry per photo in `src/content/gallery/`** (an Astro content
-  collection): file, caption, division, service line, month, featured.
+- **Sonja's drop folder is OneDrive `Documents/SF Website/Gallery inbox`**
+  (D2), read through the Microsoft 365 connector (`sharepoint_folder_search`
+  "Gallery inbox"). Files are named after the SF Ops Work order with a stage
+  suffix, e.g. `260728-14734:WO-00023_Before.jpeg` / `…_After.jpeg`; a few
+  have no WO. Use the WO to look up the Work order in SF Ops for the service
+  line, month and what was done.
+- **One entry per job in `src/content/gallery/`** (an Astro content
+  collection): `image` (the After / finished shot), optional `before`,
+  caption, division, service line, month, featured. A `before` makes the
+  card a Before / After pair; the lightbox shows them side by side.
   The schema fails the build on a missing caption or an unknown service
   line. The service lines are the ones on the Services page (Sonja,
   2026-10-08: alphabetical, Doors replaced Compactor Chutes, Other /
@@ -113,6 +121,15 @@ awaiting her decisions: **none.**
   paperwork or recognisable face, unless Sonja says yes for that photo in
   the PR. Every gallery PR shows every new photo in its deploy preview so
   she approves them in one look.
+- **Adding a job is one or two files plus one entry, no code:** put the original in
+  `src/assets/gallery/services/`, add `src/content/gallery/<slug>.yaml` (copy
+  a placeholder entry; `image:` is relative to the YAML file), set
+  `featured: true` for the "See our work" strip on `/services` (first four,
+  newest month first). The schema lives in `src/content/config.ts`; the
+  service lines in `src/lib/service-lines.ts` (same order as the Services page). Delete the `placeholder-*`
+  entries and images once real photos land (G2, #16).
+- **One component, `GalleryGrid.astro`, no JavaScript:** the service-line
+  filter is radio buttons + CSS, the lightbox is the native Popover API.
 - **Solutions shows product screenshots, not photos**, always against demo
   data: never Loadstar's or any customer's numbers, names or ids.
 
@@ -159,3 +176,19 @@ awaiting her decisions: **none.**
   too. These notes are strategy, not shipped product: pricing and roadmap
   items in them (outgate rates, AI autonomy levels) never go on the site
   (#18).
+- **The original filename is public.** Astro keeps the source basename in
+  the built URL (`/_astro/<name>.<hash>.webp`), so a photo committed as
+  `WO-00023_Before.jpeg` publishes the Work order number. Rename on intake to
+  a neutral slug (`doors-storefront-2026-07-before.jpg`) and never commit the
+  inbox names (#9).
+- **`<Image widths={…}>` without `width` ships the full-size original too.**
+  Astro uses the source's own width for the `src` fallback, so every 4032 px
+  phone photo emitted a ~3 MB webp nobody loads but every deploy carries.
+  Always pass `width` as the largest size you want (#9).
+- **`<img>` width/height attributes beat CSS `aspect-ratio`** unless the CSS
+  also sets `height: auto`. Astro's `<Image>` always writes both attributes,
+  so a 4:3 crop silently became a tall original-ratio image (#9).
+- **Measure Lighthouse with a full gallery, not the placeholders.** With 23
+  photos `/services/gallery` scored 93; the first thumbnails must load eagerly
+  (`eager` prop), or the lazy LCP image costs the score. What holds every
+  page near 90 is the render-blocking Google Fonts stylesheet, not images.

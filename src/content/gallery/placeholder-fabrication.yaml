@@ -1,0 +1,7 @@
+# Placeholder so the gallery renders before real photos arrive. G2 (#16) replaces it.
+image: ../../assets/gallery/services/placeholder-fabrication.jpg
+caption: "Fabrication: photo coming soon"
+division: services
+serviceLine: fabrication
+takenOn: "2026-10"
+featured: false
