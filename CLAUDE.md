@@ -151,6 +151,18 @@ awaiting her decisions: **none.**
   screenshot, form option or alt text (Sonja, 2026-10-09, positioning P5).
   Solutions says we set up the automation and applications an operator
   needs, around the tools they already use.
+- **SF Ops numbers live in `src/data/sf-ops-numbers.ts`** (P2, #20) and
+  show on `/services` only once `approvedBy` is set. A session pulls them
+  read-only from SF Ops' Supabase project `sf-platform` (Work orders,
+  `wo_customer_summaries`, `invoice_payments` by provider), writes the
+  values with an `asOf` date and `approvedBy: null`, and lists them in the
+  PR for Sonja. Her yes in the PR is what sets `approvedBy`. Quote
+  turnaround and on-time against Client Due were checked and left off:
+  they don't flatter us yet.
+- **Check a selling line against SF Ops before keeping it.** "No
+  subcontracting" sat on `/services` for months, but SF Ops pays some Field
+  techs as subcontractors (`worker_type`), so #20 dropped it. Old copy is
+  not proof.
 - **No prices on the site.** Strategy pricing (discovery fee, outgate rates,
   minimums) is provisional; the button is "Book a discovery call".
 
