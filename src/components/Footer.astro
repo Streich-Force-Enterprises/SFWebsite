@@ -6,7 +6,7 @@
   <div class="footer-inner">
 
     <div class="footer-brand">
-      <img src="/Brand/SF_Logo_Transparent_AllWhite.svg" alt="Streich Force Enterprises" class="footer-logo" />
+      <img src="/Brand/SF_Logo_Transparent_AllWhite.svg" alt="Streich Force Enterprises" class="footer-logo" width="171" height="48" />
       <p class="footer-tagline">Real-World Expertise. Smarter Systems.<br />Reliable Execution.</p>
     </div>
 
@@ -75,7 +75,7 @@ footer {
 .footer-col { display: flex; flex-direction: column; gap: 0.6rem; }
 .footer-col-label {
   font-family: var(--sf-font-display); font-weight: 700; font-size: 0.7rem;
-  letter-spacing: 0.3em; text-transform: uppercase; color: var(--sf-rust);
+  letter-spacing: 0.3em; text-transform: uppercase; color: var(--sf-ent-b); /* SF Red fails AA on black (3.5:1); bright red is 4.9:1 */
   margin-bottom: 0.25rem;
 }
 .footer-col a {
@@ -100,6 +100,10 @@ footer {
   transition: color 0.2s;
 }
 .footer-legal a:hover { color: var(--sf-text-primary); }
-.footer-credit { color: var(--sf-sol-b); text-decoration: none; }
-.footer-credit:hover { text-decoration: underline; }
+.footer-credit {
+  color: var(--sf-sol-b);
+  text-decoration: underline; text-underline-offset: 3px; /* not colour alone (#28) */
+  transition: color 0.2s;
+}
+.footer-credit:hover { color: var(--sf-text-primary); }
 </style>

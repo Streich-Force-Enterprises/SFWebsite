@@ -163,8 +163,36 @@ awaiting her decisions: **none.**
   subcontracting" sat on `/services` for months, but SF Ops pays some Field
   techs as subcontractors (`worker_type`), so #20 dropped it. Old copy is
   not proof.
+- **Check sf-solutions' locked specs, not its CLAUDE.md "Current state".**
+  That section still says "scoping" (2026-05-26) while `src/` has the
+  cockpit, dashboards, query builder and connectors. Read the `_v2` LOCKED
+  specs in sf-solutions `docs/specs/` for what each module does. The
+  QuickBooks *reconciliation* is still gated, so the site claims QuickBooks
+  and Pipedrive connectors, never "we reconcile your books" (#19).
 - **No prices on the site.** Strategy pricing (discovery fee, outgate rates,
   minimums) is provisional; the button is "Book a discovery call".
+
+## Search-engine meta (#13)
+
+- **Every page's title, description and noindex live in `src/lib/seo.ts`**,
+  keyed by path. `BaseLayout` looks the page up there and the entry wins over
+  the `title`/`description` props a page passes (those are a fallback for a
+  page with no entry yet). Changing a page's search wording is a one-line edit
+  in `seo.ts`, never in the page body. A new page adds its entry there.
+- Titles are complete as written (no suffix is appended), at most 60
+  characters; descriptions at most 155. The build fails if one runs over.
+- `noindex: true` adds `<meta name="robots" content="noindex">`, drops the
+  canonical tag, and keeps the page out of the sitemap. Today: `/contact/thanks`
+  and both `/legal` pages. Retired routes (`/enterprise`) are excluded from the
+  sitemap in the same file.
+- **`/sitemap-index.xml`** comes from `@astrojs/sitemap` (pinned `~3.2` for
+  Astro 4; 3.3+ targets Astro 5). `public/robots.txt` points at it.
+- **The OG image is `public/og-image-v<N>.png`**, 1200×630, rendered from
+  `scripts/og-image/og-image.html` with the preinstalled Chromium (Playwright:
+  open the file at a 1200×630 viewport, wait for `document.fonts.ready`,
+  screenshot). A new design gets a new `v<N>` file name and `OG_IMAGE` in
+  `seo.ts` changes with it: LinkedIn, Facebook and Slack cache previews by URL,
+  so overwriting the same file name keeps showing the old picture for weeks.
 
 ## Contact forms
 
@@ -236,6 +264,15 @@ thank-you page `/contact/thanks/` (the form's `action`), not Netlify's default.
 - **`<img>` width/height attributes beat CSS `aspect-ratio`** unless the CSS
   also sets `height: auto`. Astro's `<Image>` always writes both attributes,
   so a 4:3 crop silently became a tall original-ratio image (#9).
+- **The base division colours fail AA as small text on the dark backgrounds.**
+  `--sf-rust`/`--sf-ent` `#C0392B` is 3.5:1 on `--sf-black` and 3.3:1 on
+  `--sf-surface`; `--sf-sol` `#2E6DA4` is 3.2:1. Labels, eyebrows and text
+  links use the `-b` variants (`--sf-ent-b` 4.9:1) or a text token; keep the
+  base colours for fills, borders and large headings. A link inside text needs
+  an underline, not just a colour (#28). Logo `<img>`s carry `width`/`height`
+  in the SVG's 1985:558 ratio at their CSS height, so the page doesn't shift.
+  Measure Lighthouse from Chromium here:
+  `CHROME_PATH=$(ls /opt/pw-browsers/chromium-*/chrome-linux/chrome) npx -y lighthouse@12.2.1 <url> --only-categories=accessibility --chrome-flags="--headless=new --no-sandbox"`.
 - **Measure Lighthouse with a full gallery, not the placeholders.** With 23
   photos `/services/gallery` scored 93; the first thumbnails must load eagerly
   (`eager` prop), or the lazy LCP image costs the score. What holds every
