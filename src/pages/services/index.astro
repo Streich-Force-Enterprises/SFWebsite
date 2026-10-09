@@ -3,13 +3,47 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 import GalleryGrid from '../../components/GalleryGrid.astro';
-import { getGallery } from '../../lib/gallery';
+import { getGallery, type ServiceLine } from '../../lib/gallery';
+import { SF_OPS_NUMBERS } from '../../data/sf-ops-numbers';
 
 const featured = (await getGallery('services', { featuredOnly: true })).slice(0, 4);
+
+// A service line links to the gallery once it has a real photo there
+// (placeholders don't count, so no line links to "coming soon").
+const photographed = new Set(
+  (await getGallery('services'))
+    .filter((e) => !e.id.startsWith('placeholder-'))
+    .map((e) => e.data.serviceLine),
+);
+
+// Alphabetical; "Other / Miscellaneous" stays last. Same order as
+// src/lib/service-lines.ts and the contact form's "Type of Work Needed".
+const serviceLines: { line: ServiceLine; name: string; desc: string }[] = [
+  { line: 'fabrication', name: 'Custom Fabrication', desc: "Custom-built components for commercial environments. If it doesn't exist off the shelf, we build it to spec: cabinetry, countertops, enclosures, access panels and structural components." },
+  { line: 'doors', name: 'Doors', desc: 'Installation, repair and replacement of commercial doors, frames and hardware: storefront, back-of-house and security doors for retail and pharmacy Sites.' },
+  { line: 'fit-outs', name: 'Pharmacy & Retail Fit-Outs', desc: 'Interior work for pharmacy and retail chain Sites: custom cabinetry, millwork, fixture fabrication and installation.' },
+  { line: 'maintenance', name: 'Site Maintenance', desc: "Ongoing maintenance for commercial properties, done by people who know your Site and how it's built." },
+  { line: 'structural', name: 'Structural Repairs', desc: 'Structural repair work that crosses trade lines: the jobs that fall outside standard scope and need someone who can solve across disciplines.' },
+  { line: 'gates', name: 'Wall Access & Security Gates', desc: 'Wall access gates, security enclosures and controlled-access fabrications built to commercial specifications for retail and pharmacy Sites.' },
+  { line: 'other', name: 'Other / Miscellaneous', desc: "Don't see your problem listed? If it's broken, custom, or has stumped someone else, tell us about it. That's usually exactly the kind of work we take on." },
+];
+
+// How a job runs, in the customer's order. Names from sf-ops docs/ontology.md.
+const steps = [
+  { title: 'You send it, we open a Work order', body: 'Request service here, by email, or through the work-order system you already use. It becomes a Work order with its own number, tied to your Site and your own job number.' },
+  { title: 'Approve the Quote from your phone', body: 'If the job needs a Quote, you get a link. Open it on your phone, see every line, and approve or decline. No PDFs going back and forth.' },
+  { title: 'Scheduled to your Client Due', body: "Your Client Due is your date, and only you move it. We plan to a Target ahead of it and tell you when we'll be on site." },
+  { title: 'Photos from the Site', body: 'The Field tech checks in on site and takes before and completion photos, so you can see the work without driving out.' },
+  { title: 'A Work summary when it’s done', body: 'You get a Work summary: what was done, each visit, and the photos. It is the record you can forward to your team.' },
+  { title: 'Invoice, paid online', body: 'The invoice comes with a link to pay online by card or bank. It matches the Work summary line for line.' },
+];
+
+const showNumbers = SF_OPS_NUMBERS.approvedBy !== null;
+const asOf = new Date(`${SF_OPS_NUMBERS.asOf}T12:00:00Z`).toLocaleDateString('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' });
 ---
 <BaseLayout
-  title="Division 01 — Commercial Service & Repair — Streich Force"
-  description="Specialized commercial repair, custom fabrication and site maintenance for pharmacies, retail chains and commercial properties: diagnosed right and done right the first time.">
+  title="Commercial Service & Repair — Streich Force"
+  description="Repair, fabrication and site maintenance for national pharmacy and retail chains and multi-site operators. 40+ years, and every job runs on SF Ops: Quote approved from your phone, on-site photos, Work summary, invoice paid online.">
   <Nav active="services" />
 
   <!-- HERO -->
@@ -17,52 +51,24 @@ const featured = (await getGallery('services', { featuredOnly: true })).slice(0,
     <div class="div-hero-bg"></div>
     <div class="div-hero-inner">
       <p class="sf-eyebrow ent-eye">Division 01 — Commercial Service &amp; Repair</p>
-      <h1 class="div-hero-title">When It Has to<br /><span class="ent-accent">Be Done Right</span></h1>
-      <p class="div-hero-sub">Not every job requires a specialist. But when it does, you need someone who knows exactly what they're doing.</p>
-      <p class="div-hero-sub">Streich Force provides high-level diagnostics and precision repair for commercial environments where others fall short.</p>
+      <h1 class="div-hero-title">Done Right.<br /><span class="ent-accent">Tracked to the Finish.</span></h1>
+      <p class="div-hero-sub">Repair, fabrication and site maintenance for national pharmacy and retail chains and other multi-site operators. We're who you call when the regular rotation can't fix it.</p>
+      <p class="div-hero-sub">Every job runs on SF Ops, the software we built for our own work. You approve the Quote from your phone, see the photos from the Site, and get a Work summary when it's done.</p>
       <div class="div-hero-cta">
-        <a href="/contact/enterprise" class="btn-primary ent-btn">Request Expert Service</a>
-        <a href="#service-lines" class="btn-ghost">See What We Do</a>
+        <a href="/contact/enterprise" class="btn-primary ent-btn">Request Service</a>
+        <a href="#how-a-job-runs" class="btn-ghost">How a Job Runs</a>
       </div>
     </div>
     <div class="hero-accent-bar ent-bar"></div>
   </section>
 
-  <!-- WHAT WE HANDLE -->
-  <section class="content-section">
-    <div class="section-inner">
-      <h2 class="section-title ent-title">What We Handle</h2>
-      <div class="boxes-4">
-        <div class="box"><span class="box-bullet ent-bullet">▸</span><p>Complex system failures</p></div>
-        <div class="box"><span class="box-bullet ent-bullet">▸</span><p>Ongoing issues others couldn't resolve</p></div>
-        <div class="box"><span class="box-bullet ent-bullet">▸</span><p>Custom fabrication and problem-solving</p></div>
-        <div class="box"><span class="box-bullet ent-bullet">▸</span><p>Commercial site maintenance and repair</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- OUR LANE -->
-  <section class="content-section alt">
-    <div class="section-inner">
-      <p class="sf-eyebrow ent-eye">Our Lane</p>
-      <h2 class="lane-title">We're not in the regular rotation.<br />We're who you call when the rotation fails.</h2>
-      <div class="pos-cards">
-        <div class="pos-card">
-          <div class="pos-num">01</div>
-          <h3 class="pos-title">Real-World Experience</h3>
-          <p class="pos-body">Years of hands-on work in commercial environments. We've seen the problems, solved the edge cases, and know how to get it done right the first time.</p>
-        </div>
-        <div class="pos-card">
-          <div class="pos-num">02</div>
-          <h3 class="pos-title">No Subcontracting</h3>
-          <p class="pos-body">We do the work. Not a general contractor who farms it out. When we show up, the person who picked up the phone is the person doing the job.</p>
-        </div>
-        <div class="pos-card">
-          <div class="pos-num">03</div>
-          <h3 class="pos-title">Cross-Trade Capability</h3>
-          <p class="pos-body">Most repairs that fall through the cracks cross trade lines. We work across disciplines — that's exactly where we live.</p>
-        </div>
-      </div>
+  <!-- PROOF -->
+  <section class="proof-strip" aria-label="Why clients call us">
+    <div class="section-inner proof-grid">
+      <div class="proof"><span class="proof-big">40+</span><span class="proof-label">years of hands-on commercial work</span></div>
+      <div class="proof"><span class="proof-big">National</span><span class="proof-label">pharmacy and retail chains we serve</span></div>
+      <div class="proof"><span class="proof-big">Every job</span><span class="proof-label">runs on SF Ops, our own software</span></div>
+      <div class="proof"><span class="proof-big">One team</span><span class="proof-label">across trades, so the job doesn't fall between them</span></div>
     </div>
   </section>
 
@@ -70,79 +76,68 @@ const featured = (await getGallery('services', { featuredOnly: true })).slice(0,
   <section class="content-section" id="service-lines">
     <div class="section-inner">
       <h2 class="section-title ent-title">Service Lines</h2>
-      <!-- Alphabetical; "Other / Miscellaneous" stays last. Keep the contact form's "Type of Work Needed" list in the same order. -->
       <div class="services-grid">
-        <div class="service-item">
-          <div class="service-rule"></div>
-          <h3 class="service-name">Custom Fabrication</h3>
-          <p class="service-desc">Custom-built components for commercial environments. If it doesn't exist off the shelf, we build it to spec — cabinetry, countertops, enclosures, access panels, and structural components.</p>
-        </div>
-        <div class="service-item">
-          <div class="service-rule"></div>
-          <h3 class="service-name">Doors</h3>
-          <p class="service-desc">Installation, repair, and replacement of commercial doors, frames, and hardware — storefront, back-of-house, and security doors for retail and pharmacy properties.</p>
-        </div>
-        <div class="service-item">
-          <div class="service-rule"></div>
-          <h3 class="service-name">Pharmacy &amp; Retail Fit-Outs</h3>
-          <p class="service-desc">Specialized interior work for pharmacy and retail chain locations — custom cabinetry, millwork, fixture fabrication, and installation.</p>
-        </div>
-        <div class="service-item">
-          <div class="service-rule"></div>
-          <h3 class="service-name">Site Maintenance</h3>
-          <p class="service-desc">Ongoing maintenance support for commercial properties. Consistent, reliable, and done by people who know your site and how it's built.</p>
-        </div>
-        <div class="service-item">
-          <div class="service-rule"></div>
-          <h3 class="service-name">Structural Repairs</h3>
-          <p class="service-desc">Commercial structural repair work that crosses trade lines — the jobs that fall outside standard scope and require someone who can problem-solve across disciplines.</p>
-        </div>
-        <div class="service-item">
-          <div class="service-rule"></div>
-          <h3 class="service-name">Wall Access &amp; Security Gates</h3>
-          <p class="service-desc">Custom wall access gates, security enclosures, and controlled-access fabrications built to commercial specifications for retail and pharmacy environments.</p>
-        </div>
-        <div class="service-item service-other">
-          <div class="service-rule"></div>
-          <h3 class="service-name">Other / Miscellaneous</h3>
-          <p class="service-desc">Don't see your problem listed? If it's broken, custom, or has stumped someone else, tell us about it. That's usually exactly the kind of work we take on.</p>
-        </div>
+        {serviceLines.map((s) => (
+          <div class={`service-item${s.line === 'other' ? ' service-other' : ''}`}>
+            <div class="service-rule"></div>
+            <h3 class="service-name">{s.name}</h3>
+            <p class="service-desc">{s.desc}</p>
+            {photographed.has(s.line) && (
+              <a href="/services/gallery" class="service-link ent-link">See the work →</a>
+            )}
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- WHY CLIENTS CALL US -->
-  <section class="content-section alt">
+  <!-- HOW A JOB RUNS -->
+  <section class="content-section alt" id="how-a-job-runs">
     <div class="section-inner">
-      <h2 class="section-title ent-title">Why Clients Call Us</h2>
-      <div class="boxes-4">
-        <div class="box"><span class="box-bullet ent-bullet">▸</span><p>40+ years of hands-on experience</p></div>
-        <div class="box"><span class="box-bullet ent-bullet">▸</span><p>Trusted by national brands and commercial sites</p></div>
-        <div class="box"><span class="box-bullet ent-bullet">▸</span><p>Problems solved correctly the first time</p></div>
-        <div class="box"><span class="box-bullet ent-bullet">▸</span><p>No trial-and-error approach</p></div>
-      </div>
+      <p class="sf-eyebrow ent-eye">What happens after you press Request Service</p>
+      <h2 class="section-title ent-title">How a Job Runs</h2>
+      <ol class="job-steps">
+        {steps.map((st, i) => (
+          <li class="job-step">
+            <span class="job-num">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="job-title">{st.title}</h3>
+            <p class="job-body">{st.body}</p>
+          </li>
+        ))}
+      </ol>
+      {showNumbers && (
+        <div class="ops-numbers">
+          {SF_OPS_NUMBERS.numbers.map((n) => (
+            <div class="ops-number"><span class="proof-big">{n.value}</span><span class="proof-label">{n.label}</span></div>
+          ))}
+          <p class="ops-asof">SF Ops numbers as of {asOf}.</p>
+        </div>
+      )}
     </div>
   </section>
 
-  <!-- HOW WE WORK -->
+  <!-- OUR LANE -->
   <section class="content-section">
     <div class="section-inner">
-      <h2 class="section-title ent-title">How We Work</h2>
-      <div class="boxes-4 centered">
-        <div class="box step-box"><div class="step-ghost" style="color:var(--sf-ent)">1</div><p>Assess the real issue (not just the symptoms)</p></div>
-        <div class="box step-box"><div class="step-ghost" style="color:var(--sf-ent)">2</div><p>Identify the correct fix</p></div>
-        <div class="box step-box"><div class="step-ghost" style="color:var(--sf-ent)">3</div><p>Execute with precision</p></div>
-        <div class="box step-box"><div class="step-ghost" style="color:var(--sf-ent)">4</div><p>Ensure it's done right before we leave</p></div>
+      <p class="sf-eyebrow ent-eye">Our Lane</p>
+      <h2 class="lane-title">We're not in the regular rotation.<br />We're who you call when the rotation fails.</h2>
+      <div class="pos-cards">
+        <div class="pos-card">
+          <div class="pos-num">01</div>
+          <h3 class="pos-title">Diagnosed First</h3>
+          <p class="pos-body">We find the real issue, not just the symptom, and fix it once. If you're tired of paying for the same problem twice, we're your call.</p>
+        </div>
+        <div class="pos-card">
+          <div class="pos-num">02</div>
+          <h3 class="pos-title">Cross-Trade Capability</h3>
+          <p class="pos-body">Most repairs that fall through the cracks cross trade lines. We work across disciplines; that's exactly where we live.</p>
+        </div>
+        <div class="pos-card">
+          <div class="pos-num">03</div>
+          <h3 class="pos-title">Nothing to Chase</h3>
+          <p class="pos-body">Quote, schedule, photos, Work summary and invoice all come to you from one system. You don't call to ask where the job is.</p>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <!-- WHO WE SERVE -->
-  <section class="content-section alt">
-    <div class="section-inner centered-inner">
-      <p class="sf-eyebrow ent-eye">Who We Serve</p>
-      <h2 class="section-title ent-title">Built for Commercial Operations</h2>
-      <p class="clients-sub">We work with facilities managers, property maintenance teams, and operations directors at commercial chains who need specialized work done right — without the back-and-forth of vendors who've never seen their kind of problem before. If you're tired of paying for the same problem twice, we're your call.</p>
       <div class="pills">
         <span class="pill">National Pharmacy Chains</span>
         <span class="pill">Retail Property Groups</span>
@@ -155,7 +150,7 @@ const featured = (await getGallery('services', { featuredOnly: true })).slice(0,
 
   <!-- SEE OUR WORK -->
   {featured.length > 0 && (
-    <section class="content-section">
+    <section class="content-section alt">
       <div class="section-inner">
         <h2 class="section-title ent-title">See Our Work</h2>
         <GalleryGrid items={featured} name="featured" />
@@ -164,13 +159,33 @@ const featured = (await getGallery('services', { featuredOnly: true })).slice(0,
     </section>
   )}
 
+  <!-- SF OPS FOR YOUR OWN TEAM -->
+  <section class="ops-band">
+    <div class="section-inner ops-inner">
+      <div>
+        <p class="sf-eyebrow sol-eye">SF Ops</p>
+        <h2 class="ops-title">Run Your Own Team on SF Ops</h2>
+        <p class="ops-sub">The Quote link, the photos and the Work summary come from SF Ops, the software we built and run every Streich Force job on. Facilities teams can run their own work on it too, set up for you by SF Solutions.</p>
+        <a href="/contact/solutions" class="btn-primary sol-btn">Book a Discovery Call</a>
+      </div>
+      <ul class="ops-list">
+        <li>Work orders by Site, with your own job numbers</li>
+        <li>Quotes your approver opens and decides from a link</li>
+        <li>Field tech check-in, with before and completion photos</li>
+        <li>Received, Target and Client Due on every Work order</li>
+        <li>Work summaries sent to the customer when the job closes</li>
+        <li>Invoices with a link to pay online</li>
+      </ul>
+    </div>
+  </section>
+
   <!-- BOTTOM CTA -->
   <section class="div-cta">
     <div class="cta-inner">
       <div class="cta-rule ent-bar"></div>
       <h2 class="cta-title">Get It Fixed Right</h2>
-      <p class="cta-sub">Tell us what you're dealing with. No obligation — just a straight conversation about whether we're the right fit.</p>
-      <a href="/contact/enterprise" class="btn-primary ent-btn">Request Expert Service</a>
+      <p class="cta-sub">Tell us what you're dealing with and where. You'll hear back with a straight answer on whether we're the right fit, and a Quote if the job needs one.</p>
+      <a href="/contact/enterprise" class="btn-primary ent-btn">Request Service</a>
       <p class="cta-email"><a href="mailto:services&#x40;streichforce.com" class="ent-link">services&#x40;streichforce.com</a></p>
     </div>
   </section>
@@ -202,20 +217,6 @@ const featured = (await getGallery('services', { featuredOnly: true })).slice(0,
 .section-title{font-family:var(--sf-font-display);font-weight:900;font-size:clamp(1.6rem,3vw,2.4rem);text-transform:uppercase;letter-spacing:.04em;margin-bottom:2.5rem}
 .ent-title{color:var(--sf-ent-b)}
 
-/* 4-BOX GRID */
-.boxes-4{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
-@media(max-width:900px){.boxes-4{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:500px){.boxes-4{grid-template-columns:1fr}}
-.box{background:var(--sf-surface);padding:2rem 1.75rem;display:flex;flex-direction:row;align-items:flex-start;gap:.85rem}
-.content-section.alt .box{background:var(--sf-black)}
-.box-bullet{font-size:1.4rem;line-height:1;flex-shrink:0}
-.ent-bullet{color:var(--sf-ent);font-size:.95rem;flex-shrink:0;margin-top:.28em;line-height:1}
-.box p{font-size:1.1rem;color:var(--sf-text-secondary);line-height:1.65;margin:0}
-
-/* STEP BOXES */
-.boxes-4.centered{justify-items:stretch}
-.step-box{align-items:center;text-align:center}
-
 /* CTA */
 .div-cta{padding:7rem var(--sf-pad);background:var(--sf-black);text-align:center}
 .cta-inner{max-width:680px;margin:0 auto}
@@ -227,13 +228,10 @@ const featured = (await getGallery('services', { featuredOnly: true })).slice(0,
 .ent-link:hover{text-decoration:underline}
 .see-all{margin-top:1.75rem;font-family:var(--sf-font-display);font-weight:700;font-size:.85rem;letter-spacing:.18em;text-transform:uppercase}
 
-.step-box{position:relative;align-items:center;text-align:center;flex-direction:column;justify-content:center;min-height:170px;overflow:hidden;gap:0;padding:1.5rem}
-.step-ghost{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--sf-font-display);font-weight:900;font-size:8rem;line-height:1;pointer-events:none;user-select:none;z-index:0;opacity:.13;letter-spacing:-.02em}
-.step-box p{position:relative;z-index:1;font-size:1.1rem;color:var(--sf-text-primary);line-height:1.65;margin:0;font-weight:500;padding:0 .5rem}
 /* OUR LANE */
 .lane-title{font-family:var(--sf-font-display);font-weight:900;font-size:clamp(1.8rem,3.5vw,2.8rem);text-transform:uppercase;color:var(--sf-text-primary);line-height:1.1;margin:.75rem 0 3rem}
 .pos-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px}
-.pos-card{background:var(--sf-black);padding:2.5rem}
+.pos-card{background:var(--sf-surface);padding:2.5rem}
 .pos-num{font-family:var(--sf-font-display);font-weight:900;font-size:3.5rem;line-height:1;margin-bottom:1rem;color:var(--sf-ent);opacity:.25}
 .pos-title{font-family:var(--sf-font-display);font-weight:700;font-size:1.2rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sf-text-primary);margin-bottom:.75rem}
 .pos-body{font-size:1rem;color:var(--sf-text-secondary);line-height:1.8}
@@ -246,10 +244,43 @@ const featured = (await getGallery('services', { featuredOnly: true })).slice(0,
 .service-name{font-family:var(--sf-font-display);font-weight:700;font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sf-text-primary);margin-bottom:.75rem}
 .service-desc{font-size:1rem;color:var(--sf-text-secondary);line-height:1.8}
 .service-other{grid-column:1/-1}
+.service-link{display:inline-block;margin-top:1rem;font-family:var(--sf-font-display);font-weight:700;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase}
+
+/* PROOF */
+.proof-strip{padding:3rem var(--sf-pad);background:var(--sf-surface);border-bottom:1px solid var(--sf-border)}
+.proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
+@media(max-width:900px){.proof-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.proof-grid{grid-template-columns:1fr}}
+.proof,.ops-number{display:flex;flex-direction:column;gap:.35rem}
+.proof-big{font-family:var(--sf-font-display);font-weight:900;font-size:clamp(1.6rem,3vw,2.2rem);text-transform:uppercase;color:var(--sf-ent-b);line-height:1}
+.proof-label{font-size:.95rem;color:var(--sf-text-secondary);line-height:1.5}
+
+/* HOW A JOB RUNS */
+.job-steps{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+@media(max-width:900px){.job-steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.job-steps{grid-template-columns:1fr}}
+.job-step{background:var(--sf-black);padding:2rem 1.75rem 2.25rem}
+.job-num{display:block;font-family:var(--sf-font-display);font-weight:900;font-size:2.6rem;line-height:1;color:var(--sf-ent);opacity:.35;margin-bottom:.75rem}
+.job-title{font-family:var(--sf-font-display);font-weight:700;font-size:1.1rem;letter-spacing:.08em;text-transform:uppercase;color:var(--sf-text-primary);margin-bottom:.6rem}
+.job-body{font-size:1rem;color:var(--sf-text-secondary);line-height:1.75;margin:0}
+.ops-numbers{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem}
+@media(max-width:700px){.ops-numbers{grid-template-columns:1fr}}
+.ops-asof{grid-column:1/-1;font-size:.85rem;color:var(--sf-text-muted);margin:0}
+
+/* SF OPS BAND */
+.ops-band{padding:5.5rem var(--sf-pad);background:var(--sf-surface);border-top:4px solid var(--sf-sol)}
+.ops-inner{display:grid;grid-template-columns:1.1fr 1fr;gap:3.5rem;align-items:center}
+@media(max-width:900px){.ops-inner{grid-template-columns:1fr;gap:2.5rem}}
+.sol-eye{color:var(--sf-sol-b)}
+.ops-title{font-family:var(--sf-font-display);font-weight:900;font-size:clamp(1.8rem,3.5vw,2.8rem);text-transform:uppercase;color:var(--sf-text-primary);line-height:1.1;margin:.75rem 0 1.25rem}
+.ops-sub{font-size:1.05rem;color:var(--sf-text-secondary);line-height:1.8;margin-bottom:2rem}
+.sol-btn{background:var(--sf-sol);color:#fff}
+.sol-btn:hover{background:var(--sf-sol-b)}
+.ops-list{list-style:none;padding:0;margin:0;display:grid;gap:2px}
+.ops-list li{background:var(--sf-black);padding:1rem 1.25rem 1rem 2.6rem;position:relative;font-size:1rem;color:var(--sf-text-secondary);line-height:1.6}
+.ops-list li::before{content:'▸';position:absolute;left:1.1rem;color:var(--sf-sol-b)}
 
 /* WHO WE SERVE */
-.centered-inner{text-align:center}
-.clients-sub{font-size:1.1rem;color:var(--sf-text-secondary);line-height:1.8;max-width:700px;margin:0 auto 2.5rem}
-.pills{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center}
+.pills{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:3rem}
 .pill{font-family:var(--sf-font-display);font-weight:600;font-size:.82rem;letter-spacing:.25em;text-transform:uppercase;padding:.5rem 1.25rem;border:1px solid var(--sf-ent);color:var(--sf-ent)}
 </style>
