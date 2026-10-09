@@ -4,9 +4,7 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<BaseLayout
-  title="Real Work. Real Systems."
-  description="One company that does the work on site and builds the systems behind it. Commercial service and repair for multi-site operators, and the automation and applications that connect your tools. 40+ years in the field.">
+<BaseLayout>
   <Nav />
 
   <!-- HERO -->
@@ -18,7 +16,7 @@ import Footer from '../components/Footer.astro';
     <div class="hero-content">
       <p class="hero-eyebrow">Streich Force Enterprises &mdash; streichforce.com</p>
       <div class="hero-wm">
-        <img src="/Brand/SF_Logo_Transparent_DarkBG.svg" alt="Streich Force Enterprises" class="hero-logo" />
+        <img src="/Brand/SF_Logo_Transparent_DarkBG.svg" alt="Streich Force Enterprises" class="hero-logo" width="569" height="160" />
       </div>
       <div class="hero-tagline">
         <h1 class="hero-tag-main">Real work. Real systems. No middlemen.</h1>
@@ -154,7 +152,7 @@ import Footer from '../components/Footer.astro';
 .hero-content { position: relative; z-index: 3; max-width: 800px; }
 .hero-eyebrow {
   font-family: var(--sf-font-display); font-weight: 600; font-size: 0.78rem;
-  letter-spacing: 0.38em; text-transform: uppercase; color: var(--sf-rust);
+  letter-spacing: 0.38em; text-transform: uppercase; color: var(--sf-ent-b);
   margin-bottom: 1.25rem;
   opacity: 0; animation: sf-rise-up 0.7s ease forwards 0.2s;
 }
@@ -181,10 +179,10 @@ import Footer from '../components/Footer.astro';
 .hero-tag-cta {
   font-family: var(--sf-font-display); font-weight: 600;
   font-size: 0.78rem;
-  text-transform: uppercase; color: var(--sf-rust);
+  text-transform: uppercase; color: var(--sf-ent-b);
   letter-spacing: 0.18em;
 }
-.hero-tag-cta:hover { color: var(--sf-rust-hot); }
+.hero-tag-cta:hover { color: var(--sf-text-primary); }
 .hero-scroll {
   position: absolute; bottom: 2rem; right: var(--sf-pad); z-index: 3;
   display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
@@ -205,7 +203,7 @@ import Footer from '../components/Footer.astro';
 .div-section-head { margin-bottom: 3rem; }
 .div-section-eye {
   font-family: var(--sf-font-display); font-weight: 600; font-size: 0.78rem;
-  letter-spacing: 0.4em; text-transform: uppercase; color: var(--sf-rust); margin-bottom: 0.6rem;
+  letter-spacing: 0.4em; text-transform: uppercase; color: var(--sf-ent-b); margin-bottom: 0.6rem;
 }
 .div-section-title {
   font-family: var(--sf-font-display); font-weight: 900;
@@ -229,8 +227,8 @@ import Footer from '../components/Footer.astro';
   font-family: var(--sf-font-display); font-weight: 600; font-size: 0.72rem;
   letter-spacing: 0.35em; text-transform: uppercase; margin-bottom: 0.6rem;
 }
-.door.ent .door-tag { color: var(--sf-ent); }
-.door.sol .door-tag { color: var(--sf-sol); }
+.door.ent .door-tag { color: var(--sf-ent-b); }
+.door.sol .door-tag { color: var(--sf-sol-b); }
 .door-title {
   font-family: var(--sf-font-display); font-weight: 900;
   font-size: clamp(1.6rem, 2.8vw, 2.4rem);
@@ -265,9 +263,8 @@ import Footer from '../components/Footer.astro';
   padding: 0.8rem 1.6rem; color: #fff; transition: background 0.2s;
 }
 .door.ent .door-cta { background: var(--sf-ent); }
-.door.ent .door-cta:hover { background: var(--sf-ent-b); }
 .door.sol .door-cta { background: var(--sf-sol); }
-.door.sol .door-cta:hover { background: var(--sf-sol-b); }
+.door-cta:hover { text-decoration: underline; text-underline-offset: 3px; }
 .door-mi {
   display: inline-block; font-family: var(--sf-font-display); font-weight: 600;
   font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase;
@@ -277,8 +274,8 @@ import Footer from '../components/Footer.astro';
 .door-aside {
   margin-top: 1.5rem; font-size: 0.95rem; color: var(--sf-text-muted);
 }
-.door-aside a { color: var(--sf-con-b); border-bottom: 1px solid transparent; transition: border-color 0.2s; }
-.door-aside a:hover { border-bottom-color: var(--sf-con-b); }
+.door-aside a { color: var(--sf-con-b); text-decoration: underline; text-underline-offset: 3px; }
+.door-aside a:hover { color: var(--sf-text-primary); }
 /* ── ABOUT ── */
 .about {
   padding: 6rem var(--sf-pad); border-top: 1px solid var(--sf-border);
