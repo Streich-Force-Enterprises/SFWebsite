@@ -11,7 +11,6 @@ const { active = '' } = Astro.props;
   <ul class="nav-links">
     <li><a href="/services" class:list={['nent', { active: active === 'services' }]}>Services</a></li>
     <li><a href="/solutions"  class:list={['nsol', { active: active === 'solutions'  }]}>Solutions</a></li>
-    <li><a href="/containers" class:list={['ncon', { active: active === 'containers' }]}>Containers</a></li>
     <li><a href="/#contact" class="ncta">Contact</a></li>
     <li><a href="https://ops.streichforce.com/login" class="nlogin">Login</a></li>
   </ul>
@@ -23,7 +22,6 @@ const { active = '' } = Astro.props;
 <div class="mobile-menu" id="mobileMenu">
   <a href="/services">Services</a>
   <a href="/solutions">Solutions</a>
-  <a href="/containers">Containers</a>
   <a href="/#contact">Contact</a>
   <a href="https://ops.streichforce.com/login">Login</a>
 </div>
@@ -52,7 +50,6 @@ const { active = '' } = Astro.props;
   .nav-links a:hover, .nav-links a.active { color: var(--sf-text-primary); }
   .nav-links .nent:hover, .nav-links .nent.active { color: var(--sf-ent-b); border-color: var(--sf-ent); }
   .nav-links .nsol:hover, .nav-links .nsol.active { color: var(--sf-sol-b); border-color: var(--sf-sol); }
-  .nav-links .ncon:hover, .nav-links .ncon.active { color: var(--sf-con-b); border-color: var(--sf-con); }
   .nav-links .ncta {
     padding: 0.45rem 1.1rem; border: 1px solid var(--sf-rust);
     color: var(--sf-rust) !important; border-bottom: 1px solid var(--sf-rust) !important;

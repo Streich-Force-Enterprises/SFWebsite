@@ -4,20 +4,18 @@ import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 ---
 <BaseLayout
-  title="Division 03 — Container Sales & Sourcing — Streich Force"
-  description="Simple, direct access to available container inventory with clear pricing and no unnecessary friction.">
-  <Nav active="containers" />
+  title="Container Sourcing | Streich Force"
+  description="Need a shipping container? Tell us the size, condition and delivery location, and we will source it for you.">
+  <Nav />
 
   <section class="div-hero">
     <div class="div-hero-bg"></div>
     <div class="div-hero-inner">
-      <p class="sf-eyebrow con-eye">Division 03 — Container Sales &amp; Sourcing</p>
-      <h1 class="div-hero-title">Simple, Direct Access<br /><span class="con-accent">to What You Need</span></h1>
-      <p class="div-hero-sub">Finding the right containers shouldn't be complicated.</p>
-      <p class="div-hero-sub">We provide straightforward access to available inventory with clear pricing and no unnecessary friction.</p>
+      <p class="sf-eyebrow con-eye">Container Sourcing</p>
+      <h1 class="div-hero-title">Need a Container?<br /><span class="con-accent">We'll Source It.</span></h1>
+      <p class="div-hero-sub">Tell us the size, condition and delivery location. We look for units that match and come back to you with what we found and the price.</p>
       <div class="div-hero-cta">
-        <a href="/contact/containers" class="btn-primary con-btn">Get a Quote</a>
-        <a href="#" class="btn-ghost con-ghost">View Containers</a>
+        <a href="/contact/containers" class="btn-primary con-btn">Tell us what you need</a>
       </div>
     </div>
     <div class="hero-accent-bar con-bar"></div>
@@ -25,59 +23,35 @@ import Footer from '../../components/Footer.astro';
 
   <section class="content-section">
     <div class="section-inner">
-      <h2 class="section-title con-title">What We Offer</h2>
+      <h2 class="section-title con-title">What to Send Us</h2>
       <div class="boxes-4">
-        <div class="box"><span class="box-bullet con-bullet">▸</span><p>Available container inventory</p></div>
-        <div class="box"><span class="box-bullet con-bullet">▸</span><p>Direct pricing and quotes</p></div>
-        <div class="box"><span class="box-bullet con-bullet">▸</span><p>Assistance sourcing specific needs</p></div>
-        <div class="box"><span class="box-bullet con-bullet">▸</span><p>Straightforward communication</p></div>
+        <div class="box"><span class="box-bullet con-bullet">▸</span><p><strong>Size</strong> — 20ft, 40ft, 40ft high-cube, or a mix</p></div>
+        <div class="box"><span class="box-bullet con-bullet">▸</span><p><strong>Condition</strong> — new / one-trip, wind &amp; watertight, or cargo worthy</p></div>
+        <div class="box"><span class="box-bullet con-bullet">▸</span><p><strong>Delivery location</strong> — city, state or ZIP</p></div>
+        <div class="box"><span class="box-bullet con-bullet">▸</span><p><strong>Quantity and timing</strong> — one unit or many, and when you need them</p></div>
       </div>
     </div>
   </section>
 
   <section class="content-section alt">
-    <div class="section-inner">
-      <h2 class="section-title con-title">Why Work With Us</h2>
-      <div class="boxes-4">
-        <div class="box"><span class="box-bullet con-bullet">▸</span><p>No runaround or delays</p></div>
-        <div class="box"><span class="box-bullet con-bullet">▸</span><p>Clear, direct communication</p></div>
-        <div class="box"><span class="box-bullet con-bullet">▸</span><p>Fast response on availability</p></div>
-        <div class="box"><span class="box-bullet con-bullet">▸</span><p>Practical, no-nonsense process</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="content-section">
     <div class="section-inner">
       <h2 class="section-title con-title">How It Works</h2>
-      <div class="boxes-4 centered">
-        <div class="box step-box"><div class="step-ghost" style="color:var(--sf-con)">1</div><p>Tell us what you need</p></div>
-        <div class="box step-box"><div class="step-ghost" style="color:var(--sf-con)">2</div><p>Review available inventory or sourcing options</p></div>
-        <div class="box step-box"><div class="step-ghost" style="color:var(--sf-con)">3</div><p>Receive clear pricing</p></div>
-        <div class="box step-box"><div class="step-ghost" style="color:var(--sf-con)">4</div><p>Secure your order quickly</p></div>
+      <div class="boxes-3">
+        <div class="box step-box"><div class="step-ghost" style="color:var(--sf-con)">1</div><p>You tell us what you need</p></div>
+        <div class="box step-box"><div class="step-ghost" style="color:var(--sf-con)">2</div><p>We look for units that match</p></div>
+        <div class="box step-box"><div class="step-ghost" style="color:var(--sf-con)">3</div><p>We come back with what we found and the price</p></div>
       </div>
-    </div>
-  </section>
-
-  <section class="content-section alt">
-    <div class="section-inner">
-      <h2 class="section-title con-title">Who This Is For</h2>
-      <div class="boxes-4">
-        <div class="box"><span class="box-bullet con-bullet">▸</span><p>Businesses needing container supply</p></div>
-        <div class="box"><span class="box-bullet con-bullet">▸</span><p>Buyers looking for fast turnaround</p></div>
-        <div class="box"><span class="box-bullet con-bullet">▸</span><p>Anyone tired of unclear pricing and delays</p></div>
-        <div class="box"><span class="box-bullet con-bullet">▸</span><p>Single unit or bulk — all welcome</p></div>
-      </div>
+      <p class="section-note">There is no list of units to browse here. Every request is sourced to order, so the details you send are what we search on.</p>
     </div>
   </section>
 
   <section class="div-cta">
     <div class="cta-inner">
       <div class="cta-rule con-bar"></div>
-      <h2 class="cta-title">Looking for containers? Let's talk.</h2>
-      <p class="cta-sub">Tell us what you need — size, condition, quantity, and delivery location.</p>
-      <a href="/contact/containers" class="btn-primary con-btn">Get a Quote</a>
-      <p class="cta-email"><a href="mailto:containers&#x40;streichforce.com" class="con-link">containers&#x40;streichforce.com</a></p>
+      <h2 class="cta-title">Looking for a container?</h2>
+      <p class="cta-sub">Size, condition, quantity and delivery location. That's all we need to start looking.</p>
+      <a href="/contact/containers" class="btn-primary con-btn">Tell us what you need</a>
+      <p class="cta-email">Or email <a href="mailto:containers&#x40;streichforce.com" class="con-link">containers&#x40;streichforce.com</a></p>
     </div>
   </section>
 
@@ -98,8 +72,6 @@ import Footer from '../../components/Footer.astro';
 .btn-primary{display:inline-block;font-family:var(--sf-font-display);font-weight:700;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;padding:.9rem 2rem;text-decoration:none;transition:background .2s}
 .con-btn{background:var(--sf-con);color:#fff}
 .con-btn:hover{background:var(--sf-con-b)}
-.btn-ghost{display:inline-block;font-family:var(--sf-font-display);font-weight:700;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;padding:.9rem 2rem;text-decoration:none;border:1px solid rgba(255,255,255,.2);color:var(--sf-text-secondary);transition:all .2s}
-.con-ghost:hover{border-color:var(--sf-con);color:var(--sf-con)}
 .content-section{padding:5rem var(--sf-pad);background:var(--sf-black)}
 .content-section.alt{background:var(--sf-surface)}
 .section-inner{max-width:1200px;margin:0 auto}
@@ -113,16 +85,18 @@ import Footer from '../../components/Footer.astro';
 .box-bullet{font-size:1.4rem;line-height:1;flex-shrink:0}
 .con-bullet{color:var(--sf-con);font-size:.95rem;flex-shrink:0;margin-top:.28em;line-height:1}
 .box p{font-size:1.1rem;color:var(--sf-text-secondary);line-height:1.65;margin:0}
-.boxes-4.centered{justify-items:stretch}
-.step-box{align-items:center;text-align:center}
+.boxes-3{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+@media(max-width:700px){.boxes-3{grid-template-columns:1fr}}
+.box p strong{color:var(--sf-text-primary);font-weight:600}
+.section-note{margin-top:2rem;max-width:720px;font-size:1rem;color:var(--sf-text-secondary);line-height:1.75}
 .div-cta{padding:7rem var(--sf-pad);background:var(--sf-black);text-align:center}
 .cta-inner{max-width:680px;margin:0 auto}
 .cta-rule{width:48px;height:4px;margin:0 auto 2.5rem}
 .cta-title{font-family:var(--sf-font-display);font-weight:900;font-size:clamp(1.8rem,4vw,3rem);text-transform:uppercase;color:var(--sf-text-primary);line-height:1.1;margin-bottom:1.25rem}
 .cta-sub{font-size:1rem;color:var(--sf-text-secondary);line-height:1.75;margin-bottom:2rem}
 .cta-email{margin-top:1.5rem;font-size:.9rem;color:var(--sf-text-muted)}
-.con-link{color:var(--sf-con-b);text-decoration:none}
-.con-link:hover{text-decoration:underline}
+.con-link{color:var(--sf-con-b);text-decoration:underline;text-underline-offset:3px}
+.con-link:hover{color:var(--sf-text-primary)}
 
 .step-box{position:relative;align-items:center;text-align:center;flex-direction:column;justify-content:center;min-height:170px;overflow:hidden;gap:0;padding:1.5rem}
 .step-ghost{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--sf-font-display);font-weight:900;font-size:8rem;line-height:1;pointer-events:none;user-select:none;z-index:0;opacity:.13;letter-spacing:-.02em}
