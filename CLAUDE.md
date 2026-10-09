@@ -154,6 +154,28 @@ awaiting her decisions: **none.**
 - **No prices on the site.** Strategy pricing (discovery fee, outgate rates,
   minimums) is provisional; the button is "Book a discovery call".
 
+## Search-engine meta (#13)
+
+- **Every page's title, description and noindex live in `src/lib/seo.ts`**,
+  keyed by path. `BaseLayout` looks the page up there and the entry wins over
+  the `title`/`description` props a page passes (those are a fallback for a
+  page with no entry yet). Changing a page's search wording is a one-line edit
+  in `seo.ts`, never in the page body. A new page adds its entry there.
+- Titles are complete as written (no suffix is appended), at most 60
+  characters; descriptions at most 155. The build fails if one runs over.
+- `noindex: true` adds `<meta name="robots" content="noindex">`, drops the
+  canonical tag, and keeps the page out of the sitemap. Today: `/contact/thanks`
+  and both `/legal` pages. Retired routes (`/enterprise`) are excluded from the
+  sitemap in the same file.
+- **`/sitemap-index.xml`** comes from `@astrojs/sitemap` (pinned `~3.2` for
+  Astro 4; 3.3+ targets Astro 5). `public/robots.txt` points at it.
+- **The OG image is `public/og-image-v<N>.png`**, 1200×630, rendered from
+  `scripts/og-image/og-image.html` with the preinstalled Chromium (Playwright:
+  open the file at a 1200×630 viewport, wait for `document.fonts.ready`,
+  screenshot). A new design gets a new `v<N>` file name and `OG_IMAGE` in
+  `seo.ts` changes with it: LinkedIn, Facebook and Slack cache previews by URL,
+  so overwriting the same file name keeps showing the old picture for weeks.
+
 ## Contact forms
 
 Three Netlify Forms, one per division page. All three post to the shared

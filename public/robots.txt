@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://streichforce.com/sitemap-index.xml
