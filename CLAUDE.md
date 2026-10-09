@@ -224,6 +224,15 @@ thank-you page `/contact/thanks/` (the form's `action`), not Netlify's default.
 - **`<img>` width/height attributes beat CSS `aspect-ratio`** unless the CSS
   also sets `height: auto`. Astro's `<Image>` always writes both attributes,
   so a 4:3 crop silently became a tall original-ratio image (#9).
+- **`BaseLayout` already appends " | Streich Force Enterprises" to every
+  `title`.** The old homepage passed the company name in its own title, so
+  the tab and Google read "Streich Force Enterprises — … | Streich Force
+  Enterprises". Pass the page's own words only (#21).
+- **A clickable card needs no JavaScript.** The old homepage cards used
+  `onclick="window.location=…"`. Use a stretched link instead: the card's
+  title link gets `::after { position:absolute; inset:0 }` on a
+  `position:relative` card, and the buttons sit above it with
+  `position:relative; z-index:1` (`.door` on the homepage, #21).
 - **Measure Lighthouse with a full gallery, not the placeholders.** With 23
   photos `/services/gallery` scored 93; the first thumbnails must load eagerly
   (`eager` prop), or the lazy LCP image costs the score. What holds every
