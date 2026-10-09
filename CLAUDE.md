@@ -224,6 +224,15 @@ thank-you page `/contact/thanks/` (the form's `action`), not Netlify's default.
 - **`<img>` width/height attributes beat CSS `aspect-ratio`** unless the CSS
   also sets `height: auto`. Astro's `<Image>` always writes both attributes,
   so a 4:3 crop silently became a tall original-ratio image (#9).
+- **The base division colours fail AA as small text on the dark backgrounds.**
+  `--sf-rust`/`--sf-ent` `#C0392B` is 3.5:1 on `--sf-black` and 3.3:1 on
+  `--sf-surface`; `--sf-sol` `#2E6DA4` is 3.2:1. Labels, eyebrows and text
+  links use the `-b` variants (`--sf-ent-b` 4.9:1) or a text token; keep the
+  base colours for fills, borders and large headings. A link inside text needs
+  an underline, not just a colour (#28). Logo `<img>`s carry `width`/`height`
+  in the SVG's 1985:558 ratio at their CSS height, so the page doesn't shift.
+  Measure Lighthouse from Chromium here:
+  `CHROME_PATH=$(ls /opt/pw-browsers/chromium-*/chrome-linux/chrome) npx -y lighthouse@12.2.1 <url> --only-categories=accessibility --chrome-flags="--headless=new --no-sandbox"`.
 - **Measure Lighthouse with a full gallery, not the placeholders.** With 23
   photos `/services/gallery` scored 93; the first thumbnails must load eagerly
   (`eager` prop), or the lazy LCP image costs the score. What holds every
