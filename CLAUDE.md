@@ -89,11 +89,12 @@ Open Decisions (recommended option highlighted) · What Changed in This
 Revision. A refinement is a new versioned file; all versions are kept.
 
 Active plan: **`docs/specs/sf-website_build-plan_v2.html`** (locked
-2026-10-08, Sonja: "Go with all recommended", D1–D5 all A). Active draft
-awaiting her decisions: **`docs/specs/sf-website_positioning_v1.html`**
-(ticket #18; P1–P6 open). Its interview answers (two front doors, SF Ops
-sold through both, Solutions for any operator with container proof) already
-bind the C-tickets; the P-decisions refine them.
+2026-10-08, Sonja: "Go with all recommended", D1–D5 all A). Active
+positioning: **`docs/specs/sf-website_positioning_v2.html`** (locked
+2026-10-09, #18): two front doors (Services · Solutions), SF Ops sold
+through both, Solutions for any operator with container proof, no inventory
+platform named. Every content ticket (C2–C5) writes to it. Active draft
+awaiting her decisions: **none.**
 
 ## Gallery
 
@@ -121,16 +122,20 @@ bind the C-tickets; the P-decisions refine them.
   SF Ops does for a customer (sf-ops: Work order, Quote approved online,
   photos, Work summary, invoice, payment). Solutions content comes from
   what SF Solutions has built (sf-solutions: cash-exposure cockpit,
-  Triplemeter relay, QuickBooks and Pipedrive connectors, dashboards,
-  query builder). Nothing on the site promises what neither repo can do.
+  QuickBooks and Pipedrive connectors, dashboards, query builder). Nothing on the site promises what neither repo can do.
 - **Use the official names** from sf-ops `docs/ontology.md` on every page
   that names a thing from SF Ops (Work order, Site, Field tech, Work
   summary, Client Due). Never "job ticket", "location", "technician".
 - **One page per division, one route per page.** `/services` is the
   Division 01 page; `/enterprise` 301-redirects to it (#10). A new
   entry point is a new route to the existing page, never a second page.
-- **SF Solutions is read-only to Triplemeter.** No copy may promise a
-  write-back, sync-to-TM, or "we update your TM data".
+- **Name no inventory platform.** Not Triplemeter (dissolved) and not
+  Container Trade HQ (a separate company with different IP), on any page,
+  screenshot, form option or alt text (Sonja, 2026-10-09, positioning P5).
+  Solutions says we set up the automation and applications an operator
+  needs, around the tools they already use.
+- **No prices on the site.** Strategy pricing (discovery fee, outgate rates,
+  minimums) is provisional; the button is "Book a discovery call".
 
 ## Things that have bitten us
 
