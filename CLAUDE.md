@@ -138,10 +138,13 @@ thank-you page `/contact/thanks/` (the form's `action`), not Netlify's default.
 
 | Form (`form-name`)    | Page                  | Address the page shows       | Notifies             |
 |-----------------------|-----------------------|------------------------------|----------------------|
-| `enterprise-contact`  | `/contact/enterprise` | `services@streichforce.com`  | `services@` (test pending) |
-| `solutions-contact`   | `/contact/solutions`  | `solutions@streichforce.com` | `solutions@` (test pending) |
-| `containers-contact`  | `/contact/containers` | `containers@streichforce.com`| `containers@` (test pending) |
+| `enterprise-contact`  | `/contact/enterprise` | `services@streichforce.com`  | `services@` (email check pending) |
+| `solutions-contact`   | `/contact/solutions`  | `solutions@streichforce.com` | `solutions@` (email check pending) |
+| `containers-contact`  | `/contact/containers` | `containers@streichforce.com`| `containers@` (email check pending) |
 
+- Test submissions on all three forms landed in Netlify on 2026-10-09
+  (deploy preview #25). Sonja removed Solutions' "gate volume" and
+  Containers' "market" questions the same day.
 - Sonja confirmed 2026-10-08 that all three addresses are real mailboxes
   and each form notifies its own address. Form detection turned on the same day.
 - Submissions are read in Netlify → project `sfwebite` → Forms (and by email
