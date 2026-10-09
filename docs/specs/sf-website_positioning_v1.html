@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SF Website — Positioning spec v1 (DRAFT: P1–P6 open)</title>
+<style>
+  :root{
+    --sf-red:#C0392B; --ink:#1c1c1c; --muted:#6b6b6b; --line:#e3ded6;
+    --paper:#faf8f4; --card:#ffffff; --ok:#1e7e4e; --warn:#b7791f; --info:#2b6cb0;
+    --mono:"SF Mono",ui-monospace,Menlo,Consolas,monospace;
+    --sans:Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.5;font-size:15px}
+  .wrap{max-width:1080px;margin:0 auto;padding:32px 20px 80px}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--sf-red);margin:0 0 6px}
+  h1{font-size:26px;margin:0 0 4px}
+  h2{font-size:19px;margin:40px 0 10px;border-bottom:2px solid var(--sf-red);padding-bottom:6px}
+  h3{font-size:15px;margin:22px 0 8px}
+  .sub{color:var(--muted);margin:0 0 18px}
+  .tag{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;padding:2px 8px;border-radius:3px;margin-right:6px;vertical-align:middle}
+  .tag.draft{background:#fdeeec;color:var(--sf-red);border:1px solid #f2cdc7}
+  .tag.locked{background:#eaf6ee;color:var(--ok);border:1px solid #bfe3cc}
+  .chip.chosen{background:#1e7e4e;color:#fff;border-color:#1e7e4e}
+  .dec.done{border-left-color:var(--ok)}
+  .dec.done .decid{color:var(--ok)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:18px 20px;margin:14px 0}
+  .tablewrap{overflow-x:auto}
+  table{border-collapse:collapse;width:100%;margin:10px 0;background:var(--card)}
+  th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top;font-size:13.5px}
+  th{background:#f4f0e9;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#555}
+  td.k{font-family:var(--mono);font-size:11.5px;background:#faf8f4;font-weight:600;white-space:nowrap}
+  code,.mono{font-family:var(--mono);font-size:12.5px;background:#f4f1ea;padding:1px 5px;border-radius:3px}
+  pre{background:#25211c;color:#f0ece4;border-radius:6px;padding:14px 16px;overflow-x:auto;font-family:var(--mono);font-size:12px;line-height:1.55;white-space:pre-wrap}
+  .callout{border-left:4px solid var(--warn);background:#fdf8ee;padding:12px 16px;margin:14px 0;border-radius:0 6px 6px 0;font-size:14px}
+  .callout.bad{border-left-color:var(--sf-red);background:#fdeeec}
+  .callout.good{border-left-color:var(--ok);background:#f1f9f4}
+  .callout.info{border-left-color:var(--info);background:#eef4fb}
+  .chip{display:inline-block;font-family:var(--mono);font-size:10.5px;padding:2px 7px;border-radius:10px;border:1px solid;white-space:nowrap}
+  .chip.rec{background:#eaf6ee;color:var(--ok);border-color:#bfe3cc}
+  .chip.st{background:#eef4fb;color:var(--info);border-color:#c9daf0}
+  .chip.wait{background:#fdf3e3;color:var(--warn);border-color:#f0dcb8}
+  .chip.now{background:#eaf6ee;color:var(--ok);border-color:#bfe3cc}
+  ul{margin:8px 0 8px 18px;padding:0}
+  li{margin:4px 0;font-size:14px}
+  .foot{margin-top:50px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px}
+  tr.recommended td{background:#f4fbf6}
+  tr.recommended td.k{background:#eaf6ee}
+  .dec{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--sf-red);border-radius:0 8px 8px 0;padding:16px 20px;margin:18px 0}
+  .dec h3{margin-top:0}
+  .decid{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--sf-red)}
+  .toc{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 20px;margin:16px 0;font-size:13.5px}
+  .toc a{color:var(--info);text-decoration:none}
+  .small{font-size:12.5px;color:var(--muted)}
+  .cliff{background:var(--card);border:2px solid var(--sf-red);border-radius:8px;padding:16px 20px;margin:18px 0}
+  .cliff h3{margin:0 0 8px;color:var(--sf-red)}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  @media(max-width:760px){.grid3{grid-template-columns:1fr}}
+  .pcard{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+  .pcard .ic{font-size:26px;line-height:1}
+  .pcard h4{margin:6px 0 4px;font-size:14px}
+  .pcard p{margin:0;font-size:12.5px;color:var(--muted)}
+  a{color:var(--info)}
+  svg{max-width:100%;height:auto}
+  svg text{font-family:Helvetica,Arial,sans-serif}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="eyebrow">Streich Force Enterprises · streichforce.com · SFWebsite repo · ticket #18</p>
+<h1>SF Website — Positioning spec v1</h1>
+<p class="sub"><span class="tag draft">DRAFT · 2026-10-09</span> Built from your interview answers (Q1–Q7) and your strategy notes (Steps 02–04 in OneDrive). What the site says it is, who each page is for, what we can prove, and the one button on each page.</p>
+
+<div class="cliff">
+  <h3>Cliff notes</h3>
+  <ul>
+    <li><b>Two front doors, one company.</b> Facilities managers → <b>Services</b>. Operators with disconnected systems → <b>Solutions</b>. Containers becomes a small line that can be retired without a redesign.</li>
+    <li><b>SF Ops is a product, sold through both doors.</b> On Services: "this is how your job runs, and you can run your own team on it." On Solutions: the SF Ops workspace, set up and connected by SF Solutions.</li>
+    <li><b>Solutions speaks to any small or mid-sized operator.</b> Container operators (Triplemeter) are the first proven vertical, not the only audience.</li>
+    <li><b>Proof:</b> 40+ years · national chains we serve · "we run every job on our own software" · live SF Ops numbers. Names and numbers stay hidden until you confirm each one (P1, P2).</li>
+    <li><b>Voice:</b> plain-spoken, same spirit, but "consulting" comes out (we now sell paid Discovery). <b>Buttons:</b> Request service · Book a discovery call · Tell us what you need.</li>
+    <li><b>Six small decisions are still open (P1–P6)</b>, each with my recommendation. Say <b>"go with all recommended"</b> to lock them. Then C2–C5 can start.</li>
+  </ul>
+</div>
+
+<div class="toc">Contents ·
+  <a href="#problem">1 Problem</a> ·
+  <a href="#answers">2 What you decided</a> ·
+  <a href="#flow">3 Proposed site</a> ·
+  <a href="#guard">4 Guardrails</a> ·
+  <a href="#open">5 Open decisions</a> ·
+  <a href="#next">6 What happens next</a> ·
+  <a href="#changed">7 What changed</a>
+</div>
+
+<h2 id="problem">1 · Problem</h2>
+<ul>
+  <li>The site presents <b>three equal divisions</b> with generic words ("fix my back office", "view inventory"). It says nothing about what SF Ops and SF Solutions actually do.</li>
+  <li>Your strategy (Step 02) has moved on. The business is now a <b>shared SF backbone</b>: connectors, exception handling and SF Ops as an optional workspace, sold as Discover → Implement → Stabilize → Operate (Step 03). The site doesn't sell any of that.</li>
+  <li>SF Ops is <b>invisible</b> on the site, even though it runs every Streich Force job and is your strongest proof.</li>
+</ul>
+
+<h2 id="answers">2 · What you decided in the interview</h2>
+<div class="tablewrap"><table>
+  <tr><th>#</th><th>Question</th><th>Your answer</th></tr>
+  <tr><td class="k">Q1</td><td>Source material</td><td>SFE Strategy Step 02 (Integration Hub, revised). Steps 03 and 04, which sit in the same folder, were read for context.</td></tr>
+  <tr><td class="k">Q2</td><td>What the homepage says we are</td><td><b>Two front doors.</b> Solutions is <i>not</i> container-only: SF Ops crosses over, with SF Solutions doing the setup and integrations. Containers is a small subset that may go away.</td></tr>
+  <tr><td class="k">Q3</td><td>Who Solutions speaks to</td><td><b>Operators + container proof.</b> Any small or mid-sized operator with disconnected systems. Container operators are the first proven vertical.</td></tr>
+  <tr><td class="k">Q4</td><td>SF Ops on the Services door</td><td><b>Sell SF Ops here too.</b> Facilities teams can buy it as well as experience it.</td></tr>
+  <tr><td class="k">Q5</td><td>Proof points</td><td><b>All four:</b> 40+ years · brand names · we run on our own software · live SF Ops numbers.</td></tr>
+  <tr><td class="k">Q6</td><td>Voice</td><td><b>Keep the spirit, drop "consulting".</b></td></tr>
+  <tr><td class="k">Q7</td><td>Calls to action</td><td><b>Request service · Book a discovery call</b> (+ "Tell us what you need" on Containers).</td></tr>
+</table></div>
+
+<h2 id="flow">3 · Proposed site</h2>
+
+<div class="tablewrap"><table>
+  <tr><th>Page</th><th>Who it's for</th><th>What it says</th><th>Proof shown</th><th>One button</th></tr>
+  <tr><td class="k">/ Home</td><td>Everyone, sorted in one click</td>
+      <td>Hero: one company that does the work and builds the systems behind it. Two big doors:<br>
+      <b>"Need it fixed or built on site?"</b> → Services<br>
+      <b>"Systems don't talk to each other?"</b> → Solutions<br>
+      Containers: one small line under the doors (P6).</td>
+      <td>40+ years · "every job runs on SF Ops"</td>
+      <td>The two doors</td></tr>
+  <tr><td class="k">/services</td><td>Facilities managers at pharmacy &amp; retail chains, plus other multi-site operators</td>
+      <td>Six service lines with gallery links. <b>How a job runs</b> (Work order → Quote approved from your phone → scheduled with Client Due → on-site photos → Work summary → invoice &amp; online pay).<br>
+      Closing band: <b>"Run your own team on SF Ops"</b> (P3).</td>
+      <td>40+ years · chain names (P1) · SF Ops numbers (P2) · gallery · quote-page screenshot (D5)</td>
+      <td><b>Request service</b></td></tr>
+  <tr><td class="k">/solutions</td><td>Small and mid-sized operators running on QuickBooks/Xero, a CRM, spreadsheets, email and text. <b>First vertical: container dealers, lessors and depots on Triplemeter</b>.</td>
+      <td>Keep the tools you have; we connect them and surface the exceptions. <b>SF Ops</b> as your workspace (optional). <b>How it starts:</b> Discover → Implement → Stabilize → Operate (you run it, or we run it for you).<br>
+      Container section: Triplemeter named openly; cash-exposure cockpit, dashboards, query builder.</td>
+      <td>"We built and run SF Ops ourselves" · real modules on demo-data screenshots</td>
+      <td><b>Book a discovery call</b></td></tr>
+  <tr><td class="k">/containers</td><td>Container buyers</td>
+      <td>Sourcing lead form: tell us size, condition and delivery location. No inventory promise (D4 in the build plan).</td>
+      <td>—</td>
+      <td><b>Tell us what you need</b></td></tr>
+</table></div>
+
+<div class="callout info"><b>Why SF Ops appears on both doors.</b> On Services a facilities buyer <i>experiences</i> SF Ops (quote link, photos, Work summary) before being offered it, which is the easiest sale there is. On Solutions it is the workspace an SF Solutions engagement sets up. It is one product with two ways in, and both lead to the same discovery call.</div>
+
+<h3>Voice</h3>
+<ul>
+  <li><b>Retire:</b> "No theory, no consulting, no middlemen." Paid Discovery and Implementation are consulting, so the line would contradict the Solutions page.</li>
+  <li><b>Draft replacement:</b> <i>"Real work. Real systems. No middlemen."</i> The C-tickets can refine the wording. The tone stays: short sentences, plain words, no buzzwords.</li>
+  <li>Echo your Step 02 principle where it fits: <i>"Keep the systems that work. We connect them."</i></li>
+</ul>
+
+<h2 id="guard">4 · Guardrails (what the site must not say)</h2>
+<div class="callout bad">
+<ul>
+  <li><b>No prices.</b> Steps 03 and 04 say pricing is provisional (outgate rates, minimums, discovery fee). Nothing from them goes on the site. The site says "Book a discovery call".</li>
+  <li><b>No write-back to Triplemeter.</b> SF Solutions is read-only to TM (CLAUDE.md). Step 02's "orchestration / update records" covers the customer's own systems and must never be worded as "we update your TM data".</li>
+  <li><b>No promises the repos can't keep.</b> AI autonomy levels, WhatsApp intake and cross-customer learning are strategy, not shipped. They stay off the site until sf-solutions or sf-ops has them. "Surfaces exceptions with evidence" is fine once the cockpit shows it.</li>
+  <li><b>No customer data</b> in screenshots, never Loadstar's. Demo data only (D5).</li>
+  <li><b>Official names</b> from the SF Ops ontology: Work order, Site, Field tech, Work summary, Client Due.</li>
+</ul>
+</div>
+
+<h2 id="open">5 · Open decisions</h2>
+<p class="small">The recommended option is highlighted on each. Say "go with all recommended", or give a letter per decision.</p>
+
+<div class="dec">
+  <span class="decid">P1 · WHICH BRAND NAMES</span>
+  <h3>You said yes to naming brands. Which ones, and on what permission?</h3>
+  <div class="tablewrap"><table>
+    <tr><th></th><th>Option</th><th>Trade-off</th></tr>
+    <tr class="recommended"><td class="k">A <span class="chip rec">recommended</span></td><td>Launch with <b>"national pharmacy and retail chains"</b>, no names. Add each name only once you have that customer's written OK. You list the names in the PR.</td><td>Ships now, no risk to a contract. Logos can be added one at a time later.</td></tr>
+    <tr><td class="k">B</td><td>Name them now (you list them) on your judgment.</td><td>Stronger proof on day one. Many chain contracts forbid using the name in marketing, so check first.</td></tr>
+  </table></div>
+</div>
+
+<div class="dec">
+  <span class="decid">P2 · WHICH SF OPS NUMBERS</span>
+  <h3>Which live numbers, and how do they stay true?</h3>
+  <div class="tablewrap"><table>
+    <tr><th></th><th>Option</th><th>Trade-off</th></tr>
+    <tr class="recommended"><td class="k">A <span class="chip rec">recommended</span></td><td><b>Two or three numbers, refreshed by hand each quarter</b>: e.g. Work orders completed, median time to Quote, % paid online. A session pulls them from SF Ops, you approve them in the PR, and each carries an "as of" date.</td><td>Static site stays static. Each number is checked before it is published.</td></tr>
+    <tr><td class="k">B</td><td>Live feed from SF Ops at build or view time.</td><td>Always current, but it is new plumbing between the site and the app, and a bad day shows publicly.</td></tr>
+    <tr><td class="k">C</td><td>No numbers at launch.</td><td>Safest, but drops a proof point you chose.</td></tr>
+  </table></div>
+</div>
+
+<div class="dec">
+  <span class="decid">P3 · HOW SF OPS IS SOLD</span>
+  <h3>What does "buy SF Ops" look like on the site today?</h3>
+  <div class="tablewrap"><table>
+    <tr><th></th><th>Option</th><th>Trade-off</th></tr>
+    <tr class="recommended"><td class="k">A <span class="chip rec">recommended</span></td><td><b>Sold through a conversation.</b> Services gets a closing band ("Run your own team on SF Ops") and Solutions a section, both leading to <b>Book a discovery call</b>. Features named are only what SF Ops does today.</td><td>Matches Step 03 (every engagement starts with Discovery). No signup flow to build, nothing promised that isn't built.</td></tr>
+    <tr><td class="k">B</td><td>A dedicated <code>/sf-ops</code> product page with features and a "Request a demo" form.</td><td>Easier to link and to find on Google. But it is a third front door, and it needs a demo account on demo data first.</td></tr>
+    <tr><td class="k">C</td><td>Self-serve signup.</td><td>SF Ops has no self-serve onboarding. Not a website ticket.</td></tr>
+  </table></div>
+</div>
+
+<div class="dec">
+  <span class="decid">P4 · PRODUCT NAME</span>
+  <h3>What is the product called in public?</h3>
+  <div class="tablewrap"><table>
+    <tr><th></th><th>Option</th><th>Trade-off</th></tr>
+    <tr class="recommended"><td class="k">A <span class="chip rec">recommended</span></td><td><b>SF Ops</b>, everywhere.</td><td>It is what customers already see on their quote links, and the name used by the app, the repo and the ontology. One name.</td></tr>
+    <tr><td class="k">B</td><td>"SF Facilities" on Services, "SF Ops" on Solutions.</td><td>Matches the 2026 primer's white-label idea, but two names for one product confuse both buyers.</td></tr>
+  </table></div>
+</div>
+
+<div class="dec">
+  <span class="decid">P5 · NAMING TRIPLEMETER</span>
+  <h3>How openly does Solutions name Triplemeter?</h3>
+  <div class="tablewrap"><table>
+    <tr><th></th><th>Option</th><th>Trade-off</th></tr>
+    <tr class="recommended"><td class="k">A <span class="chip rec">recommended</span></td><td><b>Named openly</b> in the container section: "built for operators on Triplemeter; we can also bring Triplemeter in as your inventory backbone." Relationship disclosed.</td><td>Follows your Step 02 rule: "Triplemeter should never be a hidden destination."</td></tr>
+    <tr><td class="k">B</td><td>Don't name it; say "your inventory system".</td><td>Keeps Solutions vendor-neutral, but hides the relationship you said must be clear.</td></tr>
+  </table></div>
+</div>
+
+<div class="dec">
+  <span class="decid">P6 · HOW SMALL IS CONTAINERS</span>
+  <h3>You said it may go away. Where does it sit until then?</h3>
+  <div class="tablewrap"><table>
+    <tr><th></th><th>Option</th><th>Trade-off</th></tr>
+    <tr class="recommended"><td class="k">A <span class="chip rec">recommended</span></td><td><b>Keep the page, demote the link.</b> Out of the main nav. One small line under the homepage doors, plus the footer. Retiring it later = one redirect.</td><td>Keeps the leads and the mailbox, lets the two doors dominate, and costs nothing to remove later.</td></tr>
+    <tr><td class="k">B</td><td>Keep it as a third card on the homepage and in the nav.</td><td>As today. Dilutes the two-doors story.</td></tr>
+    <tr><td class="k">C</td><td>Retire it now; /containers redirects to Solutions.</td><td>Cleanest, but drops a line of business before you've decided to.</td></tr>
+  </table></div>
+  <p class="small">This refines build-plan D4 (keep as a sourcing lead form); it does not reverse it.</p>
+</div>
+
+<h2 id="next">6 · What happens next</h2>
+<div class="tablewrap"><table>
+  <tr><th>Step</th><th>Who</th></tr>
+  <tr><td>Lock P1–P6 ("go with all recommended" or letters)</td><td>You</td></tr>
+  <tr><td>v2 of this spec records the locks; C2–C5 tickets (#19, #20, #21, #22) are rewritten to match</td><td>This session</td></tr>
+  <tr><td>"merge it" on this PR</td><td>You → 🧭 lead</td></tr>
+  <tr><td>The rewrites start: #19 Solutions, #20 Services, #22 Containers, then #21 Home + About</td><td>🧭 lead starts the sessions</td></tr>
+</table></div>
+<p class="small">Changes to tickets after the lock: #20 (Services) gains the "Run your own team on SF Ops" band. #19 (Solutions) widens from container-only to operators + container proof. #22 follows P6. #21 becomes two doors.</p>
+
+<h2 id="changed">7 · What changed in this revision</h2>
+<p><b>v1, 2026-10-09.</b> First draft, from Sonja's interview (Q1–Q7) and her strategy notes <i>SFE Strategy Step 02 (Integration Hub, revised)</i>, read with Steps 03 and 04 for commercial context. No earlier version.</p>
+
+<div class="foot">Storage: <code>docs/specs/sf-website_positioning_v1.html</code> in the SFWebsite repo · Ticket #18 under ✍️ Content &amp; positioning (#7) · Locked plan: <code>sf-website_build-plan_v2.html</code>.</div>
+</div>
+</body>
+</html>

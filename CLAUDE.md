@@ -90,9 +90,10 @@ Revision. A refinement is a new versioned file; all versions are kept.
 
 Active plan: **`docs/specs/sf-website_build-plan_v2.html`** (locked
 2026-10-08, Sonja: "Go with all recommended", D1–D5 all A). Active draft
-awaiting her decisions: **none.** The positioning spec from her brainstorm
-(ticket #18) will be `sf-website_positioning_v1.html` and takes this line
-when it lands.
+awaiting her decisions: **`docs/specs/sf-website_positioning_v1.html`**
+(ticket #18; P1–P6 open). Its interview answers (two front doors, SF Ops
+sold through both, Solutions for any operator with container proof) already
+bind the C-tickets; the P-decisions refine them.
 
 ## Gallery
 
@@ -130,4 +131,11 @@ when it lands.
 
 ## Things that have bitten us
 
-- _(none yet for this repo; add the first one here, the way sf-ops does)_
+- **Sonja's strategy notes are in OneDrive, not on a path you can open.**
+  A path like `/Users/sonjastreich/Library/CloudStorage/OneDrive-…/AI Analysis
+  Work/ChatGPT/<file>.docx` lives on her Mac. Find it by file name with the
+  Microsoft 365 connector (`sharepoint_search`, then `read_resource`). The
+  `SFE_Strategy_Step_0N_*` series sits in that folder, so read its siblings
+  too. These notes are strategy, not shipped product: pricing and roadmap
+  items in them (outgate rates, AI autonomy levels) never go on the site
+  (#18).
