@@ -89,10 +89,12 @@ Open Decisions (recommended option highlighted) · What Changed in This
 Revision. A refinement is a new versioned file; all versions are kept.
 
 Active plan: **`docs/specs/sf-website_build-plan_v2.html`** (locked
-2026-10-08, Sonja: "Go with all recommended", D1–D5 all A). Active draft
-awaiting her decisions: **none.** The positioning spec from her brainstorm
-(ticket #18) will be `sf-website_positioning_v1.html` and takes this line
-when it lands.
+2026-10-08, Sonja: "Go with all recommended", D1–D5 all A). Active
+positioning: **`docs/specs/sf-website_positioning_v2.html`** (locked
+2026-10-09, #18): two front doors (Services · Solutions), SF Ops sold
+through both, Solutions for any operator with container proof, no inventory
+platform named. Every content ticket (C2–C5) writes to it. Active draft
+awaiting her decisions: **none.**
 
 ## Gallery
 
@@ -120,16 +122,20 @@ when it lands.
   SF Ops does for a customer (sf-ops: Work order, Quote approved online,
   photos, Work summary, invoice, payment). Solutions content comes from
   what SF Solutions has built (sf-solutions: cash-exposure cockpit,
-  Triplemeter relay, QuickBooks and Pipedrive connectors, dashboards,
-  query builder). Nothing on the site promises what neither repo can do.
+  QuickBooks and Pipedrive connectors, dashboards, query builder). Nothing on the site promises what neither repo can do.
 - **Use the official names** from sf-ops `docs/ontology.md` on every page
   that names a thing from SF Ops (Work order, Site, Field tech, Work
   summary, Client Due). Never "job ticket", "location", "technician".
 - **One page per division, one route per page.** `/services` is the
   Division 01 page; `/enterprise` 301-redirects to it (#10). A new
   entry point is a new route to the existing page, never a second page.
-- **SF Solutions is read-only to Triplemeter.** No copy may promise a
-  write-back, sync-to-TM, or "we update your TM data".
+- **Name no inventory platform.** Not Triplemeter (dissolved) and not
+  Container Trade HQ (a separate company with different IP), on any page,
+  screenshot, form option or alt text (Sonja, 2026-10-09, positioning P5).
+  Solutions says we set up the automation and applications an operator
+  needs, around the tools they already use.
+- **No prices on the site.** Strategy pricing (discovery fee, outgate rates,
+  minimums) is provisional; the button is "Book a discovery call".
 
 ## Things that have bitten us
 
@@ -145,3 +151,11 @@ when it lands.
   (#11): `cd dist && for h in $(grep -rhoE 'href="/[^"#]*' --include=*.html . | sed 's/href="//' | sort -u); do p=".${h%/}"; [ -f "$p" ] || [ -f "$p/index.html" ] || [ "$h" = / ] || echo "DEAD: $h"; done`
 - **Login goes to SF Ops** (`https://ops.streichforce.com/login`, D3). This
   site has no login of its own and never gets one.
+- **Sonja's strategy notes are in OneDrive, not on a path you can open.**
+  A path like `/Users/sonjastreich/Library/CloudStorage/OneDrive-…/AI Analysis
+  Work/ChatGPT/<file>.docx` lives on her Mac. Find it by file name with the
+  Microsoft 365 connector (`sharepoint_search`, then `read_resource`). The
+  `SFE_Strategy_Step_0N_*` series sits in that folder, so read its siblings
+  too. These notes are strategy, not shipped product: pricing and roadmap
+  items in them (outgate rates, AI autonomy levels) never go on the site
+  (#18).
