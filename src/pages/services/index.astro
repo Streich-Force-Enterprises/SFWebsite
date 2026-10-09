@@ -2,6 +2,10 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import GalleryGrid from '../../components/GalleryGrid.astro';
+import { getGallery } from '../../lib/gallery';
+
+const featured = (await getGallery('services', { featuredOnly: true })).slice(0, 4);
 ---
 <BaseLayout
   title="Division 01 — Commercial Service & Repair — Streich Force"
@@ -149,6 +153,17 @@ import Footer from '../../components/Footer.astro';
     </div>
   </section>
 
+  <!-- SEE OUR WORK -->
+  {featured.length > 0 && (
+    <section class="content-section">
+      <div class="section-inner">
+        <h2 class="section-title ent-title">See Our Work</h2>
+        <GalleryGrid items={featured} name="featured" />
+        <p class="see-all"><a href="/services/gallery" class="ent-link">See the full gallery →</a></p>
+      </div>
+    </section>
+  )}
+
   <!-- BOTTOM CTA -->
   <section class="div-cta">
     <div class="cta-inner">
@@ -210,6 +225,7 @@ import Footer from '../../components/Footer.astro';
 .cta-email{margin-top:1.5rem;font-size:.9rem;color:var(--sf-text-muted)}
 .ent-link{color:var(--sf-ent-b);text-decoration:none}
 .ent-link:hover{text-decoration:underline}
+.see-all{margin-top:1.75rem;font-family:var(--sf-font-display);font-weight:700;font-size:.85rem;letter-spacing:.18em;text-transform:uppercase}
 
 .step-box{position:relative;align-items:center;text-align:center;flex-direction:column;justify-content:center;min-height:170px;overflow:hidden;gap:0;padding:1.5rem}
 .step-ghost{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--sf-font-display);font-weight:900;font-size:8rem;line-height:1;pointer-events:none;user-select:none;z-index:0;opacity:.13;letter-spacing:-.02em}

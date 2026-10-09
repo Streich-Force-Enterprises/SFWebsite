@@ -89,18 +89,28 @@ Open Decisions (recommended option highlighted) · What Changed in This
 Revision. A refinement is a new versioned file; all versions are kept.
 
 Active plan: **`docs/specs/sf-website_build-plan_v2.html`** (locked
-2026-10-08, Sonja: "Go with all recommended", D1–D5 all A). Active draft
-awaiting her decisions: **none.** The positioning spec from her brainstorm
-(ticket #18) will be `sf-website_positioning_v1.html` and takes this line
-when it lands.
+2026-10-08, Sonja: "Go with all recommended", D1–D5 all A). Active
+positioning: **`docs/specs/sf-website_positioning_v2.html`** (locked
+2026-10-09, #18): two front doors (Services · Solutions), SF Ops sold
+through both, Solutions for any operator with container proof, no inventory
+platform named. Every content ticket (C2–C5) writes to it. Active draft
+awaiting her decisions: **none.**
 
 ## Gallery
 
 - **Originals live in `src/assets/gallery/<division>/`**, never in
   `public/`. Astro's image service resizes and converts them at build time.
   A hand-resized file in `public/` is the smell to question in review.
-- **One entry per photo in `src/content/gallery/`** (an Astro content
-  collection): file, caption, division, service line, month, featured.
+- **Sonja's drop folder is OneDrive `Documents/SF Website/Gallery inbox`**
+  (D2), read through the Microsoft 365 connector (`sharepoint_folder_search`
+  "Gallery inbox"). Files are named after the SF Ops Work order with a stage
+  suffix, e.g. `260728-14734:WO-00023_Before.jpeg` / `…_After.jpeg`; a few
+  have no WO. Use the WO to look up the Work order in SF Ops for the service
+  line, month and what was done.
+- **One entry per job in `src/content/gallery/`** (an Astro content
+  collection): `image` (the After / finished shot), optional `before`,
+  caption, division, service line, month, featured. A `before` makes the
+  card a Before / After pair; the lightbox shows them side by side.
   The schema fails the build on a missing caption or an unknown service
   line. The service lines are the ones on the Services page (Sonja,
   2026-10-08: alphabetical, Doors replaced Compactor Chutes, Other /
@@ -111,6 +121,15 @@ when it lands.
   paperwork or recognisable face, unless Sonja says yes for that photo in
   the PR. Every gallery PR shows every new photo in its deploy preview so
   she approves them in one look.
+- **Adding a job is one or two files plus one entry, no code:** put the original in
+  `src/assets/gallery/services/`, add `src/content/gallery/<slug>.yaml` (copy
+  a placeholder entry; `image:` is relative to the YAML file), set
+  `featured: true` for the "See our work" strip on `/services` (first four,
+  newest month first). The schema lives in `src/content/config.ts`; the
+  service lines in `src/lib/service-lines.ts` (same order as the Services page). Delete the `placeholder-*`
+  entries and images once real photos land (G2, #16).
+- **One component, `GalleryGrid.astro`, no JavaScript:** the service-line
+  filter is radio buttons + CSS, the lightbox is the native Popover API.
 - **Solutions shows product screenshots, not photos**, always against demo
   data: never Loadstar's or any customer's numbers, names or ids.
 
@@ -120,16 +139,20 @@ when it lands.
   SF Ops does for a customer (sf-ops: Work order, Quote approved online,
   photos, Work summary, invoice, payment). Solutions content comes from
   what SF Solutions has built (sf-solutions: cash-exposure cockpit,
-  Triplemeter relay, QuickBooks and Pipedrive connectors, dashboards,
-  query builder). Nothing on the site promises what neither repo can do.
+  QuickBooks and Pipedrive connectors, dashboards, query builder). Nothing on the site promises what neither repo can do.
 - **Use the official names** from sf-ops `docs/ontology.md` on every page
   that names a thing from SF Ops (Work order, Site, Field tech, Work
   summary, Client Due). Never "job ticket", "location", "technician".
 - **One page per division, one route per page.** `/services` is the
   Division 01 page; `/enterprise` 301-redirects to it (#10). A new
   entry point is a new route to the existing page, never a second page.
-- **SF Solutions is read-only to Triplemeter.** No copy may promise a
-  write-back, sync-to-TM, or "we update your TM data".
+- **Name no inventory platform.** Not Triplemeter (dissolved) and not
+  Container Trade HQ (a separate company with different IP), on any page,
+  screenshot, form option or alt text (Sonja, 2026-10-09, positioning P5).
+  Solutions says we set up the automation and applications an operator
+  needs, around the tools they already use.
+- **No prices on the site.** Strategy pricing (discovery fee, outgate rates,
+  minimums) is provisional; the button is "Book a discovery call".
 
 ## Contact forms
 
@@ -181,3 +204,27 @@ thank-you page `/contact/thanks/` (the form's `action`), not Netlify's default.
   (#11): `cd dist && for h in $(grep -rhoE 'href="/[^"#]*' --include=*.html . | sed 's/href="//' | sort -u); do p=".${h%/}"; [ -f "$p" ] || [ -f "$p/index.html" ] || [ "$h" = / ] || echo "DEAD: $h"; done`
 - **Login goes to SF Ops** (`https://ops.streichforce.com/login`, D3). This
   site has no login of its own and never gets one.
+- **Sonja's strategy notes are in OneDrive, not on a path you can open.**
+  A path like `/Users/sonjastreich/Library/CloudStorage/OneDrive-…/AI Analysis
+  Work/ChatGPT/<file>.docx` lives on her Mac. Find it by file name with the
+  Microsoft 365 connector (`sharepoint_search`, then `read_resource`). The
+  `SFE_Strategy_Step_0N_*` series sits in that folder, so read its siblings
+  too. These notes are strategy, not shipped product: pricing and roadmap
+  items in them (outgate rates, AI autonomy levels) never go on the site
+  (#18).
+- **The original filename is public.** Astro keeps the source basename in
+  the built URL (`/_astro/<name>.<hash>.webp`), so a photo committed as
+  `WO-00023_Before.jpeg` publishes the Work order number. Rename on intake to
+  a neutral slug (`doors-storefront-2026-07-before.jpg`) and never commit the
+  inbox names (#9).
+- **`<Image widths={…}>` without `width` ships the full-size original too.**
+  Astro uses the source's own width for the `src` fallback, so every 4032 px
+  phone photo emitted a ~3 MB webp nobody loads but every deploy carries.
+  Always pass `width` as the largest size you want (#9).
+- **`<img>` width/height attributes beat CSS `aspect-ratio`** unless the CSS
+  also sets `height: auto`. Astro's `<Image>` always writes both attributes,
+  so a 4:3 crop silently became a tall original-ratio image (#9).
+- **Measure Lighthouse with a full gallery, not the placeholders.** With 23
+  photos `/services/gallery` scored 93; the first thumbnails must load eagerly
+  (`eager` prop), or the lazy LCP image costs the score. What holds every
+  page near 90 is the render-blocking Google Fonts stylesheet, not images.
