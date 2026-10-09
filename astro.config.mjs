@@ -1,4 +1,6 @@
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
+import { SITEMAP_EXCLUDE, normalizePath } from './src/lib/seo.ts';
 
 export default defineConfig({
   site: 'https://streichforce.com',
@@ -8,4 +10,11 @@ export default defineConfig({
   redirects: {
     '/enterprise': '/services',
   },
+  integrations: [
+    // /sitemap-index.xml (#13). noindex pages and the /enterprise redirect
+    // are left out; the list lives in src/lib/seo.ts.
+    sitemap({
+      filter: (page) => !SITEMAP_EXCLUDE.has(normalizePath(new URL(page).pathname)),
+    }),
+  ],
 });
