@@ -3,15 +3,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 ---
-<BaseLayout title="Fix My Back Office — Streich Force Solutions"
-  description="Tell us about your current back-office setup. We'll help you figure out if we're the right fit.">
+<BaseLayout title="Book a Discovery Call — SF Solutions — Streich Force"
+  description="Tell us what you run on and where it breaks. We'll give you a straight answer on whether we can help.">
   <Nav active="solutions" />
   <section class="form-hero">
     <div class="form-hero-bar sol-bar"></div>
     <div class="form-inner">
-      <p class="sf-eyebrow sol-eye">Division 02 — Back-Office Support &amp; Systems</p>
-      <h1 class="form-title">Fix My Back Office</h1>
-      <p class="form-sub">What's slowing your business down? Do you want to streamline processes? We'll review your setup and see how we may be able to help — no obligation. Please allow up to 24 hours for a response.</p>
+      <p class="sf-eyebrow sol-eye">Division 02 — SF Solutions</p>
+      <h1 class="form-title">Book a Discovery Call</h1>
+      <p class="form-sub">Tell us what you run on and where it breaks. We'll get back to you to set up a call and give you a straight answer on whether we can help. Please allow up to 24 hours for a response.</p>
     </div>
   </section>
   <section class="form-section">
@@ -43,7 +43,7 @@ import Footer from '../../components/Footer.astro';
           <label for="business-type">What Kind of Business?</label>
           <select id="business-type" name="business-type">
             <option value="">Select your business type</option>
-            <option>Container wholesaler / dealer</option>
+            <option>Container dealer, lessor or depot</option>
             <option>Freight forwarder</option>
             <option>Logistics operator</option>
             <option>Small business — other industry</option>
@@ -51,14 +51,26 @@ import Footer from '../../components/Footer.astro';
           </select>
         </div>
         <div class="form-group">
-          <label for="current-setup">What Does Your Current Back Office Look Like? *</label>
+          <label for="what-you-need">What Do You Need Most?</label>
+          <select id="what-you-need" name="what-you-need">
+            <option value="">Pick the closest one</option>
+            <option>Connect the tools we already use</option>
+            <option>See exceptions and what needs attention</option>
+            <option>Automate manual steps</option>
+            <option>Dashboards and reporting</option>
+            <option>SF Ops as our workspace</option>
+            <option>Not sure — let's talk</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="current-setup">What Do You Run On Today? *</label>
           <textarea id="current-setup" name="current-setup" required rows="5"
-            placeholder="Spreadsheets? A part-time person? Manual processes? Tell us what's working and what isn't."></textarea>
+            placeholder="QuickBooks or Xero? A CRM? Spreadsheets, email and text? Tell us what's working and what isn't."></textarea>
         </div>
         <div class="form-group">
           <label for="pain-points">What's Causing the Most Pain?</label>
           <textarea id="pain-points" name="pain-points" rows="4"
-            placeholder="Inventory visibility, invoicing delays, gate tracking, data errors, something else?"></textarea>
+            placeholder="Double entry, numbers that don't match, invoicing delays, problems found too late, something else?"></textarea>
         </div>
         <div class="form-footer">
           <button type="submit" class="btn-submit sol-submit">Send Message &#8594;</button>
