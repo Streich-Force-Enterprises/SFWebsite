@@ -273,6 +273,15 @@ thank-you page `/contact/thanks/` (the form's `action`), not Netlify's default.
   in the SVG's 1985:558 ratio at their CSS height, so the page doesn't shift.
   Measure Lighthouse from Chromium here:
   `CHROME_PATH=$(ls /opt/pw-browsers/chromium-*/chrome-linux/chrome) npx -y lighthouse@12.2.1 <url> --only-categories=accessibility --chrome-flags="--headless=new --no-sandbox"`.
+- **A clickable card needs no JavaScript.** The old homepage cards used
+  `onclick="window.location=…"`. Use a stretched link instead: the card's
+  title link gets `::after { position:absolute; inset:0 }` on a
+  `position:relative` card, and the buttons sit above it with
+  `position:relative; z-index:1` (`.door` on the homepage, #21).
+- **A page's title and description live in `src/lib/seo.ts`, not on the
+  page.** Its entry overrides the props a page passes to `BaseLayout`, so a
+  copy rewrite that changes a page's pitch updates that entry too, and passes
+  no props of its own (#13, #21).
 - **Measure Lighthouse with a full gallery, not the placeholders.** With 23
   photos `/services/gallery` scored 93; the first thumbnails must load eagerly
   (`eager` prop), or the lazy LCP image costs the score. What holds every

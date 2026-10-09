@@ -4,7 +4,7 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<BaseLayout title="Streich Force Enterprises — Real-World Expertise. Smarter Systems. Reliable Execution.">
+<BaseLayout>
   <Nav />
 
   <!-- HERO -->
@@ -19,137 +19,83 @@ import Footer from '../components/Footer.astro';
         <img src="/Brand/SF_Logo_Transparent_DarkBG.svg" alt="Streich Force Enterprises" class="hero-logo" width="569" height="160" />
       </div>
       <div class="hero-tagline">
-        <p class="hero-tag-main">Real-World Expertise. Smarter Systems. Reliable Execution.</p>
-        <p class="hero-tag-sub">We support businesses through:</p>
-        <ul class="hero-list">
-          <li>Specialized commercial service &amp; repair</li>
-          <li>Back-office operations &amp; automation</li>
-          <li>Equipment &amp; container sourcing</li>
-        </ul>
-        <p class="hero-tag-cta">Choose what you need below and get exactly the right solution.</p>
+        <h1 class="hero-tag-main">Real work. Real systems. No middlemen.</h1>
+        <p class="hero-tag-sub">One company that does the work on site and builds the systems behind it. 40+ years in the field, and every job we do runs on SF Ops, the operations software we built ourselves.</p>
+        <a href="#doors" class="hero-tag-cta">Two ways in &darr;</a>
       </div>
     </div>
     <div class="hero-scroll"><span>Scroll</span></div>
   </section>
 
-  <!-- DIVISION STRIP -->
-  <div class="div-strip">
-    <a href="/services" class="div-strip-tab ent">
-      <div class="dst-dot"></div>
-      <span class="dst-label">01 &mdash; Services</span>
-    </a>
-    <a href="/solutions" class="div-strip-tab sol">
-      <div class="dst-dot"></div>
-      <span class="dst-label">02 &mdash; Solutions</span>
-    </a>
-    <a href="/containers" class="div-strip-tab con">
-      <div class="dst-dot"></div>
-      <span class="dst-label">03 &mdash; Containers</span>
-    </a>
-  </div>
-
-  <!-- DIVISIONS -->
-  <section class="divisions" id="divisions">
+  <!-- TWO FRONT DOORS -->
+  <section class="doors" id="doors">
     <div class="div-section-head">
-      <p class="div-section-eye">Our Divisions</p>
-      <h2 class="div-section-title">Choose the Path to<br />Solving Your Problem</h2>
+      <p class="div-section-eye">Two Ways In</p>
+      <h2 class="div-section-title">What Do You Need?</h2>
     </div>
-    <div class="div-cards">
+    <div class="door-grid">
 
-      <div class="div-card ent" onclick="window.location='/services'">
-        <div class="dc-bar"></div>
-        <div class="dc-num">01</div>
-        <div class="dc-body">
-          <p class="dc-tag">Division 01 &mdash; Commercial Service &amp; Repair</p>
-          <h3 class="dc-title">Commercial Service &amp; Repair</h3>
-          <p class="dc-desc">High-level diagnostics and precision repair when others can't solve the problem.</p>
-          <ul class="dc-checks">
-            <li>&#10004; 40+ years experience</li>
-            <li>&#10004; Trusted by national brands</li>
-            <li>&#10004; Complex issues handled right the first time</li>
-          </ul>
-          <div class="dc-actions">
-            <a href="/contact/enterprise" class="dc-cta ent-cta" onclick="event.stopPropagation()">Request Expert Service</a>
-            <a href="/services" class="dc-mi ent-mi" onclick="event.stopPropagation()">More Info</a>
-          </div>
+      <article class="door ent">
+        <p class="door-tag">Streich Force Services</p>
+        <h3 class="door-title"><a href="/services">Need it fixed or built on site?</a></h3>
+        <p class="door-desc">Commercial repair, custom fabrication and site maintenance for pharmacy and retail chains and other multi-site operators. Diagnosed right, done right the first time.</p>
+        <ul class="door-checks">
+          <li>40+ years in the field</li>
+          <li>Trusted by national pharmacy and retail chains</li>
+          <li>Every job runs on SF Ops: approve the Quote from your phone, see the photos, get the Work summary and pay online</li>
+        </ul>
+        <div class="door-actions">
+          <a href="/contact/enterprise" class="door-cta">Request service</a>
+          <a href="/services" class="door-mi">See Services &rarr;</a>
         </div>
-        <div class="dc-arrow">&#8594;</div>
-      </div>
+      </article>
 
-      <div class="div-card sol" onclick="window.location='/solutions'">
-        <div class="dc-bar"></div>
-        <div class="dc-num">02</div>
-        <div class="dc-body">
-          <p class="dc-tag">Division 02 &mdash; Back-Office Support &amp; Systems</p>
-          <h3 class="dc-title">Streich Force Solutions</h3>
-          <p class="dc-desc">Eliminate manual work, clean up your data, and streamline operations.</p>
-          <ul class="dc-checks">
-            <li>&#10004; Billing, reporting, and workflow support</li>
-            <li>&#10004; Data cleanup and standardization</li>
-            <li>&#10004; Built to scale with smarter systems</li>
-          </ul>
-          <div class="dc-actions">
-            <a href="/contact/solutions" class="dc-cta sol-cta" onclick="event.stopPropagation()">Fix My Back Office</a>
-            <a href="/solutions" class="dc-mi sol-mi" onclick="event.stopPropagation()">More Info</a>
-          </div>
+      <article class="door sol">
+        <p class="door-tag">Streich Force Solutions</p>
+        <h3 class="door-title"><a href="/solutions">Systems don't talk to each other?</a></h3>
+        <p class="door-desc">Keep the systems that work. We connect them. For small and mid-sized operators running on QuickBooks or Xero, a CRM, spreadsheets, email and text: we set up the automation and applications you need, around the tools you already use.</p>
+        <ul class="door-checks">
+          <li>Your tools connected, the exceptions surfaced</li>
+          <li>SF Ops as your workspace, if you want it</li>
+          <li>Proven with container dealers, lessors and depots</li>
+        </ul>
+        <div class="door-actions">
+          <a href="/contact/solutions" class="door-cta">Book a discovery call</a>
+          <a href="/solutions" class="door-mi">See Solutions &rarr;</a>
         </div>
-        <div class="dc-arrow">&#8594;</div>
-      </div>
-
-      <div class="div-card con" onclick="window.location='/containers'">
-        <div class="dc-bar"></div>
-        <div class="dc-num">03</div>
-        <div class="dc-body">
-          <p class="dc-tag">Division 03 &mdash; Container Sales &amp; Sourcing</p>
-          <h3 class="dc-title">Streich Force Containers</h3>
-          <p class="dc-desc">Access to available containers with straightforward pricing.</p>
-          <ul class="dc-checks">
-            <li>&#10004; View available inventory</li>
-            <li>&#10004; Request quotes quickly</li>
-            <li>&#10004; Source exactly what you need</li>
-          </ul>
-          <div class="dc-actions">
-            <a href="/contact/containers" class="dc-cta con-cta" onclick="event.stopPropagation()">Browse Containers</a>
-            <a href="/containers" class="dc-mi con-mi" onclick="event.stopPropagation()">More Info</a>
-          </div>
-        </div>
-        <div class="dc-arrow">&#8594;</div>
-      </div>
+      </article>
 
     </div>
+    <p class="door-aside">Buying a container? We source those too. <a href="/containers">Tell us what you need &rarr;</a></p>
   </section>
 
   <!-- ABOUT -->
   <section class="about" id="about">
     <div>
       <p class="div-section-eye">About Streich Force</p>
-      <h2 class="div-section-title" style="margin-bottom:2rem;">Three Focus Areas.<br />One Standard: Get It Done Right.</h2>
+      <h2 class="div-section-title" style="margin-bottom:2rem;">We Do the Work.<br />We Built the System It Runs On.</h2>
       <div class="about-text">
-        <p>We operate across three specialized areas:</p>
-        <ul class="about-list">
-          <li><strong>Commercial Service &amp; Repair</strong> — High-level diagnostics and precision work when others can't solve the problem</li>
-          <li><strong>Back-Office Support &amp; Systems</strong> — Streamlining operations, cleaning data, and eliminating manual work</li>
-          <li><strong>Container Sales &amp; Sourcing</strong> — Direct, efficient access to available inventory and pricing</li>
-        </ul>
-        <p>Each one solves a different problem — but they're all built on the same principle: real experience, practical execution, and no wasted motion.</p>
+        <p>Streich Force started in the field. We have spent more than 40 years diagnosing, repairing and building for commercial sites, national pharmacy and retail chains among them, and we still do that work ourselves.</p>
+        <p>Running that work across Sites and Field techs took more than spreadsheets and email. So we built our own operations software, <strong>SF Ops</strong>, and every Streich Force job runs on it: the Work order, the Quote approved from your phone, the on-site photos, the Work summary, the invoice and the payment.</p>
+        <p>That is what we bring to other operators. <strong>Services</strong> does the work on your sites. <strong>Solutions</strong> sets up the systems behind your own operation, around the tools you already use, with SF Ops as your workspace if you want it.</p>
       </div>
     </div>
     <div class="about-stats">
       <div class="stat">
-        <div class="stat-val">Real-World<br />Experience</div>
-        <div class="stat-lbl">Years of hands-on work in the industries we serve — no theory, no consulting.</div>
+        <div class="stat-val">40+<br />Years</div>
+        <div class="stat-lbl">Hands-on work in the field, for the kinds of sites we still serve today.</div>
       </div>
       <div class="stat">
-        <div class="stat-val">No<br />Overhead</div>
-        <div class="stat-lbl">You work directly with the people doing the job. No layers. No middlemen.</div>
+        <div class="stat-val">Every Job<br />on SF Ops</div>
+        <div class="stat-lbl">The software we sell is the software we run our own business on.</div>
       </div>
       <div class="stat">
-        <div class="stat-val">Direct<br />Execution</div>
-        <div class="stat-lbl">Work is handled by experienced operators — not passed off or outsourced.</div>
+        <div class="stat-val">No<br />Middlemen</div>
+        <div class="stat-lbl">You work directly with the people doing the job, on site and in your systems.</div>
       </div>
       <div class="stat">
         <div class="stat-val">Built for<br />Results</div>
-        <div class="stat-lbl">We measure success by what gets solved, delivered, and working — nothing else.</div>
+        <div class="stat-lbl">We measure success by what gets fixed, built and working. Nothing else.</div>
       </div>
     </div>
   </section>
@@ -157,12 +103,14 @@ import Footer from '../components/Footer.astro';
   <!-- CTA -->
   <div class="cta-band" id="contact">
     <div>
-      <h3 class="cta-title">Got Something Specific in Mind?</h3>
-      <p class="cta-sub">Tell us what you need, and we'll help you find the right solution.</p>
+      <h3 class="cta-title">Pick Your Door</h3>
+      <p class="cta-sub">Something broken or to build on site? Request service. Systems that don't talk to each other? Book a discovery call. Each one goes straight to the right team.</p>
     </div>
-    <a href="mailto:info&#x40;streichforce.com" class="sf-btn-primary">Get In Touch</a>
+    <div class="cta-actions">
+      <a href="/contact/enterprise" class="sf-btn-primary">Request service</a>
+      <a href="/contact/solutions" class="sf-btn-ghost">Book a discovery call</a>
+    </div>
   </div>
-
   <Footer />
 </BaseLayout>
 
@@ -204,7 +152,7 @@ import Footer from '../components/Footer.astro';
 .hero-content { position: relative; z-index: 3; max-width: 800px; }
 .hero-eyebrow {
   font-family: var(--sf-font-display); font-weight: 600; font-size: 0.78rem;
-  letter-spacing: 0.38em; text-transform: uppercase; color: var(--sf-rust);
+  letter-spacing: 0.38em; text-transform: uppercase; color: var(--sf-ent-b);
   margin-bottom: 1.25rem;
   opacity: 0; animation: sf-rise-up 0.7s ease forwards 0.2s;
 }
@@ -219,32 +167,22 @@ import Footer from '../components/Footer.astro';
 .hero-tagline { opacity: 0; animation: sf-rise-up 0.7s ease forwards 0.7s; }
 .hero-tag-main {
   font-family: var(--sf-font-display); font-weight: 700;
-  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  text-transform: uppercase;
   color: var(--sf-text-primary); letter-spacing: 0.03em;
-  margin-bottom: 0.75rem; line-height: 1.3;
+  margin-bottom: 0.9rem; line-height: 1.15;
 }
 .hero-tag-sub {
-  font-size: 1rem; font-weight: 400;
-  color: var(--sf-text-secondary); margin-bottom: 0.5rem;
-}
-.hero-list {
-  list-style: none; margin: 0 0 1rem 0; padding: 0;
-  display: flex; flex-direction: column; gap: 0.4rem;
-}
-.hero-list li {
-  font-size: 1rem; font-weight: 400;
-  color: var(--sf-text-secondary); line-height: 1.6;
-  padding-left: 1.25rem; position: relative;
-}
-.hero-list li::before {
-  content: '▸'; position: absolute; left: 0;
-  color: var(--sf-rust); font-size: 0.8rem; top: 0.15em;
+  font-size: 1.05rem; font-weight: 400; line-height: 1.7; max-width: 640px;
+  color: var(--sf-text-secondary); margin-bottom: 1.25rem;
 }
 .hero-tag-cta {
   font-family: var(--sf-font-display); font-weight: 600;
-  font-size: 0.78rem; letter-spacing: 0.05em;
-  text-transform: uppercase; color: var(--sf-rust);
+  font-size: 0.78rem;
+  text-transform: uppercase; color: var(--sf-ent-b);
+  letter-spacing: 0.18em;
 }
+.hero-tag-cta:hover { color: var(--sf-text-primary); }
 .hero-scroll {
   position: absolute; bottom: 2rem; right: var(--sf-pad); z-index: 3;
   display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
@@ -261,120 +199,83 @@ import Footer from '../components/Footer.astro';
 }
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
-/* ── DIVISION STRIP ── */
-.div-strip {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  background: var(--sf-surface);
-  border-top: 1px solid var(--sf-border); border-bottom: 1px solid var(--sf-border);
-}
-.div-strip-tab {
-  display: flex; align-items: center; gap: 0.75rem;
-  padding: 1.1rem var(--sf-pad); border-right: 1px solid var(--sf-border);
-  transition: background 0.2s; cursor: pointer;
-}
-.div-strip-tab:last-child { border-right: none; }
-.div-strip-tab:hover { background: var(--sf-card-hover); }
-.dst-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-.div-strip-tab.ent .dst-dot { background: var(--sf-ent); }
-.div-strip-tab.sol .dst-dot { background: var(--sf-sol); }
-.div-strip-tab.con .dst-dot { background: var(--sf-con); }
-.dst-label {
-  font-family: var(--sf-font-display); font-weight: 700; font-size: 0.78rem;
-  letter-spacing: 0.18em; text-transform: uppercase; color: var(--sf-text-secondary); transition: color 0.2s;
-}
-.div-strip-tab.ent:hover .dst-label { color: var(--sf-ent-b); }
-.div-strip-tab.sol:hover .dst-label { color: var(--sf-sol-b); }
-.div-strip-tab.con:hover .dst-label { color: var(--sf-con-b); }
-
-/* ── DIVISION CARDS ── */
-.divisions { padding: 5rem var(--sf-pad); }
+/* ── SECTION HEADS ── */
 .div-section-head { margin-bottom: 3rem; }
 .div-section-eye {
   font-family: var(--sf-font-display); font-weight: 600; font-size: 0.78rem;
-  letter-spacing: 0.4em; text-transform: uppercase; color: var(--sf-rust); margin-bottom: 0.6rem;
+  letter-spacing: 0.4em; text-transform: uppercase; color: var(--sf-ent-b); margin-bottom: 0.6rem;
 }
 .div-section-title {
   font-family: var(--sf-font-display); font-weight: 900;
   font-size: clamp(2.2rem, 4vw, 3.2rem);
   text-transform: uppercase; letter-spacing: 0.02em; color: var(--sf-text-primary); line-height: 1;
 }
-.div-cards { display: flex; flex-direction: column; gap: 3px; }
-.div-card {
-  display: grid; grid-template-columns: 6px 110px 1fr 60px;
-  align-items: center; background: var(--sf-surface);
-  transition: background 0.25s; min-height: 200px; cursor: pointer;
-}
-.div-card:hover { background: var(--sf-card-hover); }
-.dc-bar { height: 100%; min-height: 200px; }
-.div-card.ent .dc-bar { background: var(--sf-ent); }
-.div-card.sol .dc-bar { background: var(--sf-sol); }
-.div-card.con .dc-bar { background: var(--sf-con); }
-.dc-num {
-  font-family: var(--sf-font-display); font-weight: 900; font-size: 5.5rem;
-  line-height: 1; text-align: center; user-select: none;
-  transition: color 0.3s; padding: 2rem 0 2rem 1.5rem;
-}
-.div-card.ent .dc-num { color: rgba(192,57,43,0.12); }
-.div-card.sol .dc-num { color: rgba(46,109,164,0.12); }
-.div-card.con .dc-num { color: rgba(196,122,13,0.12); }
-.div-card.ent:hover .dc-num { color: rgba(192,57,43,0.22); }
-.div-card.sol:hover .dc-num { color: rgba(46,109,164,0.22); }
-.div-card.con:hover .dc-num { color: rgba(196,122,13,0.22); }
-.dc-body { padding: 2.5rem 2rem 2.5rem 1.5rem; }
-.dc-tag {
-  font-family: var(--sf-font-display); font-weight: 600; font-size: 0.72rem;
-  letter-spacing: 0.35em; text-transform: uppercase; margin-bottom: 0.4rem;
-}
-.div-card.ent .dc-tag { color: var(--sf-ent); }
-.div-card.sol .dc-tag { color: var(--sf-sol); }
-.div-card.con .dc-tag { color: var(--sf-con); }
-.dc-title {
-  font-family: var(--sf-font-display); font-weight: 900;
-  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
-  text-transform: uppercase; letter-spacing: 0.02em;
-  color: var(--sf-text-primary); line-height: 1; margin-bottom: 0.6rem;
-}
-.dc-desc {
-  font-size: 1rem; font-weight: 400;
-  color: var(--sf-text-secondary); line-height: 1.7;
-  max-width: 580px; margin-bottom: 1rem;
-}
-.dc-checks {
-  list-style: none; padding: 0; margin: 0 0 1.5rem 0;
-  display: flex; flex-direction: column; gap: 0.3rem;
-}
-.dc-checks li { font-size: 0.95rem; font-weight: 400; color: var(--sf-text-secondary); line-height: 1.5; }
-.div-card.ent .dc-checks li { color: rgba(224,80,64,0.9); }
-.div-card.sol .dc-checks li { color: rgba(90,159,212,0.9); }
-.div-card.con .dc-checks li { color: rgba(232,160,48,0.9); }
-.dc-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; }
-.dc-cta {
-  display: inline-block; font-family: var(--sf-font-display); font-weight: 700;
-  font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
-  padding: 0.65rem 1.4rem; border: 1px solid; transition: all 0.2s;
-}
-.ent-cta { border-color: var(--sf-ent); color: var(--sf-ent); }
-.sol-cta { border-color: var(--sf-sol); color: var(--sf-sol); }
-.con-cta { border-color: var(--sf-con); color: var(--sf-con); }
-.div-card.ent:hover .ent-cta { background: var(--sf-ent); color: #fff; }
-.div-card.sol:hover .sol-cta { background: var(--sf-sol); color: #fff; }
-.div-card.con:hover .con-cta { background: var(--sf-con); color: #fff; }
-.dc-mi {
-  display: inline-block; font-family: var(--sf-font-display); font-weight: 600;
-  font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
-  padding: 0.65rem 1.4rem; border: 1px solid var(--sf-border-md);
-  color: var(--sf-text-secondary); transition: all 0.2s;
-}
-.dc-mi:hover { border-color: var(--sf-text-secondary); color: var(--sf-text-primary); }
-.dc-arrow {
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.8rem; color: rgba(255,255,255,0.15);
-  transition: transform 0.3s, color 0.3s; padding-right: 1.5rem;
-}
-.div-card.ent:hover .dc-arrow { transform: translateX(6px); color: var(--sf-ent-b); }
-.div-card.sol:hover .dc-arrow { transform: translateX(6px); color: var(--sf-sol-b); }
-.div-card.con:hover .dc-arrow { transform: translateX(6px); color: var(--sf-con-b); }
 
+/* ── TWO FRONT DOORS ── */
+.doors { padding: 5rem var(--sf-pad); border-top: 1px solid var(--sf-border); }
+.door-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+.door {
+  position: relative; background: var(--sf-surface);
+  border-top: 5px solid; padding: 2.75rem 2.5rem;
+  display: flex; flex-direction: column;
+  transition: background 0.25s;
+}
+.door:hover { background: var(--sf-card-hover); }
+.door.ent { border-top-color: var(--sf-ent); }
+.door.sol { border-top-color: var(--sf-sol); }
+.door-tag {
+  font-family: var(--sf-font-display); font-weight: 600; font-size: 0.72rem;
+  letter-spacing: 0.35em; text-transform: uppercase; margin-bottom: 0.6rem;
+}
+.door.ent .door-tag { color: var(--sf-ent-b); }
+.door.sol .door-tag { color: var(--sf-sol-b); }
+.door-title {
+  font-family: var(--sf-font-display); font-weight: 900;
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  text-transform: uppercase; letter-spacing: 0.02em;
+  color: var(--sf-text-primary); line-height: 1.05; margin-bottom: 1rem;
+}
+/* The title link covers the whole card; the buttons sit above it. */
+.door-title a::after { content: ''; position: absolute; inset: 0; }
+.door.ent:hover .door-title a { color: var(--sf-ent-b); }
+.door.sol:hover .door-title a { color: var(--sf-sol-b); }
+.door-desc {
+  font-size: 1rem; color: var(--sf-text-secondary); line-height: 1.7; margin-bottom: 1.25rem;
+}
+.door-checks {
+  list-style: none; padding: 0; margin: 0 0 2rem 0;
+  display: flex; flex-direction: column; gap: 0.45rem;
+}
+.door-checks li {
+  font-size: 0.95rem; color: var(--sf-text-secondary); line-height: 1.5;
+  padding-left: 1.5rem; position: relative;
+}
+.door-checks li::before { content: '\2714'; position: absolute; left: 0; }
+.door.ent .door-checks li::before { color: var(--sf-ent-b); }
+.door.sol .door-checks li::before { color: var(--sf-sol-b); }
+.door-actions {
+  margin-top: auto; position: relative; z-index: 1;
+  display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;
+}
+.door-cta {
+  display: inline-block; font-family: var(--sf-font-display); font-weight: 700;
+  font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 0.8rem 1.6rem; color: #fff; transition: background 0.2s;
+}
+.door.ent .door-cta { background: var(--sf-ent); }
+.door.sol .door-cta { background: var(--sf-sol); }
+.door-cta:hover { text-decoration: underline; text-underline-offset: 3px; }
+.door-mi {
+  display: inline-block; font-family: var(--sf-font-display); font-weight: 600;
+  font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 0.8rem 1.2rem; color: var(--sf-text-secondary); transition: color 0.2s;
+}
+.door-mi:hover { color: var(--sf-text-primary); }
+.door-aside {
+  margin-top: 1.5rem; font-size: 0.95rem; color: var(--sf-text-muted);
+}
+.door-aside a { color: var(--sf-con-b); text-decoration: underline; text-underline-offset: 3px; }
+.door-aside a:hover { color: var(--sf-text-primary); }
 /* ── ABOUT ── */
 .about {
   padding: 6rem var(--sf-pad); border-top: 1px solid var(--sf-border);
@@ -382,18 +283,6 @@ import Footer from '../components/Footer.astro';
 }
 .about-text p { font-size: 1.05rem; font-weight: 400; color: var(--sf-text-secondary); line-height: 1.8; margin-bottom: 1.25rem; }
 .about-text strong { color: var(--sf-text-primary); font-weight: 500; }
-.about-list {
-  list-style: none; padding: 0; margin: 0 0 1.5rem 0;
-  display: flex; flex-direction: column; gap: 0.75rem;
-}
-.about-list li {
-  font-size: 1rem; font-weight: 400; color: var(--sf-text-secondary);
-  line-height: 1.7; padding-left: 1.25rem; position: relative;
-}
-.about-list li::before {
-  content: '▸'; position: absolute; left: 0;
-  color: var(--sf-rust); font-size: 0.8rem; top: 0.2em;
-}
 .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--sf-border); align-content: start; }
 .stat { background: var(--sf-surface); padding: 2rem 1.75rem; }
 .stat-val {
@@ -416,17 +305,18 @@ import Footer from '../components/Footer.astro';
   color: rgba(255,255,255,0.025); pointer-events: none; user-select: none;
 }
 .cta-title { font-family: var(--sf-font-display); font-weight: 900; font-size: clamp(1.4rem, 2.5vw, 2rem); text-transform: uppercase; color: var(--sf-text-primary); margin-bottom: 0.4rem; }
-.cta-sub { font-size: 1rem; font-weight: 400; color: var(--sf-text-secondary); line-height: 1.6; }
+.cta-sub { font-size: 1rem; font-weight: 400; color: var(--sf-text-secondary); line-height: 1.6; max-width: 560px; }
+.cta-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; position: relative; z-index: 1; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
-  .div-strip { grid-template-columns: 1fr; }
-  .div-strip-tab { border-right: none; border-bottom: 1px solid var(--sf-border); }
-  .div-card { grid-template-columns: 6px 1fr 40px; }
-  .dc-num { display: none; }
-  .dc-body { padding: 2rem 1.5rem; }
+  .door-grid { grid-template-columns: 1fr; }
+  .door { padding: 2.25rem 1.5rem; }
   .about { grid-template-columns: 1fr; gap: 3rem; }
   .about-stats { grid-template-columns: 1fr 1fr; }
   .cta-band { flex-direction: column; align-items: flex-start; padding: 2.5rem 2rem; }
+}
+@media (max-width: 480px) {
+  .cta-actions a { white-space: normal; text-align: center; width: 100%; }
 }
 </style>
