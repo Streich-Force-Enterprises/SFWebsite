@@ -154,8 +154,44 @@ awaiting her decisions: **none.**
 - **No prices on the site.** Strategy pricing (discovery fee, outgate rates,
   minimums) is provisional; the button is "Book a discovery call".
 
+## Contact forms
+
+Three Netlify Forms, one per division page. All three post to the shared
+thank-you page `/contact/thanks/` (the form's `action`), not Netlify's default.
+
+| Form (`form-name`)    | Page                  | Address the page shows       | Notifies             |
+|-----------------------|-----------------------|------------------------------|----------------------|
+| `enterprise-contact`  | `/contact/enterprise` | `services@streichforce.com`  | `services@` ✅ verified |
+| `solutions-contact`   | `/contact/solutions`  | `solutions@streichforce.com` | `solutions@` ✅ verified |
+| `containers-contact`  | `/contact/containers` | `containers@streichforce.com`| `containers@` ✅ verified |
+
+- Verified 2026-10-09 (deploy preview #25): one test per form landed in
+  Netlify and its email arrived. The three addresses are aliases that all
+  deliver to Sonja's Inbox (`sstreich@`), from `formresponses@netlify.com`,
+  subjects "Website Service / Solutions / Container Request". Email alerts
+  are set in Netlify → Forms → Submission notifications (dashboard only;
+  the connector cannot set them). Sonja removed Solutions' "gate volume" and
+  Containers' "market" questions the same day.
+- Each form notifies its own address (Sonja, 2026-10-08). Form detection
+  was turned on the same day.
+- Submissions are read in Netlify → project `sfwebite` → Forms, and by email.
+  Netlify site id `3effd78e-9ecb-4655-bb3f-d1e5549d8607`.
+- A new form must keep `data-netlify="true"`, the hidden `form-name` input,
+  and the honeypot, and must be plain HTML in the built page (no JS-rendered
+  forms), or Netlify never registers it.
+
 ## Things that have bitten us
 
+- **Netlify form detection was off (found 2026-10-08, #12).** The three forms
+  had correct markup since launch, but the `sfwebite` project had Forms "not
+  enabled" and zero forms registered, so every submission went nowhere while
+  the page looked fine. Markup alone proves nothing: check the Netlify project
+  lists the form (connector `get-forms-for-project`) and that a test
+  submission lands, before calling a form done.
+- **Form emails land in Sonja's own Inbox, not separate mailboxes.**
+  `services@`, `solutions@` and `containers@` are aliases on `sstreich@`.
+  "No email at services@" means look in her Inbox (search sender
+  `formresponses@netlify.com`); the Microsoft 365 connector can do that. (#12)
 - **Astro `redirects` alone is not a 301 on Netlify.** With no adapter, Astro
   writes a meta-refresh page (`dist/enterprise/index.html`) and Netlify serves
   that file, since a file on disk shadows a redirect rule. A retired route

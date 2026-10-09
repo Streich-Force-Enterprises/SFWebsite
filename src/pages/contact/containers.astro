@@ -11,12 +11,12 @@ import Footer from '../../components/Footer.astro';
     <div class="form-inner">
       <p class="sf-eyebrow con-eye">Division 03 — Container Sales &amp; Sourcing</p>
       <h1 class="form-title">Request a Quote</h1>
-      <p class="form-sub">Having trouble sourcing containers? Tell us what you need — size, condition, quantity, and the market you are interested in. Please allow up to 24 hours for a response.</p>
+      <p class="form-sub">Having trouble sourcing containers? Tell us what you need — size, condition, quantity, and where you need them delivered. Please allow up to 24 hours for a response.</p>
     </div>
   </section>
   <section class="form-section">
     <div class="form-inner">
-      <form class="sf-form" name="containers-contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <form class="sf-form" name="containers-contact" method="POST" action="/contact/thanks/" data-netlify="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="containers-contact" />
         <p class="hidden"><label>Don't fill this out: <input name="bot-field" /></label></p>
         <div class="form-row">
@@ -93,59 +93,6 @@ import Footer from '../../components/Footer.astro';
             <option>1–3 months out</option>
             <option>Just pricing for now</option>
           </select>
-        </div>
-        <div class="form-group">
-          <label for="market">Market Location (select all that apply)</label>
-          <select id="market" name="market" multiple size="8" class="multi-select">
-            <optgroup label="United States — Northeast">
-              <option>New York, NY</option>
-              <option>Boston, MA</option>
-              <option>Philadelphia, PA</option>
-              <option>Baltimore, MD</option>
-              <option>Washington, DC</option>
-            </optgroup>
-            <optgroup label="United States — Southeast">
-              <option>Miami, FL</option>
-              <option>Atlanta, GA</option>
-              <option>Charlotte, NC</option>
-              <option>Nashville, TN</option>
-              <option>New Orleans, LA</option>
-              <option>Houston, TX</option>
-            </optgroup>
-            <optgroup label="United States — Midwest">
-              <option>Chicago, IL</option>
-              <option>Detroit, MI</option>
-              <option>Cleveland, OH</option>
-              <option>Minneapolis, MN</option>
-              <option>Kansas City, MO</option>
-              <option>St. Louis, MO</option>
-            </optgroup>
-            <optgroup label="United States — Southwest">
-              <option>Dallas, TX</option>
-              <option>Phoenix, AZ</option>
-              <option>Denver, CO</option>
-              <option>Las Vegas, NV</option>
-              <option>Salt Lake City, UT</option>
-            </optgroup>
-            <optgroup label="United States — West">
-              <option>Los Angeles, CA</option>
-              <option>San Francisco, CA</option>
-              <option>Seattle, WA</option>
-              <option>Portland, OR</option>
-              <option>San Diego, CA</option>
-            </optgroup>
-            <optgroup label="Canada">
-              <option>Toronto, ON</option>
-              <option>Vancouver, BC</option>
-              <option>Montreal, QC</option>
-              <option>Calgary, AB</option>
-              <option>Edmonton, AB</option>
-              <option>Ottawa, ON</option>
-              <option>Winnipeg, MB</option>
-              <option>Halifax, NS</option>
-            </optgroup>
-          </select>
-          <span class="field-hint">Hold Ctrl (Windows) or Cmd (Mac) to select multiple locations</span>
         </div>
         <div class="form-footer">
           <button type="submit" class="btn-submit con-submit">Get My Quote &#8594;</button>
