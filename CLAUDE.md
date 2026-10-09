@@ -138,17 +138,21 @@ thank-you page `/contact/thanks/` (the form's `action`), not Netlify's default.
 
 | Form (`form-name`)    | Page                  | Address the page shows       | Notifies             |
 |-----------------------|-----------------------|------------------------------|----------------------|
-| `enterprise-contact`  | `/contact/enterprise` | `services@streichforce.com`  | `services@` (email check pending) |
-| `solutions-contact`   | `/contact/solutions`  | `solutions@streichforce.com` | `solutions@` (email check pending) |
-| `containers-contact`  | `/contact/containers` | `containers@streichforce.com`| `containers@` (email check pending) |
+| `enterprise-contact`  | `/contact/enterprise` | `services@streichforce.com`  | `services@` ✅ verified |
+| `solutions-contact`   | `/contact/solutions`  | `solutions@streichforce.com` | `solutions@` ✅ verified |
+| `containers-contact`  | `/contact/containers` | `containers@streichforce.com`| `containers@` ✅ verified |
 
-- Test submissions on all three forms landed in Netlify on 2026-10-09
-  (deploy preview #25). Sonja removed Solutions' "gate volume" and
+- Verified 2026-10-09 (deploy preview #25): one test per form landed in
+  Netlify and its email arrived. The three addresses are aliases that all
+  deliver to Sonja's Inbox (`sstreich@`), from `formresponses@netlify.com`,
+  subjects "Website Service / Solutions / Container Request". Email alerts
+  are set in Netlify → Forms → Submission notifications (dashboard only;
+  the connector cannot set them). Sonja removed Solutions' "gate volume" and
   Containers' "market" questions the same day.
-- Sonja confirmed 2026-10-08 that all three addresses are real mailboxes
-  and each form notifies its own address. Form detection turned on the same day.
-- Submissions are read in Netlify → project `sfwebite` → Forms (and by email
-  once notifications are set). Netlify site id `3effd78e-9ecb-4655-bb3f-d1e5549d8607`.
+- Each form notifies its own address (Sonja, 2026-10-08). Form detection
+  was turned on the same day.
+- Submissions are read in Netlify → project `sfwebite` → Forms, and by email.
+  Netlify site id `3effd78e-9ecb-4655-bb3f-d1e5549d8607`.
 - A new form must keep `data-netlify="true"`, the hidden `form-name` input,
   and the honeypot, and must be plain HTML in the built page (no JS-rendered
   forms), or Netlify never registers it.
@@ -161,6 +165,10 @@ thank-you page `/contact/thanks/` (the form's `action`), not Netlify's default.
   the page looked fine. Markup alone proves nothing: check the Netlify project
   lists the form (connector `get-forms-for-project`) and that a test
   submission lands, before calling a form done.
+- **Form emails land in Sonja's own Inbox, not separate mailboxes.**
+  `services@`, `solutions@` and `containers@` are aliases on `sstreich@`.
+  "No email at services@" means look in her Inbox (search sender
+  `formresponses@netlify.com`); the Microsoft 365 connector can do that. (#12)
 - **Astro `redirects` alone is not a 301 on Netlify.** With no adapter, Astro
   writes a meta-refresh page (`dist/enterprise/index.html`) and Netlify serves
   that file, since a file on disk shadows a redirect rule. A retired route
