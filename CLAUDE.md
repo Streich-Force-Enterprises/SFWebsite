@@ -99,8 +99,16 @@ when it lands.
 - **Originals live in `src/assets/gallery/<division>/`**, never in
   `public/`. Astro's image service resizes and converts them at build time.
   A hand-resized file in `public/` is the smell to question in review.
-- **One entry per photo in `src/content/gallery/`** (an Astro content
-  collection): file, caption, division, service line, month, featured.
+- **Sonja's drop folder is OneDrive `Documents/SF Website/Gallery inbox`**
+  (D2), read through the Microsoft 365 connector (`sharepoint_folder_search`
+  "Gallery inbox"). Files are named after the SF Ops Work order with a stage
+  suffix, e.g. `260728-14734:WO-00023_Before.jpeg` / `…_After.jpeg`; a few
+  have no WO. Use the WO to look up the Work order in SF Ops for the service
+  line, month and what was done.
+- **One entry per job in `src/content/gallery/`** (an Astro content
+  collection): `image` (the After / finished shot), optional `before`,
+  caption, division, service line, month, featured. A `before` makes the
+  card a Before / After pair; the lightbox shows them side by side.
   The schema fails the build on a missing caption or an unknown service
   line. The service lines are the ones on the Services page (Sonja,
   2026-10-08: alphabetical, Doors replaced Compactor Chutes, Other /
@@ -111,7 +119,7 @@ when it lands.
   paperwork or recognisable face, unless Sonja says yes for that photo in
   the PR. Every gallery PR shows every new photo in its deploy preview so
   she approves them in one look.
-- **Adding a photo is one file plus one entry, no code:** put the original in
+- **Adding a job is one or two files plus one entry, no code:** put the original in
   `src/assets/gallery/services/`, add `src/content/gallery/<slug>.yaml` (copy
   a placeholder entry; `image:` is relative to the YAML file), set
   `featured: true` for the "See our work" strip on `/services` (first four,
@@ -154,6 +162,11 @@ when it lands.
   (#11): `cd dist && for h in $(grep -rhoE 'href="/[^"#]*' --include=*.html . | sed 's/href="//' | sort -u); do p=".${h%/}"; [ -f "$p" ] || [ -f "$p/index.html" ] || [ "$h" = / ] || echo "DEAD: $h"; done`
 - **Login goes to SF Ops** (`https://ops.streichforce.com/login`, D3). This
   site has no login of its own and never gets one.
+- **The original filename is public.** Astro keeps the source basename in
+  the built URL (`/_astro/<name>.<hash>.webp`), so a photo committed as
+  `WO-00023_Before.jpeg` publishes the Work order number. Rename on intake to
+  a neutral slug (`doors-storefront-2026-07-before.jpg`) and never commit the
+  inbox names (#9).
 - **`<Image widths={…}>` without `width` ships the full-size original too.**
   Astro uses the source's own width for the `src` fallback, so every 4032 px
   phone photo emitted a ~3 MB webp nobody loads but every deploy carries.
