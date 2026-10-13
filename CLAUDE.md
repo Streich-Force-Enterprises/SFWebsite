@@ -124,8 +124,8 @@ awaiting her decisions: **none.**
 - **Adding a job is one or two files plus one entry, no code:** put the original in
   `src/assets/gallery/services/`, add `src/content/gallery/<slug>.yaml` (copy
   an existing entry; `image:` is relative to the YAML file), set
-  `featured: true` for the "See our work" strip on `/services` (first four,
-  newest month first). The schema lives in `src/content/config.ts`; the
+  `featured: true` for the "See our work" strip on `/services` (first six,
+  newest month first; no strip when none are featured). The schema lives in `src/content/config.ts`; the
   service lines in `src/lib/service-lines.ts` (same order as the Services page).
   The placeholders are gone since the first batch (#15).
 - **Intake, as done for the first batch (#15):**
@@ -153,7 +153,16 @@ awaiting her decisions: **none.**
     before cropping). Crop out chain signage, address numbers, paperwork and
     people; burned-in "BEFORE"/"AFTER" labels go too.
 - **One component, `GalleryGrid.astro`, no JavaScript:** the service-line
-  filter is radio buttons + CSS, the lightbox is the native Popover API.
+  filter is the URL hash + CSS `:target` (each pill is a link to `#<line>`),
+  the lightbox is the native Popover API. So `/services/gallery#doors` is the
+  deep link to one service line and works with JavaScript off; a hash for a
+  line with no photos just shows everything. The anchor ids are the bare
+  service-line keys, so a page has at most one filtered grid. (Radio buttons
+  were the first filter, #27; they can't be set from a URL, #16.)
+- **The filter only offers lines that have photos, and `/services` only links
+  a service line box to its view (`See the work →`) once it has a photo.**
+  Both follow the collection: adding a photo for a
+  new line is still one YAML entry, no code (#16).
 - **Solutions shows product screenshots, not photos**, always against demo
   data: never Loadstar's or any customer's numbers, names or ids.
 
@@ -272,6 +281,12 @@ thank-you page `/contact/thanks/` (the form's `action`), not Netlify's default.
   this site never had) for months with `verify` green. Any PR that touches
   Nav, Footer or a route checks every internal `href` in `dist/` resolves
   (#11): `cd dist && for h in $(grep -rhoE 'href="/[^"#]*' --include=*.html . | sed 's/href="//' | sort -u); do p=".${h%/}"; [ -f "$p" ] || [ -f "$p/index.html" ] || [ "$h" = / ] || echo "DEAD: $h"; done`
+- **A new main-menu item can squeeze the logo.** Adding Gallery (#16) made
+  the desktop links crowd the logo between 641 and 760 px wide (the logo
+  shrank and clipped), with no sideways scroll to give it away. The phone
+  menu now takes over at `max-width: 760px` in `Nav.astro`; a new menu item
+  means re-measuring the logo's width at the breakpoint (it should stay
+  185 px) and moving it if needed.
 - **Login goes to SF Ops** (`https://ops.streichforce.com/login`, D3). This
   site has no login of its own and never gets one.
 - **Sonja's strategy notes are in OneDrive, not on a path you can open.**

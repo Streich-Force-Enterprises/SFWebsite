@@ -10,6 +10,7 @@ const { active = '' } = Astro.props;
   </a>
   <ul class="nav-links">
     <li><a href="/services" class:list={['nent', { active: active === 'services' }]}>Services</a></li>
+    <li><a href="/services/gallery" class:list={['nent', { active: active === 'gallery' }]}>Gallery</a></li>
     <li><a href="/solutions"  class:list={['nsol', { active: active === 'solutions'  }]}>Solutions</a></li>
     <li><a href="/#contact" class="ncta">Contact</a></li>
     <li><a href="https://ops.streichforce.com/login" class="nlogin">Login</a></li>
@@ -21,6 +22,7 @@ const { active = '' } = Astro.props;
 
 <div class="mobile-menu" id="mobileMenu">
   <a href="/services">Services</a>
+  <a href="/services/gallery">Gallery</a>
   <a href="/solutions">Solutions</a>
   <a href="/#contact">Contact</a>
   <a href="https://ops.streichforce.com/login">Login</a>
@@ -79,7 +81,8 @@ const { active = '' } = Astro.props;
   }
   .mobile-menu a:first-child { border-top: 1px solid var(--sf-border); }
 
-  @media (max-width: 640px) {
+  /* Below this the five links squeeze the logo (re-measure when adding one). */
+  @media (max-width: 760px) {
     .nav-links { display: none; }
     .nav-mobile-btn { display: flex; }
     .nav-logo-img { height: 42px; }
