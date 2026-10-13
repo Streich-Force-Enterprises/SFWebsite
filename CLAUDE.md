@@ -123,11 +123,35 @@ awaiting her decisions: **none.**
   she approves them in one look.
 - **Adding a job is one or two files plus one entry, no code:** put the original in
   `src/assets/gallery/services/`, add `src/content/gallery/<slug>.yaml` (copy
-  a placeholder entry; `image:` is relative to the YAML file), set
+  an existing entry; `image:` is relative to the YAML file), set
   `featured: true` for the "See our work" strip on `/services` (first four,
   newest month first). The schema lives in `src/content/config.ts`; the
-  service lines in `src/lib/service-lines.ts` (same order as the Services page). Delete the `placeholder-*`
-  entries and images once real photos land (G2, #16).
+  service lines in `src/lib/service-lines.ts` (same order as the Services page).
+  The placeholders are gone since the first batch (#15).
+- **Intake, as done for the first batch (#15):**
+  - `read_resource` on each inbox file saves the original bytes under the
+    session's `tool-results/` folder; crop and save from there with Pillow.
+  - **HEIC never arrives.** The connector answers "Binary file, cannot be
+    returned" for `.heic`, so there is nothing to convert. List those photos
+    in the PR and ask Sonja to drop a JPEG instead (iPhone: Settings → Camera
+    → Formats → Most Compatible, or Share → Save as JPEG). PNG and JPEG work.
+  - **Strip metadata on intake.** Phone photos carry EXIF with GPS, and the
+    originals are committed. Save a fresh Pillow image (no `exif=`), then
+    check none is left. Read `DateTimeOriginal` first: it is the best source
+    for `takenOn`.
+  - **Work order facts come from the lead.** A ticket session's query to SF
+    Ops' Supabase stalls on a permission prompt; the 🧭 lead runs the
+    read-only lookup and passes service line, month and what was done. The
+    `260728-14734:` prefix on inbox names is not the job date (WO-00023 was
+    September).
+  - **Unnamed files:** match by file size first (the iPhone
+    `C188592C-…jpeg` was a duplicate of `Gate2_Before`). For photos with no
+    Work order, the month comes from EXIF or the upload date, the line from
+    the photo, and the PR marks both "check".
+  - **Blur small identifiers rather than lose a shot:** a number stamped on
+    steel, a promo card on a counter (`ImageFilter.GaussianBlur` on that box
+    before cropping). Crop out chain signage, address numbers, paperwork and
+    people; burned-in "BEFORE"/"AFTER" labels go too.
 - **One component, `GalleryGrid.astro`, no JavaScript:** the service-line
   filter is radio buttons + CSS, the lightbox is the native Popover API.
 - **Solutions shows product screenshots, not photos**, always against demo

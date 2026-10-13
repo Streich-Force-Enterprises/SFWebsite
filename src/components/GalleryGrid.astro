@@ -61,7 +61,7 @@ const filterCss = showFilter
       return (
         <li class="gg-item" data-line={serviceLine}>
           <figure class="gg-card">
-            <button class="gg-thumb" type="button" popovertarget={pid} aria-label={`${before ? 'Before and after' : 'Enlarge'}: ${caption}`}>
+            <button class="gg-thumb" type="button" popovertarget={pid} aria-label={`${before ? 'Before / After' : 'Enlarge'}: ${caption}`}>
               {before && <span class="gg-badge">Before / After</span>}
               <Image
                 src={image}
