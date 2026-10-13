@@ -3,8 +3,10 @@
 // The one gallery component. /services/gallery renders it with the filter;
 // the "See our work" strip on /services renders it with featured photos only.
 //
-// No JavaScript: the service-line filter is radio buttons + CSS, and the
-// lightbox is the native Popover API (Esc and click-outside close it).
+// No JavaScript: the service-line filter is the URL hash + CSS :target, so
+// /services/gallery#doors opens filtered (a deep link, and the "See the work"
+// links on /services use it). The lightbox is the native Popover API (Esc and
+// click-outside close it).
 import { Image } from 'astro:assets';
 import { SERVICE_LINES, SERVICE_LINE_LABELS, type GalleryEntry } from '../lib/gallery';
 
@@ -23,34 +25,31 @@ const { items, filter = false, name = 'gallery', eager = 0 } = Astro.props;
 const lines = SERVICE_LINES.filter((l) => items.some((i) => i.data.serviceLine === l));
 const showFilter = filter && lines.length > 1;
 
-// Per service line: hide the other photos, highlight and focus-ring the active pill.
+// The filter's anchors use the bare service line as their id (#doors), so a
+// page renders at most one filtered grid. Each pill is a link to its anchor;
+// the :target anchor hides the other photos and lights its own pill. No
+// target (or a hash for a line with no photos) shows everything.
 const filterCss = showFilter
   ? lines
       .map(
         (l) =>
-          `.gg-${name} .gg-f[value="${l}"]:checked~.gg-grid .gg-item:not([data-line="${l}"]){display:none}` +
-          `.gg-${name} .gg-f[value="${l}"]:checked~.gg-pills label[data-line="${l}"]{background:var(--sf-ent);border-color:var(--sf-ent);color:#fff}` +
-          `.gg-${name} .gg-f[value="${l}"]:focus-visible~.gg-pills label[data-line="${l}"]{outline:2px solid var(--sf-ent-b);outline-offset:2px}`,
+          `.gg-${name} #${l}:target~.gg-grid .gg-item:not([data-line="${l}"]){display:none}` +
+          `.gg-${name} #${l}:target~.gg-pills a[data-line="${l}"]{background:var(--sf-ent);border-color:var(--sf-ent);color:#fff}`,
       )
-      .join('') +
-    `.gg-${name} .gg-f[value="all"]:checked~.gg-pills label[data-line="all"]{background:var(--sf-ent);border-color:var(--sf-ent);color:#fff}` +
-    `.gg-${name} .gg-f[value="all"]:focus-visible~.gg-pills label[data-line="all"]{outline:2px solid var(--sf-ent-b);outline-offset:2px}`
+      .join('')
   : '';
 ---
 <div class={`gg gg-${name}`}>
   {showFilter && (
     <>
       <style is:inline set:html={filterCss}></style>
-      <input class="gg-f" type="radio" name={`${name}-line`} id={`${name}-all`} value="all" checked />
-      {lines.map((l) => (
-        <input class="gg-f" type="radio" name={`${name}-line`} id={`${name}-${l}`} value={l} />
-      ))}
-      <div class="gg-pills" role="group" aria-label="Filter by service line">
-        <label for={`${name}-all`} data-line="all">All</label>
+      {lines.map((l) => <span class="gg-anchor" id={l}></span>)}
+      <nav class="gg-pills" aria-label="Filter by service line">
+        <a href="#all" data-line="all">All</a>
         {lines.map((l) => (
-          <label for={`${name}-${l}`} data-line={l}>{SERVICE_LINE_LABELS[l]}</label>
+          <a href={`#${l}`} data-line={l}>{SERVICE_LINE_LABELS[l]}</a>
         ))}
-      </div>
+      </nav>
     </>
   )}
 
@@ -119,17 +118,21 @@ const filterCss = showFilter
 </div>
 
 <style>
-  /* Radios stay focusable for keyboard users; the pills are their labels. */
-  .gg-f { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+  /* Filter targets: empty, just above the pills, clear of the fixed nav. */
+  .gg-anchor { display: block; scroll-margin-top: 7rem; }
 
   .gg-pills { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 2rem; }
-  .gg-pills label {
+  .gg-pills a {
     font-family: var(--sf-font-display); font-weight: 600; font-size: .78rem;
     letter-spacing: .14em; text-transform: uppercase;
     padding: .45rem 1rem; border: 1px solid var(--sf-border-md);
-    color: var(--sf-text-secondary); cursor: pointer; transition: border-color .2s, color .2s;
+    color: var(--sf-text-secondary); text-decoration: none; transition: border-color .2s, color .2s;
   }
-  .gg-pills label:hover { border-color: var(--sf-ent); color: var(--sf-text-primary); }
+  .gg-pills a:hover { border-color: var(--sf-ent); color: var(--sf-text-primary); }
+  .gg-pills a:focus-visible { outline: 2px solid var(--sf-ent-b); outline-offset: 2px; }
+  /* "All" is lit until a service line is the target. */
+  .gg-pills a[data-line="all"] { background: var(--sf-ent); border-color: var(--sf-ent); color: #fff; }
+  .gg-anchor:target ~ .gg-pills a[data-line="all"] { background: none; border-color: var(--sf-border-md); color: var(--sf-text-secondary); }
 
   .gg-grid {
     list-style: none; display: grid; gap: 2px;
@@ -203,6 +206,6 @@ const filterCss = showFilter
   .gg-close:hover, .gg-close:focus-visible { border-color: var(--sf-ent); color: var(--sf-ent-b); }
 
   @media (prefers-reduced-motion: reduce) {
-    .gg-cap, .gg-pills label { transition: none; }
+    .gg-cap, .gg-pills a { transition: none; }
   }
 </style>

@@ -124,12 +124,21 @@ awaiting her decisions: **none.**
 - **Adding a job is one or two files plus one entry, no code:** put the original in
   `src/assets/gallery/services/`, add `src/content/gallery/<slug>.yaml` (copy
   a placeholder entry; `image:` is relative to the YAML file), set
-  `featured: true` for the "See our work" strip on `/services` (first four,
-  newest month first). The schema lives in `src/content/config.ts`; the
+  `featured: true` for the "See our work" strip on `/services` (first six,
+  newest month first; no strip when none are featured). The schema lives in `src/content/config.ts`; the
   service lines in `src/lib/service-lines.ts` (same order as the Services page). Delete the `placeholder-*`
   entries and images once real photos land (G2, #16).
 - **One component, `GalleryGrid.astro`, no JavaScript:** the service-line
-  filter is radio buttons + CSS, the lightbox is the native Popover API.
+  filter is the URL hash + CSS `:target` (each pill is a link to `#<line>`),
+  the lightbox is the native Popover API. So `/services/gallery#doors` is the
+  deep link to one service line and works with JavaScript off; a hash for a
+  line with no photos just shows everything. The anchor ids are the bare
+  service-line keys, so a page has at most one filtered grid. (Radio buttons
+  were the first filter, #27; they can't be set from a URL, #16.)
+- **The filter only offers lines that have photos, and `/services` only links
+  a service line box to its view (`See the work →`) once it has a real photo**
+  (placeholders don't count). Both follow the collection: adding a photo for a
+  new line is still one YAML entry, no code (#16).
 - **Solutions shows product screenshots, not photos**, always against demo
   data: never Loadstar's or any customer's numbers, names or ids.
 

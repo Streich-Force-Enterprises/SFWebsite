@@ -6,10 +6,13 @@ import GalleryGrid from '../../components/GalleryGrid.astro';
 import { getGallery, type ServiceLine } from '../../lib/gallery';
 import { SF_OPS_NUMBERS } from '../../data/sf-ops-numbers';
 
-const featured = (await getGallery('services', { featuredOnly: true })).slice(0, 4);
+// "See our work": up to six featured photos, newest month first; no strip
+// when none are featured.
+const featured = (await getGallery('services', { featuredOnly: true })).slice(0, 6);
 
-// A service line links to the gallery once it has a real photo there
-// (placeholders don't count, so no line links to "coming soon").
+// A service line links to its filtered gallery view (/services/gallery#doors)
+// once it has a real photo there (placeholders don't count, so no line links
+// to "coming soon" or to an empty view).
 const photographed = new Set(
   (await getGallery('services'))
     .filter((e) => !e.id.startsWith('placeholder-'))
@@ -83,7 +86,7 @@ const asOf = new Date(`${SF_OPS_NUMBERS.asOf}T12:00:00Z`).toLocaleDateString('en
             <h3 class="service-name">{s.name}</h3>
             <p class="service-desc">{s.desc}</p>
             {photographed.has(s.line) && (
-              <a href="/services/gallery" class="service-link ent-link">See the work →</a>
+              <a href={`/services/gallery#${s.line}`} class="service-link ent-link">See the work →</a>
             )}
           </div>
         ))}
