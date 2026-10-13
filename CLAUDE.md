@@ -314,7 +314,11 @@ thank-you page `/contact/thanks/` (the form's `action`), not Netlify's default.
   `--sf-surface`; `--sf-sol` `#2E6DA4` is 3.2:1. Labels, eyebrows and text
   links use the `-b` variants (`--sf-ent-b` 4.9:1) or a text token; keep the
   base colours for fills, borders and large headings. A link inside text needs
-  an underline, not just a colour (#28). Logo `<img>`s carry `width`/`height`
+  an underline, not just a colour (#28). Never dim a coloured number or label
+  with `opacity`: axe measures the blended colour (the `/services` step numbers
+  at `.35` came out 1.4:1), and `aria-hidden` does not exempt it. Use the token at
+  full strength instead: large bold numbers pass 3:1 in base `--sf-ent` (#40).
+  Logo `<img>`s carry `width`/`height`
   in the SVG's 1985:558 ratio at their CSS height, so the page doesn't shift.
   Measure Lighthouse from Chromium here:
   `CHROME_PATH=$(ls /opt/pw-browsers/chromium-*/chrome-linux/chrome) npx -y lighthouse@12.2.1 <url> --only-categories=accessibility --chrome-flags="--headless=new --no-sandbox"`.
@@ -327,6 +331,9 @@ thank-you page `/contact/thanks/` (the form's `action`), not Netlify's default.
   page.** Its entry overrides the props a page passes to `BaseLayout`, so a
   copy rewrite that changes a page's pitch updates that entry too, and passes
   no props of its own (#13, #21).
+- **Run `git fetch origin main` before cutting a branch.** The container's
+  `origin/main` can be many merges behind the checkout. #40's first branch came
+  off a ref 13 commits old, and Lighthouse scored the wrong code.
 - **Measure Lighthouse with a full gallery, not the placeholders.** With 23
   photos `/services/gallery` scored 93; the first thumbnails must load eagerly
   (`eager` prop), or the lazy LCP image costs the score. What holds every
