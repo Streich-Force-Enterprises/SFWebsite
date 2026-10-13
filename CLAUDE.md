@@ -257,6 +257,12 @@ thank-you page `/contact/thanks/` (the form's `action`), not Netlify's default.
   this site never had) for months with `verify` green. Any PR that touches
   Nav, Footer or a route checks every internal `href` in `dist/` resolves
   (#11): `cd dist && for h in $(grep -rhoE 'href="/[^"#]*' --include=*.html . | sed 's/href="//' | sort -u); do p=".${h%/}"; [ -f "$p" ] || [ -f "$p/index.html" ] || [ "$h" = / ] || echo "DEAD: $h"; done`
+- **A new main-menu item can squeeze the logo.** Adding Gallery (#16) made
+  the desktop links crowd the logo between 641 and 760 px wide (the logo
+  shrank and clipped), with no sideways scroll to give it away. The phone
+  menu now takes over at `max-width: 760px` in `Nav.astro`; a new menu item
+  means re-measuring the logo's width at the breakpoint (it should stay
+  185 px) and moving it if needed.
 - **Login goes to SF Ops** (`https://ops.streichforce.com/login`, D3). This
   site has no login of its own and never gets one.
 - **Sonja's strategy notes are in OneDrive, not on a path you can open.**
