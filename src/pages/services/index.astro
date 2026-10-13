@@ -11,13 +11,8 @@ import { SF_OPS_NUMBERS } from '../../data/sf-ops-numbers';
 const featured = (await getGallery('services', { featuredOnly: true })).slice(0, 6);
 
 // A service line links to its filtered gallery view (/services/gallery#doors)
-// once it has a real photo there (placeholders don't count, so no line links
-// to "coming soon" or to an empty view).
-const photographed = new Set(
-  (await getGallery('services'))
-    .filter((e) => !e.id.startsWith('placeholder-'))
-    .map((e) => e.data.serviceLine),
-);
+// once it has a photo there, so no line links to an empty view.
+const photographed = new Set((await getGallery('services')).map((e) => e.data.serviceLine));
 
 // Alphabetical; "Other / Miscellaneous" stays last. Same order as
 // src/lib/service-lines.ts and the contact form's "Type of Work Needed".
