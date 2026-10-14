@@ -318,6 +318,9 @@ thank-you page `/contact/thanks/` (the form's `action`), not Netlify's default.
   with `opacity`: axe measures the blended colour (the `/services` step numbers
   at `.35` came out 1.4:1), and `aria-hidden` does not exempt it. Use the token at
   full strength instead: large bold numbers pass 3:1 in base `--sf-ent` (#40).
+  Button text: white passes on `--sf-ent` and `--sf-sol` fills, but not on
+  Containers amber (`--sf-con` 3.4:1, its hover `--sf-con-b` 2.2:1). Amber
+  buttons use `--sf-black` text (5.5:1 / 8.5:1) on the same fill (Sonja, #42).
   Logo `<img>`s carry `width`/`height`
   in the SVG's 1985:558 ratio at their CSS height, so the page doesn't shift.
   Measure Lighthouse from Chromium here:
