@@ -97,7 +97,7 @@ const asOf = new Date(`${SF_OPS_NUMBERS.asOf}T12:00:00Z`).toLocaleDateString('en
       <ol class="job-steps">
         {steps.map((st, i) => (
           <li class="job-step">
-            <span class="job-num">{String(i + 1).padStart(2, '0')}</span>
+            <span class="job-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
             <h3 class="job-title">{st.title}</h3>
             <p class="job-body">{st.body}</p>
           </li>
@@ -121,17 +121,17 @@ const asOf = new Date(`${SF_OPS_NUMBERS.asOf}T12:00:00Z`).toLocaleDateString('en
       <h2 class="lane-title">We're not in the regular rotation.<br />We're who you call when the rotation fails.</h2>
       <div class="pos-cards">
         <div class="pos-card">
-          <div class="pos-num">01</div>
+          <div class="pos-num" aria-hidden="true">01</div>
           <h3 class="pos-title">Diagnosed First</h3>
           <p class="pos-body">We find the real issue, not just the symptom, and fix it once. If you're tired of paying for the same problem twice, we're your call.</p>
         </div>
         <div class="pos-card">
-          <div class="pos-num">02</div>
+          <div class="pos-num" aria-hidden="true">02</div>
           <h3 class="pos-title">Cross-Trade Capability</h3>
           <p class="pos-body">Most repairs that fall through the cracks cross trade lines. We work across disciplines; that's exactly where we live.</p>
         </div>
         <div class="pos-card">
-          <div class="pos-num">03</div>
+          <div class="pos-num" aria-hidden="true">03</div>
           <h3 class="pos-title">Nothing to Chase</h3>
           <p class="pos-body">Quote, schedule, photos, Work summary and invoice all come to you from one system. You don't call to ask where the job is.</p>
         </div>
@@ -230,7 +230,7 @@ const asOf = new Date(`${SF_OPS_NUMBERS.asOf}T12:00:00Z`).toLocaleDateString('en
 .lane-title{font-family:var(--sf-font-display);font-weight:900;font-size:clamp(1.8rem,3.5vw,2.8rem);text-transform:uppercase;color:var(--sf-text-primary);line-height:1.1;margin:.75rem 0 3rem}
 .pos-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px}
 .pos-card{background:var(--sf-surface);padding:2.5rem}
-.pos-num{font-family:var(--sf-font-display);font-weight:900;font-size:3.5rem;line-height:1;margin-bottom:1rem;color:var(--sf-ent);opacity:.25}
+.pos-num{font-family:var(--sf-font-display);font-weight:900;font-size:3.5rem;line-height:1;margin-bottom:1rem;color:var(--sf-ent)}
 .pos-title{font-family:var(--sf-font-display);font-weight:700;font-size:1.2rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sf-text-primary);margin-bottom:.75rem}
 .pos-body{font-size:1rem;color:var(--sf-text-secondary);line-height:1.8}
 
@@ -258,7 +258,7 @@ const asOf = new Date(`${SF_OPS_NUMBERS.asOf}T12:00:00Z`).toLocaleDateString('en
 @media(max-width:900px){.job-steps{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.job-steps{grid-template-columns:1fr}}
 .job-step{background:var(--sf-black);padding:2rem 1.75rem 2.25rem}
-.job-num{display:block;font-family:var(--sf-font-display);font-weight:900;font-size:2.6rem;line-height:1;color:var(--sf-ent);opacity:.35;margin-bottom:.75rem}
+.job-num{display:block;font-family:var(--sf-font-display);font-weight:900;font-size:2.6rem;line-height:1;color:var(--sf-ent);margin-bottom:.75rem}
 .job-title{font-family:var(--sf-font-display);font-weight:700;font-size:1.1rem;letter-spacing:.08em;text-transform:uppercase;color:var(--sf-text-primary);margin-bottom:.6rem}
 .job-body{font-size:1rem;color:var(--sf-text-secondary);line-height:1.75;margin:0}
 .ops-numbers{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem}
@@ -280,5 +280,5 @@ const asOf = new Date(`${SF_OPS_NUMBERS.asOf}T12:00:00Z`).toLocaleDateString('en
 
 /* WHO WE SERVE */
 .pills{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:3rem}
-.pill{font-family:var(--sf-font-display);font-weight:600;font-size:.82rem;letter-spacing:.25em;text-transform:uppercase;padding:.5rem 1.25rem;border:1px solid var(--sf-ent);color:var(--sf-ent)}
+.pill{font-family:var(--sf-font-display);font-weight:600;font-size:.82rem;letter-spacing:.25em;text-transform:uppercase;padding:.5rem 1.25rem;border:1px solid var(--sf-ent);color:var(--sf-ent-b)}
 </style>
