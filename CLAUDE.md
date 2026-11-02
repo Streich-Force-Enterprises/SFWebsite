@@ -151,7 +151,10 @@ awaiting her decisions: **none.**
     names. The limit is on the file as stored: 4.9 MB came through. A
     re-dropped file that still ends in `.heic` is still HEIC, however
     small (`Gate1_Before.heic`, 299 KB), so check the extension too
-    before telling the lead a batch is ready.
+    before telling the lead a batch is ready. A new extension is not
+    proof either: `WO-00067_After.jpeg` came back at the HEIC's exact
+    byte count with `ftypheic` in its header (renamed, not converted).
+    Same name, same size means the same file.
   - **Apply EXIF orientation before stripping it** (`ImageOps.exif_transpose`):
     a 5712×4284 photo can be a portrait shot, and once the tag is gone it
     lies on its side.
