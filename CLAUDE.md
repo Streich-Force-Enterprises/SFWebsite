@@ -146,6 +146,15 @@ awaiting her decisions: **none.**
     48 MP iPhone shots run 5–8 MB. List them in the PR and ask Sonja to
     drop a smaller copy (Photos → Share → Options/Size "Large", or email
     it to herself and save the attachment).
+  - **Smaller copies replace the originals in place** (#46): same inbox
+    name, new size, so check the folder listing's byte counts, not the
+    names. The limit is on the file as stored: 4.9 MB came through. A
+    re-dropped file that still ends in `.heic` is still HEIC, however
+    small (`Gate1_Before.heic`, 299 KB), so check the extension too
+    before telling the lead a batch is ready. A new extension is not
+    proof either: `WO-00067_After.jpeg` came back at the HEIC's exact
+    byte count with `ftypheic` in its header (renamed, not converted).
+    Same name, same size means the same file.
   - **Apply EXIF orientation before stripping it** (`ImageOps.exif_transpose`):
     a 5712×4284 photo can be a portrait shot, and once the tag is gone it
     lies on its side.
