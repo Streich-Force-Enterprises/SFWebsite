@@ -1,6 +1,6 @@
 // src/content/config.ts
 // The gallery: one YAML entry per job in src/content/gallery/ (the finished
-// photo, plus an optional before photo), originals in src/assets/gallery/<division>/. The schema is the guard: a missing
+// photo or photos, plus optional before photos), originals in src/assets/gallery/<division>/. The schema is the guard: a missing
 // file, an empty caption or an unknown service line fails `npm run build`.
 import { defineCollection, z } from 'astro:content';
 import { SERVICE_LINES } from '../lib/service-lines';
@@ -10,10 +10,11 @@ const gallery = defineCollection({
   schema: ({ image }) =>
     z
       .object({
+        // After (finished) photo, or a list of them; the first is the card.
         // Path relative to the entry file, e.g. ../../assets/gallery/services/x.jpg
-        image: image(),
-        // Optional "before" shot of the same job; the lightbox shows the pair.
-        before: image().optional(),
+        image: z.union([image(), z.array(image()).min(1)]),
+        // Optional "before" photo, or a list; the lightbox shows the whole set.
+        before: z.union([image(), z.array(image()).min(1)]).optional(),
         // What was built or fixed, never who for (see CLAUDE.md "Gallery").
         caption: z.string().trim().min(1, 'caption is required'),
         // Screen-reader text; falls back to the caption.

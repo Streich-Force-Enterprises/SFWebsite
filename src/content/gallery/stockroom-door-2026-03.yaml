@@ -1,6 +1,9 @@
-image: ../../assets/gallery/services/stockroom-door-2026-03-after.jpg
+image:
+  - ../../assets/gallery/services/stockroom-door-2026-03-after-2.jpg
+  - ../../assets/gallery/services/stockroom-door-2026-03-after.jpg
+before: ../../assets/gallery/services/stockroom-door-2026-03-before.jpg
 caption: "Back-of-house steel door hung in a new frame with a vision panel"
-alt: "New brown steel door with a small window, set in a white frame in a back room"
+alt: "New brown steel door with a small window and lever handle, set in a white frame, seen from both sides; the before shot shows the crowded stockroom before the opening"
 division: services
 serviceLine: doors
 takenOn: "2026-03"

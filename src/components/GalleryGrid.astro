@@ -6,9 +6,10 @@
 // No JavaScript: the service-line filter is the URL hash + CSS :target, so
 // /services/gallery#doors opens filtered (a deep link, and the "See the work"
 // links on /services use it). The lightbox is the native Popover API (Esc and
-// click-outside close it).
+// click-outside close it). A job with three or more photos (#44) shows them in
+// a grid on landscape screens and as a scroll-snap swipe strip on phones.
 import { Image } from 'astro:assets';
-import { SERVICE_LINES, SERVICE_LINE_LABELS, type GalleryEntry } from '../lib/gallery';
+import { SERVICE_LINES, SERVICE_LINE_LABELS, photosOf, type GalleryEntry } from '../lib/gallery';
 
 export interface Props {
   items: GalleryEntry[];
@@ -55,15 +56,19 @@ const filterCss = showFilter
 
   <ul class="gg-grid">
     {items.map((item, i) => {
-      const { image, before, caption, alt, serviceLine } = item.data;
+      const { caption, alt, serviceLine } = item.data;
+      const { cover, hasBefore, all } = photosOf(item);
+      const n = all.length;
       const pid = `${name}-lb-${item.id}`;
+      // Badge: "Before / After", plus the photo count once a set has more than a pair.
+      const badge = [hasBefore && 'Before / After', n > 2 && `${n} photos`].filter(Boolean).join(' · ');
       return (
         <li class="gg-item" data-line={serviceLine}>
           <figure class="gg-card">
-            <button class="gg-thumb" type="button" popovertarget={pid} aria-label={`${before ? 'Before / After' : 'Enlarge'}: ${caption}`}>
-              {before && <span class="gg-badge">Before / After</span>}
+            <button class="gg-thumb" type="button" popovertarget={pid} aria-label={`${badge || 'Enlarge'}: ${caption}`}>
+              {badge && <span class="gg-badge">{badge}</span>}
               <Image
-                src={image}
+                src={cover}
                 alt={alt ?? caption}
                 width={800}
                 widths={[400, 800]}
@@ -82,22 +87,29 @@ const filterCss = showFilter
 
           <div class="gg-lb" id={pid} popover>
             <figure>
-              {before ? (
-                <div class="gg-pair">
-                  <div class="gg-stage">
-                    <Image src={before} alt={`Before: ${alt ?? caption}`} width={1400} widths={[800, 1400]}
-                      sizes="(max-aspect-ratio: 1/1) 92vw, 46vw" format="webp" quality={75} loading="lazy" />
-                    <span class="gg-stage-label">Before</span>
+              {n > 1 ? (
+                <>
+                  {/* A pair sits side by side (stacked on portrait). Three or more: a grid on
+                      landscape, a swipe strip on portrait. Scroll snap only, no script. */}
+                  <div class:list={['gg-set', { 'gg-many': n > 2, 'gg-rows': n > 3 }]} style={`--cols:${n === 3 ? 3 : 2}`}
+                    tabindex={n > 2 ? 0 : undefined} role={n > 2 ? 'group' : undefined}
+                    aria-label={n > 2 ? `${n} photos, scroll sideways` : undefined}>
+                    {all.map((p, k) => (
+                      <div class="gg-stage">
+                        <Image src={p.src} alt={`${p.stage}${n > 2 ? ` (${k + 1} of ${n})` : ''}: ${alt ?? caption}`}
+                          width={1400} widths={[800, 1400]}
+                          sizes="(max-aspect-ratio: 1/1) 92vw, 46vw" format="webp" quality={75} loading="lazy" />
+                        <span class={p.stage === 'After' ? 'gg-stage-label gg-after' : 'gg-stage-label'}>
+                          {p.stage}{n > 2 && <span class="gg-count"> · {k + 1} / {n}</span>}
+                        </span>
+                      </div>
+                    ))}
                   </div>
-                  <div class="gg-stage">
-                    <Image src={image} alt={`After: ${alt ?? caption}`} width={1400} widths={[800, 1400]}
-                      sizes="(max-aspect-ratio: 1/1) 92vw, 46vw" format="webp" quality={75} loading="lazy" />
-                    <span class="gg-stage-label gg-after">After</span>
-                  </div>
-                </div>
+                  {n > 2 && <p class="gg-hint" aria-hidden="true">Swipe for all {n} photos →</p>}
+                </>
               ) : (
                 <Image
-                  src={image}
+                  src={cover}
                   alt={alt ?? caption}
                   width={2000}
                   widths={[1200, 2000]}
@@ -182,10 +194,14 @@ const filterCss = showFilter
   .gg-lb::backdrop { background: rgba(0,0,0,.88); }
   .gg-lb figure { margin: 0; }
   .gg-lb :global(img) { width: auto; height: auto; max-width: 92vw; max-height: calc(92vh - 4rem); object-fit: contain; margin: 0 auto; }
-  /* Before / after: side by side on landscape screens, stacked on portrait. */
-  .gg-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+  /* A set: a pair side by side on landscape screens, stacked on portrait.
+     Three photos sit in a row, four or more in two columns. */
+  .gg-set { display: grid; grid-template-columns: repeat(var(--cols), 1fr); gap: 4px; }
   .gg-stage { position: relative; }
-  .gg-pair .gg-stage :global(img) { max-width: 46vw; max-height: calc(92vh - 4rem); }
+  .gg-set .gg-stage :global(img) { max-width: calc(92vw / var(--cols)); max-height: calc(92vh - 4rem); }
+  .gg-rows .gg-stage :global(img) { max-height: calc((92vh - 5rem) / 2); }
+  .gg-many:focus-visible { outline: 2px solid var(--sf-ent-b); outline-offset: 2px; }
+  .gg-hint { display: none; }
   .gg-stage-label {
     position: absolute; top: .75rem; left: .75rem;
     font-family: var(--sf-font-display); font-weight: 700; font-size: .78rem;
@@ -194,8 +210,16 @@ const filterCss = showFilter
   }
   .gg-stage-label.gg-after { color: #fff; background: var(--sf-ent); }
   @media (max-aspect-ratio: 1/1) {
-    .gg-pair { grid-template-columns: 1fr; }
-    .gg-pair .gg-stage :global(img) { max-width: 92vw; max-height: calc((92vh - 5rem) / 2); }
+    .gg-set { grid-template-columns: 1fr; }
+    .gg-set .gg-stage :global(img) { max-width: 92vw; max-height: calc((92vh - 5rem) / 2); }
+    /* Three or more on a phone: one photo at a time, swipe to the next. */
+    .gg-many {
+      display: flex; max-width: 92vw; overflow-x: auto; overscroll-behavior-x: contain;
+      scroll-snap-type: x mandatory; scrollbar-width: none;
+    }
+    .gg-many .gg-stage { flex: 0 0 100%; scroll-snap-align: center; display: flex; justify-content: center; }
+    .gg-many .gg-stage :global(img) { max-width: 92vw; max-height: calc(92vh - 6rem); }
+    .gg-hint { display: block; margin: .5rem 0 0; text-align: center; font-size: .85rem; color: var(--sf-text-secondary); }
   }
   .gg-lb-cap { padding: .75rem 0 0; text-align: center; font-size: 1rem; color: var(--sf-text-secondary); }
   .gg-close {

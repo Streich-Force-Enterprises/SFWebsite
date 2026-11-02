@@ -111,6 +111,12 @@ awaiting her decisions: **none.**
   collection): `image` (the After / finished shot), optional `before`,
   caption, division, service line, month, featured. A `before` makes the
   card a Before / After pair; the lightbox shows them side by side.
+  **A job keeps every photo of its set (#44):** `image` and `before` each
+  take one path or a YAML list. The card shows the first `image`; the
+  lightbox shows befores then afters, three in a row or two columns on a
+  wide screen, a scroll-snap swipe strip on a phone (still no script). The
+  first batch stored only one of each, so sets of 3–4 lost photos: an
+  `_After1`/`_After2`/`_Before2` file in the inbox is a set, never a pick.
   The schema fails the build on a missing caption or an unknown service
   line. The service lines are the ones on the Services page (Sonja,
   2026-10-08: alphabetical, Doors replaced Compactor Chutes, Other /
@@ -121,7 +127,7 @@ awaiting her decisions: **none.**
   paperwork or recognisable face, unless Sonja says yes for that photo in
   the PR. Every gallery PR shows every new photo in its deploy preview so
   she approves them in one look.
-- **Adding a job is one or two files plus one entry, no code:** put the original in
+- **Adding a job is one file per photo plus one entry, no code:** put the originals in
   `src/assets/gallery/services/`, add `src/content/gallery/<slug>.yaml` (copy
   an existing entry; `image:` is relative to the YAML file), set
   `featured: true` for the "See our work" strip on `/services` (first six,
@@ -135,6 +141,18 @@ awaiting her decisions: **none.**
     returned" for `.heic`, so there is nothing to convert. List those photos
     in the PR and ask Sonja to drop a JPEG instead (iPhone: Settings → Camera
     → Formats → Most Compatible, or Share → Save as JPEG). PNG and JPEG work.
+  - **Nothing over 5 MB arrives either** (#44): the connector answers
+    "exceeds the 5242880-byte image content-block limit". Full-size
+    48 MP iPhone shots run 5–8 MB. List them in the PR and ask Sonja to
+    drop a smaller copy (Photos → Share → Options/Size "Large", or email
+    it to herself and save the attachment).
+  - **Apply EXIF orientation before stripping it** (`ImageOps.exif_transpose`):
+    a 5712×4284 photo can be a portrait shot, and once the tag is gone it
+    lies on its side.
+  - **Check the inbox against what's live first.** Match each existing
+    entry to its inbox files by looking at both (`Huntsville_*` was the
+    live canopy-facade job under a city name; `Gate2` was the April gates,
+    `Gate3` a new job). File names in the inbox are not a reliable key.
   - **Strip metadata on intake.** Phone photos carry EXIF with GPS, and the
     originals are committed. Save a fresh Pillow image (no `exif=`), then
     check none is left. Read `DateTimeOriginal` first: it is the best source
