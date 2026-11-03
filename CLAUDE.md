@@ -155,6 +155,13 @@ awaiting her decisions: **none.**
     proof either: `WO-00067_After.jpeg` came back at the HEIC's exact
     byte count with `ftypheic` in its header (renamed, not converted).
     Same name, same size means the same file.
+  - **A real HEIC → JPEG conversion grows past 5 MB** (#48): WO-00067's
+    full-size export went from 5.0 MB (HEIC) to 8.8 MB (JPEG) and was
+    blocked again. Ask for "Save as JPEG" **and** size "Large" in the same
+    request (it came back at 4.9 MB). Proof of a real JPEG is the header
+    (`FF D8 FF`, Pillow `JPEG`/`MPO`), not the extension. An iPhone JPEG
+    opens as `MPO` (a second, embedded image), so always save a fresh image
+    and never copy the bytes.
   - **Apply EXIF orientation before stripping it** (`ImageOps.exif_transpose`):
     a 5712×4284 photo can be a portrait shot, and once the tag is gone it
     lies on its side.
