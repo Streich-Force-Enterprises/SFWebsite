@@ -204,12 +204,16 @@ awaiting her decisions: **none.**
   `order`; the schema refuses a solutions entry without `order` or with a
   `before`/`serviceLine`. The capture recipe (screens, demo data, 1440×900
   viewport, file names) is `docs/gallery/solutions-screenshots.md` (#17).
-- **A cloud ticket session cannot capture them** (#17, 2026-11-04): there
-  is no Docker daemon, so SF Ops' local stack (`/decide` on the e2e seed)
-  won't start, and sf-solutions has no demo client: its only cockpit data
-  is Loadstar's snapshot, and the cockpit prints the inventory platform's
-  name and the org id on screen. Never stand a mock-up in for the product;
-  the recipe says what has to exist first.
+- **The SF Solutions shots come from its demo client** (`/c/demo` "Demo
+  Operator", sf-solutions `src/clients/demo.ts`, #17): invented units from a
+  fixed seed, every figure computed from them, no platform name, org id or
+  switcher on screen. A cloud session renders it with `next start` against
+  `scripts/solutions-screenshots/auth-stub.mjs` (sign-in only, no data) and
+  captures with `capture.mjs`. Capture from a production build: `next dev`
+  draws its badge into the corner of every shot.
+- **SF Ops `/decide` still cannot be captured from a cloud session**: there
+  is no Docker daemon, so SF Ops' local stack won't start. Never stand a
+  mock-up in for the product; the recipe says how to capture it locally.
 
 ## Content rules
 
