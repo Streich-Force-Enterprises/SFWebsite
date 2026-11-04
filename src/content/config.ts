@@ -24,10 +24,19 @@ const gallery = defineCollection({
         // Month the photo was taken, YYYY-MM.
         takenOn: z.string().regex(/^\d{4}-(0[1-9]|1[0-2])$/, 'takenOn must be YYYY-MM'),
         featured: z.boolean().default(false),
+        // Solutions screenshots only: position in the /solutions strip (1 first).
+        order: z.number().int().positive().optional(),
       })
       .refine((d) => d.division !== 'services' || d.serviceLine, {
         message: 'serviceLine is required for division: services',
         path: ['serviceLine'],
+      })
+      // A Solutions entry is one product screenshot (#17): no Before / After,
+      // no service line, and a place in the strip. Capture recipe:
+      // docs/gallery/solutions-screenshots.md (demo data only).
+      .refine((d) => d.division !== 'solutions' || (!d.before && !d.serviceLine && d.order), {
+        message: 'a solutions screenshot takes order, and no before or serviceLine',
+        path: ['order'],
       }),
 });
 

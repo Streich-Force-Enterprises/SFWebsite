@@ -199,6 +199,17 @@ awaiting her decisions: **none.**
   new line is still one YAML entry, no code (#16).
 - **Solutions shows product screenshots, not photos**, always against demo
   data: never Loadstar's or any customer's numbers, names or ids.
+  `ScreenshotStrip.astro` draws them on `/solutions` as a captioned strip
+  (no lightbox, no JS), from `division: solutions` entries sorted by
+  `order`; the schema refuses a solutions entry without `order` or with a
+  `before`/`serviceLine`. The capture recipe (screens, demo data, 1440×900
+  viewport, file names) is `docs/gallery/solutions-screenshots.md` (#17).
+- **A cloud ticket session cannot capture them** (#17, 2026-11-04): there
+  is no Docker daemon, so SF Ops' local stack (`/decide` on the e2e seed)
+  won't start, and sf-solutions has no demo client: its only cockpit data
+  is Loadstar's snapshot, and the cockpit prints the inventory platform's
+  name and the org id on screen. Never stand a mock-up in for the product;
+  the recipe says what has to exist first.
 
 ## Content rules
 
