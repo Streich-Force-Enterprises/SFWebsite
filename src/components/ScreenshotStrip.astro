@@ -1,0 +1,49 @@
+---
+// src/components/ScreenshotStrip.astro
+// The Solutions product screenshots (#17): a captioned strip, not a lightbox
+// grid. Entries are `division: solutions` in src/content/gallery/, shown in
+// their `order`. Renders nothing until the first screenshot is added.
+//
+// No JavaScript: a horizontal scroll-snap row on narrow screens, a wrapping
+// row on wide ones. Every screenshot is captured on demo data only; the recipe
+// is docs/gallery/solutions-screenshots.md.
+import { Image } from 'astro:assets';
+import { getGallery } from '../lib/gallery';
+
+const shots = (await getGallery('solutions')).sort(
+  (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99),
+);
+---
+{shots.length > 0 && (
+  <ol class="shot-strip" aria-label="SF Solutions screens">
+    {shots.map((s) => {
+      const img = Array.isArray(s.data.image) ? s.data.image[0] : s.data.image;
+      return (
+        <li class="shot">
+          <figure>
+            <Image
+              src={img}
+              alt={s.data.alt ?? s.data.caption}
+              width={1200}
+              widths={[600, 900, 1200]}
+              sizes="(max-width: 700px) 85vw, (max-width: 1200px) 45vw, 560px"
+              class="shot-img"
+            />
+            <figcaption>{s.data.caption}</figcaption>
+          </figure>
+        </li>
+      );
+    })}
+  </ol>
+)}
+
+<style>
+.shot-strip{list-style:none;margin:2.5rem 0 0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.shot figure{margin:0;background:var(--sf-surface);border:1px solid var(--sf-border)}
+.shot-img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top left}
+.shot figcaption{padding:1rem 1.25rem;font-size:1rem;line-height:1.6;color:var(--sf-text-secondary);border-top:2px solid var(--sf-sol)}
+@media(max-width:700px){
+  .shot-strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:1rem;padding-bottom:.75rem}
+  .shot{flex:0 0 85%;scroll-snap-align:start}
+}
+</style>
